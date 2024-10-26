@@ -1,0 +1,36 @@
+# Ignore common dependencies
+node_modules/
+*/node_modules/
+target/
+.next/
+build/
+dist/
+*/dist/
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+*.out
+*.exe
+*.dll
+*.pdb
+*.so
+*.dylib
+*.pyc
+
+# Test coverage
+coverage/
+*/coverage/
+
+# Temporary files
+tmp/
+temp/
+*/tmp/
+*/temp/
