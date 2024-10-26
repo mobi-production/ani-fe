@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# SKIP_LINT 환경 변수가 설정되어 있으면 commitlint 스킵
+if [ "$SKIP_LINT" = "true" ]; then
+  exit 0
+fi
+
+
+echo 'wait add jira issue number we found from branch name'
+
+# 브랜치 이름을 가져옵니다.
+BRANCH_NAME=$(git symbolic-ref -q HEAD)
+BRANCH_NAME=${BRANCH_NAME##*/}
+
+# ISSUE_TICKET이 비어있는지 확인합니다.
+# 이슈 번호가 존재한다면 Jira 이슈 티켓 + 번호를 붙여줍니다.
+echo "Extracted Jira Ticket: $ISSUE_TICKET"
+
+# 현재 파일에서 commet message를 읽어옵니다.
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+# 새로운 커밋 메시지를 생성합니다.
+NEW_COMMIT_MSG="[$BRANCH_NAME] $COMMIT_MSG"
+
+# 새로운 커밋 메시지를 커밋 메시지 파일에 덮어씁니다.
+echo "$NEW_COMMIT_MSG" > $COMMIT_MSG_FILE

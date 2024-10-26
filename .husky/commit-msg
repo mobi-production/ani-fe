@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# SKIP_LINT 환경 변수가 설정되어 있으면 commitlint 스킵
+if [ "$SKIP_LINT" = "true" ]; then
+  echo "Skipping commitlint due to SKIP_LINT environment variable"
+  exit 0
+fi
+
+npx --no -- commitlint --edit "$1"

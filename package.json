@@ -1,17 +1,22 @@
 {
-  "name": "a-ni-fe",
+  "name": "ani-fe",
   "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@9.12.2",
   "devDependencies": {
+    "@ani/config": "workspace:*",
+    "@ani/eslint": "workspace:*",
     "@commitlint/cli": "^19.5.0",
     "eslint": "^9.13.0",
     "husky": "^9.1.6",
