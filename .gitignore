@@ -36,8 +36,3 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
-
-# for Webstorm (IntelliJ)
-.idea
-undefined
-*storybook.log

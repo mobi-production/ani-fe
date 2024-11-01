@@ -1,32 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env"],
+  "ui": "tui",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "test": {
-      "dependsOn": ["build", "lint"]
-    },
     "lint": {
-      "dependsOn": ["^lint"],
-      "cache": false
-    },
-    "ani#dev": {
-      "env": ["ANI_*"],
-      "passThroughEnv": ["ANI_*"]
-    },
-    "academy#build": {
-      "env": ["ANI_*"],
-      "passThroughEnv": ["ANI_*"]
+      "dependsOn": ["^lint"]
     },
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "clean": {
-      "cache": false
     }
   }
 }
