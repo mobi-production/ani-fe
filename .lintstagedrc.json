@@ -1,0 +1,18 @@
+{
+  "packages/ui/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @ani/ui lint --cache"
+  ],
+  "packages/config/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @ani/config lint --cache"
+  ],
+  "apps/web/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter web lint --cache"
+  ],
+  "**/*.{js,jsx,ts,tsx}": [
+    "pnpm test:coverage --findRelatedTests"
+  ],
+  "**/*.{css,scss}": [
+    "stylelint --fix",
+    "prettier --write"
+  ]
+}
