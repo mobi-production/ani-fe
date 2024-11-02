@@ -1,15 +1,13 @@
-import { pretendardFont } from './_fonts';
-import '@/styles/global.scss';
+import { pretendardFont } from './_fonts'
+import '@/styles/global.scss'
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="ko">
-      <body className={`${pretendardFont.variable}`}>
-        {children}
-      </body>
+    <html lang='ko'>
+      <body className={`${pretendardFont.variable}`}>{children}</body>
     </html>
-  );
+  )
 }

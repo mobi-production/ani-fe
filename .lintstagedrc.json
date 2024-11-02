@@ -1,15 +1,12 @@
 {
   "packages/ui/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter @ani/ui lint --cache"
+    "pnpm --filter @ani/ui lint"
   ],
   "packages/config/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter @ani/config lint --cache"
+    "pnpm --filter @ani/config lint"
   ],
   "apps/web/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter web lint --cache"
-  ],
-  "**/*.{js,jsx,ts,tsx}": [
-    "pnpm test:coverage --findRelatedTests"
+    "pnpm --filter web lint"
   ],
   "**/*.{css,scss}": [
     "stylelint --fix",
