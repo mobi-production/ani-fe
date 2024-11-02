@@ -1,0 +1,51 @@
+@import './functions';
+
+$type-properties: (
+  font-size,
+  line-height,
+  letter-spacing
+);
+
+$type-styles: (
+  display: (1, 2),
+  title: (1, 2, 3),
+  heading: (1, 2),
+  body: (
+    normal: (1, 2),
+    reading: (1, 2)
+  ),
+  label: (
+    normal: (1),
+    reading: (1)
+  ),
+  caption: (1, 2)
+);
+
+$font-weights: (
+  Regular: var(--font-weight-regular),
+  Medium: var(--font-weight-medium),
+  Bold: var(--font-weight-bold),
+  SemiBold: var(--font-weight-semibold)
+);
+
+@mixin text($text, $color-code: '') {
+  $list: str-split($text, '/');
+  $type: list.nth($list, 1);
+  $weight: if(list.length($list) == 2, list.nth($list, 2), null);
+
+  @each $property in $type-properties {
+    #{$property}: var(--#{$type}-#{$property});
+  }
+
+  @if $weight and map-has-key($font-weights, $weight) {
+    font-weight: map-get($font-weights, $weight);
+  }
+
+  @if $color-code != '' {
+    color: color($color-code);
+  }
+}
+
+@mixin text-color($color-code) {
+  color: color($color-code);
+}
