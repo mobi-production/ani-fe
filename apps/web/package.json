@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
-    "stylelint": "stylelint --fix src/**/*.{css,scss}"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",

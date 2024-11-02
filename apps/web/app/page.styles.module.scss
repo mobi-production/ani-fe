@@ -1,3 +1,5 @@
+@use '@repo/ui/styles' as *;
+
 .main {
-  @include text('heading1/bold');
+  @include font('display2');
 }

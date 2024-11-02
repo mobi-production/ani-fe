@@ -2,7 +2,12 @@
 
 ## 시작하기
 
-스타일 시스템을 사용하기 위해 아래와 같이 사용하세요:
+스타일 시스템을 사용하기 위해 먼저 필요한 스타일 파일을 import 해야 합니다:
+
+```scss
+@use '../styles/typography/mixins' as typography;
+@use '../styles/foundation/colors' as colors;
+```
 
 ## Typography
 
@@ -11,8 +16,11 @@
 ### 기본 사용법
 
 ```scss
+@use '@repo/ui/styles' as *;
+
 .element {
-  @include text('스타일/웨이트', '색상코드');
+  @include font('스타일');
+  color: colors.$색상변수;
 }
 ```
 
@@ -29,26 +37,25 @@
   - Reading: `label1-reading`
 - Caption: `caption1`, `caption2`
 
-### 사용 가능한 웨이트
-
-- `Regular`
-- `Medium`
-- `Bold`
-- `SemiBold`
-
 ### 예시
 
 ```scss
+@use '@repo/ui/styles/typography/mixins' as typography;
+@use '@repo/ui/styles/foundation/colors' as colors;
+
 .title {
-  @include text('display1/Bold');
+  @include typography.font('display1');
+  color: colors.$primary;
 }
 
 .body {
-  @include text('body1-normal/Regular', 'primary');
+  @include typography.font('body1-normal');
+  color: colors.$text;
 }
 
 .caption {
-  @include text('caption1/Medium');
+  @include typography.font('caption1');
+  color: colors.$secondary;
 }
 ```
 
@@ -65,16 +72,18 @@
 ### 사용법
 
 ```scss
+@use '@repo/ui/styles/foundation/mixins' as breakpoints;
+
 .element {
-  @include mobile {
+  @include breakpoints.mobile {
     // 모바일 스타일
   }
 
-  @include tablet {
+  @include breakpoints.tablet {
     // 태블릿 스타일
   }
 
-  @include desktop {
+  @include breakpoints.desktop {
     // 데스크톱 스타일
   }
 }
@@ -83,50 +92,65 @@
 ### 복합 사용 예시
 
 ```scss
-.responsive-text {
-  @include text('display1/Bold');
+@use '@repo/ui/styles/typography/mixins' as typography;
 
-  @include mobile {
-    @include text('display2/Bold');
+.responsive-text {
+  @include typography.font('display1');
+
+  @include breakpoints.mobile {
+    @include typography.font('display2');
   }
 
-  @include tablet {
-    @include text('title1/Medium');
+  @include breakpoints.tablet {
+    @include typography.font('title1');
   }
 }
 ```
 
-## 변수 시스템
+## 색상 시스템
+> 현재 색상은 추가전입니다.
 
-### 색상
+### 기본 색상 변수
 
-_아직 추가를 하지 않았습니다._
+```scss
+// 주요 색상
+colors.$primary
+colors.$secondary
+colors.$accent
+
+// 상태 색상
+colors.$success
+colors.$warning
+colors.$error
+colors.$info
+
+// 중립 색상
+colors.$background
+colors.$surface
+colors.$text
+colors.$border
+
+// 밝기 변형
+colors.$primary-light
+colors.$primary-dark
+```
+
+### 사용 예시
 
 ```scss
 .element {
-  color: var(--color-primary);
-  background: var(--color-background);
-}
-```
-
-### 타이포그래피 변수
-
-각 타이포그래피 스타일은 다음 속성을 포함합니다:
-
-- `font-size`
-- `line-height`
-- `letter-spacing`
-
-```scss
-.custom-style {
-  font-size: var(--display1-font-size);
-  line-height: var(--display1-line-height);
-  letter-spacing: var(--display1-letter-spacing);
+  color: colors.$primary;
+  background: colors.$background;
+  border: 1px solid colors.$border;
+  
+  &:hover {
+    background: colors.$primary-light;
+  }
 }
 ```
 
 ## 주의사항
 
-- 모든 스타일 값은 variables.scss에서 관리됩니다
-- 직접적인 값 수정보다는 제공된 mixin 사용을 권장합니다
+- 모든 스타일 값은 각각의 foundation 파일에서 관리됩니다
+- 직접적인 값 수정보다는 제공된 mixin과 변수 사용을 권장합니다
 - 반응형 디자인 시 mobile-first 접근을 권장합니다

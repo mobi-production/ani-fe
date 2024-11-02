@@ -8,7 +8,7 @@
     "lint": "turbo lint",
     "lint:web": "turbo lint --filter=@ani/web",
     "format": "turbo format",
-    "stylelint": "turbo stylelint",
+    "lint:style": "turbo stylelint",
     "prepare": "husky install"
   },
   "devDependencies": {

@@ -1,88 +1,27 @@
 @use './breakpoints' as breakpoints;
 
-/**
- * 브레이크포인트를 위한 미디어 쿼리
- *
- * 사용 예시:
- * @include mixins.respond-to('md') {}
- * @include mixins.respond-to('lg') {}
- */
-@mixin respond-to($condition) {
-  @if $condition == 'in' {
-    @media only screen and (min-width: breakpoints.$breakpoint-in) {
-      @content;
-    }
-  }
-
-  @if $condition == 'xs' {
-    @media only screen and (min-width: breakpoints.$breakpoint-xs) {
-      @content;
-    }
-  }
-
-  @if $condition == 'sm' {
-    @media only screen and (min-width: breakpoints.$breakpoint-sm) {
-      @content;
-    }
-  }
-
-  @if $condition == 'md' {
-    @media only screen and (min-width: breakpoints.$breakpoint-md) {
-      @content;
-    }
-  }
-
-  @if $condition == 'lg' {
-    @media only screen and (min-width: breakpoints.$breakpoint-lg) {
-      @content;
-    }
-  }
-
-  @if $condition == 'xl' {
-    @media only screen and (min-width: breakpoints.$breakpoint-xl) {
-      @content;
-    }
-  }
-
-  @if $condition == '2xl' {
-    @media only screen and (min-width: breakpoints.$breakpoint-2xl) {
-      @content;
-    }
+// 특정 사이즈 이상일 때 적용
+@mixin from-tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
   }
 }
 
-/**
- * 기능별 미디어 쿼리
- *
- * 사용 예시:
- * @include mixins.feature-to('hover') {}
- */
-@mixin feature-to($condition) {
-  // 사용자가 요소 위에 마우스를 올릴 수 있는지 확인
-  @if $condition == 'hover' {
-    @media only screen and (hover: hover) {
-      @content;
-    }
+@mixin from-desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
   }
+}
 
-  // 가로 방향 모드
-  @if $condition == 'landscape' {
-    @media only screen and (orientation: landscape) {
-      @content;
-    }
+// 특정 사이즈 이하일 때 적용
+@mixin until-tablet {
+  @media (max-width: #{$tablet - 1px}) {
+    @content;
   }
+}
 
-  // 세로 방향 모드
-  @if $condition == 'portrait' {
-    @media only screen and (orientation: portrait) {
-      @content;
-    }
-  }
-
-  // 인쇄 미리보기 모드
-  @if $condition == 'print' {
-    @media print {
-      @content;
-    }
+@mixin until-desktop {
+  @media (max-width: #{$desktop - 1px}) {
+    @content;
   }
 }

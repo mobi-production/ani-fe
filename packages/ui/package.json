@@ -8,8 +8,8 @@
   },
   "scripts": {
     "lint": "eslint src/**/*.ts* --max-warnings 0",
-    "format": "prettier --write .",
-    "stylelint": "stylelint --fix src/**/*.{css,scss}"
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix"
   },
   "devDependencies": {
     "@config/libs": "workspace:*",

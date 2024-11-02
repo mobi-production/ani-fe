@@ -10,7 +10,7 @@ const nextConfig = {
       path.join(__dirname, 'styles'),
       path.join(__dirname, '..', '..', 'packages', 'ui', 'src', 'styles')
     ],
-    additionalData: "@import '@repo/ui/styles';"
+    additionalData: "@use '@repo/ui/styles';"
   }
 }
 
