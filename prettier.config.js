@@ -1,1 +1,1 @@
-module.exports = require('@ani/config/prettier')
+module.exports = require('@config/libs/prettier')

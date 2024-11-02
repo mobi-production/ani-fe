@@ -8,14 +8,14 @@
     "lint": "turbo lint",
     "lint:web": "turbo lint --filter=@ani/web",
     "stylelint": "turbo stylelint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "turbo format",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@ani/config": "workspace:*",
+    "@config/eslint": "workspace:*",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@repo/eslint-config": "workspace:*",
     "husky": "9.0.3",
     "lint-staged": "15.2.0",
     "prettier": "^3.2.5",

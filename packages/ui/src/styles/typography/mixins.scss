@@ -1,0 +1,147 @@
+@use "./constants" as constants;
+
+/**
+ * 디스플레이 텍스트 스타일
+ */
+@mixin display1 {
+  font-size: var(--display1-font-size);
+  line-height: var(--display1-line-height);
+  letter-spacing: var(--display1-letter-spacing);
+}
+
+@mixin display2 {
+  font-size: var(--display2-font-size);
+  line-height: var(--display2-line-height);
+  letter-spacing: var(--display2-letter-spacing);
+}
+
+/**
+ * 타이틀 텍스트 스타일
+ */
+@mixin title1 {
+  font-size: var(--title1-font-size);
+  line-height: var(--title1-line-height);
+  letter-spacing: var(--title1-letter-spacing);
+}
+
+@mixin title2 {
+  font-size: var(--title2-font-size);
+  line-height: var(--title2-line-height);
+  letter-spacing: var(--title2-letter-spacing);
+}
+
+@mixin title3 {
+  font-size: var(--title3-font-size);
+  line-height: var(--title3-line-height);
+  letter-spacing: var(--title3-letter-spacing);
+}
+
+/**
+ * 헤딩 텍스트 스타일
+ */
+@mixin heading1 {
+  font-size: var(--heading1-font-size);
+  line-height: var(--heading1-line-height);
+  letter-spacing: var(--heading1-letter-spacing);
+}
+
+@mixin heading2 {
+  font-size: var(--heading2-font-size);
+  line-height: var(--heading2-line-height);
+  letter-spacing: var(--heading2-letter-spacing);
+}
+
+/**
+ * 본문 텍스트 스타일
+ */
+@mixin body1-normal {
+  font-size: var(--body1-normal-font-size);
+  line-height: var(--body1-normal-line-height);
+  letter-spacing: var(--body1-normal-letter-spacing);
+}
+
+@mixin body1-reading {
+  font-size: var(--body1-reading-font-size);
+  line-height: var(--body1-reading-line-height);
+  letter-spacing: var(--body1-reading-letter-spacing);
+}
+
+@mixin body2-normal {
+  font-size: var(--body2-normal-font-size);
+  line-height: var(--body2-normal-line-height);
+  letter-spacing: var(--body2-normal-letter-spacing);
+}
+
+@mixin body2-reading {
+  font-size: var(--body2-reading-font-size);
+  line-height: var(--body2-reading-line-height);
+  letter-spacing: var(--body2-reading-letter-spacing);
+}
+
+/**
+ * 라벨 텍스트 스타일
+ */
+@mixin label1-normal {
+  font-size: var(--label1-normal-font-size);
+  line-height: var(--label1-normal-line-height);
+  letter-spacing: var(--label1-normal-letter-spacing);
+}
+
+@mixin label1-reading {
+  font-size: var(--label1-reading-font-size);
+  line-height: var(--label1-reading-line-height);
+  letter-spacing: var(--label1-reading-letter-spacing);
+}
+
+/**
+ * 캡션 텍스트 스타일
+ */
+@mixin caption1 {
+  font-size: var(--caption1-font-size);
+  line-height: var(--caption1-line-height);
+  letter-spacing: var(--caption1-letter-spacing);
+}
+
+@mixin caption2 {
+  font-size: var(--caption2-font-size);
+  line-height: var(--caption2-line-height);
+  letter-spacing: var(--caption2-letter-spacing);
+}
+
+/**
+ * 통합 폰트 스타일 믹스인
+ * 사용예시: @include font('body1-normal');
+ */
+@mixin font($style) {
+  @if $style == 'display1' {
+    @include display1;
+  } @else if $style == 'display2' {
+    @include display2;
+  } @else if $style == 'title1' {
+    @include title1;
+  } @else if $style == 'title2' {
+    @include title2;
+  } @else if $style == 'title3' {
+    @include title3;
+  } @else if $style == 'heading1' {
+    @include heading1;
+  } @else if $style == 'heading2' {
+    @include heading2;
+  } @else if $style == 'body1-normal' {
+    @include body1-normal;
+  } @else if $style == 'body1-reading' {
+    @include body1-reading;
+  } @else if $style == 'body2-normal' {
+    @include body2-normal;
+  } @else if $style == 'body2-reading' {
+    @include body2-reading;
+  } @else if $style == 'label1-normal' {
+    @include label1-normal;
+  } @else if $style == 'label1-reading' {
+    @include label1-reading;
+  } @else if $style == 'caption1' {
+    @include caption1;
+  } @else if $style == 'caption2' {
+    @include caption2;
+  }
+}

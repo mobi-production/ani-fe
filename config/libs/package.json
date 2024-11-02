@@ -1,12 +1,11 @@
 {
-  "name": "@ani/config",
-  "version": "1.0.0",
+  "name": "@config/libs",
+  "version": "0.0.0",
   "description": "",
   "keywords": [
     "config",
     "configuration"
   ],
-  "main": "index.js",
   "exports": {
     "./prettier": "./prettier.config.js",
     "./commitlint": "./commitlint.config.js"

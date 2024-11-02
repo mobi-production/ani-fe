@@ -1,1 +1,1 @@
-module.exports = require('@ani/config/commitlint')
+module.exports = require('@config/libs/commitlint')

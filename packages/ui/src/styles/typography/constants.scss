@@ -1,0 +1,10 @@
+$base-size: 1rem;
+$font-weight-bold: 700;
+$font-weight-semibold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+@mixin default-text-style {
+  font-size: $base-size;
+}
+

@@ -1,6 +1,4 @@
-@use 'sass:list';
-@use 'sass:string';
-@import './mixin/_typography.scss';
-@import './mixin/_functions.scss';
-@import './mixin/_breakpoint.scss';
-@import './variables.scss';
+@forward "./foundation";
+@forward "./typography";
+@forward "./utils";
+@forward "./token";

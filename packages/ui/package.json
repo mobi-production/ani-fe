@@ -10,9 +10,9 @@
     "lint": "eslint src/**/*.ts* --max-warnings 0"
   },
   "devDependencies": {
-    "@ani/config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@config/libs": "workspace:*",
+    "@config/eslint": "workspace:*",
+    "@config/typescript": "workspace:*",
     "@types/eslint": "^8.56.5",
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",

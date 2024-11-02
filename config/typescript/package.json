@@ -1,0 +1,13 @@
+{
+  "name": "@config/typescript",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./base.json",
+    "./next": "./nextjs.json",
+    "./react": "./react-library.json"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
+  }
+}
