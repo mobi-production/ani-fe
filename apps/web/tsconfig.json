@@ -1,5 +1,5 @@
 {
-  "extends": "@config/typescript/next",
+  "extends": "../../config/ts-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

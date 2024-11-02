@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@config/libs": "workspace:*",
-    "@config/eslint": "workspace:*",
+    "@config/es-config": "workspace:*",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "9.0.3",
@@ -29,5 +29,10 @@
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "config/*"
+  ]
 }

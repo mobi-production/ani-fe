@@ -1,15 +1,15 @@
 {
-  "packages/ui/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter @ani/ui lint"
-  ],
-  "packages/config/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter @ani/config lint"
-  ],
   "apps/web/**/*.{js,jsx,ts,tsx}": [
-    "pnpm --filter web lint"
+    "pnpm --filter @ani/web next lint",
+    "pnpm --filter @ani/web prettier --write \"**/*.{js,jsx,ts,tsx}\""
   ],
-  "**/*.{css,scss}": [
-    "stylelint --fix",
-    "prettier --write"
+  "apps/**/*.{css,scss}": [
+    "pnpm --filter @ani/web stylelint \"**/*.{css,scss}\" --fix"
+  ],
+  "packages/ui/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @repo/ui prettier --write \"**/*.{js,jsx,ts,tsx}\""
+  ],
+  "packages/ui/**/*.{css,scss}": [
+    "pnpm --filter @repo/ui stylelint \"**/*.{css,scss}\" --fix"
   ]
 }

@@ -8,23 +8,30 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "stylelint": "stylelint \"**/*.{css,scss}\" --fix"
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
+    "server": "npx tsx watch ./src/__mock__/http.ts"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
+    "msw": "^2.6.0",
     "next": "^14.2.16",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@config/es-config": "workspace:*",
+    "@config/ts-config": "workspace:*",
     "@config/libs": "workspace:*",
-    "@config/eslint": "workspace:*",
-    "@config/typescript": "workspace:*",
+    "@mswjs/http-middleware": "^0.10.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cors": "^2.8.5",
     "eslint": "8.57.0",
-    "typescript": "5.3.3",
-    "prettier": "^3.2.5"
+    "express": "^4.21.1",
+    "prettier": "^3.2.5",
+    "typescript": "5.3.3"
   }
 }
