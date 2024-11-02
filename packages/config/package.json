@@ -1,0 +1,20 @@
+{
+  "name": "@ani/config",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "config",
+    "configuration"
+  ],
+  "main": "index.js",
+  "exports": {
+    "./prettier": "./prettier.config.js",
+    "./commitlint": "./commitlint.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.2.2",
+    "prettier": "^3.2.5"
+  }
+}

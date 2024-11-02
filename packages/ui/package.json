@@ -7,9 +7,10 @@
     "./styles/*": "./src/styles/*"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint src/**/*.ts* --max-warnings 0"
   },
   "devDependencies": {
+    "@ani/config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/eslint": "^8.56.5",
@@ -17,7 +18,8 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "eslint": "8.57.0",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "prettier": "^3.2.5"
   },
   "dependencies": {
     "react": "^18.2.0"
