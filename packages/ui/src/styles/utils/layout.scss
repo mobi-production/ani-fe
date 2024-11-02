@@ -1,26 +1,18 @@
 /**
 * 박스 쉐도우 믹스인
 */
-@mixin box-shadow(
-$x: 0,
-$y: 0,
-$blur: 0,
-$spread: 0,
-$color: rgba(0, 0, 0, 0.2)
-) {
-box-shadow: $x $y $blur $spread $color;
-box-shadow: $x $y $blur $spread $color;
-box-shadow: $x $y $blur $spread $color;
+@mixin box-shadow($x: 0, $y: 0, $blur: 0, $spread: 0, $color: rgba(0, 0, 0, 0.2)) {
+  box-shadow: $x $y $blur $spread $color;
 }
 
 /**
 * Flexbox 관련 믹스인
 */
 @mixin display-flex($direction: row, $wrap: nowrap) {
-display: flex;
-flex-flow: $direction $wrap;
+  display: flex;
+  flex-flow: $direction $wrap;
 }
 
 @mixin align-items-center {
-align-items: center;
+  align-items: center;
 }

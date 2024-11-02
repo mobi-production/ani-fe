@@ -1,4 +1,4 @@
-@use "../typography" as typography;
+@use '../typography' as typography;
 
 // 기존 타이포그래피 믹스인들...
 
@@ -6,31 +6,31 @@
 * 텍스트 래핑 관련 믹스인
 */
 @mixin text-wrapping {
-// Flexbox에서 텍스트 래핑을 위한 설정
-min-width: 0;
--ms-word-break: break-all;
-word-break: break-word;
+  // Flexbox에서 텍스트 래핑을 위한 설정
+  min-width: 0;
+  -ms-word-break: break-all;
+  word-break: break-word;
 }
 
 @mixin text-flex-wrapping {
-word-wrap: break-word;
-max-width: 100%;
-overflow: hidden;
+  word-wrap: break-word;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 @mixin text-overflow-ellipsis {
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /**
 * 코드 하이라이트 스타일
 */
 @mixin code-highlight {
-@include font('body2-normal');  // body-s 대신 새로운 시스템 사용
+  @include font('body2-normal'); // body-s 대신 새로운 시스템 사용
 
-padding: 0 1rem;
-word-wrap: break-word;
-white-space: pre-wrap;
+  padding: 0 1rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }

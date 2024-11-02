@@ -1,4 +1,4 @@
-@use "./breakpoints" as breakpoints;
+@use './breakpoints' as breakpoints;
 
 /**
  * 브레이크포인트를 위한 미디어 쿼리
@@ -8,43 +8,43 @@
  * @include mixins.respond-to('lg') {}
  */
 @mixin respond-to($condition) {
-  @if $condition == "in" {
+  @if $condition == 'in' {
     @media only screen and (min-width: breakpoints.$breakpoint-in) {
       @content;
     }
   }
 
-  @if $condition == "xs" {
+  @if $condition == 'xs' {
     @media only screen and (min-width: breakpoints.$breakpoint-xs) {
       @content;
     }
   }
 
-  @if $condition == "sm" {
+  @if $condition == 'sm' {
     @media only screen and (min-width: breakpoints.$breakpoint-sm) {
       @content;
     }
   }
 
-  @if $condition == "md" {
+  @if $condition == 'md' {
     @media only screen and (min-width: breakpoints.$breakpoint-md) {
       @content;
     }
   }
 
-  @if $condition == "lg" {
+  @if $condition == 'lg' {
     @media only screen and (min-width: breakpoints.$breakpoint-lg) {
       @content;
     }
   }
 
-  @if $condition == "xl" {
+  @if $condition == 'xl' {
     @media only screen and (min-width: breakpoints.$breakpoint-xl) {
       @content;
     }
   }
 
-  @if $condition == "2xl" {
+  @if $condition == '2xl' {
     @media only screen and (min-width: breakpoints.$breakpoint-2xl) {
       @content;
     }
@@ -59,28 +59,28 @@
  */
 @mixin feature-to($condition) {
   // 사용자가 요소 위에 마우스를 올릴 수 있는지 확인
-  @if $condition == "hover" {
+  @if $condition == 'hover' {
     @media only screen and (hover: hover) {
       @content;
     }
   }
 
   // 가로 방향 모드
-  @if $condition == "landscape" {
+  @if $condition == 'landscape' {
     @media only screen and (orientation: landscape) {
       @content;
     }
   }
 
   // 세로 방향 모드
-  @if $condition == "portrait" {
+  @if $condition == 'portrait' {
     @media only screen and (orientation: portrait) {
       @content;
     }
   }
 
   // 인쇄 미리보기 모드
-  @if $condition == "print" {
+  @if $condition == 'print' {
     @media print {
       @content;
     }

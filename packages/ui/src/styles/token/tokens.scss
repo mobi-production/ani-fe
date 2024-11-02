@@ -56,60 +56,60 @@ $caption2-line-height: 1.273;
 $caption2-letter-spacing: 0.031em;
 
 :root {
-    /* display */
-    --display1-font-size: #{$display1-font-size};
-    --display1-line-height: #{$display1-line-height};
-    --display1-letter-spacing: #{$display1-letter-spacing};
-    --display2-font-size: #{$display2-font-size};
-    --display2-line-height: #{$display2-line-height};
-    --display2-letter-spacing: #{$display2-letter-spacing};
-  
-    /* title */
-    --title1-font-size: #{$title1-font-size};
-    --title1-line-height: #{$title1-line-height};
-    --title1-letter-spacing: #{$title1-letter-spacing};
-    --title2-font-size: #{$title2-font-size};
-    --title2-line-height: #{$title2-line-height};
-    --title2-letter-spacing: #{$title2-letter-spacing};
-    --title3-font-size: #{$title3-font-size};
-    --title3-line-height: #{$title3-line-height};
-    --title3-letter-spacing: #{$title3-letter-spacing};
-  
-    /* heading */
-    --heading1-font-size: #{$heading1-font-size};
-    --heading1-line-height: #{$heading1-line-height};
-    --heading1-letter-spacing: #{$heading1-letter-spacing};
-    --heading2-font-size: #{$heading2-font-size};
-    --heading2-line-height: #{$heading2-line-height};
-    --heading2-letter-spacing: #{$heading2-letter-spacing};
-  
-    /* body */
-    --body1-normal-font-size: #{$body1-normal-font-size};
-    --body1-normal-line-height: #{$body1-normal-line-height};
-    --body1-normal-letter-spacing: #{$body1-normal-letter-spacing};
-    --body1-reading-font-size: #{$body1-reading-font-size};
-    --body1-reading-line-height: #{$body1-reading-line-height};
-    --body1-reading-letter-spacing: #{$body1-reading-letter-spacing};
-    --body2-normal-font-size: #{$body2-normal-font-size};
-    --body2-normal-line-height: #{$body2-normal-line-height};
-    --body2-normal-letter-spacing: #{$body2-normal-letter-spacing};
-    --body2-reading-font-size: #{$body2-reading-font-size};
-    --body2-reading-line-height: #{$body2-reading-line-height};
-    --body2-reading-letter-spacing: #{$body2-reading-letter-spacing};
-  
-    /* label */
-    --label1-normal-font-size: #{$label1-normal-font-size};
-    --label1-normal-line-height: #{$label1-normal-line-height};
-    --label1-normal-letter-spacing: #{$label1-normal-letter-spacing};
-    --label1-reading-font-size: #{$label1-reading-font-size};
-    --label1-reading-line-height: #{$label1-reading-line-height};
-    --label1-reading-letter-spacing: #{$label1-reading-letter-spacing};
-  
-    /* caption */
-    --caption1-font-size: #{$caption1-font-size};
-    --caption1-line-height: #{$caption1-line-height};
-    --caption1-letter-spacing: #{$caption1-letter-spacing};
-    --caption2-font-size: #{$caption2-font-size};
-    --caption2-line-height: #{$caption2-line-height};
-    --caption2-letter-spacing: #{$caption2-letter-spacing};
+  /* display */
+  --display1-font-size: #{$display1-font-size};
+  --display1-line-height: #{$display1-line-height};
+  --display1-letter-spacing: #{$display1-letter-spacing};
+  --display2-font-size: #{$display2-font-size};
+  --display2-line-height: #{$display2-line-height};
+  --display2-letter-spacing: #{$display2-letter-spacing};
+
+  /* title */
+  --title1-font-size: #{$title1-font-size};
+  --title1-line-height: #{$title1-line-height};
+  --title1-letter-spacing: #{$title1-letter-spacing};
+  --title2-font-size: #{$title2-font-size};
+  --title2-line-height: #{$title2-line-height};
+  --title2-letter-spacing: #{$title2-letter-spacing};
+  --title3-font-size: #{$title3-font-size};
+  --title3-line-height: #{$title3-line-height};
+  --title3-letter-spacing: #{$title3-letter-spacing};
+
+  /* heading */
+  --heading1-font-size: #{$heading1-font-size};
+  --heading1-line-height: #{$heading1-line-height};
+  --heading1-letter-spacing: #{$heading1-letter-spacing};
+  --heading2-font-size: #{$heading2-font-size};
+  --heading2-line-height: #{$heading2-line-height};
+  --heading2-letter-spacing: #{$heading2-letter-spacing};
+
+  /* body */
+  --body1-normal-font-size: #{$body1-normal-font-size};
+  --body1-normal-line-height: #{$body1-normal-line-height};
+  --body1-normal-letter-spacing: #{$body1-normal-letter-spacing};
+  --body1-reading-font-size: #{$body1-reading-font-size};
+  --body1-reading-line-height: #{$body1-reading-line-height};
+  --body1-reading-letter-spacing: #{$body1-reading-letter-spacing};
+  --body2-normal-font-size: #{$body2-normal-font-size};
+  --body2-normal-line-height: #{$body2-normal-line-height};
+  --body2-normal-letter-spacing: #{$body2-normal-letter-spacing};
+  --body2-reading-font-size: #{$body2-reading-font-size};
+  --body2-reading-line-height: #{$body2-reading-line-height};
+  --body2-reading-letter-spacing: #{$body2-reading-letter-spacing};
+
+  /* label */
+  --label1-normal-font-size: #{$label1-normal-font-size};
+  --label1-normal-line-height: #{$label1-normal-line-height};
+  --label1-normal-letter-spacing: #{$label1-normal-letter-spacing};
+  --label1-reading-font-size: #{$label1-reading-font-size};
+  --label1-reading-line-height: #{$label1-reading-line-height};
+  --label1-reading-letter-spacing: #{$label1-reading-letter-spacing};
+
+  /* caption */
+  --caption1-font-size: #{$caption1-font-size};
+  --caption1-line-height: #{$caption1-line-height};
+  --caption1-letter-spacing: #{$caption1-letter-spacing};
+  --caption2-font-size: #{$caption2-font-size};
+  --caption2-line-height: #{$caption2-line-height};
+  --caption2-letter-spacing: #{$caption2-letter-spacing};
 }
