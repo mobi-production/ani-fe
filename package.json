@@ -12,17 +12,19 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@config/libs": "workspace:*",
-    "@config/es-config": "workspace:*",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@config/es-config": "workspace:*",
+    "@config/libs": "workspace:*",
     "husky": "9.0.3",
     "lint-staged": "15.2.0",
     "prettier": "^3.2.5",
     "stylelint": "15.11.0",
+    "stylelint-config-property-sort-order-smacss": "^10.0.0",
     "stylelint-config-recommended-scss": "13.1.0",
     "stylelint-config-standard": "34.0.0",
     "stylelint-config-standard-scss": "11.1.0",
+    "stylelint-order": "^6.0.4",
     "turbo": "^2.2.3",
     "typescript": "^5.3.3"
   },

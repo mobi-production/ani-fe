@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@config/es-config": "workspace:*",
-    "@config/ts-config": "workspace:*",
     "@config/libs": "workspace:*",
+    "@config/ts-config": "workspace:*",
     "@mswjs/http-middleware": "^0.10.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",

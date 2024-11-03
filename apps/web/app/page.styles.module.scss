@@ -1,5 +1,9 @@
 @use '@repo/ui/styles' as *;
 
 .main {
+  display: block;
+  padding: 1rem;
+  gap: 1rem;
+
   @include font('display2');
 }
