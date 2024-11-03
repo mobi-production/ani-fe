@@ -1,1 +1,1 @@
-export { default as cn } from './cn.js'
+export { default as cn } from './cn'
