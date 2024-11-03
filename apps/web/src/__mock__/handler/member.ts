@@ -1,4 +1,4 @@
-import { http, HttpResponse, StrictRequest } from 'msw'
+import { HttpHandler, http, HttpResponse, StrictRequest } from 'msw'
 
 export interface User {
   email: string
@@ -12,7 +12,7 @@ allUser.set('jane@naver.com', { nickname: 'jane', email: 'jane@naver.com', profi
 allUser.set('zero@naver.com', { nickname: 'zero', email: 'zero@naver.com', profileUrl: null })
 allUser.set('zoey@naver.com', { nickname: 'zoey', email: 'zoey@naver.com', profileUrl: null })
 
-export const memberHandlers = [
+export const memberHandlers: HttpHandler[] = [
   http.post('/user/sign-up', async ({ request }: { request: StrictRequest<User> }) => {
     const { email, nickname } = await request.json()
     allUser.set(email, { email, nickname, profileUrl: null })
