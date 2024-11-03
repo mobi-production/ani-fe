@@ -16,8 +16,8 @@
     "format": {
       "dependsOn": ["^format"]
     },
-    "stylelint": {
-      "dependsOn": ["^stylelint"]
+    "storybook": {
+      "dependsOn": ["^storybook"]
     }
   }
 }

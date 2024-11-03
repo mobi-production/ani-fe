@@ -1,5 +1,5 @@
-import styles from './page.styles.module.scss'
+import { Button } from '@repo/ui'
 
 export default function Home() {
-  return <div className={styles.main}>Hello World</div>
+  return <Button />
 }

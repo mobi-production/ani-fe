@@ -3,13 +3,12 @@
     "pnpm --filter @ani/web next lint",
     "pnpm --filter @ani/web prettier --write \"**/*.{js,jsx,ts,tsx}\""
   ],
-  "apps/**/*.{css,scss}": [
-    "pnpm --filter @ani/web stylelint \"**/*.{css,scss}\" --fix"
-  ],
   "packages/ui/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @repo/ui eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "pnpm --filter @repo/ui prettier --write \"**/*.{js,jsx,ts,tsx}\""
   ],
-  "packages/ui/**/*.{css,scss}": [
-    "pnpm --filter @repo/ui stylelint \"**/*.{css,scss}\" --fix"
+  "packages/util/**/*.{js,jsx,ts,tsx}": [
+    "pnpm --filter @repo/util eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
+    "pnpm --filter @repo/util prettier --write \"**/*.{js,jsx,ts,tsx}\""
   ]
 }

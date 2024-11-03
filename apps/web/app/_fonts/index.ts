@@ -23,9 +23,8 @@ export const pretendardFont = localFont({
       style: 'normal'
     }
   ],
-
+  variable: '--font-pretendard',
   display: 'swap',
   preload: true,
-  variable: '--font-pretendard',
-  fallback: ['sans-serif']
+  fallback: ['system-ui', 'sans-serif']
 })

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .mobile-hidden {
+      @apply mobile:hidden mobileAndTablet:hidden;
+    }
+  
+    .desktop-hidden {
+      @apply tablet:hidden tabletAndLaptop:hidden desktop:hidden;
+    }
+}
