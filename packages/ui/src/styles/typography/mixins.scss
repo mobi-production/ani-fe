@@ -5,14 +5,14 @@
  */
 @mixin display1 {
   font-size: var(--display1-font-size);
-  line-height: var(--display1-line-height);
   letter-spacing: var(--display1-letter-spacing);
+  line-height: var(--display1-line-height);
 }
 
 @mixin display2 {
   font-size: var(--display2-font-size);
-  line-height: var(--display2-line-height);
   letter-spacing: var(--display2-letter-spacing);
+  line-height: var(--display2-line-height);
 }
 
 /**
@@ -20,20 +20,20 @@
  */
 @mixin title1 {
   font-size: var(--title1-font-size);
-  line-height: var(--title1-line-height);
   letter-spacing: var(--title1-letter-spacing);
+  line-height: var(--title1-line-height);
 }
 
 @mixin title2 {
   font-size: var(--title2-font-size);
-  line-height: var(--title2-line-height);
   letter-spacing: var(--title2-letter-spacing);
+  line-height: var(--title2-line-height);
 }
 
 @mixin title3 {
   font-size: var(--title3-font-size);
-  line-height: var(--title3-line-height);
   letter-spacing: var(--title3-letter-spacing);
+  line-height: var(--title3-line-height);
 }
 
 /**
@@ -41,14 +41,14 @@
  */
 @mixin heading1 {
   font-size: var(--heading1-font-size);
-  line-height: var(--heading1-line-height);
   letter-spacing: var(--heading1-letter-spacing);
+  line-height: var(--heading1-line-height);
 }
 
 @mixin heading2 {
   font-size: var(--heading2-font-size);
-  line-height: var(--heading2-line-height);
   letter-spacing: var(--heading2-letter-spacing);
+  line-height: var(--heading2-line-height);
 }
 
 /**
@@ -56,26 +56,26 @@
  */
 @mixin body1-normal {
   font-size: var(--body1-normal-font-size);
-  line-height: var(--body1-normal-line-height);
   letter-spacing: var(--body1-normal-letter-spacing);
+  line-height: var(--body1-normal-line-height);
 }
 
 @mixin body1-reading {
   font-size: var(--body1-reading-font-size);
-  line-height: var(--body1-reading-line-height);
   letter-spacing: var(--body1-reading-letter-spacing);
+  line-height: var(--body1-reading-line-height);
 }
 
 @mixin body2-normal {
   font-size: var(--body2-normal-font-size);
-  line-height: var(--body2-normal-line-height);
   letter-spacing: var(--body2-normal-letter-spacing);
+  line-height: var(--body2-normal-line-height);
 }
 
 @mixin body2-reading {
   font-size: var(--body2-reading-font-size);
-  line-height: var(--body2-reading-line-height);
   letter-spacing: var(--body2-reading-letter-spacing);
+  line-height: var(--body2-reading-line-height);
 }
 
 /**
@@ -83,14 +83,14 @@
  */
 @mixin label1-normal {
   font-size: var(--label1-normal-font-size);
-  line-height: var(--label1-normal-line-height);
   letter-spacing: var(--label1-normal-letter-spacing);
+  line-height: var(--label1-normal-line-height);
 }
 
 @mixin label1-reading {
   font-size: var(--label1-reading-font-size);
-  line-height: var(--label1-reading-line-height);
   letter-spacing: var(--label1-reading-letter-spacing);
+  line-height: var(--label1-reading-line-height);
 }
 
 /**
@@ -98,14 +98,14 @@
  */
 @mixin caption1 {
   font-size: var(--caption1-font-size);
-  line-height: var(--caption1-line-height);
   letter-spacing: var(--caption1-letter-spacing);
+  line-height: var(--caption1-line-height);
 }
 
 @mixin caption2 {
   font-size: var(--caption2-font-size);
-  line-height: var(--caption2-line-height);
   letter-spacing: var(--caption2-letter-spacing);
+  line-height: var(--caption2-line-height);
 }
 
 /**

@@ -13,15 +13,15 @@
 }
 
 @mixin text-flex-wrapping {
-  word-wrap: break-word;
   max-width: 100%;
   overflow: hidden;
+  word-wrap: break-word;
 }
 
 @mixin text-overflow-ellipsis {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /**
