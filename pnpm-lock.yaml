@@ -216,12 +216,21 @@ importers:
       '@repo/util':
         specifier: workspace:*
         version: link:../util
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.0
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      tailwind-merge:
+        specifier: ^2.3.0
+        version: 2.5.4
     devDependencies:
       '@chromatic-com/storybook':
         specifier: 3.2.2
