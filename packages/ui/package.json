@@ -9,7 +9,8 @@
   "scripts": {
     "lint": "eslint .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@repo/util": "workspace:*",
