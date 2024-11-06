@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./renderComponents": "./src/components/renderComponents.tsx"
+    "./renderComponents": "./src/components/renderComponents.tsx",
+    "./types": "./src/types/server-driven.ts"
   },
   "scripts": {
     "lint": "eslint .",
@@ -22,7 +23,7 @@
     "@config/es-config": "workspace:*",
     "@config/libs": "workspace:*",
     "@config/ts-config": "workspace:*",
-    "@eslint/js": "^9.13.0",
+    "@eslint/js": "^8.57.0",
     "@storybook/addon-essentials": "8.4.1",
     "@storybook/addon-interactions": "8.4.1",
     "@storybook/addon-onboarding": "8.4.1",
@@ -33,17 +34,14 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-storybook": "^0.10.2",
     "globals": "^15.11.0",
     "postcss": "^8.4.47",
-    "prettier": "^3.2.5",
     "storybook": "8.4.1",
     "tailwindcss": "^3.4.14",
-    "typescript": "5.3.3",
     "vite": "^5.4.10"
   },
   "eslintConfig": {
