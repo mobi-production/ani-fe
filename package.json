@@ -7,8 +7,7 @@
     "dev:web": "turbo dev --filter=@ani/web",
     "lint": "turbo lint",
     "lint:web": "turbo lint --filter=@ani/web",
-    "sb:web": "turbo storybook --filter=@ani/web",
-    "sb:ui": "turbo storybook --filter=@ani/ui",
+    "storybook": "turbo storybook",
     "format": "turbo format",
     "prepare": "husky install"
   },

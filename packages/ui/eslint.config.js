@@ -7,10 +7,10 @@ export default [
         files: ['*.ts', '*.tsx'],
         parser: '@typescript-eslint/parser',
         parserOptions: {
-          project: true,
-        },
-      },
+          project: true
+        }
+      }
     ],
-    rules: {},
+    rules: {}
   }
 ]

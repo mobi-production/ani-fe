@@ -17,7 +17,8 @@
       "dependsOn": ["^format"]
     },
     "storybook": {
-      "dependsOn": ["^storybook"]
+      "cache": false,
+      "persistent": true
     }
   }
 }

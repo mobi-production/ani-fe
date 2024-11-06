@@ -1,8 +1,10 @@
 'use client'
 
-import { renderComponents, type ServerDrivenComponentType } from '@repo/ui/renderComponents'
-import example from './example.json' assert { type: 'json' }
+import { Typography } from "@repo/ui"
 
 export default function Home() {
-  return <div>{renderComponents(example as ServerDrivenComponentType)}</div>
+
+  return <div>
+    <Typography variant={"title-2"} fontWeight={"medium"} color={"disabled"}>Hello</Typography>
+  </div>
 }
