@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import Typography from './Typography'
+import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
 const meta = {
   title: 'Atom/Typography',
@@ -11,31 +12,15 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: [
-        'Display1',
-        'Display2',
-        'Title1',
-        'Title2',
-        'Title3',
-        'Heading1',
-        'Heading2',
-        'Body1/Normal',
-        'Body1/Reading',
-        'Body2/Normal',
-        'Body2/Reading',
-        'Label/Normal',
-        'Label/Reading',
-        'Caption1',
-        'Caption2'
-      ]
+      options: Object.values(TypographyVariants)
     },
     fontWeight: {
       control: 'select',
-      options: ['Regular', 'Medium', 'Bold', 'Semibold']
+      options: Object.values(TypographyFontWeights)
     },
     color: {
       control: 'select',
-      options: ['Normal', 'Strong', 'Neutral', 'Alternative', 'Assistive', 'Disabled']
+      options: Object.values(TypographyColors)
     },
     children: {
       control: 'text'
@@ -48,40 +33,40 @@ type Story = StoryObj<typeof meta>
 
 export const Display: Story = {
   args: {
-    variant: 'Display1',
-    color: 'Normal',
+    variant: TypographyVariants.DISPLAY1,
+    color: TypographyColors.NORMAL,
     children: 'Typography'
   }
 }
 
 export const Title: Story = {
   args: {
-    variant: 'Title1',
-    color: 'Normal',
+    variant: TypographyVariants.TITLE1,
+    color: TypographyColors.NORMAL,
     children: 'Typography'
   }
 }
 
 export const Heading: Story = {
   args: {
-    variant: 'Heading1',
-    color: 'Normal',
+    variant: TypographyVariants.HEADING1,
+    color: TypographyColors.NORMAL,
     children: 'Typography'
   }
 }
 
 export const Body: Story = {
   args: {
-    variant: 'Body1/Normal',
-    color: 'Normal',
+    variant: TypographyVariants.BODY1_NORMAL,
+    color: TypographyColors.NORMAL,
     children: 'Typography'
   }
 }
 
 export const Caption: Story = {
   args: {
-    variant: 'Caption1',
-    color: 'Normal',
+    variant: TypographyVariants.CAPTION1,
+    color: TypographyColors.NORMAL,
     children: 'Typography'
   }
 }

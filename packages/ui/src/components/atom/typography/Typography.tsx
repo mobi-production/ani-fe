@@ -1,68 +1,66 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
-const typographyVariants = cva('', {
+export const typographyVariants = cva('', {
   variants: {
     variant: {
-      Display1: 'text-d1',
-      Display2: 'text-d2',
-      Title1: 'text-t1',
-      Title2: 'text-t2',
-      Title3: 'text-t3',
-      Heading1: 'text-h1',
-      Heading2: 'text-h2',
-      'Body1/Normal': 'text-b1-normal',
-      'Body1/Reading': 'text-b1-reading',
-      'Body2/Normal': 'text-b2-normal',
-      'Body2/Reading': 'text-b2-reading',
-      'Label/Normal': 'text-l-normal',
-      'Label/Reading': 'text-l-reading',
-      Caption1: 'text-c1',
-      Caption2: 'text-c2'
+      [TypographyVariants.DISPLAY1]: 'text-d1',
+      [TypographyVariants.DISPLAY2]: 'text-d2',
+      [TypographyVariants.TITLE1]: 'text-t1',
+      [TypographyVariants.TITLE2]: 'text-t2',
+      [TypographyVariants.TITLE3]: 'text-t3',
+      [TypographyVariants.HEADING1]: 'text-h1',
+      [TypographyVariants.HEADING2]: 'text-h2',
+      [TypographyVariants.BODY1_NORMAL]: 'text-b1-normal',
+      [TypographyVariants.BODY1_READING]: 'text-b1-reading',
+      [TypographyVariants.BODY2_NORMAL]: 'text-b2-normal',
+      [TypographyVariants.BODY2_READING]: 'text-b2-reading',
+      [TypographyVariants.LABEL_NORMAL]: 'text-l-normal',
+      [TypographyVariants.LABEL_READING]: 'text-l-reading',
+      [TypographyVariants.CAPTION1]: 'text-c1',
+      [TypographyVariants.CAPTION2]: 'text-c2'
     },
     fontWeight: {
-      Regular: 'font-normal',
-      Medium: 'font-medium',
-      Bold: 'font-bold',
-      Semibold: 'font-semibold'
+      [TypographyFontWeights.REGULAR]: 'font-normal',
+      [TypographyFontWeights.MEDIUM]: 'font-medium',
+      [TypographyFontWeights.SEMIBOLD]: 'font-semibold',
+      [TypographyFontWeights.BOLD]: 'font-bold'
     },
     color: {
-      Normal: 'text-label-normal',
-      Strong: 'text-label-strong',
-      Neutral: 'text-label-neutral',
-      Alternative: 'text-label-alternative',
-      Assistive: 'text-label-assistive',
-      Disabled: 'text-label-disabled'
+      [TypographyColors.NORMAL]: 'text-label-normal',
+      [TypographyColors.STRONG]: 'text-label-strong',
+      [TypographyColors.NEUTRAL]: 'text-label-neutral',
+      [TypographyColors.ALTERNATIVE]: 'text-label-alternative',
+      [TypographyColors.ASSISTIVE]: 'text-label-assistive',
+      [TypographyColors.DISABLED]: 'text-label-disabled'
     }
   },
   defaultVariants: {
-    variant: 'Body1/Normal',
-    fontWeight: 'Regular',
-    color: 'Normal'
+    variant: TypographyVariants.BODY1_NORMAL,
+    fontWeight: TypographyFontWeights.REGULAR,
+    color: TypographyColors.NORMAL
   }
 })
 
-type Props = VariantProps<typeof typographyVariants> & ComponentPropsWithoutRef<'span'>
+type TypographyProps = VariantProps<typeof typographyVariants> &
+  ComponentPropsWithoutRef<'span'> & {
+    component?: ElementType
+  }
 
-function Typography({ variant, fontWeight, color, ...props }: Props) {
-  const Component: ElementType =
-    variant === 'Display1' || variant === 'Display2'
-      ? 'h1'
-      : variant === 'Title1'
-        ? 'h2'
-        : variant === 'Title2'
-          ? 'h3'
-          : variant === 'Title3'
-            ? 'h4'
-            : variant === 'Heading1'
-              ? 'h5'
-              : variant === 'Heading2'
-                ? 'h6'
-                : 'p'
+function Typography({
+  component = 'span',
+  variant,
+  fontWeight,
+  color,
+  className = '',
+  ...props
+}: TypographyProps) {
+  const Component = component
 
   return (
     <Component
-      className={`${typographyVariants({ variant, fontWeight, color })} ${props.className}`}
+      className={`${typographyVariants({ variant, fontWeight, color })} ${className}`}
       {...props}
     />
   )
