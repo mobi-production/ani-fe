@@ -1,5 +1,6 @@
-import RadioGroup from '@/components/atom/radio-group/RadioGroup'
 import { ComponentProps } from 'react'
+
+import { RadioGroup } from '@/index.js'
 
 export type ComponentPropsMap = {
   RadioGroup: ComponentProps<typeof RadioGroup>

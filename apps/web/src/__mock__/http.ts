@@ -1,6 +1,7 @@
 import { createMiddleware } from '@mswjs/http-middleware'
 import cors from 'cors'
 import express from 'express'
+
 import handler from './handler'
 
 const app = express()

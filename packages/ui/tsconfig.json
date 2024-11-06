@@ -1,11 +1,13 @@
 {
-  "extends": "../../config/ts-config/react-library.json",
+  "extends": "@config/ts-config/react-library.json",
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "@config/es-config/*": ["../../config/es-config/*"],
+      "@config/ts-config/*": ["../../config/ts-config/*"]
     },
     "plugins": [
       {

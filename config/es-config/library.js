@@ -10,8 +10,7 @@ module.exports = {
     'prettier',
     'eslint-config-turbo',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'plugin:react/recommended'
+    'plugin:prettier/recommended'
   ],
   plugins: ['@typescript-eslint', 'simple-import-sort', 'unused-imports'],
   globals: {
@@ -38,7 +37,6 @@ module.exports = {
     {
       files: ['*.js?(x)', '*.ts?(x)'],
       rules: {
-        'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }],
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
         '@typescript-eslint/no-explicit-any': 'error',

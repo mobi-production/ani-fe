@@ -1,5 +1,6 @@
-import RadioGroup from './atom/radio-group/RadioGroup'
-import { ServerDrivenComponentType } from '@/types/server-driven'
+import { type ServerDrivenComponentType } from '@/types/server-driven.js'
+
+import RadioGroup from './atom/radio-group/RadioGroup.js'
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData

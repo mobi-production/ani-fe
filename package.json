@@ -7,6 +7,8 @@
     "dev:web": "turbo dev --filter=@ani/web",
     "lint": "turbo lint",
     "lint:web": "turbo lint --filter=@ani/web",
+    "lint:ui": "turbo lint --filter=@repo/ui",
+    "lint:util": "turbo lint --filter=@repo/util",
     "storybook": "turbo storybook",
     "format": "turbo format",
     "prepare": "husky install"
@@ -20,7 +22,8 @@
     "lint-staged": "15.2.0",
     "prettier": "^3.2.5",
     "turbo": "^2.2.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "eslint": "^8.57.0"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {

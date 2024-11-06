@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import Typography from './Typography'
 import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
