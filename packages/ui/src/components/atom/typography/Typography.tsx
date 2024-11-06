@@ -1,5 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
+
 import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
 export const typographyVariants = cva('', {

@@ -5,10 +5,12 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./renderComponents": "./src/components/renderComponents.tsx"
+    "./renderComponents": "./src/components/renderComponents.tsx",
+    "./types": "./src/types/server-driven.ts"
   },
   "scripts": {
-    "lint": "eslint ."
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "@repo/util": "workspace:*",
@@ -22,20 +24,12 @@
     "@config/es-config": "workspace:*",
     "@config/libs": "workspace:*",
     "@config/ts-config": "workspace:*",
-    "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^9.13.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "eslint-plugin-storybook": "^0.10.2",
     "globals": "^15.11.0",
     "postcss": "^8.4.47",
-    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.14",
-    "typescript": "5.3.3",
     "vite": "^5.4.10"
   }
 }

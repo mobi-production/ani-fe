@@ -1,4 +1,4 @@
-import { HttpHandler, http, HttpResponse, StrictRequest } from 'msw'
+import { http, HttpHandler, HttpResponse, StrictRequest } from 'msw'
 
 export interface User {
   email: string

@@ -1,18 +1,6 @@
-import { ComponentProps } from 'react'
-import RadioGroup from './atom/radio-group/RadioGroup'
+import { type ServerDrivenComponentType } from '@/types/server-driven.js'
 
-type ComponentPropsMap = {
-  RadioGroup: ComponentProps<typeof RadioGroup>
-  RadioGroupItem: ComponentProps<typeof RadioGroup.Item>
-}
-
-export type ServerDrivenComponentType =
-  | {
-      type: 'RadioGroup'
-      props: ComponentPropsMap['RadioGroup']
-      children?: ServerDrivenComponentType[]
-    }
-  | { type: 'RadioGroupItem'; props: ComponentPropsMap['RadioGroupItem']; children?: never }
+import RadioGroup from './atom/radio-group/RadioGroup.js'
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData
