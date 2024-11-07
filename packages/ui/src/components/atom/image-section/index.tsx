@@ -2,33 +2,35 @@ import { cva, VariantProps } from 'class-variance-authority'
 import Image from 'next/image'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
+import { ImageFits, ImageSizes } from './variants'
+
 export const imageSectionVariants = cva('', {
   variants: {
     size: {
-      xxs: 'w-[5rem] h-[5rem]',
-      xs: 'w-[7.5rem] h-[7.5rem]',
-      s: 'w-[12.5rem] h-[9.375rem]',
-      m: 'w-[18.75rem] h-[14rem]',
-      l: 'w-[25rem] h-[18.75rem]'
+      [ImageSizes.XXS]: 'w-[5rem] h-[5rem]',
+      [ImageSizes.XS]: 'w-[7.5rem] h-[7.5rem]',
+      [ImageSizes.S]: 'w-[12.5rem] h-[9.375rem]',
+      [ImageSizes.M]: 'w-[18.75rem] h-[14rem]',
+      [ImageSizes.L]: 'w-[25rem] h-[18.75rem]'
     },
     fit: {
-      cover: 'object-cover',
-      contain: 'object-contain',
-      fill: 'object-fill',
-      none: 'object-none',
-      scaleDown: 'object-scale-down'
+      [ImageFits.COVER]: 'object-cover',
+      [ImageFits.CONTAIN]: 'object-contain',
+      [ImageFits.FILL]: 'object-fill',
+      [ImageFits.NONE]: 'object-none',
+      [ImageFits.SCALE_DOWN]: 'object-scale-down'
     }
   },
   compoundVariants: [
-    { size: 'xxs', class: 'rounded-[0.3125rem]' },
-    { size: 'xs', class: 'rounded-[0.3125rem]' },
-    { size: 's', class: 'rounded-[0.375rem]' },
-    { size: 'm', class: 'rounded-md' },
-    { size: 'l', class: 'rounded-[0.667rem]' }
+    { size: [ImageSizes.XXS], class: 'rounded-[0.3125rem]' },
+    { size: [ImageSizes.XS], class: 'rounded-[0.3125rem]' },
+    { size: [ImageSizes.S], class: 'rounded-[0.375rem]' },
+    { size: [ImageSizes.M], class: 'rounded-md' },
+    { size: [ImageSizes.L], class: 'rounded-[0.667rem]' }
   ],
   defaultVariants: {
-    size: 'm',
-    fit: 'cover'
+    size: ImageSizes.M,
+    fit: ImageFits.COVER
   }
 })
 
@@ -42,7 +44,7 @@ type ImageSectionProps = VariantProps<typeof imageSectionVariants> &
 function ImageSection({
   component = 'div',
   size,
-  fit = 'cover',
+  fit,
   src,
   alt,
   className = '',

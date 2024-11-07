@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import ImageSection from '.'
+import { ImageFits, ImageSizes } from './variants'
 
 const meta: Meta<typeof ImageSection> = {
   title: 'Atom/ImageSection',
@@ -12,12 +13,12 @@ const meta: Meta<typeof ImageSection> = {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xxs', 'xs', 's', 'm', 'l'],
+      options: [Object.values(ImageSizes)],
       description: '이미지의 크기'
     },
     fit: {
       control: 'select',
-      options: ['cover', 'contain', 'fill', 'none', 'scaleDown'],
+      options: [Object.values(ImageFits)],
       description: "'cover', 'contain', 'fill', 'none', 'scaleDown'"
     },
     src: {
@@ -48,7 +49,7 @@ type Story = StoryObj<typeof meta>
 
 export const LargeImageSection: Story = {
   args: {
-    size: 'l',
+    size: ImageSizes.L,
     src: 'https://picsum.photos/400/300',
     alt: 'l-size 이미지'
   }
@@ -56,7 +57,7 @@ export const LargeImageSection: Story = {
 
 export const MediumImageSection: Story = {
   args: {
-    size: 'm',
+    size: ImageSizes.M,
     src: 'https://picsum.photos/400/300',
     alt: 'm-size 이미지'
   }
@@ -64,7 +65,7 @@ export const MediumImageSection: Story = {
 
 export const SmallImageSection: Story = {
   args: {
-    size: 's',
+    size: ImageSizes.S,
     src: 'https://picsum.photos/400/300',
     alt: 's-size 이미지'
   }
@@ -72,7 +73,7 @@ export const SmallImageSection: Story = {
 
 export const XSmallImageSection: Story = {
   args: {
-    size: 'xs',
+    size: ImageSizes.XS,
     src: 'https://picsum.photos/400/300',
     alt: 'xs-size 이미지'
   }
@@ -80,7 +81,7 @@ export const XSmallImageSection: Story = {
 
 export const XXSmallImageSection: Story = {
   args: {
-    size: 'xxs',
+    size: ImageSizes.XXS,
     src: 'https://picsum.photos/400/300',
     alt: 'xxs-size 이미지'
   }
