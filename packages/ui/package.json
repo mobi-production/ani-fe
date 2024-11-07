@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
+    "./typography": "./src/components/atom/typography/index.tsx",
+    "./radio-group": "./src/components/atom/radio-group/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
   },
