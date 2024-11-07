@@ -1,9 +1,11 @@
 import { ComponentProps } from 'react'
 import RadioGroup from './atom/radio-group/RadioGroup'
+import ImageSection from './atom/image-section/ImageSection'
 
 type ComponentPropsMap = {
   RadioGroup: ComponentProps<typeof RadioGroup>
   RadioGroupItem: ComponentProps<typeof RadioGroup.Item>
+  ImageSection: ComponentProps<typeof ImageSection>
 }
 
 export type ServerDrivenComponentType =
@@ -13,6 +15,7 @@ export type ServerDrivenComponentType =
       children?: ServerDrivenComponentType[]
     }
   | { type: 'RadioGroupItem'; props: ComponentPropsMap['RadioGroupItem']; children?: never }
+  | { type: 'ImageSection'; props: ComponentPropsMap['ImageSection']; children?: never }
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData
@@ -29,6 +32,9 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
           {props.children}
         </RadioGroup.Item>
       )
+
+    case 'ImageSection':
+      return <ImageSection {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)
