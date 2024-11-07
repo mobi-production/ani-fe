@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
+    "./typography": "./src/components/atom/typography/index.tsx",
+    "./radio-group": "./src/components/atom/radio-group/index.tsx",
+    "./spacing-block": "./src/components/atom/spacing-block/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
   },
@@ -14,11 +16,12 @@
   },
   "dependencies": {
     "@repo/util": "workspace:*",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.3.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1"
+    "@radix-ui/react-slot": "^1.1.0"
   },
   "devDependencies": {
     "@config/es-config": "workspace:*",

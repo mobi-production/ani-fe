@@ -1,6 +1,6 @@
 'use client'
 
-import { Typography } from '@repo/ui'
+import Typography from '@repo/ui/typography'
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <Typography
         variant='title-2'
         fontWeight='medium'
-        color='disabled'>
+        color='disable'>
         Hello
       </Typography>
     </div>

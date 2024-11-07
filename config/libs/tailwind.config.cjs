@@ -11,6 +11,21 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans]
       },
+      spacing: {
+        '4r': '1rem',
+        '8r': '2rem',
+        '12r': '3rem',
+        '16r': '4rem',
+        '20r': '5rem',
+        '24r': '6rem',
+        '28r': '7rem',
+        '32r': '8rem',
+        '36r': '9rem',
+        '40r': '10rem',
+        '44r': '11rem',
+        '48r': '12rem',
+        '64r': '16rem'
+      },
       screens: {
         mobile: {
           max: '479px'
@@ -34,8 +49,6 @@ module.exports = {
       colors: {
         common0: '#000000',
         common100: '#ffffff',
-        'background-normal-alternative': '#f7f7f8',
-        'background-normal-normal': '#ffffff',
         'blue-10': '#001536',
         'blue-20': '#002966',
         'blue-30': '#003e9c',
@@ -92,12 +105,6 @@ module.exports = {
         'green-90': '#acfcc7',
         'green-95': '#d9ffe6',
         'green-99': '#f2fff6',
-        'label-normal': '#171719',
-        'label-strong': '#000000',
-        'label-neutral': '#46474C',
-        'label-alternative': '#878A93',
-        'label-assistive': '#C2C4C8',
-        'label-disabled': '#DBDCDF',
         'light-blue-10': '#002130',
         'light-blue-20': '#004261',
         'light-blue-30': '#006796',
@@ -109,9 +116,6 @@ module.exports = {
         'light-blue-90': '#c4ecfe',
         'light-blue-95': '#e5f6fe',
         'light-blue-99': '#f7fdff',
-        'line-normal-neutral': '#70737c29',
-        'line-normal-normal': '#70737c38',
-        'line-normal-strong': '#70737c85',
         'neutral-10': '#171717',
         'neutral-15': '#1c1c1c',
         'neutral-20': '#2a2a2a',
@@ -191,7 +195,45 @@ module.exports = {
         'violet-80': '#c0b0ff',
         'violet-90': '#dbd3fe',
         'violet-95': '#f0ecfe',
-        'violet-99': '#fbfaff'
+        'violet-99': '#fbfaff',
+
+        'primary-normal': '#00BD9A',
+        'primary-strong': '#00E2B9',
+
+        'label-normal': '#171719',
+        'label-strong': '#000000',
+        'label-neutral': '#46474C',
+        'label-alternative': '#878A93',
+        'label-assistive': '#C2C4C8',
+        'label-disable': '#DBDCDF',
+
+        'background-normal': '#FFFFFF',
+        'background-alternative': '#F7F7F8',
+
+        'interaction-inactive': '#989BA2',
+        'interaction-disabled': '#F7F7F8',
+
+        'line-normal': '#17171726',
+        'line-neutral': '#1717170D',
+        'line-alternative': '#17171708',
+        'line-strong': '#0F0F0F',
+
+        'status-success': '#00BF40',
+        'status-error': '#FF4242',
+        'status-warning': '#0066FF',
+
+        'accent-red-orange': '#FF5E00',
+        'accent-cyan': '#00BDDE',
+        'accent-light-blue': '#00AEFF',
+        'accent-violet': '#4F29E5',
+        'accent-purple': '#CB59FF',
+        'accent-pink': '#F553DA',
+
+        'fill-normal': '#F4F4F5',
+        'fill-strong': '#E8E8EA',
+        'fill-alternative': '#F8F8F8',
+
+        'material-dimmer': '#17171985'
       },
       fontSize: {
         // Display

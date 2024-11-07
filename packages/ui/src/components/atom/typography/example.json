@@ -1,0 +1,7 @@
+{
+  "type": "Typography",
+  "props": {
+    "variant": "heading-1",
+    "children": "Hello"
+  }
+}

@@ -1,6 +1,8 @@
 import { type ServerDrivenComponentType } from '@/types/server-driven.js'
 
-import RadioGroup from './atom/radio-group/RadioGroup.js'
+import RadioGroup from './atom/radio-group'
+import SpacingBlock from './atom/spacing-block'
+import Typography from './atom/typography'
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData
@@ -17,6 +19,12 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
           {props.children}
         </RadioGroup.Item>
       )
+
+    case 'Typography':
+      return <Typography {...props}>{props.children}</Typography>
+
+    case 'SpacingBlock':
+      return <SpacingBlock {...props}>{props.children}</SpacingBlock>
 
     default:
       console.warn(`Unknown component type: ${type}`)
