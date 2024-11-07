@@ -1,9 +1,11 @@
 {
-  "extends": "../../config/ts-config/nextjs.json",
+  "extends": "@config/ts-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@config/es-config/*": ["../../config/es-config/*"],
+      "@config/ts-config/*": ["../../config/ts-config/*"]
     },
     "plugins": [
       {

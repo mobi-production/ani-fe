@@ -10,10 +10,8 @@ const project = resolve(process.cwd(), 'tsconfig.json')
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: ['eslint:recommended', 'prettier', 'eslint-config-turbo'],
-  plugins: [
-    // "only-warn"
-  ],
+  plugins: ['react'],
+  extends: ['eslint:recommended', 'prettier', 'eslint-config-turbo', 'plugin:react/recommended'],
   globals: {
     React: true,
     JSX: true
@@ -31,14 +29,13 @@ module.exports = {
       version: 'detect'
     }
   },
-  ignorePatterns: [
-    // Ignore dotfiles
-    '.*.js',
-    'node_modules/',
-    'dist/'
-  ],
+  ignorePatterns: ['.*.js', 'node_modules/', 'dist/'],
   overrides: [
-    // Force ESLint to detect .tsx files
-    { files: ['*.js?(x)', '*.ts?(x)'] }
+    {
+      files: ['*.js?(x)', '*.ts?(x)'],
+      rules: {
+        'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }]
+      }
+    }
   ]
 }
