@@ -29,5 +29,5 @@ export const TypographyColors = {
   NEUTRAL: 'neutral',
   ALTERNATIVE: 'alternative',
   ASSISTIVE: 'assistive',
-  DISABLED: 'disabled'
+  DISABLE: 'disable'
 } as const

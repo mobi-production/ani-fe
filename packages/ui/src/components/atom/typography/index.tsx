@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
@@ -34,7 +35,7 @@ export const typographyVariants = cva('', {
       [TypographyColors.NEUTRAL]: 'text-label-neutral',
       [TypographyColors.ALTERNATIVE]: 'text-label-alternative',
       [TypographyColors.ASSISTIVE]: 'text-label-assistive',
-      [TypographyColors.DISABLED]: 'text-label-disabled'
+      [TypographyColors.DISABLE]: 'text-label-disable'
     }
   },
   defaultVariants: {
@@ -47,6 +48,7 @@ export const typographyVariants = cva('', {
 type TypographyProps = VariantProps<typeof typographyVariants> &
   ComponentPropsWithoutRef<'span'> & {
     component?: ElementType
+    asChild?: boolean
   }
 
 function Typography({
@@ -55,9 +57,10 @@ function Typography({
   fontWeight,
   color,
   className = '',
+  asChild,
   ...props
 }: TypographyProps) {
-  const Component = component
+  const Component = asChild ? Slot : component
 
   return (
     <Component
