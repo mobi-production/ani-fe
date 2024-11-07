@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import ImageSection from './ImageSection'
+import ImageSection from '.'
 
 const meta: Meta<typeof ImageSection> = {
   title: 'Atom/ImageSection',

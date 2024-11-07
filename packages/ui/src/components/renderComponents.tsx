@@ -3,7 +3,7 @@ import { type ServerDrivenComponentType } from '@/types/server-driven.js'
 import RadioGroup from './atom/radio-group'
 import SpacingBlock from './atom/spacing-block'
 import Typography from './atom/typography'
-import ImageSection from './atom/image-section/ImageSection'
+import ImageSection from './atom/image-section'
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData

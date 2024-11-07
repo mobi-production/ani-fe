@@ -3,7 +3,7 @@ import { ComponentProps } from 'react'
 import RadioGroup from '@/components/atom/radio-group'
 import SpacingBlock from '@/components/atom/spacing-block'
 import Typography from '@/components/atom/typography'
-import ImageSection from '@/components/atom/image-section/ImageSection'
+import ImageSection from '@/components/atom/image-section'
 
 export type ComponentPropsMap = {
   RadioGroup: ComponentProps<typeof RadioGroup>
