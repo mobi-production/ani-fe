@@ -9,8 +9,11 @@ on:
       - 'packages/ui/**'
 
 jobs:
-  chromatic-deploy:
+  setup:
+    name: 'Setup Environment'
     runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.pnpm-cache.outputs.cache-hit }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -46,12 +49,51 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+  chromatic-deploy:
+    name: 'Deploy to Chromatic'
+    needs: setup
+    runs-on: ubuntu-latest
+    outputs:
+      storybook-url: ${{ steps.chromatic.outputs.storybookUrl }}
+      has-changes: ${{ steps.chromatic.outputs.storybookUrl != '' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Publish to Chromatic
+        id: chromatic
         uses: chromaui/action@latest
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/web
           exitOnceUploaded: true
           onlyChanged: true
           autoAcceptChanges: true
-          buildScriptName: 'build-storybook'
+
+  notifications:
+    name: 'Send Notifications'
+    needs: chromatic-deploy
+    if: needs.chromatic-deploy.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Auto Comment
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            ➡️ 추가된 Storybook 미리보기: ${{ needs.chromatic-deploy.outputs.storybook-url }}
+
+            변경사항을 확인해주세요! 🔍
+
+      - name: Discord Notification
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          embed-title: 'Storybook 변경 사항 발견 😃'
+          embed-description: |
+            작업: "${{ github.event.pull_request.title }}" 에서 추가된 Storybook을 확인해주세요!
+
+            📚 변경사항 확인하기
+          embed-url: ${{ needs.chromatic-deploy.outputs.storybook-url }}
