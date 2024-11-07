@@ -52,15 +52,13 @@ function ImageSection({
 
   return (
     <Component
-      className={`${imageSectionVariants({ size })}`}
+      className={`${imageSectionVariants({ size })} relative ${className}`}
       {...props}>
       <Image
         src={src}
         alt={alt}
-        width={0}
-        height={0}
-        style={{ width: '100%', height: '100%' }}
-        className={`${imageSectionVariants({ fit })}`}
+        fill
+        className={imageSectionVariants({ fit })}
       />
     </Component>
   )
