@@ -1,5 +1,6 @@
-import { type ServerDrivenComponentType } from '@/types/server-driven.js'
+import type { ServerDrivenComponentType } from '@/types/server-driven'
 
+import ImageSection from './atom/image-section'
 import RadioGroup from './atom/radio-group'
 import SpacingBlock from './atom/spacing-block'
 import Typography from './atom/typography'
@@ -25,6 +26,9 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
 
     case 'SpacingBlock':
       return <SpacingBlock {...props}>{props.children}</SpacingBlock>
+
+    case 'ImageSection':
+      return <ImageSection {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)

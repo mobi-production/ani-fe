@@ -7,13 +7,14 @@
     "./typography": "./src/components/atom/typography/index.tsx",
     "./radio-group": "./src/components/atom/radio-group/index.tsx",
     "./spacing-block": "./src/components/atom/spacing-block/index.tsx",
+    "./image-section": "./src/components/atom/image-section/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
   },
   "scripts": {
     "build": "vite build",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "format": "prettier \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
