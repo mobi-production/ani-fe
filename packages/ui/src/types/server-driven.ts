@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react'
 
 import { OutlinedButton, SolidButton, TextButton } from '@/components/atom/button'
+import Flex from '@/components/atom/flex'
 import ImageSection from '@/components/atom/image-section'
 import RadioGroup from '@/components/atom/radio-group'
 import SpacingBlock from '@/components/atom/spacing-block'
@@ -15,6 +16,7 @@ export type ComponentPropsMap = {
   SolidButton: ComponentProps<typeof SolidButton>
   OutlinedButton: ComponentProps<typeof OutlinedButton>
   TextButton: ComponentProps<typeof TextButton>
+  Flex: ComponentProps<typeof Flex>
 }
 
 export type ServerDrivenComponentType =
@@ -30,3 +32,4 @@ export type ServerDrivenComponentType =
   | { type: 'SolidButton'; props: ComponentPropsMap['SolidButton']; children?: never }
   | { type: 'OutlinedButton'; props: ComponentPropsMap['OutlinedButton']; children?: never }
   | { type: 'TextButton'; props: ComponentPropsMap['TextButton']; children?: never }
+  | { type: 'Flex'; props: ComponentPropsMap['Flex']; children?: ServerDrivenComponentType[] }

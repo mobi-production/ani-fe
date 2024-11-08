@@ -1,6 +1,7 @@
 import type { ServerDrivenComponentType } from '@/types/server-driven'
 
 import { OutlinedButton, SolidButton, TextButton } from './atom/button'
+import Flex from './atom/flex'
 import ImageSection from './atom/image-section'
 import RadioGroup from './atom/radio-group'
 import SpacingBlock from './atom/spacing-block'
@@ -39,6 +40,9 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
 
     case 'TextButton':
       return <TextButton {...props} />
+
+    case 'Flex':
+      return <Flex {...props}>{children?.map((child) => renderComponents(child))}</Flex>
 
     default:
       console.warn(`Unknown component type: ${type}`)

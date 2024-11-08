@@ -8,6 +8,7 @@
     "./radio-group": "./src/components/atom/radio-group/index.tsx",
     "./spacing-block": "./src/components/atom/spacing-block/index.tsx",
     "./image-section": "./src/components/atom/image-section/index.tsx",
+    "./flex": "./src/components/atom/flex/index.tsx",
     "./button": "./src/components/atom/button/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
