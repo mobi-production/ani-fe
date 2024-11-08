@@ -1,22 +1,23 @@
-name: Type Check
+name: PR Check
 
 on:
   pull_request:
     branches:
       - develop
     paths:
-      - '**/*.{ts,tsx}'
+      - '**/*.{ts,tsx,js,jsx}'
       - '**/tsconfig.json'
       - '**/package.json'
       - '**/pnpm-lock.yaml'
-      - '.github/workflows/type-check.yml'
+      - '.github/workflows/**'
 
 jobs:
-  setup:
-    name: Setup Environment
+  check:
+    name: 'PR Check'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -46,25 +47,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-  type-check:
-    name: Run Type Check
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Run type check
         run: pnpm type-check
+
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run format
+        run: pnpm format
+
+      - name: Run build
+        run: pnpm build
