@@ -1,0 +1,33 @@
+{
+  "type": "flex",
+  "props": {
+    "align": "center",
+    "justify": "center",
+    "wrap": "wrap",
+    "gap": "16r",
+    "direction": "row",
+    "children": [
+      {
+        "type": "SpacingBlock",
+        "props": {
+          "width": "20r",
+          "height": "8r"
+        }
+      },
+      {
+        "type": "SpacingBlock",
+        "props": {
+          "width": "24r",
+          "height": "4r"
+        }
+      },
+      {
+        "type": "SpacingBlock",
+        "props": {
+          "width": "20r",
+          "height": "12r"
+        }
+      }
+    ]
+  }
+}
