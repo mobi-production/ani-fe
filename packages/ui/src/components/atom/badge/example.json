@@ -1,0 +1,8 @@
+{
+  "type": "Badge",
+  "props": {
+    "size": "s",
+    "color": "gray",
+    "children": "카테고리"
+  }
+}
