@@ -9,11 +9,9 @@ on:
       - 'packages/ui/**'
 
 jobs:
-  setup:
-    name: 'Setup Environment'
+  chromatic:
+    name: 'Chromatic Deployment'
     runs-on: ubuntu-latest
-    outputs:
-      cache-hit: ${{ steps.pnpm-cache.outputs.cache-hit }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -27,7 +25,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
-        id: pnpm-install
         with:
           version: 8
           run_install: false
@@ -49,19 +46,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-  chromatic-deploy:
-    name: 'Deploy to Chromatic'
-    needs: setup
-    runs-on: ubuntu-latest
-    outputs:
-      storybook-url: ${{ steps.chromatic.outputs.storybookUrl }}
-      has-changes: ${{ steps.chromatic.outputs.storybookUrl != '' }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
       - name: Publish to Chromatic
         id: chromatic
         uses: chromaui/action@latest
@@ -73,21 +57,17 @@ jobs:
           onlyChanged: true
           autoAcceptChanges: true
 
-  notifications:
-    name: 'Send Notifications'
-    needs: chromatic-deploy
-    if: needs.chromatic-deploy.outputs.has-changes == 'true'
-    runs-on: ubuntu-latest
-    steps:
       - name: PR Auto Comment
+        if: steps.chromatic.outputs.storybookUrl != ''
         uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
-            ➡️ 추가된 Storybook 미리보기: ${{ needs.chromatic-deploy.outputs.storybook-url }}
+            ➡️ 추가된 Storybook 미리보기: ${{ steps.chromatic.outputs.storybookUrl }}
 
             변경사항을 확인해주세요! 🔍
 
       - name: Discord Notification
+        if: steps.chromatic.outputs.storybookUrl != ''
         uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
@@ -96,4 +76,4 @@ jobs:
             작업: "${{ github.event.pull_request.title }}" 에서 추가된 Storybook을 확인해주세요!
 
             📚 변경사항 확인하기
-          embed-url: ${{ needs.chromatic-deploy.outputs.storybook-url }}
+          embed-url: ${{ steps.chromatic.outputs.storybookUrl }}
