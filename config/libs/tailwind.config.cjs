@@ -229,7 +229,7 @@ module.exports = {
         'accent-purple': '#CB59FF',
         'accent-pink': '#F553DA',
 
-        'fill-normal': '#F4F4F5',
+        'fill-normal': '#0F0F10',
         'fill-strong': '#E8E8EA',
         'fill-alternative': '#F8F8F8',
 

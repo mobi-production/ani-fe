@@ -21,4 +21,8 @@
     border-color: white;
     background-color: black;
   }
+
+  .reset-button {
+    @apply font-inherit cursor-pointer border-none bg-transparent p-0 text-inherit outline-none;
+  }
 }
