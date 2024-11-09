@@ -1,5 +1,6 @@
 import { ComponentProps } from 'react'
 
+import Badge from '@/components/atom/badge'
 import { OutlinedButton, SolidButton, TextButton } from '@/components/atom/button'
 import Flex from '@/components/atom/flex'
 import ImageSection from '@/components/atom/image-section'
@@ -17,6 +18,7 @@ export type ComponentPropsMap = {
   OutlinedButton: ComponentProps<typeof OutlinedButton>
   TextButton: ComponentProps<typeof TextButton>
   Flex: ComponentProps<typeof Flex>
+  Badge: ComponentProps<typeof Badge>
 }
 
 export type ServerDrivenComponentType =
@@ -33,3 +35,4 @@ export type ServerDrivenComponentType =
   | { type: 'OutlinedButton'; props: ComponentPropsMap['OutlinedButton']; children?: never }
   | { type: 'TextButton'; props: ComponentPropsMap['TextButton']; children?: never }
   | { type: 'Flex'; props: ComponentPropsMap['Flex']; children?: ServerDrivenComponentType[] }
+  | { type: 'Badge'; props: ComponentPropsMap['Badge']; children?: never }
