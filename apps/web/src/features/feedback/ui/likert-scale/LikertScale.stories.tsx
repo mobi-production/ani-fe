@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import LikertScale from '.'
+import { LIKERT_SCALE_MAX_SCORE } from '../../model/likert-scale'
 
 const meta = {
   title: 'Widget/Feedback/LikertScale',
@@ -28,10 +29,11 @@ export const Primary: Story = {
   render: (args) => (
     <div className='w-[40rem]'>
       <LikertScale {...args}>
-        {Array.from({ length: 5 }, (_, index) => (
+        {Array.from({ length: LIKERT_SCALE_MAX_SCORE }, (_, index) => (
           <LikertScale.Score
             key={index}
             scoreValue={index + 1}
+            isReverseCoded={false}
           />
         ))}
       </LikertScale>

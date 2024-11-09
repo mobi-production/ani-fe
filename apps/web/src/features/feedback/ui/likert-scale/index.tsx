@@ -1,46 +1,67 @@
-import { ComponentProps, MouseEvent, createContext, useContext, useState } from 'react'
-import { LikertScaleType } from '../../model/likert-scale'
+import { ComponentProps, MouseEvent, createContext, useContext, useMemo, useState } from 'react'
+import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../model/likert-scale'
+import { cn } from '@repo/util'
+import { cva } from 'class-variance-authority'
+
+const likertScaleVariants = cva(
+  'm-auto flex h-[3.8rem] w-[3.8rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
+  {
+    variants: {
+      isSelectedScore: {
+        true: 'bg-label-alternative',
+        false: 'bg-background-alternative'
+      }
+    }
+  }
+)
 
 type LikertScaleProps = ComponentProps<'div'> & {
   defaultValue?: LikertScaleType
 }
 
 type LikertScaleContextType = {
-  currentScore: LikertScaleType
+  selectedScore: LikertScaleType
   onChange: (score: LikertScaleType) => void
 }
 
-const ProgressStepContext = createContext<LikertScaleContextType | null>(null)
+const LikertScaleContext = createContext<LikertScaleContextType | null>(null)
 
 function LikertScale({ children, defaultValue, ...props }: LikertScaleProps) {
-  const [currentScore, setCurrentScore] = useState<LikertScaleType>(defaultValue ?? undefined)
+  const [selectedScore, setSelectedScore] = useState<LikertScaleType>(defaultValue ?? undefined)
 
   return (
-    <ProgressStepContext.Provider value={{ currentScore, onChange: setCurrentScore }}>
+    <LikertScaleContext.Provider value={{ selectedScore, onChange: setSelectedScore }}>
       <div
         className='flex justify-between'
         {...props}>
         {children}
       </div>
-    </ProgressStepContext.Provider>
+    </LikertScaleContext.Provider>
   )
 }
 
 type LikertScaleItemProps = ComponentProps<'div'> & {
   scoreValue: number
+  isReverseCoded: boolean
 }
 
-function OneScore({ scoreValue, onClick, ...props }: LikertScaleItemProps) {
-  const context = useContext(ProgressStepContext)
+function OneScore({
+  scoreValue,
+  onClick,
+  className,
+  isReverseCoded = false,
+  ...props
+}: LikertScaleItemProps) {
+  const context = useContext(LikertScaleContext)
 
   if (!context) {
     throw new Error('LikertScaleContext must be used within a LikertScale')
   }
 
-  const { currentScore, onChange } = context
-  const isCurrentStep = currentScore === scoreValue
+  const { selectedScore, onChange } = context
+  const isSelectedScore = selectedScore === scoreValue
 
-  const handleClickStep = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+  const handleClickScore = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     onChange(scoreValue)
     onClick?.(event)
   }
@@ -48,18 +69,32 @@ function OneScore({ scoreValue, onClick, ...props }: LikertScaleItemProps) {
   return (
     <div
       className='z-10 mx-[-1rem] flex flex-col gap-2'
-      onClick={handleClickStep}>
-      <div className='text-center'>
-        <span className='text-l-normal font-medium text-neutral-30'>{scoreValue}</span>
-      </div>
-      <div
-        className={`m-auto flex h-[18px] w-[18px] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral ${isCurrentStep ? 'bg-label-alternative' : 'bg-background-alternative'}`}></div>
+      onClick={handleClickScore}>
+      <ScoreIndicatorText
+        scoreValue={scoreValue}
+        isReverseCoded={isReverseCoded}
+      />
+      <div className={cn(likertScaleVariants({ isSelectedScore }), className)}>{scoreValue}</div>
     </div>
   )
 }
 
-function ScoreIndicatorText() {
-  return <div className='mt-10 h-0 flex-grow border-[1.5px] border-label-neutral'></div>
+type ScoreIndicatorTextProps = {
+  scoreValue: number
+  isReverseCoded: boolean
+}
+
+function ScoreIndicatorText({ scoreValue, isReverseCoded }: ScoreIndicatorTextProps) {
+  const indicatorText = useMemo(() => {
+    const text = SCORE_INDICATOR_TEXT_MAP[scoreValue]
+    return text ? text(isReverseCoded) : ''
+  }, [scoreValue, isReverseCoded])
+
+  return (
+    <div className='text-center'>
+      <span className='text-l-normal font-medium text-neutral-30'>{indicatorText}</span>
+    </div>
+  )
 }
 
 LikertScale.Score = OneScore
