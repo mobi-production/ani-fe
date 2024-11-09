@@ -4,7 +4,7 @@ import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
 
 const feedbackStepVariants = cva(
-  'm-auto flex h-[18px] w-[18px] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
+  'm-auto flex h-[1.125rem] w-[1.125rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
   {
     variants: {
       isCurrentStep: {
@@ -74,7 +74,7 @@ function OneStep({ stepLabel, stepValue, className, onClick, ...props }: Feedbac
 }
 
 function StepDivider() {
-  return <div className='mt-10 h-0 flex-grow border-[1.5px] border-label-neutral'></div>
+  return <div className='mt-10 h-0 flex-grow border-[0.09375rem] border-label-neutral'></div>
 }
 
 FeedbackStep.Item = OneStep
