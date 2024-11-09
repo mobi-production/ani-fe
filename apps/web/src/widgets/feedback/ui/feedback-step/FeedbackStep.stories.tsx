@@ -7,7 +7,12 @@ const meta = {
   title: 'Widget/Feedback/FeedbackStep',
   component: FeedbackStep,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    docs: {
+      description: {
+        component: '피드백 페이지 상단에서 현재 진행 중인 피드백의 단계를 표시하는 컴포넌트입니다.'
+      }
+    }
   },
   tags: ['autodocs']
 } satisfies Meta<typeof FeedbackStep>
