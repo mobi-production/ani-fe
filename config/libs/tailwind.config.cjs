@@ -351,6 +351,15 @@ module.exports = {
             lineHeight: '1.273',
             letterSpacing: '0.031em'
           }
+        ],
+
+        // Headline
+        hl1: [
+          '18px',
+          {
+            lineHeight: '1.183',
+            letterSpacing: '-0.00025em'
+          }
         ]
       }
     }

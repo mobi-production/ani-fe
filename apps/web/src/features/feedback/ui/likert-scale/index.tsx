@@ -4,12 +4,12 @@ import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
 
 const likertScaleVariants = cva(
-  'm-auto flex h-[3.8rem] w-[3.8rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
+  'm-auto flex h-[3.8rem] w-[3.8rem] cursor-pointer items-center rounded-full justiy-center font-semibold',
   {
     variants: {
       isSelectedScore: {
-        true: 'bg-label-alternative',
-        false: 'bg-background-alternative'
+        true: 'bg-primary-normal text-label-normal',
+        false: 'border-[0.0625rem] border-label-assistive text-l-normal text-label-assistive'
       }
     }
   }
@@ -32,7 +32,7 @@ function LikertScale({ children, defaultValue, ...props }: LikertScaleProps) {
   return (
     <LikertScaleContext.Provider value={{ selectedScore, onChange: setSelectedScore }}>
       <div
-        className='flex justify-between'
+        className='flex gap-9'
         {...props}>
         {children}
       </div>
@@ -68,13 +68,15 @@ function OneScore({
 
   return (
     <div
-      className='z-10 mx-[-1rem] flex flex-col gap-2'
+      className='z-10 flex flex-col gap-4'
       onClick={handleClickScore}>
       <ScoreIndicatorText
         scoreValue={scoreValue}
         isReverseCoded={isReverseCoded}
       />
-      <div className={cn(likertScaleVariants({ isSelectedScore }), className)}>{scoreValue}</div>
+      <div className={cn(likertScaleVariants({ isSelectedScore }), className)}>
+        <div className='w-full text-center'>{scoreValue}</div>
+      </div>
     </div>
   )
 }
@@ -91,8 +93,8 @@ function ScoreIndicatorText({ scoreValue, isReverseCoded }: ScoreIndicatorTextPr
   }, [scoreValue, isReverseCoded])
 
   return (
-    <div className='text-center'>
-      <span className='text-l-normal font-medium text-neutral-30'>{indicatorText}</span>
+    <div className='h-5 text-center'>
+      <span className='text-l-normal font-medium text-label-assistive'>{indicatorText}</span>
     </div>
   )
 }
