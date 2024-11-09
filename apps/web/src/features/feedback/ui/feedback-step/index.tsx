@@ -1,5 +1,19 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useState } from 'react'
 import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
+import { cn } from '@repo/util'
+import { cva } from 'class-variance-authority'
+
+const feedbackStepVariants = cva(
+  'm-auto flex h-[18px] w-[18px] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
+  {
+    variants: {
+      isCurrentStep: {
+        true: 'bg-label-alternative',
+        false: 'bg-background-alternative'
+      }
+    }
+  }
+)
 
 type FeedbackStepProps = ComponentProps<'div'> & {
   defaultValue?: FeedbackStepType
@@ -33,7 +47,7 @@ type FeedbackStepItemProps = ComponentProps<'div'> & {
   stepValue: FeedbackStepType
 }
 
-function OneStep({ stepLabel, stepValue, onClick, ...props }: FeedbackStepItemProps) {
+function OneStep({ stepLabel, stepValue, className, onClick, ...props }: FeedbackStepItemProps) {
   const context = useContext(ProgressStepContext)
 
   if (!context) {
@@ -42,7 +56,6 @@ function OneStep({ stepLabel, stepValue, onClick, ...props }: FeedbackStepItemPr
 
   const { currentStep, onChange } = context
   const isCurrentStep = currentStep === stepValue
-
   const handleClickStep = (event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     onChange(stepValue)
     onClick?.(event)
@@ -55,8 +68,7 @@ function OneStep({ stepLabel, stepValue, onClick, ...props }: FeedbackStepItemPr
       <div className='text-center'>
         <span className='text-l-normal font-medium text-neutral-30'>{stepLabel}</span>
       </div>
-      <div
-        className={`m-auto flex h-[18px] w-[18px] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral ${isCurrentStep ? 'bg-label-alternative' : 'bg-background-alternative'}`}></div>
+      <div className={cn(feedbackStepVariants({ isCurrentStep }), className)}></div>
     </div>
   )
 }
