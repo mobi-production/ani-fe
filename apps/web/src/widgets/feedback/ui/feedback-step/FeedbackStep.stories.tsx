@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import FeedbackStep from '.'
+import { FEEDBACK_STEP } from '@/types/feedback/feedback-step'
 
 const meta = {
   title: 'Widget/Feedback/FeedbackStep',
@@ -16,25 +17,25 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    defaultValue: 'Part'
+    defaultValue: FEEDBACK_STEP.PART.VALUE
   },
 
   render: (args) => (
     <div className='w-[40rem]'>
       <FeedbackStep {...args}>
         <FeedbackStep.Item
-          label='파트'
-          value='Part'
+          stepLabel={FEEDBACK_STEP.PART.LABEL}
+          stepValue={FEEDBACK_STEP.PART.VALUE}
         />
         <FeedbackStep.Divider />
         <FeedbackStep.Item
-          label='멘토'
-          value='Mento'
+          stepLabel={FEEDBACK_STEP.MENTO.LABEL}
+          stepValue={FEEDBACK_STEP.MENTO.VALUE}
         />
         <FeedbackStep.Divider />
         <FeedbackStep.Item
-          label='페어'
-          value='Pair'
+          stepLabel={FEEDBACK_STEP.PAIR.LABEL}
+          stepValue={FEEDBACK_STEP.PAIR.VALUE}
         />
       </FeedbackStep>
     </div>
