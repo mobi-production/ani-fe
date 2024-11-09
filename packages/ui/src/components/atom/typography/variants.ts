@@ -24,6 +24,7 @@ export const TypographyFontWeights = {
 } as const
 
 export const TypographyColors = {
+  INHERIT: 'inherit',
   NORMAL: 'normal',
   STRONG: 'strong',
   NEUTRAL: 'neutral',

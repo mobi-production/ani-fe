@@ -4,17 +4,23 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "type-check": {
+      "dependsOn": ["^type-check"],
+      "cache": false
     },
     "lint": {
-      "outputs": []
+      "dependsOn": ["^lint"],
+      "cache": false
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "format": {
-      "dependsOn": ["^format"]
+      "dependsOn": ["^format"],
+      "cache": false
     },
     "storybook": {
       "cache": false,

@@ -9,6 +9,9 @@
     "lint:web": "turbo lint --filter=@ani/web",
     "lint:ui": "turbo lint --filter=@repo/ui",
     "lint:util": "turbo lint --filter=@repo/util",
+    "build:web": "turbo build --filter=@ani/web",
+    "build:ui": "turbo build --filter=@repo/ui",
+    "type-check": "turbo type-check",
     "storybook": "turbo storybook",
     "format": "turbo format",
     "prepare": "husky install"

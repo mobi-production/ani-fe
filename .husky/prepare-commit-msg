@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+
+# SKIP_JIRA_CHECK 환경 변수가 설정되어 있는 경우 스크립트 종료
+if [ -n "$SKIP_JIRA_CHECK" ]; then
+  echo "Jira check skipped due to SKIP_JIRA_CHECK environment variable."
+  exit 0
+fi
+
 echo 'wait add jira issue number we found from branch name'
 
 # 브랜치 이름을 가져옵니다.

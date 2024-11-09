@@ -6,11 +6,12 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "lint": "next lint",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx}\"",
     "server": "npx tsx watch ./src/__mock__/http.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@repo/ui": "workspace:*",

@@ -30,6 +30,7 @@ export const typographyVariants = cva('', {
       [TypographyFontWeights.BOLD]: 'font-bold'
     },
     color: {
+      [TypographyColors.INHERIT]: 'text-inherit',
       [TypographyColors.NORMAL]: 'text-label-normal',
       [TypographyColors.STRONG]: 'text-label-strong',
       [TypographyColors.NEUTRAL]: 'text-label-neutral',

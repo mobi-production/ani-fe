@@ -1,0 +1,9 @@
+{
+  "type": "ImageSection",
+  "props": {
+    "size": "l",
+    "fit": "cover",
+    "src": "https://picsum.photos/400/300",
+    "alt": "l-size 이미지"
+  }
+}
