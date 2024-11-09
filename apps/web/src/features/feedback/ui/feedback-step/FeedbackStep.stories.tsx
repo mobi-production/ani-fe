@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import FeedbackStep from '.'
-import { FEEDBACK_STEP } from '@/types/feedback/feedback-step'
+import { FEEDBACK_STEP } from '../../model/feedback-step'
 
 const meta = {
   title: 'Widget/Feedback/FeedbackStep',
