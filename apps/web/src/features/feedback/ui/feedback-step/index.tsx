@@ -1,5 +1,5 @@
-import { FEEDBACK_STEP, FeedbackStepType } from '@/types/feedback/feedback-step'
 import { ComponentProps, MouseEvent, createContext, useContext, useState } from 'react'
+import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
 
 type FeedbackStepProps = ComponentProps<'div'> & {
   defaultValue?: FeedbackStepType
