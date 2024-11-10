@@ -4,7 +4,7 @@ import Typography from '@repo/ui/typography'
 
 export default function Home() {
   return (
-    <div>
+    <div className='flex flex-col'>
       <Typography
         variant='title-2'
         fontWeight='medium'

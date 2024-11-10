@@ -50,39 +50,39 @@ type Story = StoryObj<typeof meta>
 export const LargeImageSection: Story = {
   args: {
     size: ImageSizes.L,
-    src: 'https://picsum.photos/400/300',
-    alt: 'l-size 이미지'
+    src: '/avif/placeholder.avif',
+    alt: 'Placeholder Image'
   }
 }
 
 export const MediumImageSection: Story = {
   args: {
     size: ImageSizes.M,
-    src: 'https://picsum.photos/400/300',
-    alt: 'm-size 이미지'
+    src: '/avif/placeholder.avif',
+    alt: 'Placeholder Image'
   }
 }
 
 export const SmallImageSection: Story = {
   args: {
     size: ImageSizes.S,
-    src: 'https://picsum.photos/400/300',
-    alt: 's-size 이미지'
+    src: '/avif/placeholder.avif',
+    alt: 'Placeholder Image'
   }
 }
 
 export const XSmallImageSection: Story = {
   args: {
     size: ImageSizes.XS,
-    src: 'https://picsum.photos/400/300',
-    alt: 'xs-size 이미지'
+    src: '/avif/placeholder.avif',
+    alt: 'Placeholder Image'
   }
 }
 
 export const XXSmallImageSection: Story = {
   args: {
     size: ImageSizes.XXS,
-    src: 'https://picsum.photos/400/300',
-    alt: 'xxs-size 이미지'
+    src: '/avif/placeholder.avif',
+    alt: 'Placeholder Image'
   }
 }

@@ -55,7 +55,7 @@ function ProgressBar({
           className={`absolute right-0 top-0 min-h-[0.375rem] w-[100%] rounded-[1.875rem] bg-${color}`}
           style={{
             transform: `scaleX(${validValue / 100})`,
-            transformOrigin: 'center right',
+            transformOrigin: 'center left',
             transition: 'transform 1.5s ease'
           }}
         />
