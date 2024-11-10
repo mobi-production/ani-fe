@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react'
-import '@/styles/globals.css'
+import '../../../config/libs/globals.css'
 import { pretendardFont } from '../app/_fonts'
 import React from 'react'
 
