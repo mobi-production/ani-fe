@@ -4,6 +4,7 @@ import Badge from '@/components/atom/badge'
 import { OutlinedButton, SolidButton, TextButton } from '@/components/atom/button'
 import Flex from '@/components/atom/flex'
 import ImageSection from '@/components/atom/image-section'
+import ProgressBar from '@/components/atom/progress-bar'
 import RadioGroup from '@/components/atom/radio-group'
 import SpacingBlock from '@/components/atom/spacing-block'
 import Typography from '@/components/atom/typography'
@@ -18,6 +19,7 @@ export type ComponentPropsMap = {
   OutlinedButton: ComponentProps<typeof OutlinedButton>
   TextButton: ComponentProps<typeof TextButton>
   Flex: ComponentProps<typeof Flex>
+  ProgressBar: ComponentProps<typeof ProgressBar>
   Badge: ComponentProps<typeof Badge>
 }
 
@@ -35,4 +37,5 @@ export type ServerDrivenComponentType =
   | { type: 'OutlinedButton'; props: ComponentPropsMap['OutlinedButton']; children?: never }
   | { type: 'TextButton'; props: ComponentPropsMap['TextButton']; children?: never }
   | { type: 'Flex'; props: ComponentPropsMap['Flex']; children?: ServerDrivenComponentType[] }
+  | { type: 'ProgressBar'; props: ComponentPropsMap['ProgressBar']; children?: never }
   | { type: 'Badge'; props: ComponentPropsMap['Badge']; children?: never }
