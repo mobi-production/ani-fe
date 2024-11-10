@@ -2,6 +2,7 @@ import { ComponentProps, MouseEvent, createContext, useContext, useState } from 
 import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
 import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
+import Typography from '@repo/ui/typography'
 
 const feedbackStepVariants = cva(
   'm-auto flex h-[1.125rem] w-[1.125rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
@@ -66,7 +67,12 @@ function OneStep({ stepLabel, stepValue, className, onClick, ...props }: Feedbac
       className='z-10 mx-[-1rem] flex flex-col gap-2'
       onClick={handleClickStep}>
       <div className='text-center'>
-        <span className='text-l-normal font-medium text-neutral-30'>{stepLabel}</span>
+        <Typography
+          variant='label-normal'
+          fontWeight='medium'
+          color='neutral'>
+          {stepLabel}
+        </Typography>
       </div>
       <div className={cn(feedbackStepVariants({ isCurrentStep }), className)}></div>
     </div>
