@@ -1,0 +1,7 @@
+{
+  "type": "ProgressBar",
+  "props": {
+    "value": 80,
+    "showPercentage": true
+  }
+}

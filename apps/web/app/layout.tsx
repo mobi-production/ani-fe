@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@config/libs/globals.css'
 
 import { pretendardFont } from './_fonts'
 
