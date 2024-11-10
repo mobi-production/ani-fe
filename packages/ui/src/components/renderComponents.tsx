@@ -1,5 +1,6 @@
 import type { ServerDrivenComponentType } from '@/types/server-driven'
 
+import Badge from './atom/badge'
 import { OutlinedButton, SolidButton, TextButton } from './atom/button'
 import Flex from './atom/flex'
 import ImageSection from './atom/image-section'
@@ -47,6 +48,9 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
 
     case 'ProgressBar':
       return <ProgressBar {...props} />
+
+    case 'Badge':
+      return <Badge {...props}>{props.children}</Badge>
 
     default:
       console.warn(`Unknown component type: ${type}`)
