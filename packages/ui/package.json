@@ -10,6 +10,7 @@
     "./image-section": "./src/components/atom/image-section/index.tsx",
     "./flex": "./src/components/atom/flex/index.tsx",
     "./button": "./src/components/atom/button/index.tsx",
+    "./progress-bar": "./src/components/atom/progress-bar/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
   },

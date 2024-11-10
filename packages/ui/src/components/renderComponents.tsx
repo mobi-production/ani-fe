@@ -3,6 +3,7 @@ import type { ServerDrivenComponentType } from '@/types/server-driven'
 import { OutlinedButton, SolidButton, TextButton } from './atom/button'
 import Flex from './atom/flex'
 import ImageSection from './atom/image-section'
+import ProgressBar from './atom/progress-bar'
 import RadioGroup from './atom/radio-group'
 import SpacingBlock from './atom/spacing-block'
 import Typography from './atom/typography'
@@ -43,6 +44,9 @@ export function renderComponents(componentData: ServerDrivenComponentType) {
 
     case 'Flex':
       return <Flex {...props}>{children?.map((child) => renderComponents(child))}</Flex>
+
+    case 'ProgressBar':
+      return <ProgressBar {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)
