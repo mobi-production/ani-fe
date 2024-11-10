@@ -4,13 +4,13 @@ import { ComponentProps, ElementType } from 'react'
 import Badge from '../../atom/badge'
 import ImageSection from '../../atom/image-section'
 import Typography from '../../atom/typography'
-import { PASS_STATUS_BADGE, PassStatusBadgeType } from './variants'
+import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
 
-type PassProductItemBasicProps = ComponentProps<'div'> & {
+type PathProductItemBasicProps = ComponentProps<'div'> & {
   component?: ElementType
   asChild?: boolean
 }
-function PassProductItemBasic({ component = 'div', asChild, ...props }: PassProductItemBasicProps) {
+function PathProductItemBasic({ component = 'div', asChild, ...props }: PathProductItemBasicProps) {
   const Component = asChild ? Slot : component
 
   return (
@@ -38,12 +38,12 @@ function Image({ src, alt, className, ...props }: ImageProps) {
 type BadgeListProps = ComponentProps<'div'> & {
   level: number
   category: string
-  badgeType?: PassStatusBadgeType
+  badgeType?: PathStatusBadgeType
 }
 
 function BadgeList({ level = 0, category = '', badgeType = 'SCHEDULE' }: BadgeListProps) {
-  const badgeColor = PASS_STATUS_BADGE[badgeType].COLOR
-  const badgeLabel = PASS_STATUS_BADGE[badgeType].LABEL
+  const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
+  const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
 
   return (
     <div className='flex flex-row gap-[0.375rem]'>
@@ -77,8 +77,8 @@ function TextContentList({ name, period }: TextContentListProps) {
   )
 }
 
-PassProductItemBasic.Image = Image
-PassProductItemBasic.BadgeList = BadgeList
-PassProductItemBasic.TextContentList = TextContentList
+PathProductItemBasic.Image = Image
+PathProductItemBasic.BadgeList = BadgeList
+PathProductItemBasic.TextContentList = TextContentList
 
-export default PassProductItemBasic
+export default PathProductItemBasic

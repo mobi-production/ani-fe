@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import PassProductItemBasic from './PassProductItemBasic'
+import PathProductItemBasic from './PathProductItemBasic'
 
 const meta = {
-  title: 'Molecule/PassProductItem/PassProductItemBasic',
-  component: PassProductItemBasic,
+  title: 'Molecule/PathProductItem/PathProductItemBasic',
+  component: PathProductItemBasic,
   parameters: {
     layout: 'centered',
     docs: {
@@ -14,27 +14,27 @@ const meta = {
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof PassProductItemBasic>
+} satisfies Meta<typeof PathProductItemBasic>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   render: (args) => (
-    <PassProductItemBasic {...args}>
-      <PassProductItemBasic.Image
+    <PathProductItemBasic {...args}>
+      <PathProductItemBasic.Image
         src='/avif/placeholder.avif'
         alt='Placeholder Image'
       />
-      <PassProductItemBasic.BadgeList
+      <PathProductItemBasic.BadgeList
         level={1}
         category='카테고리'
         badgeType='IN_PROGRESS'
       />
-      <PassProductItemBasic.TextContentList
+      <PathProductItemBasic.TextContentList
         name='패스 이름'
         period='2024.09.06 ~ 2024.10.06'
       />
-    </PassProductItemBasic>
+    </PathProductItemBasic>
   )
 }

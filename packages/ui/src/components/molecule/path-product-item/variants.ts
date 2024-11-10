@@ -1,6 +1,6 @@
 import { BadgeColors } from '../../atom/badge/variants'
 
-export const PASS_STATUS_BADGE = {
+export const PATH_STATUS_BADGE = {
   SCHEDULE: {
     LABEL: '진행 예정',
     COLOR: BadgeColors.PURPLE
@@ -19,4 +19,4 @@ export const PASS_STATUS_BADGE = {
   }
 } as const
 
-export type PassStatusBadgeType = keyof typeof PASS_STATUS_BADGE
+export type PathStatusBadgeType = keyof typeof PATH_STATUS_BADGE
