@@ -12,7 +12,7 @@
   }
 
   .custom-radio {
-    @apply rou nded-full h-[1.125rem] w-[1.125rem] appearance-none border-[1.5px] border-[#000000/10] bg-transparent;
+    @apply rounded-full h-[1.125rem] w-[1.125rem] appearance-none border-[1.5px] border-[#000000/10] bg-transparent;
   }
 
   .custom-radio:checked {
@@ -23,6 +23,6 @@
   }
 
   .reset-button {
-    @apply font-inherit cursor-pointer border-none bg-transparent p-0 text-inherit outline-none;
+    @apply cursor-pointer border-none bg-transparent p-0 text-inherit outline-none;
   }
 }
