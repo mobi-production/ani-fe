@@ -1,4 +1,7 @@
+import { cn } from '@repo/util'
 import { ChangeEvent, ComponentProps, createContext, useContext, useState } from 'react'
+
+import Typography from '../typography'
 
 type TextAreaProps = ComponentProps<'div'> & {
   defaultValue?: string
@@ -17,7 +20,7 @@ function TextArea({ children, defaultValue, ...props }: TextAreaProps) {
   return (
     <TextAreaContext.Provider value={{ value, onChange: setValue }}>
       <div
-        className='flex flex-col items-start gap-2'
+        className='flex flex-col gap-2'
         {...props}>
         {children}
       </div>
@@ -27,9 +30,10 @@ function TextArea({ children, defaultValue, ...props }: TextAreaProps) {
 
 type TextAreaFormProps = ComponentProps<'textarea'> & {
   placeholder?: string
+  maxLength?: number
 }
 
-function TextAreaForm({ placeholder, ...props }: TextAreaFormProps) {
+function TextAreaForm({ placeholder, maxLength, className, ...props }: TextAreaFormProps) {
   const context = useContext(TextAreaContext)
   if (!context) {
     throw new Error('useTextAreaContext must be used within a TextArea')
@@ -45,6 +49,13 @@ function TextAreaForm({ placeholder, ...props }: TextAreaFormProps) {
       value={value}
       onChange={handleChangeValue}
       placeholder={placeholder}
+      maxLength={maxLength}
+      className={cn(
+        'resize-none rounded-[0.5rem] border-[0.094rem] outline-none',
+        'border-label-assistive focus:border-label-normal',
+        'placeholder:text-b1-normal placeholder:text-label-assistive',
+        className
+      )}
       {...props}
     />
   )
@@ -64,8 +75,15 @@ function CharCountIndicator({ maxLength, ...props }: CharCountIndicatorProps) {
   const { value } = context
 
   return (
-    <div {...props}>
-      {value?.length ?? 0}/{maxLength}
+    <div
+      className='text-right'
+      {...props}>
+      <Typography
+        variant='body-1-normal'
+        fontWeight='medium'
+        color='assistive'>
+        {value?.length ?? 0}/{maxLength}
+      </Typography>
     </div>
   )
 }

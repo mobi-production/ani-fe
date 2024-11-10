@@ -16,13 +16,17 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    defaultValue: '1'
+    defaultValue: ''
   },
 
   render: (args) => (
-    <div className='w-[40rem]'>
+    <div>
       <TextArea {...args}>
-        <TextArea.form placeholder='취소 사유를 입력해주세요' />
+        <TextArea.form
+          placeholder='취소 사유를 입력해주세요'
+          className='h-[12.5rem] w-[31.5rem] p-4'
+          maxLength={500}
+        />
         <TextArea.indicator maxLength={500} />
       </TextArea>
     </div>
