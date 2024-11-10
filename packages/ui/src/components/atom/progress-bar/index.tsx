@@ -5,16 +5,17 @@ import Flex from '../flex'
 import { FlexAlign, FlexDirection } from '../flex/variants'
 import Typography from '../typography'
 import { TypographyColors, TypographyFontWeights, TypographyVariants } from '../typography/variants'
+import { ProgressBarValue, ProgressBarValueSchema } from './variants'
 
 type ProgressBarProps = ComponentProps<'div'> & {
-  value: number
+  value: ProgressBarValue
   showPercentage?: boolean
   color?: string
   asChild?: boolean
 }
 
 function ProgressBar({
-  value = 0,
+  value,
   showPercentage = true,
   color = 'primary-normal',
   asChild,
@@ -23,9 +24,8 @@ function ProgressBar({
 }: ProgressBarProps) {
   const Component = asChild ? Slot : 'div'
 
-  if (value === undefined) {
-    throw new Error('value is required')
-  }
+  const { success, data } = ProgressBarValueSchema.safeParse(value)
+  const validValue = success ? data : 0
 
   return (
     <Flex
@@ -34,13 +34,13 @@ function ProgressBar({
       className={`w-[100%] gap-[0.25rem] ${className}`}
       {...props}>
       <PercentageText
-        value={value}
+        value={validValue}
         showPercentage={showPercentage}
       />
       <Component className='relative min-h-[0.375rem] w-[100%] rounded-[1.875rem] bg-[#17171715]'>
         <div
           className={`absolute right-0 top-0 min-h-[0.375rem] rounded-[1.875rem] bg-${color}`}
-          style={{ width: `${value}%` }}
+          style={{ width: `${validValue}%` }}
         />
       </Component>
     </Flex>
