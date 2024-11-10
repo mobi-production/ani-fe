@@ -4,17 +4,17 @@
     {
       "type": "OutlinedButton",
       "variant": "primary",
-      "label": "Click Me",
+      "children": "Click Me",
       "size": "large",
       "disabled": false
     },
     {
       "type": "SolidButton",
       "variant": "primary",
-      "label": "Click Me",
+      "children": "Click Me",
       "size": "medium",
       "disabled": false,
-      "leftIcon": {
+      "rightIcon": {
         "type": "Icon",
         "name": "plus"
       }
@@ -22,10 +22,10 @@
     {
       "type": "TextButton",
       "variant": "secondary",
-      "label": "Click Me",
+      "children": "Click Me",
       "size": "small",
       "disabled": false,
-      "leftIcon": {
+      "rightIcon": {
         "type": "Icon",
         "name": "plus"
       }

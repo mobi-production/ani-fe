@@ -34,7 +34,6 @@ function TextButton({
   children,
   disabled = false,
   className,
-  leftIcon,
   rightIcon,
   ...props
 }: Props) {
@@ -44,7 +43,6 @@ function TextButton({
     <Component
       className={cn(buttonVariants({ variant, disabled }), className)}
       {...props}>
-      {leftIcon}
       <Typography
         variant={SizeMapping[size].fontVariant}
         fontWeight={SizeMapping[size].fontWeight}
