@@ -4,7 +4,12 @@ import Flex from '../flex'
 import { FlexAlign, FlexDirection } from '../flex/variants'
 import Typography from '../typography'
 import { TypographyColors, TypographyFontWeights, TypographyVariants } from '../typography/variants'
-import { ProgressBarValue, ProgressBarValueSchema } from './variants'
+import {
+  PROGRESS_BAR_VALUE_MAX_VALUE,
+  PROGRESS_BAR_VALUE_MIN_VALUE,
+  ProgressBarValue,
+  ProgressBarValueSchema
+} from './variants'
 
 type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue
@@ -20,12 +25,17 @@ function ProgressBar({
   className,
   ...props
 }: ProgressBarProps) {
-  const { success, data } = ProgressBarValueSchema.safeParse(value)
-  const validValue = success ? data : 0
+  const parseResult = ProgressBarValueSchema.safeParse(value)
 
-  if (!success) {
-    throw new Error('ProgressBar Value must be an between 0 and 100.')
+  if (!parseResult.success) {
+    const errorMessages = parseResult.error.issues.map((issue) => issue.message).join('; ')
+    throw new Error(`ProgressBar value error: ${errorMessages}`)
   }
+
+  const validValue = Math.min(
+    PROGRESS_BAR_VALUE_MAX_VALUE,
+    Math.max(PROGRESS_BAR_VALUE_MIN_VALUE, value)
+  )
 
   return (
     <Flex
