@@ -15,7 +15,6 @@ type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue
   showPercentage?: boolean
   color?: string
-  asChild?: boolean
 }
 
 function ProgressBar({
