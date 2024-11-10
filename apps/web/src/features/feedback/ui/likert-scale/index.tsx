@@ -9,8 +9,8 @@ const likertScaleVariants = cva(
   {
     variants: {
       isSelectedScore: {
-        true: 'bg-primary-normal text-label-normal',
-        false: 'border-[0.063rem] border-label-assistive text-l-normal text-label-assistive'
+        true: 'bg-primary-normal',
+        false: 'border-[0.063rem] border-label-assistive'
       }
     }
   }
@@ -76,7 +76,13 @@ function OneScore({
         isReverseCoded={isReverseCoded}
       />
       <div className={cn(likertScaleVariants({ isSelectedScore }), className)}>
-        <div className='w-full text-center text-h2'>{scoreValue}</div>
+        <Typography
+          asChild
+          variant='heading-2'
+          fontWeight='semibold'
+          color={isSelectedScore ? 'normal' : 'assistive'}>
+          <div className='w-full text-center'>{scoreValue}</div>
+        </Typography>
       </div>
     </div>
   )
@@ -97,7 +103,7 @@ function ScoreIndicatorText({ scoreValue, isReverseCoded }: ScoreIndicatorTextPr
     <div className='h-5 text-center'>
       <Typography
         variant='label-normal'
-        fontWight='medium'
+        fontWeight='medium'
         color='assistive'>
         {indicatorText}
       </Typography>
