@@ -1,7 +1,7 @@
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
+import Icon from '../icon'
 import SolidButton from './TextButton'
 import TextButton from './TextButton'
 import { ButtonSize, ButtonVariant } from './variants'
@@ -67,7 +67,7 @@ export const WithIcon: Story = {
       <SolidButton
         onClick={() => setDisabled((prev) => !prev)}
         {...args}
-        rightIcon={<ArrowForwardIosRoundedIcon sx={{ fontSize: '1rem', color: 'inherit' }} />}
+        rightIcon={<Icon name='RightOutlined' />}
         disabled={disabled}
       />
     )

@@ -22,6 +22,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/util": "workspace:*",
     "class-variance-authority": "^0.7.0",
