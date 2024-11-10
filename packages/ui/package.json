@@ -12,6 +12,7 @@
     "./button": "./src/components/atom/button/index.tsx",
     "./progress-bar": "./src/components/atom/progress-bar/index.tsx",
     "./badge": "./src/components/atom/badge/index.tsx",
+    "./path-product-item": "./src/components/molecule/path-product-item/index.tsx",
     "./icon": "./src/components/atom/icon/index.tsx",
     "./renderComponents": "./src/components/renderComponents.tsx",
     "./types": "./src/types/server-driven.ts"
