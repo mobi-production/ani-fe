@@ -4,7 +4,6 @@ import Typography from '../typography'
 
 export type CustomButtonProps = ComponentPropsWithoutRef<'button'> & {
   asChild?: boolean
-  leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
 }
 

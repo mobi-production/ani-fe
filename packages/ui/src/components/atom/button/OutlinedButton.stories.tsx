@@ -1,5 +1,4 @@
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded'
-import TurnedInNotRoundedIcon from '@mui/icons-material/TurnedInNotRounded'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
@@ -66,7 +65,6 @@ export const WithIcon: Story = {
       <OutlinedButton
         onClick={() => setDisabled((prev) => !prev)}
         {...args}
-        leftIcon={<TurnedInNotRoundedIcon sx={{ fontSize: '1rem', color: 'inherit' }} />}
         rightIcon={<ArrowForwardIosRoundedIcon sx={{ fontSize: '1rem', color: 'inherit' }} />}
         disabled={disabled}
       />

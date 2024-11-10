@@ -22,10 +22,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/icons-material": "^6.1.6",
-    "@mui/material": "^6.1.6",
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/util": "workspace:*",
     "class-variance-authority": "^0.7.0",
