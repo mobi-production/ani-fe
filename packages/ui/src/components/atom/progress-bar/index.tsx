@@ -27,6 +27,10 @@ function ProgressBar({
   const { success, data } = ProgressBarValueSchema.safeParse(value)
   const validValue = success ? data : 0
 
+  if (!success) {
+    throw new Error('ProgressBar Value must be an between 0 and 100.')
+  }
+
   return (
     <Flex
       direction={FlexDirection.COLUMN}
