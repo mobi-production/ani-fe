@@ -32,20 +32,41 @@ export const Primary: Story = {
   )
 }
 
-export const WithIndicator: Story = {
+export const WithValue: Story = {
   args: {
-    defaultValue: ''
+    defaultValue: '사유 입력할 땐 활성화 '
   },
 
   render: (args) => (
     <div>
-      <TextArea {...args}>
+      <TextArea
+        maxLength={500}
+        {...args}>
         <TextArea.form
           placeholder='취소 사유를 입력해주세요'
           className='h-[12.5rem] w-[31.5rem] p-4'
-          maxLength={500}
         />
-        <TextArea.indicator maxLength={500} />
+        <TextArea.indicator />
+      </TextArea>
+    </div>
+  )
+}
+
+export const WithError: Story = {
+  args: {
+    defaultValue: '사유 입력할 땐 활성화'.repeat(45)
+  },
+
+  render: (args) => (
+    <div>
+      <TextArea
+        maxLength={500}
+        {...args}>
+        <TextArea.form
+          placeholder='취소 사유를 입력해주세요'
+          className='h-[12.5rem] w-[31.5rem] p-4'
+        />
+        <TextArea.indicator />
       </TextArea>
     </div>
   )
