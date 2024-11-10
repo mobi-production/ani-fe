@@ -1,5 +1,5 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useMemo, useState } from 'react'
-import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../model/likert-scale'
+import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../config/likert-scale'
 import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
 import Typography from '@repo/ui/typography'

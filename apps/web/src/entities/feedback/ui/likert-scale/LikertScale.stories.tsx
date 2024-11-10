@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import LikertScale from '.'
-import { LIKERT_SCALE_MAX_SCORE } from '../../model/likert-scale'
+import { LIKERT_SCALE_MAX_SCORE } from '../../config/likert-scale'
 
 const meta = {
   title: 'Widget/Feedback/LikertScale',

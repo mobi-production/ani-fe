@@ -1,5 +1,5 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useState } from 'react'
-import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
+import { FEEDBACK_STEP, FeedbackStepType } from '../../config/feedback-step'
 import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
 import Typography from '@repo/ui/typography'
