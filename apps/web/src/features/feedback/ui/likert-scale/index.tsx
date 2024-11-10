@@ -9,7 +9,7 @@ const likertScaleVariants = cva(
     variants: {
       isSelectedScore: {
         true: 'bg-primary-normal text-label-normal',
-        false: 'border-[0.0625rem] border-label-assistive text-l-normal text-label-assistive'
+        false: 'border-[0.063rem] border-label-assistive text-l-normal text-label-assistive'
       }
     }
   }
@@ -75,7 +75,7 @@ function OneScore({
         isReverseCoded={isReverseCoded}
       />
       <div className={cn(likertScaleVariants({ isSelectedScore }), className)}>
-        <div className='w-full text-center'>{scoreValue}</div>
+        <div className='w-full text-center text-h2'>{scoreValue}</div>
       </div>
     </div>
   )

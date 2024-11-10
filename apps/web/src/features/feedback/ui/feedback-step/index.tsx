@@ -74,7 +74,7 @@ function OneStep({ stepLabel, stepValue, className, onClick, ...props }: Feedbac
 }
 
 function StepDivider() {
-  return <div className='mt-10 h-0 flex-grow border-[0.09375rem] border-label-neutral'></div>
+  return <div className='mt-10 h-0 flex-grow border-[0.094rem] border-label-neutral'></div>
 }
 
 FeedbackStep.Item = OneStep

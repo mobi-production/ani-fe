@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import LikertScale from '.'
 import { LIKERT_SCALE_MAX_SCORE } from '../../model/likert-scale'
-import SpacingBlock from '@repo/ui/spacing-block'
-import { SpacingBlockVariants } from 'node_modules/@repo/ui/src/components/atom/spacing-block/variants'
 
 const meta = {
   title: 'Widget/Feedback/LikertScale',
