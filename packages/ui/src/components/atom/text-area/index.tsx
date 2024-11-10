@@ -1,24 +1,49 @@
 import { cn } from '@repo/util'
-import { ChangeEvent, ComponentProps, createContext, useContext, useState } from 'react'
+import { cva } from 'class-variance-authority'
+import { ChangeEvent, ComponentProps, createContext, useContext, useMemo, useState } from 'react'
 
 import Typography from '../typography'
+import { TextAreaVariants } from './variants'
 
 type TextAreaProps = ComponentProps<'div'> & {
   defaultValue?: string
+  maxLength?: number
 }
 
 type TextAreaContextType = {
   value: string | undefined
   onChange: (value: string) => void
+  isOverLimitLength: boolean
+  maxLength?: number
 }
+
+const textAreaVariants = cva(
+  'resize-none rounded-[0.5rem] border-[0.094rem] bg-fill-alternative outline-none focus:border-label-normal placeholder:text-b1-normal placeholder:text-label-assistive',
+  {
+    variants: {
+      variant: {
+        [TextAreaVariants.ACTIVE]: 'border-label-assistive ',
+        [TextAreaVariants.ERROR]: 'border-status-error'
+      }
+    },
+    defaultVariants: {
+      variant: TextAreaVariants.ACTIVE
+    }
+  }
+)
 
 const TextAreaContext = createContext<TextAreaContextType | undefined>(undefined)
 
-function TextArea({ children, defaultValue, ...props }: TextAreaProps) {
+function TextArea({ children, defaultValue, maxLength, ...props }: TextAreaProps) {
   const [value, setValue] = useState<string | undefined>(defaultValue ?? undefined)
 
+  const isOverLimitLength = useMemo(() => {
+    if (typeof maxLength !== 'number') return false
+    return (value?.length ?? 0) >= maxLength
+  }, [value, maxLength])
+
   return (
-    <TextAreaContext.Provider value={{ value, onChange: setValue }}>
+    <TextAreaContext.Provider value={{ value, onChange: setValue, maxLength, isOverLimitLength }}>
       <div
         className='flex flex-col gap-2'
         {...props}>
@@ -30,16 +55,15 @@ function TextArea({ children, defaultValue, ...props }: TextAreaProps) {
 
 type TextAreaFormProps = ComponentProps<'textarea'> & {
   placeholder?: string
-  maxLength?: number
 }
 
-function TextAreaForm({ placeholder, maxLength, className, ...props }: TextAreaFormProps) {
+function TextAreaForm({ placeholder, className, ...props }: TextAreaFormProps) {
   const context = useContext(TextAreaContext)
   if (!context) {
     throw new Error('useTextAreaContext must be used within a TextArea')
   }
 
-  const { value, onChange } = context
+  const { value, onChange, maxLength, isOverLimitLength } = context
 
   const handleChangeValue = (event: ChangeEvent<HTMLTextAreaElement>) =>
     onChange?.(event.currentTarget.value)
@@ -51,9 +75,9 @@ function TextAreaForm({ placeholder, maxLength, className, ...props }: TextAreaF
       placeholder={placeholder}
       maxLength={maxLength}
       className={cn(
-        'resize-none rounded-[0.5rem] border-[0.094rem] outline-none',
-        'border-label-assistive focus:border-label-normal',
-        'placeholder:text-b1-normal placeholder:text-label-assistive',
+        textAreaVariants({
+          variant: isOverLimitLength ? TextAreaVariants.ERROR : TextAreaVariants.ACTIVE
+        }),
         className
       )}
       {...props}
@@ -61,18 +85,15 @@ function TextAreaForm({ placeholder, maxLength, className, ...props }: TextAreaF
   )
 }
 
-type CharCountIndicatorProps = ComponentProps<'div'> & {
-  maxLength?: number
-}
+type CharCountIndicatorProps = ComponentProps<'div'>
 
-function CharCountIndicator({ maxLength, ...props }: CharCountIndicatorProps) {
+function CharCountIndicator({ ...props }: CharCountIndicatorProps) {
   const context = useContext(TextAreaContext)
   if (!context) {
     throw new Error('useTextAreaContext must be used within a TextArea')
   }
+  const { value, maxLength, isOverLimitLength } = context
   if (typeof maxLength !== 'number') return <></>
-
-  const { value } = context
 
   return (
     <div
@@ -81,7 +102,7 @@ function CharCountIndicator({ maxLength, ...props }: CharCountIndicatorProps) {
       <Typography
         variant='body-1-normal'
         fontWeight='medium'
-        color='assistive'>
+        color={isOverLimitLength ? 'error' : 'assistive'}>
         {value?.length ?? 0}/{maxLength}
       </Typography>
     </div>
