@@ -43,8 +43,12 @@ function ProgressBar({
       )}
       <div className='relative min-h-[0.375rem] w-[100%] rounded-[1.875rem] bg-[#17171715]'>
         <div
-          className={`absolute right-0 top-0 min-h-[0.375rem] rounded-[1.875rem] bg-${color}`}
-          style={{ width: `${validValue}%` }}
+          className={`absolute right-0 top-0 min-h-[0.375rem] w-[100%] rounded-[1.875rem] bg-${color}`}
+          style={{
+            transform: `scaleX(${validValue / 100})`,
+            transformOrigin: 'center right',
+            transition: 'transform 1.5s ease'
+          }}
         />
       </div>
     </Flex>
