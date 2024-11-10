@@ -37,10 +37,10 @@ const TextAreaContext = createContext<TextAreaContextType | undefined>(undefined
 function TextArea({ children, defaultValue, maxLength, ...props }: TextAreaProps) {
   const [value, setValue] = useState<string | undefined>(defaultValue ?? undefined)
 
-  const isOverLimitLength = useMemo(
-    () => (value?.length ?? 0) >= (maxLength ?? 0),
-    [value, maxLength]
-  )
+  const isOverLimitLength = useMemo(() => {
+    if (typeof maxLength !== 'number') return false
+    return (value?.length ?? 0) >= maxLength
+  }, [value, maxLength])
 
   return (
     <TextAreaContext.Provider value={{ value, onChange: setValue, maxLength, isOverLimitLength }}>
