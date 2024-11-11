@@ -13,7 +13,7 @@ function PathProductItemBasic({ component = 'div', ...props }: PathProductItemBa
 
   return (
     <Component
-      className='flex min-h-[333px] max-w-[18.75rem] flex-col gap-[0.75rem]'
+      className='flex min-h-[20.813rem] max-w-[18.75rem] flex-col gap-[0.75rem]'
       {...props}
     />
   )
@@ -61,6 +61,7 @@ function TextContentList({ name, period }: TextContentListProps) {
   return (
     <div className='flex flex-col gap-[0.375rem]'>
       <Typography
+        className='line-clamp-2'
         variant='label-normal'
         fontWeight='semibold'>
         {name}

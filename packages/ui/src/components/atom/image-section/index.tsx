@@ -54,7 +54,7 @@ function ImageSection({
 
   return (
     <Component
-      className={`${imageSectionVariants({ size })} relative ${className}`}
+      className={`${imageSectionVariants({ size })} relative flex-shrink-0 ${className}`}
       {...props}>
       <Image
         src={src}

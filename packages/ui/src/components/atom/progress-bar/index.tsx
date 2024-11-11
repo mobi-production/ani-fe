@@ -11,7 +11,7 @@ import {
   ProgressBarValueSchema
 } from './variants'
 
-type ProgressBarProps = ComponentProps<'div'> & {
+export type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue
   showPercentage?: boolean
   color?: string
