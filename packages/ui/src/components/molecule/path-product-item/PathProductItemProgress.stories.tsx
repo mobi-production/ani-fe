@@ -6,7 +6,7 @@ const meta = {
   title: 'Molecule/PathProductItem/PathProductItemProgress',
   component: PathProductItemProgress,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'centered',
     docs: {
       description: {
         component: '패스 컨텐츠와 진행도를 보여줄 수 있는 Item 컴포넌트 입니다.'
