@@ -33,6 +33,7 @@ export const Primary: Story = {
           alt='Placeholder Image'
         />
         <PathProductItemProgress.RightSection
+          badgeType='NOT_COMPLETE'
           level={1}
           category='카테고리'
           name='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름'

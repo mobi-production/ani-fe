@@ -38,16 +38,10 @@ type RightSectionProps = ComponentProps<'div'> & {
   level: number
   category: string
   name: string
-  badgeType?: PathStatusBadgeType
+  badgeType: PathStatusBadgeType
 } & ProgressBarProps
 
-function RightSection({
-  level = 0,
-  category = '',
-  name,
-  badgeType = 'SCHEDULE',
-  value
-}: RightSectionProps) {
+function RightSection({ level, category, name, badgeType = 'SCHEDULE', value }: RightSectionProps) {
   const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
   const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
 

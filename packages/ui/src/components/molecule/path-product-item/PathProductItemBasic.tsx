@@ -36,10 +36,10 @@ function Image({ src, alt, className, ...props }: ImageProps) {
 type BadgeListProps = ComponentProps<'div'> & {
   level: number
   category: string
-  badgeType?: PathStatusBadgeType
+  badgeType: PathStatusBadgeType
 }
 
-function BadgeList({ level = 0, category = '', badgeType = 'SCHEDULE' }: BadgeListProps) {
+function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) {
   const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
   const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
 
