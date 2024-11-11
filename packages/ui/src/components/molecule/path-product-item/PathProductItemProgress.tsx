@@ -52,7 +52,7 @@ function RightSection({
   const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
 
   return (
-    <section className='flex w-[100%] flex-col justify-between'>
+    <div className='flex w-[100%] flex-col justify-between'>
       <div>
         <div className='mb-[0.75rem] flex flex-row gap-[0.375rem]'>
           <Badge>Lv.{level}</Badge>
@@ -67,7 +67,7 @@ function RightSection({
         </Typography>
       </div>
       <ProgressBar value={value} />
-    </section>
+    </div>
   )
 }
 
