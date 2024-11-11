@@ -1,4 +1,3 @@
-import { Slot } from '@radix-ui/react-slot'
 import { ComponentProps, ElementType } from 'react'
 
 import Badge from '../../atom/badge'
@@ -8,10 +7,9 @@ import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
 
 type PathProductItemBasicProps = ComponentProps<'div'> & {
   component?: ElementType
-  asChild?: boolean
 }
-function PathProductItemBasic({ component = 'div', asChild, ...props }: PathProductItemBasicProps) {
-  const Component = asChild ? Slot : component
+function PathProductItemBasic({ component = 'div', ...props }: PathProductItemBasicProps) {
+  const Component = component
 
   return (
     <Component
