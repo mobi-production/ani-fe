@@ -9,10 +9,10 @@ export async function generateMetadata({
    * TODO: 패스명 가져오는 로직 추가
    * 현재는 동적 라우팅에 사용된 id 값을 그대로 반영하고 있습니다.
    */
-  const pathName = pathId
+  const pathName = params.pathId
 
   return {
-    title: `ANI | ${partName}`,
+    title: `ANI | ${pathName}`,
     description: `${pathName} 패스 상세 페이지입니다.`
   }
 }
