@@ -2,7 +2,7 @@ import { ComponentProps, MouseEvent, createContext, useContext, useState } from 
 import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
 import { cn } from '@repo/util'
 import { cva } from 'class-variance-authority'
-import Typography from '@repo/ui/typography'
+import { Typography } from '@ui/static-components'
 
 const feedbackStepVariants = cva(
   'm-auto flex h-[1.125rem] w-[1.125rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
