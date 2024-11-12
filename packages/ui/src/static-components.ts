@@ -1,4 +1,5 @@
 export { default as Badge } from '@ui/components/badge'
+export { OutlinedButton, SolidButton, TextButton } from '@ui/components/button'
 export { default as Flex } from '@ui/components/flex'
 export { default as Icon } from '@ui/components/icon'
 export { default as ImageSection } from '@ui/components/image-section'
