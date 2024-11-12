@@ -1,6 +1,6 @@
 'use client'
 
-import { FEEDBACK_STEP, FeedbackStepType } from '@/entities/feedback/config/feedback-step'
+import { FEEDBACK_STEP, FeedbackStepType } from '@/widgets/feedback/config/feedback-step'
 import { extractKeysFromObject } from '@/shared/lib'
 import { MentoFeedback, PairFeedback, PartFeedback } from '@/widgets/feedback/ui'
 import { useState } from 'react'
