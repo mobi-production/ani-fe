@@ -1,1 +1,0 @@
-export { useFunnel } from './funnel'
