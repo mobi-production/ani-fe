@@ -1,9 +1,14 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@repo/util'
+import {
+  FlexAlign,
+  FlexDirection,
+  FlexGap,
+  FlexJustify,
+  FlexWrap
+} from '@ui/components/atom/flex/variants'
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
-
-import { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './variants'
 
 const flexVariants = cva('flex', {
   variants: {

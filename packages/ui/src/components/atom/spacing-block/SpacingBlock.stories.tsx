@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import Typography from '../typography'
-import SpacingBlock from '.'
-import { SpacingBlockVariants } from './variants'
+import SpacingBlock from '@ui/components/atom/spacing-block'
+import { SpacingBlockVariants } from '@ui/components/atom/spacing-block/variants'
+import Typography from '@ui/components/atom/typography'
 
 const meta = {
   title: 'Atom/SpacingBlock',
@@ -60,7 +59,7 @@ export const AsChild: Story = {
   },
   render: (args) => (
     <SpacingBlock {...args}>
-      <Typography variant='caption-1'>Spacing</Typography>
+      <Typography variant='body-1-normal'>Spacing</Typography>
     </SpacingBlock>
   )
 }

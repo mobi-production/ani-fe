@@ -1,14 +1,13 @@
+import Badge from '@ui/components/atom/badge'
+import { OutlinedButton, SolidButton, TextButton } from '@ui/components/atom/button'
+import Flex from '@ui/components/atom/flex'
+import Icon from '@ui/components/atom/icon'
+import ImageSection from '@ui/components/atom/image-section'
+import ProgressBar from '@ui/components/atom/progress-bar'
+import RadioGroup from '@ui/components/atom/radio-group'
+import SpacingBlock from '@ui/components/atom/spacing-block'
+import Typography from '@ui/components/atom/typography'
 import { ComponentProps } from 'react'
-
-import Badge from '@/components/atom/badge'
-import { OutlinedButton, SolidButton, TextButton } from '@/components/atom/button'
-import Flex from '@/components/atom/flex'
-import Icon from '@/components/atom/icon'
-import ImageSection from '@/components/atom/image-section'
-import ProgressBar from '@/components/atom/progress-bar'
-import RadioGroup from '@/components/atom/radio-group'
-import SpacingBlock from '@/components/atom/spacing-block'
-import Typography from '@/components/atom/typography'
 
 export type ComponentPropsMap = {
   RadioGroup: ComponentProps<typeof RadioGroup>

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import Badge from '.'
-import { BadgeColors, BadgeSizes } from './variants'
+import Badge from '@ui/components/atom/badge'
+import { BadgeColors, BadgeSizes } from '@ui/components/atom/badge/variants'
 
 const meta = {
   title: 'Atom/Badge',

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import PathProductItemBasic from './PathProductItemBasic'
+import PathProductItemBasic from '@ui/components/molecule/path-product-item/PathProductItemBasic'
 
 const meta = {
   title: 'Molecule/PathProductItem/PathProductItemBasic',
