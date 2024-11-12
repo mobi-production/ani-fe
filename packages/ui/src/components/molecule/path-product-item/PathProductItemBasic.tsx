@@ -1,10 +1,12 @@
 import { Slot } from '@radix-ui/react-slot'
+import Badge from '@ui/components/atom/badge'
+import ImageSection from '@ui/components/atom/image-section'
+import Typography from '@ui/components/atom/typography'
+import {
+  PATH_STATUS_BADGE,
+  PathStatusBadgeType
+} from '@ui/components/molecule/path-product-item/variants'
 import { ComponentProps, ElementType } from 'react'
-
-import Badge from '../../atom/badge'
-import ImageSection from '../../atom/image-section'
-import Typography from '../../atom/typography'
-import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
 
 type PathProductItemBasicProps = ComponentProps<'div'> & {
   component?: ElementType

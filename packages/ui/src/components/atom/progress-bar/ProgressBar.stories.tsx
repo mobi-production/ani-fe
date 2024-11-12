@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import ProgressBar from '.'
+import ProgressBar from '@ui/components/atom/progress-bar'
 
 const meta = {
   title: 'Atom/ProgressBar',

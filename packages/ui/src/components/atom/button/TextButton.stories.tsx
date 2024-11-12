@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import TextButton from '@ui/components/atom/button/TextButton'
+import { ButtonSize, ButtonVariant } from '@ui/components/atom/button/variants'
+import Icon from '@ui/components/atom/icon'
 import { useState } from 'react'
-
-import Icon from '../icon'
-import SolidButton from './TextButton'
-import TextButton from './TextButton'
-import { ButtonSize, ButtonVariant } from './variants'
 
 const meta = {
   title: 'Atom/Button/TextButton',
@@ -26,7 +24,7 @@ const meta = {
       control: 'boolean'
     }
   }
-} satisfies Meta<typeof SolidButton>
+} satisfies Meta<typeof TextButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -64,7 +62,7 @@ export const WithIcon: Story = {
   render: (args) => {
     const [disabled, setDisabled] = useState(false)
     return (
-      <SolidButton
+      <TextButton
         onClick={() => setDisabled((prev) => !prev)}
         {...args}
         rightIcon={<Icon name='RightOutlined' />}

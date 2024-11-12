@@ -1,8 +1,7 @@
+import { ImageFits, ImageSizes } from '@ui/components/atom/image-section/variants'
 import { cva, VariantProps } from 'class-variance-authority'
 import Image from 'next/image'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
-
-import { ImageFits, ImageSizes } from './variants'
 
 export const imageSectionVariants = cva('', {
   variants: {
