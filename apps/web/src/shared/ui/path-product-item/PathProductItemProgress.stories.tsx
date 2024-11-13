@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemProgress from './PathProductItemProgress'
 
 const meta = {
-  title: 'Molecule/PathProductItem/PathProductItemProgress',
+  title: 'ProductItem/Progress',
   component: PathProductItemProgress,
   parameters: {
     layout: 'centered',
