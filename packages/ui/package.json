@@ -1,11 +1,21 @@
 {
   "name": "@repo/ui",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
   "exports": {
-    "./static-components": "./src/static-components.ts",
-    "./client-components": "./src/client-components.ts"
+    "./client": {
+      "default": "./components/client.ts",
+      "types": "./dist/client.d.ts",
+      "require": "./dist/client.cjs",
+      "import": "./dist/client.js"
+    },
+    "./server": {
+      "default": "./components/server.ts",
+      "types": "./dist/server.d.ts",
+      "require": "./dist/server.cjs",
+      "import": "./dist/server.js"
+    }
   },
   "scripts": {
     "build": "vite build",
