@@ -1,7 +1,7 @@
 import { ComponentProps, ElementType, useMemo } from 'react'
 
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
-import { Badge, ImageSection, ProgressBar, Typography } from '@repo/ui/src/server'
+import { Badge, ImageSection, ProgressBar, Typography } from '@repo/ui/server'
 
 type PathProductItemProgressProps = ComponentProps<'div'> & {
   component?: ElementType
