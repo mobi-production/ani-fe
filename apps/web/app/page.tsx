@@ -1,6 +1,5 @@
-'use client'
-
-import Typography from '@repo/ui/typography'
+import React from 'react'
+import { Typography } from '@repo/ui/static-components'
 
 export default function Home() {
   return (
