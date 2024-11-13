@@ -1,12 +1,15 @@
-import Badge from '@ui/components/badge'
-import { OutlinedButton, SolidButton, TextButton } from '@ui/components/button'
-import Flex from '@ui/components/flex'
-import Icon from '@ui/components/icon'
-import ImageSection from '@ui/components/image-section'
-import ProgressBar from '@ui/components/progress-bar'
-import RadioGroup from '@ui/components/radio-group'
-import SpacingBlock from '@ui/components/spacing-block'
-import Typography from '@ui/components/typography'
+import { RadioGroup, Icon } from '@repo/ui/client'
+import {
+  Badge,
+  Flex,
+  ImageSection,
+  OutlinedButton,
+  ProgressBar,
+  SolidButton,
+  SpacingBlock,
+  TextButton,
+  Typography
+} from '@repo/ui/server'
 import { ComponentProps } from 'react'
 
 export type ComponentPropsMap = {

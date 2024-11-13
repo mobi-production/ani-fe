@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
-import { Badge, ImageSection, Typography } from '@ui/static-components'
+import { Badge, ImageSection, Typography } from '@repo/ui/server'
 import { ComponentProps, ElementType } from 'react'
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
 

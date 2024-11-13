@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@ui/*": ["../../packages/ui/src/*"],
       "@config/es-config/*": ["../../config/es-config/*"],
       "@config/ts-config/*": ["../../config/ts-config/*"]
     },
