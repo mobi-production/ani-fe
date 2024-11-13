@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import ImageSection from '.'
-import { ImageFits, ImageSizes } from './variants'
+import ImageSection from '@ui/components/atom/image-section'
+import { ImageFits, ImageSizes } from '@ui/components/atom/image-section/variants'
 
 const meta: Meta<typeof ImageSection> = {
   title: 'Atom/ImageSection',
@@ -13,12 +12,12 @@ const meta: Meta<typeof ImageSection> = {
   argTypes: {
     size: {
       control: 'select',
-      options: [Object.values(ImageSizes)],
+      options: [...Object.values(ImageSizes)],
       description: '이미지의 크기'
     },
     fit: {
       control: 'select',
-      options: [Object.values(ImageFits)],
+      options: [...Object.values(ImageFits)],
       description: "'cover', 'contain', 'fill', 'none', 'scaleDown'"
     },
     src: {
@@ -49,7 +48,7 @@ type Story = StoryObj<typeof meta>
 
 export const LargeImageSection: Story = {
   args: {
-    size: ImageSizes.L,
+    size: 'l',
     src: '/avif/placeholder.avif',
     alt: 'Placeholder Image'
   }
@@ -57,7 +56,7 @@ export const LargeImageSection: Story = {
 
 export const MediumImageSection: Story = {
   args: {
-    size: ImageSizes.M,
+    size: 'm',
     src: '/avif/placeholder.avif',
     alt: 'Placeholder Image'
   }
@@ -65,7 +64,7 @@ export const MediumImageSection: Story = {
 
 export const SmallImageSection: Story = {
   args: {
-    size: ImageSizes.S,
+    size: 's',
     src: '/avif/placeholder.avif',
     alt: 'Placeholder Image'
   }
@@ -73,7 +72,7 @@ export const SmallImageSection: Story = {
 
 export const XSmallImageSection: Story = {
   args: {
-    size: ImageSizes.XS,
+    size: 'xs',
     src: '/avif/placeholder.avif',
     alt: 'Placeholder Image'
   }
@@ -81,7 +80,7 @@ export const XSmallImageSection: Story = {
 
 export const XXSmallImageSection: Story = {
   args: {
-    size: ImageSizes.XXS,
+    size: 'xxs',
     src: '/avif/placeholder.avif',
     alt: 'Placeholder Image'
   }

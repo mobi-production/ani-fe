@@ -1,9 +1,13 @@
 import { Slot } from '@radix-ui/react-slot'
 import { cn } from '@repo/util'
+import {
+  ButtonSize,
+  ButtonVariant,
+  CustomButtonProps,
+  SizeMapping
+} from '@ui/components/atom/button/variants'
+import Typography from '@ui/components/atom/typography'
 import { cva, type VariantProps } from 'class-variance-authority'
-
-import Typography from '../typography'
-import { ButtonSize, ButtonVariant, CustomButtonProps, SizeMapping } from './variants'
 
 const buttonVariants = cva(
   'reset-button rounded-lg px-[1rem] bg-inherit flex items-center justify-center gap-[0.25rem] border-[1.5px] border-solid',

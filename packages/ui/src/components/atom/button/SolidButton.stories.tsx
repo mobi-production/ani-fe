@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import SolidButton from '@ui/components/atom/button/SolidButton'
+import { ButtonSize, ButtonVariant } from '@ui/components/atom/button/variants'
+import Icon from '@ui/components/atom/icon'
 import { useState } from 'react'
-
-import Icon from '../icon'
-import SolidButton from './SolidButton'
-import { ButtonSize, ButtonVariant } from './variants'
 
 const meta = {
   title: 'Atom/Button/SolidButton',

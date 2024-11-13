@@ -1,17 +1,21 @@
-import { ComponentProps } from 'react'
-
-import Flex from '../flex'
-import { FlexAlign, FlexDirection } from '../flex/variants'
-import Typography from '../typography'
-import { TypographyColors, TypographyFontWeights, TypographyVariants } from '../typography/variants'
+import { FlexAlign, FlexDirection } from '@ui/components/atom/flex/variants'
 import {
   PROGRESS_BAR_VALUE_MAX_VALUE,
   PROGRESS_BAR_VALUE_MIN_VALUE,
   ProgressBarValue,
   ProgressBarValueSchema
-} from './variants'
+} from '@ui/components/atom/progress-bar/variants'
+import Typography from '@ui/components/atom/typography'
+import {
+  TypographyColors,
+  TypographyFontWeights,
+  TypographyVariants
+} from '@ui/components/atom/typography/variants'
+import { ComponentProps } from 'react'
 
-type ProgressBarProps = ComponentProps<'div'> & {
+import Flex from '../flex'
+
+export type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue
   showPercentage?: boolean
   color?: string

@@ -1,4 +1,4 @@
-import { BadgeColors } from '../../atom/badge/variants'
+import { BadgeColors } from '@ui/components/atom/badge/variants'
 
 export const PATH_STATUS_BADGE = {
   SCHEDULE: {

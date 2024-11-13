@@ -1,21 +1,21 @@
-import { Slot } from '@radix-ui/react-slot'
-import { ComponentProps, ElementType } from 'react'
-
-import Badge from '../../atom/badge'
-import ImageSection from '../../atom/image-section'
-import Typography from '../../atom/typography'
-import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
+import Badge from '@ui/components/atom/badge'
+import ImageSection from '@ui/components/atom/image-section'
+import Typography from '@ui/components/atom/typography'
+import {
+  PATH_STATUS_BADGE,
+  PathStatusBadgeType
+} from '@ui/components/molecule/path-product-item/variants'
+import { ComponentProps, ElementType, useMemo } from 'react'
 
 type PathProductItemBasicProps = ComponentProps<'div'> & {
   component?: ElementType
-  asChild?: boolean
 }
-function PathProductItemBasic({ component = 'div', asChild, ...props }: PathProductItemBasicProps) {
-  const Component = asChild ? Slot : component
+function PathProductItemBasic({ component = 'div', ...props }: PathProductItemBasicProps) {
+  const Component = component
 
   return (
     <Component
-      className='flex min-h-[333px] max-w-[18.75rem] flex-col gap-[0.75rem]'
+      className='flex min-h-[20.813rem] max-w-[18.75rem] flex-col gap-[0.75rem]'
       {...props}
     />
   )
@@ -38,12 +38,16 @@ function Image({ src, alt, className, ...props }: ImageProps) {
 type BadgeListProps = ComponentProps<'div'> & {
   level: number
   category: string
-  badgeType?: PathStatusBadgeType
+  badgeType: PathStatusBadgeType
 }
 
-function BadgeList({ level = 0, category = '', badgeType = 'SCHEDULE' }: BadgeListProps) {
-  const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
-  const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
+function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) {
+  const { badgeColor, badgeLabel } = useMemo(() => {
+    return {
+      badgeColor: PATH_STATUS_BADGE[badgeType].COLOR,
+      badgeLabel: PATH_STATUS_BADGE[badgeType].LABEL
+    }
+  }, [badgeType])
 
   return (
     <div className='flex flex-row gap-[0.375rem]'>
@@ -63,6 +67,7 @@ function TextContentList({ name, period }: TextContentListProps) {
   return (
     <div className='flex flex-col gap-[0.375rem]'>
       <Typography
+        className='line-clamp-2'
         variant='label-normal'
         fontWeight='semibold'>
         {name}

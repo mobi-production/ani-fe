@@ -1,6 +1,5 @@
+import Typography from '@ui/components/atom/typography'
 import { ComponentProps, ComponentPropsWithoutRef } from 'react'
-
-import Typography from '../typography'
 
 export type CustomButtonProps = ComponentPropsWithoutRef<'button'> & {
   asChild?: boolean
