@@ -1,0 +1,19 @@
+name: notify line count
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  notify:
+    runs-on: [self-hosted]
+    steps:
+      - name: Notify PR LineCount
+        uses: naver/notify-pr-line-count@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          slackBotToken: ${{ secrets.SLACK_BOT_TOKEN }}
+          slackChannelId: 'channel'
+          maxChanges: '400'
+          ext: '.js, .ts'
+          glob: 'packages/**, !**/node_modules/*'
