@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: '패스 컨텐츠를 보여줄 수 있는 Item 컴포넌트 입니다.'
+        component: '패스의 과제 컨텐츠를 보여줄 수 있는 Item 컴포넌트 입니다.'
       }
     }
   },
