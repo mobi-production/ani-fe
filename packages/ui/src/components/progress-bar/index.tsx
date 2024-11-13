@@ -15,7 +15,7 @@ import { ComponentProps } from 'react'
 
 import Flex from '../flex'
 
-type ProgressBarProps = ComponentProps<'div'> & {
+export type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue
   showPercentage?: boolean
   color?: string

@@ -31,7 +31,7 @@ export const Primary: Story = {
         badgeType='IN_PROGRESS'
       />
       <PathProductItemBasic.TextContentList
-        name='패스 이름'
+        name='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지'
         period='2024.09.06 ~ 2024.10.06'
       />
     </PathProductItemBasic>
