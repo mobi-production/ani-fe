@@ -1,8 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import SpacingBlock from '../spacing-block'
-import Flex from '.'
-import { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './variants'
+import Flex from '@ui/components/atom/flex'
+import {
+  FlexAlign,
+  FlexDirection,
+  FlexGap,
+  FlexJustify,
+  FlexWrap
+} from '@ui/components/atom/flex/variants'
+import SpacingBlock from '@ui/components/atom/spacing-block'
 
 const meta = {
   title: 'Atom/Flex',

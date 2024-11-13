@@ -1,8 +1,11 @@
 import { Slot } from '@radix-ui/react-slot'
-import { cva, VariantProps } from 'class-variance-authority'
+import {
+  TypographyColors,
+  TypographyFontWeights,
+  TypographyVariants
+} from '@ui/components/atom/typography/variants'
+import { cva } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
-
-import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
 export const typographyVariants = cva('', {
   variants: {
@@ -36,7 +39,8 @@ export const typographyVariants = cva('', {
       [TypographyColors.NEUTRAL]: 'text-label-neutral',
       [TypographyColors.ALTERNATIVE]: 'text-label-alternative',
       [TypographyColors.ASSISTIVE]: 'text-label-assistive',
-      [TypographyColors.DISABLE]: 'text-label-disable'
+      [TypographyColors.DISABLE]: 'text-label-disable',
+      [TypographyColors.ERROR]: 'text-status-error'
     }
   },
   defaultVariants: {
@@ -46,11 +50,14 @@ export const typographyVariants = cva('', {
   }
 })
 
-type TypographyProps = VariantProps<typeof typographyVariants> &
-  ComponentPropsWithoutRef<'span'> & {
-    component?: ElementType
-    asChild?: boolean
-  }
+type TypographyProps = ComponentPropsWithoutRef<'span'> & {
+  component?: ElementType
+  asChild?: boolean
+} & {
+  variant?: (typeof TypographyVariants)[keyof typeof TypographyVariants]
+  fontWeight?: (typeof TypographyFontWeights)[keyof typeof TypographyFontWeights]
+  color?: (typeof TypographyColors)[keyof typeof TypographyColors]
+}
 
 function Typography({
   component = 'span',

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-
-import ImageSection from '.'
-import { ImageFits, ImageSizes } from './variants'
+import ImageSection from '@ui/components/atom/image-section'
+import { ImageFits, ImageSizes } from '@ui/components/atom/image-section/variants'
 
 const meta: Meta<typeof ImageSection> = {
   title: 'Atom/ImageSection',

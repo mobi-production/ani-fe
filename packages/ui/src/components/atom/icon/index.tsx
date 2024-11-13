@@ -1,7 +1,6 @@
+import { IconsMap, IconsSizes, IconVariantType } from '@ui/components/atom/icon/variants'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef } from 'react'
-
-import { IconsMap, IconsSizes, IconVariantType } from './variants'
 
 type Props = {
   name: IconVariantType

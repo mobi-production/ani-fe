@@ -1,7 +1,7 @@
-import type { ServerDrivenComponentType } from '@/types/server-driven'
+import Badge from '@ui/components/atom/badge'
+import { OutlinedButton, SolidButton, TextButton } from '@ui/components/atom/button'
+import type { ServerDrivenComponentType } from '@ui/types/server-driven'
 
-import Badge from './atom/badge'
-import { OutlinedButton, SolidButton, TextButton } from './atom/button'
 import Flex from './atom/flex'
 import Icon from './atom/icon'
 import ImageSection from './atom/image-section'

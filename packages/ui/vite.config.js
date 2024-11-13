@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src')
+      '@repo/ui': resolve(__dirname, './src')
     }
   },
   build: {
