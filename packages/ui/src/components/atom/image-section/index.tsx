@@ -1,68 +1,58 @@
-import { cva, VariantProps } from 'class-variance-authority'
-import Image from 'next/image'
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, useMemo } from 'react'
 
 import { ImageFits, ImageSizes } from './variants'
 
-export const imageSectionVariants = cva('', {
-  variants: {
-    size: {
-      [ImageSizes.XXS]: 'w-[5rem] h-[5rem]',
-      [ImageSizes.XS]: 'w-[7.5rem] h-[7.5rem]',
-      [ImageSizes.S]: 'w-[12.5rem] h-[9.375rem]',
-      [ImageSizes.M]: 'w-[18.75rem] h-[14rem]',
-      [ImageSizes.L]: 'w-[25rem] h-[18.75rem]'
-    },
-    fit: {
-      [ImageFits.COVER]: 'object-cover',
-      [ImageFits.CONTAIN]: 'object-contain',
-      [ImageFits.FILL]: 'object-fill',
-      [ImageFits.NONE]: 'object-none',
-      [ImageFits.SCALE_DOWN]: 'object-scale-down'
-    }
-  },
-  compoundVariants: [
-    { size: [ImageSizes.XXS], class: 'rounded-[0.3125rem]' },
-    { size: [ImageSizes.XS], class: 'rounded-[0.3125rem]' },
-    { size: [ImageSizes.S], class: 'rounded-[0.375rem]' },
-    { size: [ImageSizes.M], class: 'rounded-md' },
-    { size: [ImageSizes.L], class: 'rounded-[0.667rem]' }
-  ],
-  defaultVariants: {
-    size: ImageSizes.M,
-    fit: ImageFits.COVER
-  }
-})
+type ImageSectionProps = ComponentPropsWithoutRef<'img'> & {
+  src: string
+  alt: string
+  size?: (typeof ImageSizes)[keyof typeof ImageSizes]
+  fit?: (typeof ImageFits)[keyof typeof ImageFits]
+}
 
-type ImageSectionProps = VariantProps<typeof imageSectionVariants> &
-  ComponentPropsWithoutRef<'div'> & {
-    src: string
-    alt: string
-    component?: ElementType
-  }
+const sizeClasses = {
+  [ImageSizes.XXS]: { width: '5rem', height: '5rem', className: 'rounded-[0.3125rem]' },
+  [ImageSizes.XS]: { width: '7.5rem', height: '7.5rem', className: 'rounded-[0.3125rem]' },
+  [ImageSizes.S]: { width: '12.5rem', height: '9.375rem', className: 'rounded-[0.375rem]' },
+  [ImageSizes.M]: { width: '18.75rem', height: '14rem', className: 'rounded-md' },
+  [ImageSizes.L]: { width: '25rem', height: '18.75rem', className: 'rounded-[0.667rem]' }
+}
+
+const fitClasses = {
+  [ImageFits.COVER]: 'object-cover',
+  [ImageFits.CONTAIN]: 'object-contain',
+  [ImageFits.FILL]: 'object-fill',
+  [ImageFits.NONE]: 'object-none',
+  [ImageFits.SCALE_DOWN]: 'object-scale-down'
+}
 
 function ImageSection({
-  component = 'div',
-  size,
-  fit,
   src,
   alt,
+  size = 'm',
+  fit = 'cover',
   className = '',
   ...props
 }: ImageSectionProps) {
-  const Component = component
+  const { width, height, sizeClassName, fitClassName } = useMemo(() => {
+    const sizeClass = sizeClasses[size] || sizeClasses['m']
+    const fitClass = fitClasses[fit] || fitClasses['cover']
+    return {
+      width: sizeClass.width,
+      height: sizeClass.height,
+      sizeClassName: sizeClass.className,
+      fitClassName: fitClass
+    }
+  }, [size, fit])
 
   return (
-    <Component
-      className={`${imageSectionVariants({ size })} relative flex-shrink-0 ${className}`}
-      {...props}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className={imageSectionVariants({ fit })}
-      />
-    </Component>
+    <img
+      src={src}
+      alt={alt}
+      loading='lazy'
+      style={{ width, height }}
+      className={`flex-shrink-0 ${sizeClassName} ${fitClassName} ${className}`}
+      {...props}
+    />
   )
 }
 
