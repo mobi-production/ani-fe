@@ -1,8 +1,9 @@
 import { Slot } from '@radix-ui/react-slot'
-import { cn } from '@repo/util'
-import { SpacingBlockVariants } from '@ui/components/spacing-block/variants'
+import cn from '@repo/util/cn'
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentProps } from 'react'
+
+import { SpacingBlockVariants } from './variants'
 
 const spacingBlockVariants = cva('', {
   variants: {

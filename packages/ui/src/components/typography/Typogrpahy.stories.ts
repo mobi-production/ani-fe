@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Typography from '@ui/components/typography'
-import {
-  TypographyColors,
-  TypographyFontWeights,
-  TypographyVariants
-} from '@ui/components/typography/variants'
+
+import Typography from '.'
+import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
 const meta = {
   title: 'MDS/Typography',

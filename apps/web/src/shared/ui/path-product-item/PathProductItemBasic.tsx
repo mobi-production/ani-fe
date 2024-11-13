@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { ComponentProps, ElementType } from 'react'
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
-import { ImageSection, Badge, Typography } from '@repo/ui/server'
+import { Badge, ImageSection, Typography } from '@repo/ui/server'
 
 type PathProductItemBasicProps = ComponentProps<'div'> & {
   component?: ElementType

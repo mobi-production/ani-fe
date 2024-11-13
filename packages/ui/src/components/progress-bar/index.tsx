@@ -1,19 +1,19 @@
-import { FlexAlign, FlexDirection } from '@ui/components/flex/variants'
+import { FlexAlign, FlexDirection } from '@repo/ui/components/flex/variants'
+import {
+  TypographyColors,
+  TypographyFontWeights,
+  TypographyVariants
+} from '@repo/ui/components/typography/variants'
+import { ComponentProps } from 'react'
+
+import Flex from '../flex'
+import Typography from '../typography'
 import {
   PROGRESS_BAR_VALUE_MAX_VALUE,
   PROGRESS_BAR_VALUE_MIN_VALUE,
   ProgressBarValue,
   ProgressBarValueSchema
-} from '@ui/components/progress-bar/variants'
-import Typography from '@ui/components/typography'
-import {
-  TypographyColors,
-  TypographyFontWeights,
-  TypographyVariants
-} from '@ui/components/typography/variants'
-import { ComponentProps } from 'react'
-
-import Flex from '../flex'
+} from './variants'
 
 export type ProgressBarProps = ComponentProps<'div'> & {
   value: ProgressBarValue

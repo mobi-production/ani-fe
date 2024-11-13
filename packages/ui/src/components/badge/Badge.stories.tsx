@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Badge from '@ui/components/badge'
-import { BadgeColors, BadgeSizes } from '@ui/components/badge/variants'
+
+import Badge from '.'
+import { BadgeColors, BadgeSizes } from './variants'
 
 const meta = {
   title: 'MDS/Badge',

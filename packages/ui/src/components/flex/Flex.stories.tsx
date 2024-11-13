@@ -1,13 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Flex from '@ui/components/flex'
-import {
-  FlexAlign,
-  FlexDirection,
-  FlexGap,
-  FlexJustify,
-  FlexWrap
-} from '@ui/components/flex/variants'
-import SpacingBlock from '@ui/components/spacing-block'
+
+import SpacingBlock from '../spacing-block'
+import Flex from '.'
+import { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './variants'
 
 const meta = {
   title: 'MDS/Flex',
@@ -59,15 +54,15 @@ export const Preview: Story = {
     <div className='w-[40rem] border border-gray-200'>
       <Flex {...args}>
         <SpacingBlock
-          size='20r'
+          size={20}
           showBlock
         />
         <SpacingBlock
-          size='24r'
+          size={24}
           showBlock
         />
         <SpacingBlock
-          size='16r'
+          size={16}
           showBlock
         />
       </Flex>
@@ -92,24 +87,24 @@ export const Align: Story = {
         <ul>
           <li>
             <SpacingBlock
-              width='20r'
-              height='8r'
+              width={20}
+              height={8}
               showBlock
               className='bg-red-50'
             />
           </li>
           <li>
             <SpacingBlock
-              width='20r'
-              height='4r'
+              width={20}
+              height={4}
               showBlock
               className='bg-green-50'
             />
           </li>
           <li>
             <SpacingBlock
-              width='20r'
-              height='12r'
+              width={20}
+              height={12}
               showBlock
               className='bg-blue-50'
             />

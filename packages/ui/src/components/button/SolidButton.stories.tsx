@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import SolidButton from '@ui/components/button/SolidButton'
-import { ButtonSize, ButtonVariant } from '@ui/components/button/variants'
-import Icon from '@ui/components/icon'
 import { useState } from 'react'
 
-const meta = {
+import Icon from '../icon'
+import SolidButton from './SolidButton'
+import { ButtonSize, ButtonVariant } from './variants'
+
+const meta: Meta<typeof SolidButton> = {
   title: 'MDS/ButtonSolid',
   component: SolidButton,
   parameters: {
@@ -24,7 +25,7 @@ const meta = {
       control: 'boolean'
     }
   }
-} satisfies Meta<typeof SolidButton>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -58,7 +59,7 @@ export const WithIcon: Story = {
     size: ButtonSize.MEDIUM,
     children: 'Click Me'
   },
-  render: (args) => {
+  render: (args: Story['args']) => {
     const [disabled, setDisabled] = useState(false)
     return (
       <SolidButton

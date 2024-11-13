@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import SpacingBlock from '@ui/components/spacing-block'
-import { SpacingBlockVariants } from '@ui/components/spacing-block/variants'
-import Typography from '@ui/components/typography'
+
+import Typography from '../typography'
+import SpacingBlock from '.'
+import { SpacingBlockVariants } from './variants'
 
 const meta = {
   title: 'MDS/SpacingBlock',
@@ -39,15 +40,15 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    width: SpacingBlockVariants['1'],
-    height: SpacingBlockVariants['1'],
+    width: 4,
+    height: 4,
     showBlock: true
   }
 }
 
 export const Size: Story = {
   args: {
-    size: SpacingBlockVariants['1'],
+    size: 4,
     showBlock: true
   }
 }
@@ -55,9 +56,9 @@ export const Size: Story = {
 export const AsChild: Story = {
   args: {
     asChild: true,
-    size: '16r'
+    size: 16
   },
-  render: (args) => (
+  render: (args: Story['args']) => (
     <SpacingBlock {...args}>
       <Typography variant='body-1-normal'>Spacing</Typography>
     </SpacingBlock>

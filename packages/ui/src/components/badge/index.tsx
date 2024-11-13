@@ -1,7 +1,8 @@
 import { Slot } from '@radix-ui/react-slot'
-import { BadgeColors, BadgeSizes } from '@ui/components/badge/variants'
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
+
+import { BadgeColors, BadgeSizes } from './variants'
 
 export const badgeVariants = cva(
   'rounded-[0.25rem] inline-flex font-medium flex items-center justify-center',

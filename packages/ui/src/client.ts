@@ -1,5 +1,5 @@
 'use client'
 
-export { default as Icon } from '@ui/components/icon'
-export { default as RadioGroup } from '@ui/components/radio-group'
-export { default as TextArea } from '@ui/components/text-area'
+export { default as Icon } from './components/icon'
+export { default as RadioGroup } from './components/radio-group'
+export { default as TextArea } from './components/text-area'

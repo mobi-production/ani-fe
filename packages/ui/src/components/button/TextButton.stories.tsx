@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import TextButton from '@ui/components/button/TextButton'
-import { ButtonSize, ButtonVariant } from '@ui/components/button/variants'
-import Icon from '@ui/components/icon'
 import { useState } from 'react'
+
+import Icon from '../icon'
+import TextButton from './TextButton'
+import { ButtonSize, ButtonVariant } from './variants'
 
 const meta = {
   title: 'MDS/ButtonText',
@@ -59,7 +60,7 @@ export const WithIcon: Story = {
     size: ButtonSize.MEDIUM,
     children: 'Click Me'
   },
-  render: (args) => {
+  render: (args: Story['args']) => {
     const [disabled, setDisabled] = useState(false)
     return (
       <TextButton

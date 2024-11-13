@@ -1,11 +1,8 @@
 import { Slot } from '@radix-ui/react-slot'
-import {
-  TypographyColors,
-  TypographyFontWeights,
-  TypographyVariants
-} from '@ui/components/typography/variants'
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
+
+import { TypographyColors, TypographyFontWeights, TypographyVariants } from './variants'
 
 export const typographyVariants = cva('', {
   variants: {

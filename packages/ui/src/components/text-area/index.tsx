@@ -1,4 +1,4 @@
-import { cn } from '@repo/util'
+import cn from '@repo/util/cn'
 import { cva } from 'class-variance-authority'
 import { ChangeEvent, ComponentProps, createContext, useContext, useMemo, useState } from 'react'
 

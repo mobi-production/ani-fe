@@ -6,6 +6,7 @@ import { Badge, ImageSection, ProgressBar, Typography } from '@repo/ui/src/serve
 type PathProductItemProgressProps = ComponentProps<'div'> & {
   component?: ElementType
 }
+
 function PathProductItemProgress({ component = 'div', ...props }: PathProductItemProgressProps) {
   const Component = component
 
@@ -36,7 +37,8 @@ type RightSectionProps = ComponentProps<'div'> & {
   category: string
   name: string
   badgeType: PathStatusBadgeType
-} & ProgressBarProps
+  value: ComponentProps<typeof ProgressBar>['value']
+}
 
 function RightSection({ level, category, name, badgeType = 'SCHEDULE', value }: RightSectionProps) {
   const { badgeColor, badgeLabel } = useMemo(() => {
