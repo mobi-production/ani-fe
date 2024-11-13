@@ -1,4 +1,4 @@
-import { ComponentProps, ElementType } from 'react'
+import { ComponentProps, ElementType, useMemo } from 'react'
 
 import Badge from '../../atom/badge/index'
 import ImageSection from '../../atom/image-section/index'
@@ -42,8 +42,12 @@ type RightSectionProps = ComponentProps<'div'> & {
 } & ProgressBarProps
 
 function RightSection({ level, category, name, badgeType = 'SCHEDULE', value }: RightSectionProps) {
-  const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
-  const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
+  const { badgeColor, badgeLabel } = useMemo(() => {
+    return {
+      badgeColor: PATH_STATUS_BADGE[badgeType].COLOR,
+      badgeLabel: PATH_STATUS_BADGE[badgeType].LABEL
+    }
+  }, [badgeType])
 
   return (
     <div className='flex w-[100%] flex-col justify-between'>

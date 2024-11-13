@@ -1,4 +1,4 @@
-import { ComponentProps, ElementType } from 'react'
+import { ComponentProps, ElementType, useMemo } from 'react'
 
 import Badge from '../../atom/badge'
 import ImageSection from '../../atom/image-section'
@@ -40,8 +40,12 @@ type BadgeListProps = ComponentProps<'div'> & {
 }
 
 function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) {
-  const badgeColor = PATH_STATUS_BADGE[badgeType].COLOR
-  const badgeLabel = PATH_STATUS_BADGE[badgeType].LABEL
+  const { badgeColor, badgeLabel } = useMemo(() => {
+    return {
+      badgeColor: PATH_STATUS_BADGE[badgeType].COLOR,
+      badgeLabel: PATH_STATUS_BADGE[badgeType].LABEL
+    }
+  }, [badgeType])
 
   return (
     <div className='flex flex-row gap-[0.375rem]'>
