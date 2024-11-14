@@ -1,8 +1,8 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useState } from 'react'
 import { FEEDBACK_STEP, FeedbackStepType } from '../../model/feedback-step'
-import { cn } from '@repo/util'
+import cn from '@repo/util/cn'
 import { cva } from 'class-variance-authority'
-import Typography from '@repo/ui/typography'
+import { Typography } from '@repo/ui/server'
 
 const feedbackStepVariants = cva(
   'm-auto flex h-[1.125rem] w-[1.125rem] cursor-pointer items-center justify-between rounded-full border-2 border-label-neutral',
