@@ -1,9 +1,8 @@
-import Typography from '@repo/ui/typography'
 import LikertScale from '../likert-scale'
 import { ComponentProps } from 'react'
 import { LIKERT_SCALE_MAX_SCORE } from '../../config/likert-scale'
-import SpacingBlock from '@repo/ui/spacing-block'
-import TextArea from '@repo/ui/text-area'
+import { SpacingBlock, Typography } from '@repo/ui/server'
+import { TextArea } from '@repo/ui/client'
 
 type FeedbackListProps = ComponentProps<'div'>
 
@@ -20,7 +19,7 @@ function ListTitle({ courseName, category, ...props }: ListTitleProps) {
   return (
     <div {...props}>
       <SpacingBlock
-        height='4r'
+        height={4}
         className='border-none'
       />
       <div>

@@ -1,4 +1,6 @@
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata } from 'next'
+import FeedbackPage from '../../../../../../src/pages/FeedbackPage'
+import React from 'react'
 
 export async function generateMetadata({
   params
