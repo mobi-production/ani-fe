@@ -1,23 +1,27 @@
+import { mockFeedbackList } from '@/__mock__/data/feedback'
 import FeedbackList from './feedback-list'
 
 export function PairFeedback() {
+  const PAIR_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'PAIR')
+
+  if (!PAIR_FEEDBACK_LIST) return
   return (
     <div>
       <FeedbackList>
         <FeedbackList.ListTitle
-          courseName='HTML 개요(1)'
+          courseName={PAIR_FEEDBACK_LIST?.courseName}
           category='페어'
         />
-        <FeedbackList.QuestionTitle
-          questionIndex={1}
-          title='파트의 내용이 기대에 부합했나요?'
-        />
-        <FeedbackList.Likert />
-        <FeedbackList.QuestionTitle
-          questionIndex={2}
-          title='추가로 파트에 대해 남기고 싶은 의견이 있다면 자유롭게 기재해주세요.'
-        />
-        <FeedbackList.OpenEnded maxLength={500} />
+        {PAIR_FEEDBACK_LIST.questions.map((question, index) => (
+          <>
+            <FeedbackList.QuestionTitle
+              questionIndex={index + 1}
+              title={question.title}
+            />
+            {question.type === 'likert' && <FeedbackList.Likert />}
+            {question.type === 'openEnded' && <FeedbackList.OpenEnded maxLength={500} />}
+          </>
+        ))}
       </FeedbackList>
     </div>
   )

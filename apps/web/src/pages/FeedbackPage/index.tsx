@@ -14,8 +14,25 @@ export default function FeedbackPage() {
   })
 
   return (
-    <div>
-      <FeedbackStep />
+    <div className='m-auto my-12 w-[40rem]'>
+      <div className='mb-10'>
+        <FeedbackStep>
+          <FeedbackStep.Item
+            stepLabel={FEEDBACK_STEP.PART.LABEL}
+            stepValue={FEEDBACK_STEP.PART.VALUE}
+          />
+          <FeedbackStep.Divider />
+          <FeedbackStep.Item
+            stepLabel={FEEDBACK_STEP.MENTO.LABEL}
+            stepValue={FEEDBACK_STEP.MENTO.VALUE}
+          />
+          <FeedbackStep.Divider />
+          <FeedbackStep.Item
+            stepLabel={FEEDBACK_STEP.PAIR.LABEL}
+            stepValue={FEEDBACK_STEP.PAIR.VALUE}
+          />
+        </FeedbackStep>
+      </div>
       <div>
         <FunnelStep>
           <FunnelStep.Step stepName={FEEDBACK_STEP.PART.VALUE}>
