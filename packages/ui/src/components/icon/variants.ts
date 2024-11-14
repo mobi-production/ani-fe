@@ -1,7 +1,9 @@
-import { RightOutlined } from '@ant-design/icons'
+import { BellOutlined, RightOutlined, UserOutlined } from '@ant-design/icons'
 
 export const IconsMap = {
-  RightOutlined: RightOutlined
+  RightOutlined: RightOutlined,
+  UserOutlined: UserOutlined,
+  BellOutlined: BellOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
