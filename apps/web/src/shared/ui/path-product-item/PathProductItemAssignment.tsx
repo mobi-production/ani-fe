@@ -1,20 +1,15 @@
-import { Badge, ImageSection, Typography } from '@repo/ui/server'
-import { ComponentProps, ElementType, useMemo } from 'react'
+import { Badge, Flex, ImageSection, Typography } from '@repo/ui/server'
+import { ComponentProps, useMemo } from 'react'
 import { ASSIGNMENT_STATUS_BADGE, AssignmentStatusBadgeType } from './variants'
 
-type PathProductItemAssignmentProps = ComponentProps<'div'> & {
-  component?: ElementType
-}
-
-function PathProductItemAssignment({
-  component = 'div',
-  ...props
-}: PathProductItemAssignmentProps) {
-  const Component = component
-
+type PathProductItemAssignmentProps = ComponentProps<'div'>
+function PathProductItemAssignment({ ...props }: PathProductItemAssignmentProps) {
   return (
-    <Component
-      className='flex min-h-[5rem] w-[22.75rem] flex-row items-center justify-between'
+    <Flex
+      direction='row'
+      align='center'
+      justify='between'
+      className='min-h-[5rem] w-[22.75rem]'
       {...props}
     />
   )
@@ -35,14 +30,17 @@ function LeftSection({
   ...props
 }: LeftSectionProps) {
   return (
-    <div className='flex w-[16.75rem] flex-row items-center gap-[0.75rem]'>
+    <Flex
+      direction='row'
+      align='center'
+      className='w-[16.75rem] gap-[0.75rem]'>
       <ImageSection
         src={src}
         alt={alt}
         size='xxs'
         {...props}
       />
-      <div className='flex flex-col'>
+      <Flex direction='column'>
         <Typography
           color='alternative'
           variant='caption-1'
@@ -60,8 +58,8 @@ function LeftSection({
           variant='caption-1'>
           {endDate}
         </Typography>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   )
 }
 type StatusBadgeProps = ComponentProps<typeof Badge> & {
