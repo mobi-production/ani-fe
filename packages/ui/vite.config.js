@@ -13,15 +13,18 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@repo/ui': resolve(__dirname, './src')
+      '@repo/ui': resolve(__dirname, './src'),
+      '@repo/util': resolve(__dirname, '../../packages/util/src')
     }
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/empty-entry.ts'),
-      name: '@repo/ui',
+      entry: {
+        client: resolve(__dirname, 'src/client.ts'),
+        server: resolve(__dirname, 'src/server.ts')
+      },
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format}.js`
+      fileName: (format, entryName) => `${entryName}.${format === 'es' ? 'js' : 'cjs'}`
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],

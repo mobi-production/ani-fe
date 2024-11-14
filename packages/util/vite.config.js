@@ -18,7 +18,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/empty.ts'),
       name: '@repo/util',
       formats: ['es', 'cjs'],
       fileName: (format) => `index.${format}.js`
