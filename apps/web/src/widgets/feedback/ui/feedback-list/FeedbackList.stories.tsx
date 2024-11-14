@@ -21,7 +21,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   render: () => (
-    <div className='w-[40rem]'>
+    <div>
       <FeedbackList>
         <FeedbackList.ListTitle
           courseName='HTML 개요(1)'
@@ -36,10 +36,7 @@ export const Primary: Story = {
           questionIndex={2}
           title='추가로 파트에 대해 남기고 싶은 의견이 있다면 자유롭게 기재해주세요.'
         />
-        <FeedbackList.OpenEnded
-          placeholder='의견을 자유롭게 기재해주세요'
-          maxLength={500}
-        />
+        <FeedbackList.OpenEnded maxLength={500} />
       </FeedbackList>
     </div>
   )

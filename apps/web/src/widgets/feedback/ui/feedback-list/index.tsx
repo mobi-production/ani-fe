@@ -19,18 +19,26 @@ type ListTitleProps = ComponentProps<'div'> & {
 function ListTitle({ courseName, category, ...props }: ListTitleProps) {
   return (
     <div {...props}>
-      <Typography
-        variant='heading-2'
-        fontWeight='semibold'
-        color='normal'>
-        {courseName}
-      </Typography>
-      <Typography
-        variant='heading-2'
-        fontWeight='semibold'
-        color='normal'>
-        {category} 피드백
-      </Typography>
+      <SpacingBlock
+        height='4r'
+        className='border-none'
+      />
+      <div>
+        <Typography
+          variant='body-2-normal'
+          fontWeight='regular'
+          color='normal'>
+          {courseName}
+        </Typography>
+      </div>
+      <div>
+        <Typography
+          variant='title-3'
+          fontWeight='bold'
+          color='normal'>
+          {category} 피드백
+        </Typography>
+      </div>
     </div>
   )
 }
@@ -43,17 +51,15 @@ type QuestionTitleProps = ComponentProps<'div'> & {
 function QuestionTitle({ questionIndex, title, ...props }: QuestionTitleProps) {
   const titleValue = `Q${questionIndex}. ${title}`
   return (
-    <div {...props}>
+    <div
+      className='mb-3 mt-10'
+      {...props}>
       <Typography
         variant='heading-2'
         fontWeight='semibold'
         color='normal'>
         {titleValue}
       </Typography>
-      <SpacingBlock
-        size={'4r'}
-        className='border-none'
-      />
     </div>
   )
 }
@@ -85,15 +91,17 @@ type OpenEndedResponseProps = {
 
 function OpenEndedResponse({ placeholder, maxLength, ...props }: OpenEndedResponseProps) {
   return (
-    <TextArea
-      maxLength={maxLength}
-      {...props}>
-      <TextArea.form
-        placeholder={placeholder}
-        className='h-[12.5rem] w-[31.5rem] p-4'
-      />
-      <TextArea.indicator />
-    </TextArea>
+    <div>
+      <TextArea
+        maxLength={maxLength}
+        {...props}>
+        <TextArea.form
+          placeholder='의견을 자유롭게 적어주세요'
+          className='min-h-[12.5rem] p-4'
+        />
+        <TextArea.indicator />
+      </TextArea>
+    </div>
   )
 }
 

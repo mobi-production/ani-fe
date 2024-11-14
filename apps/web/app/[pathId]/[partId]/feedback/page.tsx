@@ -1,7 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
-import { FeedbackPage } from '@/view'
-
 export async function generateMetadata({
   params
 }: {
