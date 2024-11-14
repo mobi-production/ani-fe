@@ -9,8 +9,8 @@ export const badgeVariants = cva(
   {
     variants: {
       size: {
-        [BadgeSizes.M]: 'min-h-[2rem] px-[0.625rem] text-l-reading',
-        [BadgeSizes.S]: 'min-h-[1.5rem] px-[0.375rem] text-c1'
+        [BadgeSizes.M]: 'h-[2rem] px-[0.625rem] text-l-reading',
+        [BadgeSizes.S]: 'h-[1.5rem] px-[0.375rem] text-c1'
       },
       color: {
         [BadgeColors.GRAY]: 'bg-neutral-99 text-neutral-10',
@@ -39,7 +39,7 @@ function Badge({ component = 'div', size, color, className, asChild, ...props }:
 
   return (
     <Component
-      className={`${badgeVariants({ size, color })} ${className}`}
+      className={`flex-shrink-0 ${badgeVariants({ size, color })} ${className}`}
       {...props}
     />
   )

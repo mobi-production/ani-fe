@@ -1,18 +1,15 @@
-import { ComponentProps, ElementType, useMemo } from 'react'
+import { ComponentProps, useMemo } from 'react'
 
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
-import { Badge, ImageSection, ProgressBar, Typography } from '@repo/ui/server'
+import { Badge, Flex, ImageSection, ProgressBar, Typography } from '@repo/ui/server'
 
-type PathProductItemProgressProps = ComponentProps<'div'> & {
-  component?: ElementType
-}
+type PathProductItemProgressProps = ComponentProps<'div'>
 
-function PathProductItemProgress({ component = 'div', ...props }: PathProductItemProgressProps) {
-  const Component = component
-
+function PathProductItemProgress({ ...props }: PathProductItemProgressProps) {
   return (
-    <Component
-      className='flex min-h-[7.5rem] max-w-[22.75rem] flex-row gap-[0.75rem]'
+    <Flex
+      direction='row'
+      className='min-h-[7.5rem] max-w-[22.75rem] gap-[0.75rem]'
       {...props}
     />
   )
@@ -49,13 +46,18 @@ function RightSection({ level, category, name, badgeType = 'SCHEDULE', value }: 
   }, [badgeType])
 
   return (
-    <div className='flex w-[100%] flex-col justify-between'>
+    <Flex
+      direction='column'
+      justify='between'
+      className='w-[100%]'>
       <div>
-        <div className='mb-[0.75rem] flex flex-row gap-[0.375rem]'>
+        <Flex
+          direction='row'
+          className='mb-[0.75rem] gap-[0.375rem]'>
           <Badge>Lv.{level}</Badge>
           <Badge>{category}</Badge>
           <Badge color={badgeColor}>{badgeLabel}</Badge>
-        </div>
+        </Flex>
         <Typography
           variant='label-reading'
           fontWeight='semibold'
@@ -64,7 +66,7 @@ function RightSection({ level, category, name, badgeType = 'SCHEDULE', value }: 
         </Typography>
       </div>
       <ProgressBar value={value} />
-    </div>
+    </Flex>
   )
 }
 

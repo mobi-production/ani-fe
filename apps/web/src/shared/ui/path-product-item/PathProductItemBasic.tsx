@@ -1,17 +1,14 @@
 import { useMemo } from 'react'
-import { ComponentProps, ElementType } from 'react'
+import { ComponentProps } from 'react'
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
-import { Badge, ImageSection, Typography } from '@repo/ui/server'
+import { Badge, Flex, ImageSection, Typography } from '@repo/ui/server'
 
-type PathProductItemBasicProps = ComponentProps<'div'> & {
-  component?: ElementType
-}
-function PathProductItemBasic({ component = 'div', ...props }: PathProductItemBasicProps) {
-  const Component = component
-
+type PathProductItemBasicProps = ComponentProps<'div'>
+function PathProductItemBasic({ ...props }: PathProductItemBasicProps) {
   return (
-    <Component
-      className='flex min-h-[20.813rem] max-w-[18.75rem] flex-col gap-[0.75rem]'
+    <Flex
+      direction='column'
+      className='min-h-[20.813rem] max-w-[18.75rem] gap-[0.75rem]'
       {...props}
     />
   )
@@ -46,11 +43,13 @@ function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) 
   }, [badgeType])
 
   return (
-    <div className='flex flex-row gap-[0.375rem]'>
+    <Flex
+      direction='row'
+      className='gap-[0.375rem]'>
       <Badge>Lv.{level}</Badge>
       <Badge>{category}</Badge>
       <Badge color={badgeColor}>{badgeLabel}</Badge>
-    </div>
+    </Flex>
   )
 }
 
@@ -61,7 +60,9 @@ type TextContentListProps = ComponentProps<'div'> & {
 
 function TextContentList({ name, period }: TextContentListProps) {
   return (
-    <div className='flex flex-col gap-[0.375rem]'>
+    <Flex
+      direction='column'
+      className='gap-[0.375rem]'>
       <Typography
         className='line-clamp-2'
         variant='label-normal'
@@ -74,7 +75,7 @@ function TextContentList({ name, period }: TextContentListProps) {
         fontWeight='regular'>
         {period}
       </Typography>
-    </div>
+    </Flex>
   )
 }
 
