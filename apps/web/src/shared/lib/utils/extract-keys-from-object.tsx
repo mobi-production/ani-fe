@@ -14,5 +14,11 @@
  */
 
 export function extractKeysFromObject<T extends object>(object: T): Array<keyof T> {
-  return Object.keys(object) as Array<keyof T>
+  const keys: Array<keyof T> = []
+  for (const key in object) {
+    if (Object.hasOwnProperty(key)) {
+      keys.push(key)
+    }
+  }
+  return keys
 }

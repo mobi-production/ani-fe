@@ -8,7 +8,7 @@ import FeedbackStep from '@/widgets/feedback/ui/feedback-step'
 
 export default function FeedbackPage() {
   const feedbackStep = [...extractKeysFromObject(FEEDBACK_STEP)]
-  const { FunnelStep, onNavigateStep } = useFunnel({
+  const { FunnelStep } = useFunnel({
     steps: feedbackStep,
     defaultStepName: FEEDBACK_STEP.PART.VALUE
   })
