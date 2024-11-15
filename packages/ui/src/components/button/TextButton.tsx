@@ -14,11 +14,16 @@ const buttonVariants = cva('reset-button flex items-center justify-center gap-[0
     disabled: {
       true: 'cursor-not-allowed text-label-disable',
       false: 'cursor-pointer hover:opacity-90 active:opacity-100'
+    },
+    fullWidth: {
+      true: 'w-full',
+      false: ''
     }
   },
   defaultVariants: {
     variant: ButtonVariant.PRIMARY,
-    disabled: false
+    disabled: false,
+    fullWidth: false
   }
 })
 
@@ -35,13 +40,14 @@ function TextButton({
   disabled = false,
   className,
   rightIcon,
+  fullWidth = false,
   ...props
 }: Props) {
   const Component = asChild ? Slot : 'button'
 
   return (
     <Component
-      className={cn(buttonVariants({ variant, disabled }), className)}
+      className={cn(buttonVariants({ variant, disabled, fullWidth }), className)}
       {...props}>
       <Typography
         variant={SizeMapping[size].fontVariant}

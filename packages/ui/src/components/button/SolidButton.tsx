@@ -21,12 +21,17 @@ const buttonVariants = cva(
       disabled: {
         true: 'cursor-not-allowed text-label-alternative bg-label-assistive opacity-50',
         false: 'cursor-pointer hover:opacity-90 active:opacity-100'
+      },
+      fullWidth: {
+        true: 'w-full',
+        false: ''
       }
     },
     defaultVariants: {
       variant: ButtonVariant.PRIMARY,
       size: ButtonSize.MEDIUM,
-      disabled: false
+      disabled: false,
+      fullWidth: false
     }
   }
 )
@@ -41,6 +46,7 @@ function SolidButton({
   disabled = false,
   className,
   rightIcon,
+  fullWidth = false,
   ...props
 }: Props) {
   const Component = asChild ? Slot : 'button'
@@ -51,7 +57,7 @@ function SolidButton({
 
   return (
     <Component
-      className={cn(buttonVariants({ variant, size, disabled }), className)}
+      className={cn(buttonVariants({ variant, size, disabled, fullWidth }), className)}
       {...props}>
       <Typography
         variant={SizeMapping[size].fontVariant}
