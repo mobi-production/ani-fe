@@ -56,7 +56,7 @@ const spacingBlockVariants = cva('', {
     width: 'default',
     height: 'default',
     size: 'default',
-    showBlock: true
+    showBlock: false
   }
 })
 
