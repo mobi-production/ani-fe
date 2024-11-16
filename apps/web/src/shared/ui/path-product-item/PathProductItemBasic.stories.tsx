@@ -28,7 +28,7 @@ export const Primary: Story = {
       <PathProductItemBasic.BadgeList
         level={1}
         category='카테고리'
-        badgeType='IN_PROGRESS'
+        badgeType='NOT_COMPLETE'
       />
       <PathProductItemBasic.TextContentList
         name='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지'

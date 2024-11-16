@@ -31,11 +31,17 @@ function Image({ src, alt, className, ...props }: ImageProps) {
 type BadgeListProps = ComponentProps<'div'> & {
   level: number
   category: string
-  badgeType: PathStatusBadgeType
+  badgeType?: PathStatusBadgeType
 }
 
-function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) {
+function BadgeList({ level, category, badgeType }: BadgeListProps) {
   const { badgeColor, badgeLabel } = useMemo(() => {
+    if (!badgeType) {
+      return {
+        badgeColor: undefined,
+        badgeLabel: undefined
+      }
+    }
     return {
       badgeColor: PATH_STATUS_BADGE[badgeType].COLOR,
       badgeLabel: PATH_STATUS_BADGE[badgeType].LABEL
@@ -48,7 +54,7 @@ function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) 
       className='gap-[0.375rem]'>
       <Badge>Lv.{level}</Badge>
       <Badge>{category}</Badge>
-      <Badge color={badgeColor}>{badgeLabel}</Badge>
+      {badgeType && <Badge color={badgeColor}>{badgeLabel}</Badge>}
     </Flex>
   )
 }
