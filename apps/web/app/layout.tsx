@@ -2,7 +2,7 @@ import '@config/libs/globals.css'
 
 import { pretendardFont } from './_fonts'
 import { Flex } from '@repo/ui/server'
-import Header from '@/widget/ui/header'
+import Header from '@/shared/ui/header'
 
 // TODO: 로그인 상태 추가
 const isLoggedIn = false

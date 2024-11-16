@@ -24,13 +24,13 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    pathContents: pathIntroduce.pathContents
+    pathContents: pathIntroduce('1').pathContents
   }
 }
 
 export const Preview: Story = {
   args: {
-    pathContents: pathIntroduce.pathContents
+    pathContents: pathIntroduce('1').pathContents
   },
   render: (args) => (
     <section className='flex w-full flex-col items-center gap-[1.5rem]'>
