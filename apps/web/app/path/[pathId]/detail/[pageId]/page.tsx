@@ -1,4 +1,4 @@
-import PathDetailPage from '@/pages/PathDetailPage'
+import PathDetailPage from '@/views/PathDetailPage'
 
 export default function Page() {
   return <PathDetailPage />

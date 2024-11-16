@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import IntroducePage from '.'
+import Logo from '.'
 
 const meta = {
-  title: 'Page/IntroducePage',
-  component: IntroducePage,
+  title: 'shared/Logo',
+  component: Logo,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof IntroducePage>
+} satisfies Meta<typeof Logo>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Preview: Story = {}
+export const Primary: Story = {}

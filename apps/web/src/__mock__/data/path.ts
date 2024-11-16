@@ -27,7 +27,7 @@ type PathContent = {
   path: PathContentItem[]
 }
 
-type PathIntroduce = {
+export type PathIntroduce = {
   id: string
   title: string
   description: string

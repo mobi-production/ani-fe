@@ -48,11 +48,11 @@ const flexVariants = cva('flex', {
     }
   },
   defaultVariants: {
-    align: FlexAlign.START,
-    justify: FlexJustify.START,
-    wrap: FlexWrap.NOWRAP,
+    align: '',
+    justify: '',
+    wrap: '',
     gap: FlexGap.NONE,
-    direction: FlexDirection.ROW
+    direction: ''
   }
 })
 
