@@ -1,3 +1,4 @@
+import RadioBtn from '@repo/ui/components/radio-btn'
 import { ComponentProps, createContext, useContext, useState } from 'react'
 
 type RadioGroupProps = ComponentProps<'div'> & {
@@ -39,11 +40,10 @@ function RadioGroupItem({ label, ...props }: RadioGroupItemProps) {
   return (
     <label className='flex w-full cursor-pointer items-center justify-between rounded border border-[#000000] p-4'>
       <span className='text-b2-normal'>{label}</span>
-      <input
-        className='custom-radio'
+      <RadioBtn
+        type='radio'
         onChange={(e) => context.onChange(e.target.value)}
         checked={checked}
-        type='radio'
         {...props}
       />
     </label>
