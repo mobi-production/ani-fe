@@ -12,7 +12,7 @@ type FeedbackQuestionType = {
   title: string
 }
 
-const enum FEEDBACK_CATEGORY {
+export const enum FEEDBACK_CATEGORY {
   PART = 'PART',
   MENTO = 'MENTO',
   PAIR = 'PAIR',
@@ -144,7 +144,6 @@ export const mockFeedbackList: FeedbackType[] = [
       }
     ]
   },
-
   {
     courseId: 'bbbbbbb',
     courseName: 'HTML / CSS 기초 패스',
