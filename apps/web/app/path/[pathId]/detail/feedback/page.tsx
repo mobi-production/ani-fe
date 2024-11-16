@@ -1,6 +1,6 @@
+import FeedbackPage from '@/pages/FeedbackPage'
 import type { Metadata } from 'next'
 import React from 'react'
-import FeedbackPage from '../../../../../src/pages/FeedbackPage'
 
 export async function generateMetadata({
   params
