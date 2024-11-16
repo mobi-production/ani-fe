@@ -69,14 +69,20 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
           </Flex>
         </section>
 
-        <NavigationLinks
-          links={[
-            { ...LINKS[0], ref: pathInfoRef },
-            { ...LINKS[1], ref: pathFeatureRef },
-            { ...LINKS[2], ref: recommendTargetRef },
-            { ...LINKS[3], ref: curriculumRef }
-          ]}
-        />
+        <Flex
+          direction={'column'}
+          className='w-full'>
+          <NavigationLinks
+            links={[
+              { ...LINKS[0], ref: pathInfoRef },
+              { ...LINKS[1], ref: pathFeatureRef },
+              { ...LINKS[2], ref: recommendTargetRef },
+              { ...LINKS[3], ref: curriculumRef }
+            ]}
+            firstLinkActive={true}
+          />
+          <Divider />
+        </Flex>
 
         <section
           ref={pathInfoRef}

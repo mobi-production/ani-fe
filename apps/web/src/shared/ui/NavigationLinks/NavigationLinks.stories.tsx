@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import NavigationLinks from '.'
-
+import React from 'react'
 const meta = {
   title: 'Shared/NavigationLinks',
   component: NavigationLinks,
@@ -21,10 +21,11 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     links: [
-      { id: 'path_info', title: '패스 정보' },
-      { id: 'path_feature', title: '패스 특징' },
-      { id: 'recommend_target', title: '추천 대상' },
-      { id: 'curriculum', title: '커리큘럼' }
-    ]
+      { id: 'path_info', title: '패스 정보', ref: React.createRef<HTMLDivElement>() },
+      { id: 'path_feature', title: '패스 특징', ref: React.createRef<HTMLDivElement>() },
+      { id: 'recommend_target', title: '추천 대상', ref: React.createRef<HTMLDivElement>() },
+      { id: 'curriculum', title: '커리큘럼', ref: React.createRef<HTMLDivElement>() }
+    ],
+    firstLinkActive: true
   }
 }
