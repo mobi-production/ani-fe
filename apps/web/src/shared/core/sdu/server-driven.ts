@@ -1,4 +1,4 @@
-import { RadioGroup, Icon } from '@repo/ui/client'
+import { Icon } from '@repo/ui/client'
 import {
   Badge,
   Flex,
@@ -11,6 +11,7 @@ import {
   Typography
 } from '@repo/ui/server'
 import { ComponentProps } from 'react'
+import RadioGroup from './radio-group'
 
 export type ComponentPropsMap = {
   RadioGroup: ComponentProps<typeof RadioGroup>
