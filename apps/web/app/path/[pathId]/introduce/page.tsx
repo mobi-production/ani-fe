@@ -1,4 +1,4 @@
-import IntroducePageWrapper from '@/views/IntroducePage'
+import IntroducePage from '@/views/IntroducePage'
 import { Metadata } from 'next'
 
 export async function generateMetadata({
@@ -16,5 +16,5 @@ export async function generateMetadata({
 }
 
 export default function Page({ params }: { params: { pathId: string } }) {
-  return <IntroducePageWrapper pathId={params.pathId} />
+  return <IntroducePage pathId={params.pathId} />
 }

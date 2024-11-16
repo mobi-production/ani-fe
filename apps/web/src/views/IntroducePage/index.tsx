@@ -9,7 +9,7 @@ import { Icon } from '@repo/ui/client'
 import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
 import { useRef } from 'react'
 
-type IntroducePageProps = {
+type InnerProps = {
   data: PathIntroduce
   isLoggedIn: boolean
 }
@@ -21,7 +21,7 @@ const LINKS = [
   { id: 'curriculum', title: '커리큘럼' }
 ] as const
 
-export function Inner({ data, isLoggedIn }: IntroducePageProps) {
+export function Inner({ data, isLoggedIn }: InnerProps) {
   const pathInfoRef = useRef<HTMLDivElement>(null)
   const pathFeatureRef = useRef<HTMLDivElement>(null)
   const recommendTargetRef = useRef<HTMLDivElement>(null)
@@ -288,11 +288,11 @@ export function Inner({ data, isLoggedIn }: IntroducePageProps) {
   )
 }
 
-type IntroducePageWrapperProps = {
+type IntroducePageProps = {
   pathId: string
 }
 
-export default function IntroducePage({ pathId }: IntroducePageWrapperProps) {
+export default function IntroducePage({ pathId }: IntroducePageProps) {
   const data = pathIntroduce(pathId)
   const isLoggedIn = false
 
