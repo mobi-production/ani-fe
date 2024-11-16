@@ -4,7 +4,7 @@ import FeedbackList from './feedback-list'
 export function PairFeedback() {
   const PAIR_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'PAIR')
 
-  if (!PAIR_FEEDBACK_LIST) return
+  if (!PAIR_FEEDBACK_LIST) return null
   return (
     <FeedbackList>
       <FeedbackList.ListTitle

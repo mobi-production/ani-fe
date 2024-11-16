@@ -4,7 +4,7 @@ import FeedbackList from './feedback-list'
 export function PartFeedback() {
   const PART_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'PART')
 
-  if (!PART_FEEDBACK_LIST) return
+  if (!PART_FEEDBACK_LIST) return null
   return (
     <FeedbackList>
       <FeedbackList.ListTitle

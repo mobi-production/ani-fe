@@ -4,7 +4,7 @@ import FeedbackList from './feedback-list'
 export function MentoFeedback() {
   const MENTO_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'MENTO')
 
-  if (!MENTO_FEEDBACK_LIST) return
+  if (!MENTO_FEEDBACK_LIST) return null
   return (
     <FeedbackList>
       <FeedbackList.ListTitle

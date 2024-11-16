@@ -4,7 +4,7 @@ import FeedbackList from './feedback-list'
 export function PathFeedback() {
   const PATH_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'PATH')
 
-  if (!PATH_FEEDBACK_LIST) return
+  if (!PATH_FEEDBACK_LIST) return null
   return (
     <FeedbackList>
       <FeedbackList.ListTitle
