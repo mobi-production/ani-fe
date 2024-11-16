@@ -1,23 +1,32 @@
+'use client'
+
+import { pathIntroduce } from '@/__mock__/data/path'
 import { PathIntroduce } from '@/entities/path/model/path-introduce'
 import CurriculumBar from '@/entities/path/ui/curriculum-bar'
 import PathApplyButton from '@/features/path/ui/path-apply-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
 import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
+import { useRef } from 'react'
 
 type IntroducePageProps = {
   data: PathIntroduce
   isLoggedIn: boolean
 }
 
-const links = [
+const LINKS = [
   { id: 'path_info', title: '패스 정보' },
   { id: 'path_feature', title: '패스 특징' },
   { id: 'recommend_target', title: '추천 대상' },
   { id: 'curriculum', title: '커리큘럼' }
-]
+] as const
 
-export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) {
+export function Inner({ data, isLoggedIn }: IntroducePageProps) {
+  const pathInfoRef = useRef<HTMLDivElement>(null)
+  const pathFeatureRef = useRef<HTMLDivElement>(null)
+  const recommendTargetRef = useRef<HTMLDivElement>(null)
+  const curriculumRef = useRef<HTMLDivElement>(null)
+
   return (
     <Flex
       asChild
@@ -60,11 +69,20 @@ export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) 
           </Flex>
         </section>
 
-        <NavigationLinks links={links} />
+        <NavigationLinks
+          links={[
+            { ...LINKS[0], ref: pathInfoRef },
+            { ...LINKS[1], ref: pathFeatureRef },
+            { ...LINKS[2], ref: recommendTargetRef },
+            { ...LINKS[3], ref: curriculumRef }
+          ]}
+        />
 
-        <section className='flex flex-col gap-[1.25rem]'>
+        <section
+          ref={pathInfoRef}
+          id={LINKS[0].id}
+          className='flex flex-col gap-[1.25rem]'>
           <Typography
-            id='path_info'
             variant='title-3'
             fontWeight={'bold'}>
             패스 상세 정보
@@ -150,12 +168,14 @@ export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) 
 
         <Divider />
 
-        <section className='flex flex-col gap-[1.25rem]'>
+        <section
+          ref={pathFeatureRef}
+          id={LINKS[1].id}
+          className='flex flex-col gap-[1.25rem]'>
           <Flex
             direction={'column'}
             gap={4}>
             <Typography
-              id='path_feature'
               variant='title-3'
               fontWeight={'bold'}>
               어떤 걸 배울 수 있나요?
@@ -186,9 +206,11 @@ export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) 
           </Flex>
         </section>
 
-        <section className='flex flex-col gap-[1.5rem]'>
+        <section
+          id={LINKS[2].id}
+          ref={recommendTargetRef}
+          className='flex flex-col gap-[1.5rem]'>
           <Typography
-            id='recommend_target'
             variant='title-3'
             fontWeight={'bold'}>
             이런 분들에게 추천해요
@@ -215,9 +237,11 @@ export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) 
           </Flex>
         </section>
 
-        <section className='flex flex-col gap-[1.5rem]'>
+        <section
+          id='curriculum'
+          ref={curriculumRef}
+          className='flex flex-col gap-[1.5rem]'>
           <Typography
-            id='curriculum'
             variant='title-3'
             fontWeight={'bold'}>
             커리큘럼을 보여드려요
@@ -261,5 +285,21 @@ export default function IntroducePage({ data, isLoggedIn }: IntroducePageProps) 
         </section>
       </main>
     </Flex>
+  )
+}
+
+type IntroducePageWrapperProps = {
+  pathId: string
+}
+
+export default function IntroducePage({ pathId }: IntroducePageWrapperProps) {
+  const data = pathIntroduce(pathId)
+  const isLoggedIn = false
+
+  return (
+    <Inner
+      data={data}
+      isLoggedIn={isLoggedIn}
+    />
   )
 }
