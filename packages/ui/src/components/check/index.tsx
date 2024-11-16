@@ -4,16 +4,24 @@ import { ComponentPropsWithoutRef } from 'react'
 import Icon from '../icon'
 
 type Props = {
-  check: boolean
-} & ComponentPropsWithoutRef<'button'>
+  checked: boolean
+} & Omit<ComponentPropsWithoutRef<'input'>, 'type'>
 
-function CheckBox({ check }: Props) {
+function CheckBox({ checked, ...props }: Props) {
   return (
-    <Icon
-      size='24'
-      name='CheckCircleFilled'
-      className={cn('transition-colors duration-200', check && 'text-line-normal')}
-    />
+    <label>
+      <input
+        {...props}
+        checked={checked}
+        type='checkbox'
+        className='hidden'
+      />
+      <Icon
+        size='24'
+        name='CheckCircleFilled'
+        className={cn('transition-colors duration-200', checked && 'text-line-normal')}
+      />
+    </label>
   )
 }
 
