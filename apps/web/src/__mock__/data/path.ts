@@ -1,55 +1,12 @@
-type PathFeature = {
-  id: number
-  emoji: string
-  description: string
-}
-
-type PathSubTitle = {
-  title: string
-  description: string
-}
-
-type PathDescription = {
-  title: string
-  subTitle: PathSubTitle[]
-}
-
-type PathContentItem = {
-  pathId: number
-  type: 'page' | 'video' | 'quiz'
-  title: string
-  videoLength?: string
-}
-
-type PathContent = {
-  partId: number
-  title: string
-  path: PathContentItem[]
-}
-
-export type PathIntroduce = {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  recruitmentStartDate: string
-  applicationDeadline: string
-  announcementDate: string
-  pathStartDate: string
-  pathEndDate: string
-  recruitedPeople: number
-  difficultyLevel: '초급' | '중급' | '고급'
-  pathDescription: PathDescription
-  pathFeatures: PathFeature[]
-  pathContents: PathContent[]
-}
+import type { PathIntroduce } from '@/entities/path/model/path-introduce'
 
 export const pathIntroduce: PathIntroduce = {
   id: '1',
+  isApplied: false,
   title: 'HTML & CSS 패스',
   description:
     '웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다. 이 패스는 웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다.',
-  imageUrl: 'https://picsum.photos/300/225',
+  imageUrl: '/avif/placeholder.avif',
   recruitmentStartDate: '2024-11-15',
   applicationDeadline: '2024-12-15',
   announcementDate: '2024-12-20',
@@ -174,6 +131,132 @@ export const pathIntroduce: PathIntroduce = {
         },
         {
           pathId: 15,
+          type: 'video',
+          title: '화면에 이미지 출력하기',
+          videoLength: '15:30'
+        }
+      ]
+    },
+    {
+      partId: 3,
+      title: 'HTML 개요(3)',
+      path: [
+        {
+          pathId: 16,
+          type: 'page',
+          title: '첫 인사 및 강의 개요'
+        },
+        {
+          pathId: 17,
+          type: 'page',
+          title: '기본 문법'
+        },
+        {
+          pathId: 18,
+          type: 'page',
+          title: '부모와 자식 관계의 이해'
+        },
+        {
+          pathId: 19,
+          type: 'page',
+          title: 'Doctype(DTD)'
+        },
+        {
+          pathId: 20,
+          type: 'page',
+          title: 'HTML, HEAD, BODY'
+        },
+        {
+          pathId: 21,
+          type: 'page',
+          title: '정보를 의미하는 태그 살펴보기'
+        },
+        {
+          pathId: 22,
+          type: 'video',
+          title: '화면에 이미지 출력하기',
+          videoLength: '15:30'
+        }
+      ]
+    },
+    {
+      partId: 3,
+      title: 'HTML 개요(3)',
+      path: [
+        {
+          pathId: 16,
+          type: 'page',
+          title: '첫 인사 및 강의 개요'
+        },
+        {
+          pathId: 17,
+          type: 'page',
+          title: '기본 문법'
+        },
+        {
+          pathId: 18,
+          type: 'page',
+          title: '부모와 자식 관계의 이해'
+        },
+        {
+          pathId: 19,
+          type: 'page',
+          title: 'Doctype(DTD)'
+        },
+        {
+          pathId: 20,
+          type: 'page',
+          title: 'HTML, HEAD, BODY'
+        },
+        {
+          pathId: 21,
+          type: 'page',
+          title: '정보를 의미하는 태그 살펴보기'
+        },
+        {
+          pathId: 22,
+          type: 'video',
+          title: '화면에 이미지 출력하기',
+          videoLength: '15:30'
+        }
+      ]
+    },
+    {
+      partId: 3,
+      title: 'HTML 개요(3)',
+      path: [
+        {
+          pathId: 16,
+          type: 'page',
+          title: '첫 인사 및 강의 개요'
+        },
+        {
+          pathId: 17,
+          type: 'page',
+          title: '기본 문법'
+        },
+        {
+          pathId: 18,
+          type: 'page',
+          title: '부모와 자식 관계의 이해'
+        },
+        {
+          pathId: 19,
+          type: 'page',
+          title: 'Doctype(DTD)'
+        },
+        {
+          pathId: 20,
+          type: 'page',
+          title: 'HTML, HEAD, BODY'
+        },
+        {
+          pathId: 21,
+          type: 'page',
+          title: '정보를 의미하는 태그 살펴보기'
+        },
+        {
+          pathId: 22,
           type: 'video',
           title: '화면에 이미지 출력하기',
           videoLength: '15:30'
