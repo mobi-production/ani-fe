@@ -1,6 +1,6 @@
-'use-client'
+'use client'
 
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Children, ReactElement, isValidElement, useEffect, useMemo, useState } from 'react'
 
 export type FunnelStepProps<T extends string[]> = {
@@ -38,19 +38,20 @@ function Step<T extends string[]>({ children }: FunnelStepProps<T>) {
 
 export function useFunnel<T extends string[]>({ steps, defaultStepName }: Props<T>) {
   const router = useRouter()
-  const { query } = router
+  const searchParams = useSearchParams()
 
-  const validStepQuery = steps.find((step) => step === query.step)
+  const stepQuery = searchParams?.get('step')
+  const validStepQuery = steps.includes(stepQuery || '') ? stepQuery : null
   const [currentStep, setCurrentStep] = useState<T[number]>(validStepQuery || defaultStepName)
 
   useEffect(() => {
-    if (query.step && typeof query.step === 'string' && steps.includes(query.step)) {
-      setCurrentStep(query.step)
+    if (validStepQuery) {
+      setCurrentStep(validStepQuery as T[number])
     }
-  }, [query.step])
+  }, [validStepQuery])
 
   const onNavigateStep = (step: T[number]) => {
-    router.push({ query: { step } }, undefined, { shallow: true })
+    router.push(`?step=${step}`)
   }
 
   const FunnelStep = useMemo(() => {
