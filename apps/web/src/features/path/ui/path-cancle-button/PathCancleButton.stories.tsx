@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import PathApplyButton from '.'
+import PathCancleButton from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/PathApplyButton',
-  component: PathApplyButton,
+  title: 'Feature/PathCancleButton',
+  component: PathCancleButton,
   parameters: {
     layout: 'fullscreen',
     docs: {
@@ -14,15 +14,14 @@ const meta = {
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof PathApplyButton>
+} satisfies Meta<typeof PathCancleButton>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
   args: {
-    pathId: '1',
-    isLoggedIn: true
+    pathId: '1'
   },
   decorators: [
     (Story) => (

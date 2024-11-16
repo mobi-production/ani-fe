@@ -4,6 +4,7 @@ import { pathIntroduce } from '@/__mock__/data/path'
 import { PathIntroduce } from '@/entities/path/model/path-introduce'
 import CurriculumBar from '@/entities/path/ui/curriculum-bar'
 import PathApplyButton from '@/features/path/ui/path-apply-button'
+import PathCancleButton from '@/features/path/ui/path-cancle-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
 import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
@@ -60,11 +61,14 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
                   {data.description}
                 </Typography>
               </Flex>
-              <PathApplyButton
-                pathId={data.id}
-                isApplied={data.isApplied}
-                isLoggedIn={isLoggedIn}
-              />
+              {data.isApplied ? (
+                <PathCancleButton pathId={data.id} />
+              ) : (
+                <PathApplyButton
+                  pathId={data.id}
+                  isLoggedIn={isLoggedIn}
+                />
+              )}
             </Flex>
           </Flex>
         </section>

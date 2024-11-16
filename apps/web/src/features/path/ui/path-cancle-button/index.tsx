@@ -6,27 +6,22 @@ import { useCallback } from 'react'
 
 type Props = {
   pathId: string
-  isLoggedIn: boolean
 }
 
-function PathApplyButton({ pathId, isLoggedIn }: Props) {
+function PathCancleButton({ pathId }: Props) {
   const onClick = useCallback(() => {
-    if (isLoggedIn) {
-      // 신청하기
-    } else {
-      // 로그인 권유 팝업 띄우기
-    }
-  }, [isLoggedIn, pathId])
+    // 신청 취소하기
+  }, [pathId])
 
   return (
     <SolidButton
       onClick={onClick}
-      variant='primary'
+      variant='secondary'
       fullWidth
       rightIcon={<Icon name='RightOutlined' />}>
-      신청하기
+      신청 취소하기
     </SolidButton>
   )
 }
 
-export default PathApplyButton
+export default PathCancleButton
