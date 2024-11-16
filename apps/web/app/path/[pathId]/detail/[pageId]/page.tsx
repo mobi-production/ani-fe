@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import React from 'react'
+import PathDetailPage from '@/views/PathDetailPage'
 
 export async function generateMetadata({
   params
@@ -19,5 +20,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <div>패스 상세 페이지입니다.</div>
+  return <PathDetailPage />
 }

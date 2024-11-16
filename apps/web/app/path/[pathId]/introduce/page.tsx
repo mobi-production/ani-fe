@@ -1,5 +1,7 @@
-import IntroducePage from '@/pages/IntroducePage'
+import { pathIntroduce } from '@/__mock__/data/path'
+import IntroducePage from '@/views/IntroducePage'
 
 export default function Page() {
-  return <IntroducePage />
+  const data = pathIntroduce
+  return <IntroducePage data={data} />
 }
