@@ -29,9 +29,12 @@ export type FeedbackType = {
   questions: FeedbackQuestionType[]
 }
 
+export const MOCK_PATH_ID = 'aaaaaa'
+export const MOCK_PART_ID = 'bbbbbb'
+
 export const mockFeedbackList: FeedbackType[] = [
   {
-    courseId: 'aaaaaa',
+    courseId: MOCK_PART_ID,
     courseName: 'HTML 개요 (1)',
     type: FEEDBACK_CATEGORY.PART,
     version: 1,
@@ -75,7 +78,7 @@ export const mockFeedbackList: FeedbackType[] = [
     ]
   },
   {
-    courseId: 'aaaaaa',
+    courseId: MOCK_PART_ID,
     courseName: 'HTML 개요 (1)',
     type: FEEDBACK_CATEGORY.MENTO,
     version: 1,
@@ -113,7 +116,7 @@ export const mockFeedbackList: FeedbackType[] = [
     ]
   },
   {
-    courseId: 'aaaaaa',
+    courseId: MOCK_PART_ID,
     courseName: 'HTML 개요 (1)',
     type: FEEDBACK_CATEGORY.PAIR,
     version: 2,
@@ -145,7 +148,7 @@ export const mockFeedbackList: FeedbackType[] = [
     ]
   },
   {
-    courseId: 'bbbbbbb',
+    courseId: MOCK_PATH_ID,
     courseName: 'HTML / CSS 기초 패스',
     type: FEEDBACK_CATEGORY.PATH,
     version: 1,
