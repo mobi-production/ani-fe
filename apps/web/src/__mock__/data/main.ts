@@ -45,13 +45,14 @@ type Path = {
   pathName: string
   level: number
   status?: PathStatus
-  startDate: string
-  endDate: string
+  applyPeriod: string
+  progressPeriod: string
 }
 
 export type PathData = {
-  inProgressPaths: Path[]
-  scheduledPaths: Path[]
+  inProgressPaths: (Path & {
+    isApplied: boolean
+  })[]
   upcomingPaths: Path[]
 }
 
@@ -150,76 +151,42 @@ export const mainData: MainData = {
       {
         id: 1,
         image: '/avif/placeholder.avif',
+        isApplied: true,
         pathName: 'React 상태 관리 심화',
         level: 3,
         status: 'IN_PROGRESS',
-        startDate: '2024-11-20',
-        endDate: '2024-12-10'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 2,
         image: '/avif/placeholder.avif',
+        isApplied: false,
         pathName: 'TypeScript 중급',
         level: 4,
         status: 'IN_PROGRESS',
-        startDate: '2024-11-25',
-        endDate: '2024-12-15'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 3,
         image: '/avif/placeholder.avif',
+        isApplied: false,
         pathName: 'CSS Grid 레이아웃 이해',
         level: 2,
         status: 'IN_PROGRESS',
-        startDate: '2024-11-30',
-        endDate: '2024-12-20'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 4,
         image: '/avif/placeholder.avif',
+        isApplied: true,
         pathName: 'Vue.js 심화 이해',
         level: 3,
         status: 'IN_PROGRESS',
-        startDate: '2024-12-01',
-        endDate: '2024-12-25'
-      }
-    ],
-    scheduledPaths: [
-      {
-        id: 1,
-        image: '/avif/placeholder.avif',
-        pathName: 'React 상태 관리 이해',
-        level: 3,
-        status: 'SCHEDULE',
-        startDate: '2024-12-15',
-        endDate: '2024-12-25'
-      },
-      {
-        id: 2,
-        image: '/avif/placeholder.avif',
-        pathName: 'React Hooks 심화',
-        level: 3,
-        status: 'SCHEDULE',
-        startDate: '2024-12-10',
-        endDate: '2024-12-20'
-      },
-      {
-        id: 3,
-        image: '/avif/placeholder.avif',
-        pathName: 'Next.js 고급 이해',
-        level: 4,
-        status: 'SCHEDULE',
-        startDate: '2024-12-05',
-        endDate: '2024-12-15'
-      },
-      {
-        id: 4,
-        image: '/avif/placeholder.avif',
-        pathName: 'TypeScript 기초',
-        level: 2,
-        status: 'SCHEDULE',
-        startDate: '2024-11-25',
-        endDate: '2024-12-05'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       }
     ],
     upcomingPaths: [
@@ -228,32 +195,32 @@ export const mainData: MainData = {
         image: '/avif/placeholder.avif',
         pathName: 'Vue.js 기초 이해',
         level: 1,
-        startDate: '2024-12-30',
-        endDate: '2025-01-10'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 2,
         image: '/avif/placeholder.avif',
         pathName: 'Angular 기초 이해',
         level: 2,
-        startDate: '2024-12-20',
-        endDate: '2024-12-30'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 3,
         image: '/avif/placeholder.avif',
         pathName: 'JavaScript 심화',
         level: 3,
-        startDate: '2024-12-15',
-        endDate: '2024-12-25'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       },
       {
         id: 4,
         image: '/avif/placeholder.avif',
         pathName: 'CSS 애니메이션',
         level: 2,
-        startDate: '2024-12-05',
-        endDate: '2024-12-15'
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       }
     ]
   }
