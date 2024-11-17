@@ -12,7 +12,7 @@ import { Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import Link from 'next/link'
 
-function Inner({ data }: { data: MainData }) {
+export function MainPageInner({ data }: { data: MainData }) {
   const { mainBanner, userData, pathData } = data
   return (
     <Flex
@@ -23,7 +23,7 @@ function Inner({ data }: { data: MainData }) {
       <Flex
         direction='column'
         className='max-w-[82rem] gap-[3.5rem]'>
-        <div className='max-h-[29.75rem] overflow-hidden'>
+        <div className='max-h-[29.75rem] overflow-hidden rounded-[0.75rem]'>
           <Image
             src={mainBanner[0] ? mainBanner[0].image : '/avif/placeholder.avif'}
             alt='mainBanner'
@@ -67,5 +67,5 @@ function Inner({ data }: { data: MainData }) {
 }
 
 export default function MainPage() {
-  return <Inner data={mainData} />
+  return <MainPageInner data={mainData} />
 }

@@ -1,15 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import MainPage from '.'
+import { MainPageInner } from '.'
 import { mainData } from '@/__mock__/data/main'
 
 const meta = {
   title: 'Page/MainPage',
-  component: MainPage,
+  component: MainPageInner,
   parameters: {
-    layout: 'centered'
+    layout: 'fullscreen'
   },
-  tags: ['autodocs']
-} satisfies Meta<typeof MainPage>
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: '20px',
+          boxSizing: 'border-box',
+          width: '110vw'
+        }}>
+        <Story />
+      </div>
+    )
+  ]
+} satisfies Meta<typeof MainPageInner>
 
 export default meta
 type Story = StoryObj<typeof meta>
