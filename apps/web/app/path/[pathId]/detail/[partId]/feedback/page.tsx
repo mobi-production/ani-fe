@@ -21,6 +21,6 @@ export async function generateMetadata({
   }
 }
 
-export default function Page() {
-  return <PartFeedbackPage />
+export default function Page({ params }: { params: { partId: string } }) {
+  return <PartFeedbackPage partId={params.partId} />
 }

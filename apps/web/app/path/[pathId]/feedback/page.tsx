@@ -19,6 +19,6 @@ export async function generateMetadata({
   }
 }
 
-export default function Page() {
-  return <PathFeedbackPage />
+export default function Page({ params }: { params: { pathId: string } }) {
+  return <PathFeedbackPage pathId={params.pathId} />
 }
