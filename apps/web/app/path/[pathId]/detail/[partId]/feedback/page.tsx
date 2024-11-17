@@ -1,6 +1,7 @@
 import PartFeedbackPage from '@/views/PartFeedbackPage'
 import type { Metadata } from 'next'
-import React from 'react'
+import React, { Suspense } from 'react'
+import Loading from './loading'
 
 export async function generateMetadata({
   params
@@ -22,5 +23,9 @@ export async function generateMetadata({
 }
 
 export default function Page({ params }: { params: { partId: string } }) {
-  return <PartFeedbackPage partId={params.partId} />
+  return (
+    <Suspense fallback={<Loading />}>
+      <PartFeedbackPage partId={params.partId} />
+    </Suspense>
+  )
 }
