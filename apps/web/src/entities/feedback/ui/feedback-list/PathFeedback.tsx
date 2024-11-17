@@ -1,5 +1,5 @@
-import { mockFeedbackList } from '@/__mock__/data/feedback'
-import FeedbackList from './feedback-list'
+import { FEEDBACK_ANSWER_TYPE, mockFeedbackList } from '@/__mock__/data/feedback'
+import FeedbackList from '@/widgets/feedback/ui/feedback-list'
 
 export function PathFeedback() {
   const PATH_FEEDBACK_LIST = mockFeedbackList.find((list) => list.type === 'PATH')
@@ -17,8 +17,10 @@ export function PathFeedback() {
             questionIndex={index + 1}
             title={question.title}
           />
-          {question.type === 'likert' && <FeedbackList.Likert />}
-          {question.type === 'openEnded' && <FeedbackList.OpenEnded maxLength={500} />}
+          {question.type === FEEDBACK_ANSWER_TYPE.LIKERT && <FeedbackList.Likert />}
+          {question.type === FEEDBACK_ANSWER_TYPE.OPEN_ENDED && (
+            <FeedbackList.OpenEnded maxLength={500} />
+          )}
         </>
       ))}
     </FeedbackList>

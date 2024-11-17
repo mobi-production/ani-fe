@@ -1,4 +1,4 @@
-const enum FEEDBACK_ANSWER_TYPE {
+export const enum FEEDBACK_ANSWER_TYPE {
   LIKERT = 'LIKERT',
   OPEN_ENDED = 'OPEN_ENDED'
 }

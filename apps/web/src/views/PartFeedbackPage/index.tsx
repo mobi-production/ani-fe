@@ -2,9 +2,9 @@
 
 import { FEEDBACK_STEP } from '@/widgets/feedback/config/feedback-step'
 import { extractKeysFromObject } from '@/shared/lib/utils'
-import { MentoFeedback, PairFeedback, PartFeedback } from '@/widgets/feedback/ui'
 import { useFunnel } from '@/shared/lib/hooks/use-funnel'
 import FeedbackStep from '@/widgets/feedback/ui/feedback-step'
+import { MentoFeedback, PairFeedback, PartFeedback } from '@/entities/feedback/ui/feedback-list'
 
 type InnerProps = {}
 

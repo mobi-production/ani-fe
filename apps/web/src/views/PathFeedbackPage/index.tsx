@@ -1,6 +1,6 @@
 'use client'
 
-import { PathFeedback } from '@/widgets/feedback/ui'
+import { PathFeedback } from '@/entities/feedback/ui/feedback-list'
 
 type Props = {
   pathId: string
