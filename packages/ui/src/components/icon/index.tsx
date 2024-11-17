@@ -32,12 +32,13 @@ const iconVariants = cva('text-inherit', {
   }
 })
 
-function Icon({ name, size, className, ...props }: Props) {
+function Icon({ name, size, color, className, ...props }: Props) {
   const IconComponent = IconsMap[name]
 
   return (
     <IconComponent
       className={`${iconVariants({ size })} ${className}`}
+      style={color ? { color } : {}}
       {...props}
     />
   )
