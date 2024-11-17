@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import FeedbackPage from '.'
+import { wrapWithAppRouterContext } from '@/shared/lib/utils'
 
 const meta = {
   title: 'Page/FeedbackPage',
@@ -7,7 +8,8 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  decorators: [wrapWithAppRouterContext]
 } satisfies Meta<typeof FeedbackPage>
 
 export default meta

@@ -2,7 +2,7 @@ import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import Header from '.'
 
 const meta = {
-  title: 'shared/Header',
+  title: 'Widget/Header',
   component: Header,
   parameters: {
     layout: 'centered',
