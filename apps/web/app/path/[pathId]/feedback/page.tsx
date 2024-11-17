@@ -1,4 +1,4 @@
-import FeedbackPage from '@/pages/FeedbackPage'
+import FeedbackPage from '@/views/FeedbackPage'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({
