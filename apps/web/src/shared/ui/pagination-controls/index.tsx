@@ -23,7 +23,7 @@ function LeftButton({ isActive, ...props }: LeftButtonProps) {
     <button
       disabled={!isActive}
       className={`flex h-[1.5rem] w-[1.5rem] items-center justify-center rounded-[4px] border border-solid ${
-        isActive ? 'border-line-normal' : 'border-neutral-99'
+        isActive ? 'border-line-normal text-neutral-10' : 'border-neutral-99 text-neutral-90'
       }`}
       {...props}>
       <Icon
@@ -43,13 +43,10 @@ function RightButton({ isActive, ...props }: RightButtonProps) {
     <button
       disabled={!isActive}
       className={`flex h-[1.5rem] w-[1.5rem] items-center justify-center rounded-[4px] border border-solid ${
-        isActive ? 'border-line-normal' : 'border-neutral-99'
+        isActive ? 'border-line-normal text-neutral-10' : 'border-neutral-99 text-neutral-90'
       }`}
       {...props}>
-      <Icon
-        name='RightOutlined'
-        color={isActive ? '' : '#c4c4c4'}
-      />
+      <Icon name='RightOutlined' />
     </button>
   )
 }
