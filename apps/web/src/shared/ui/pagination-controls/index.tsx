@@ -18,7 +18,7 @@ type LeftButtonProps = ComponentProps<'button'> & {
   isActive?: boolean
 }
 
-function LeftButton({ isActive = true, ...props }: LeftButtonProps) {
+function LeftButton({ isActive = false, ...props }: LeftButtonProps) {
   return (
     <button
       disabled={!isActive}

@@ -19,12 +19,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  render: () => {
-    return (
-      <PaginationControls>
-        <PaginationControls.LeftButton isActive={false} />
-        <PaginationControls.RightButton isActive={true} />
-      </PaginationControls>
-    )
-  }
+  render: (args) => (
+    <PaginationControls {...args}>
+      <PaginationControls.LeftButton isActive={false} />
+      <PaginationControls.RightButton isActive={true} />
+    </PaginationControls>
+  )
 }
