@@ -5,7 +5,7 @@ const enum FEEDBACK_ANSWER_TYPE {
 
 type FeedbackAnswerType = keyof typeof FEEDBACK_ANSWER_TYPE
 
-type FeedbackQuestionType = {
+export type FeedbackQuestionType = {
   id: string
   type: FeedbackAnswerType
   isReverseCoded: boolean
@@ -21,7 +21,7 @@ export const enum FEEDBACK_CATEGORY {
 
 type FeedbackCategoryType = keyof typeof FEEDBACK_CATEGORY
 
-type FeedbackType = {
+export type FeedbackType = {
   courseId: string
   courseName: string
   type: FeedbackCategoryType
@@ -185,3 +185,6 @@ export const mockFeedbackList: FeedbackType[] = [
     ]
   }
 ]
+
+export const MOCK_MENTO = ['alverick', 'creme']
+export const MOCK_USER = ['zoey', 'zero', 'jane']
