@@ -1,4 +1,5 @@
 import { PathData } from '@/__mock__/data/main'
+import { PathProductItemBasic } from '@/shared/ui/path-product-item'
 import { Flex, Typography } from '@repo/ui/server'
 
 type OpenSoonPathListProps = {
@@ -26,7 +27,21 @@ function OpenSoonPathList({ pathData }: OpenSoonPathListProps) {
             <div
               key={path.id}
               className='w-[18.75rem] rounded-[0.5rem] border p-[1.25rem]'>
-              <Typography>{path.pathName}</Typography>
+              <PathProductItemBasic>
+                <PathProductItemBasic.Image
+                  src={path.image}
+                  alt={`${path.pathName} 이미지`}
+                />
+                <PathProductItemBasic.BadgeList
+                  level={path.level}
+                  category={'프론트엔드'}
+                />
+                <PathProductItemBasic.TextContentList
+                  name={path.pathName}
+                  applyPeriod={path.applyPeriod}
+                  progressPeriod={path.progressPeriod}
+                />
+              </PathProductItemBasic>
             </div>
           )
         })}
