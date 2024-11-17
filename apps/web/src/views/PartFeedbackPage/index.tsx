@@ -6,7 +6,7 @@ import { MentoFeedback, PairFeedback, PartFeedback } from '@/widgets/feedback/ui
 import { useFunnel } from '@/shared/lib/hooks/use-funnel'
 import FeedbackStep from '@/widgets/feedback/ui/feedback-step'
 
-export default function FeedbackPage() {
+export default function PartFeedbackPage() {
   const feedbackStep = [...extractKeysFromObject(FEEDBACK_STEP)]
   const { FunnelStep } = useFunnel({
     steps: feedbackStep,

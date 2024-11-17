@@ -1,4 +1,4 @@
-import FeedbackPage from '@/views/FeedbackPage'
+import PartFeedbackPage from '@/views/PartFeedbackPage'
 import type { Metadata } from 'next'
 import React from 'react'
 
@@ -22,5 +22,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <FeedbackPage />
+  return <PartFeedbackPage />
 }

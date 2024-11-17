@@ -1,4 +1,4 @@
-import FeedbackPage from '@/views/FeedbackPage'
+import PathFeedbackPage from '@/views/PathFeedbackPage'
 import type { Metadata } from 'next'
 
 export async function generateMetadata({
@@ -20,5 +20,5 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <FeedbackPage />
+  return <PathFeedbackPage />
 }

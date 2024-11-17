@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import FeedbackPage from '.'
+import PathFeedbackPage from '.'
 import { wrapWithAppRouterContext } from '@/shared/lib/utils'
 
 const meta = {
-  title: 'Page/FeedbackPage',
-  component: FeedbackPage,
+  title: 'Page/PathFeedbackPage',
+  component: PathFeedbackPage,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs'],
   decorators: [wrapWithAppRouterContext]
-} satisfies Meta<typeof FeedbackPage>
+} satisfies Meta<typeof PathFeedbackPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
