@@ -1,4 +1,4 @@
-import { RadioGroup, Icon } from '@repo/ui/client'
+import { Icon } from '@repo/ui/client'
 import {
   Badge,
   Flex,
@@ -11,6 +11,7 @@ import {
   Typography
 } from '@repo/ui/server'
 import { ServerDrivenComponentType } from './server-driven'
+import RadioGroup from './radio-group'
 
 export function renderComponents(componentData: ServerDrivenComponentType) {
   const { type, props, children } = componentData

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import RadioGroup from '.'
 
 const meta = {
-  title: 'MDS/RadioGroup',
+  title: 'SDU/RadioGroup',
   component: RadioGroup,
   parameters: {
     layout: 'centered'

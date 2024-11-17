@@ -1,8 +1,8 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useMemo, useState } from 'react'
-import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../model/likert-scale'
 import { cva } from 'class-variance-authority'
 import { Typography } from '@repo/ui/server'
 import cn from '@repo/util/cn'
+import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../config/likert-scale'
 
 const likertScaleVariants = cva(
   'm-auto flex h-[3.8rem] w-[3.8rem] cursor-pointer items-center rounded-full justiy-center font-semibold',
