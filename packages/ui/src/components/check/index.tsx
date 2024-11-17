@@ -19,7 +19,7 @@ function CheckBox({ checked, ...props }: Props) {
       <Icon
         size='24'
         name='CheckCircleFilled'
-        className={cn('transition-colors duration-200', checked && 'text-line-normal')}
+        className={cn(checked ? 'text-primary-normal' : 'text-label-disable')}
       />
     </label>
   )

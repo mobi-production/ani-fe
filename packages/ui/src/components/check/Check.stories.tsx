@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
+import Flex from '../flex'
 import Check from '.'
 
 const meta = {
@@ -15,17 +16,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const Preview: Story = {
   args: {
     checked: false
   },
   render: (args) => {
-    const [checked, setChecked] = useState(args.checked)
     return (
-      <Check
-        checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
-      />
+      <Flex gap='4'>
+        <Check checked={!args.checked} />
+        <Check checked={args.checked} />
+      </Flex>
     )
   }
 }
