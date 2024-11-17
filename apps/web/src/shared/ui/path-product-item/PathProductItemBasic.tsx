@@ -14,17 +14,28 @@ function PathProductItemBasic({ ...props }: PathProductItemBasicProps) {
   )
 }
 
-type ImageProps = ComponentProps<typeof ImageSection>
+type ImageProps = ComponentProps<typeof ImageSection> & {
+  isApplied?: boolean
+}
 
-function Image({ src, alt, className, ...props }: ImageProps) {
+function Image({ src, alt, isApplied = false, className, ...props }: ImageProps) {
   return (
-    <ImageSection
-      src={src}
-      alt={alt}
-      className={className}
-      size='m'
-      {...props}
-    />
+    <div className='relative'>
+      <ImageSection
+        src={src}
+        alt={alt}
+        className={className}
+        size='m'
+        {...props}
+      />
+      {isApplied && (
+        <Badge
+          className='absolute left-[0.875rem] top-[1rem]'
+          color='green'>
+          신청완료
+        </Badge>
+      )}
+    </div>
   )
 }
 
@@ -34,7 +45,7 @@ type BadgeListProps = ComponentProps<'div'> & {
   badgeType?: PathStatusBadgeType
 }
 
-function BadgeList({ level, category, badgeType }: BadgeListProps) {
+function BadgeList({ level = 0, category = '', badgeType }: BadgeListProps) {
   const { badgeColor, badgeLabel } = useMemo(() => {
     if (!badgeType) {
       return {
@@ -61,10 +72,15 @@ function BadgeList({ level, category, badgeType }: BadgeListProps) {
 
 type TextContentListProps = ComponentProps<'div'> & {
   name: string
-  period: string
+  applyPeriod: string
+  progressPeriod: string
 }
 
-function TextContentList({ name, period }: TextContentListProps) {
+function TextContentList({
+  name = '',
+  applyPeriod = '',
+  progressPeriod = ''
+}: TextContentListProps) {
   return (
     <Flex
       direction='column'
@@ -79,7 +95,13 @@ function TextContentList({ name, period }: TextContentListProps) {
         color='alternative'
         variant='caption-2'
         fontWeight='regular'>
-        {period}
+        {`신청 기간 | ${applyPeriod}`}
+      </Typography>
+      <Typography
+        color='alternative'
+        variant='caption-2'
+        fontWeight='regular'>
+        {`진행 기간 | ${progressPeriod}`}
       </Typography>
     </Flex>
   )

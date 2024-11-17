@@ -5,7 +5,6 @@ import AssignmentList from '@/widgets/main/ui/assignment-list'
 import LeaningSummaryList from '@/widgets/main/ui/leaning-summary-list'
 import OpenSoonPathList from '@/widgets/main/ui/open-soon-path-list'
 import RecruitingPathList from '@/widgets/main/ui/recruiting-path-list'
-import UpcomingPathList from '@/widgets/main/ui/upcoming-path-list'
 import { Icon } from '@repo/ui/client'
 import { Flex, Typography } from '@repo/ui/server'
 
@@ -59,7 +58,6 @@ export function MainPageInner({ data }: { data: MainData }) {
           <AssignmentList userData={userData} />
         </Flex>
         <RecruitingPathList pathData={pathData} />
-        <UpcomingPathList pathData={pathData} />
         <OpenSoonPathList pathData={pathData} />
       </Flex>
     </Flex>

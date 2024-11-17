@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemDone from './PathProductItemDone'
 
 const meta = {
-  title: 'ProductItem/Done',
+  title: 'Shared/PathProductItem/Done',
   component: PathProductItemDone,
   parameters: {
     layout: 'centered',

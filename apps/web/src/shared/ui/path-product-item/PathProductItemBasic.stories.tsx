@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemBasic from './PathProductItemBasic'
 
 const meta = {
-  title: 'ProductItem/Basic',
+  title: 'Shared/PathProductItem/Basic',
   component: PathProductItemBasic,
   parameters: {
     layout: 'centered',
@@ -24,6 +24,7 @@ export const Primary: Story = {
       <PathProductItemBasic.Image
         src='/avif/placeholder.avif'
         alt='Placeholder Image'
+        isApplied
       />
       <PathProductItemBasic.BadgeList
         level={1}
@@ -32,7 +33,8 @@ export const Primary: Story = {
       />
       <PathProductItemBasic.TextContentList
         name='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지'
-        period='2024.09.06 ~ 2024.10.06'
+        applyPeriod='2024.09.06 ~ 2024.10.06'
+        progressPeriod='2024.10.07 ~ 2024.12.07'
       />
     </PathProductItemBasic>
   )
