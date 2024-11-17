@@ -18,7 +18,7 @@ type LeftButtonProps = ComponentProps<'button'> & {
   isActive?: boolean
 }
 
-function LeftButton({ isActive = false, ...props }: LeftButtonProps) {
+function LeftButton({ isActive, ...props }: LeftButtonProps) {
   return (
     <button
       disabled={!isActive}
@@ -28,7 +28,7 @@ function LeftButton({ isActive = false, ...props }: LeftButtonProps) {
       {...props}>
       <Icon
         name='LeftOutlined'
-        color={isActive ? '' : 'neutral-90'}
+        color={isActive ? '' : '#c4c4c4'}
       />
     </button>
   )
@@ -48,7 +48,7 @@ function RightButton({ isActive, ...props }: RightButtonProps) {
       {...props}>
       <Icon
         name='RightOutlined'
-        color={isActive ? '' : 'neutral-90'}
+        color={isActive ? '' : '#c4c4c4'}
       />
     </button>
   )
