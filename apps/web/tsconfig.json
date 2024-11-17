@@ -1,16 +1,29 @@
 {
-  "extends": "../../config/ts-config/nextjs.json",
+  "extends": "@config/ts-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@repo/ui/*": ["../../packages/ui/src/*"],
+      "@repo/util/*": ["../../packages/util/src/*"],
+      "@config/es-config/*": ["../../config/es-config/*"],
+      "@config/ts-config/*": ["../../config/ts-config/*"]
     },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "next.config.mjs", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "next.config.mjs",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

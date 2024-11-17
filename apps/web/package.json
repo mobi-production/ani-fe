@@ -7,24 +7,27 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
-    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx}\"",
     "server": "npx tsx watch ./src/__mock__/http.ts",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "@repo/ui": "workspace:*",
     "@repo/util": "workspace:*",
     "next": "^14.2.16",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
     "@config/es-config": "workspace:*",
     "@config/libs": "workspace:*",
     "@config/ts-config": "workspace:*",
+    "@eslint/eslintrc": "^3.1.0",
     "@mswjs/http-middleware": "^0.10.2",
     "@storybook/addon-essentials": "8.4.1",
     "@storybook/addon-interactions": "8.4.1",
@@ -41,6 +44,7 @@
     "autoprefixer": "^10.4.20",
     "cors": "^2.8.5",
     "eslint": "8.57.0",
+    "eslint-config-next": "^15.0.2",
     "eslint-plugin-storybook": "^0.10.2",
     "express": "^4.21.1",
     "msw": "^2.6.0",

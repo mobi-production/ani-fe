@@ -16,6 +16,7 @@ const config: StorybookConfig = {
     '../../../packages/ui/src/**/*.mdx',
     '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
+  staticDirs: ['../public'],
   addons: [
     getAbsolutePath('@storybook/addon-onboarding'),
     getAbsolutePath('@storybook/addon-essentials'),
@@ -32,7 +33,8 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        '@': resolve(__dirname, '../src')
+        '@': resolve(__dirname, '../src'),
+        '@repo/ui': resolve(__dirname, '../../../packages/ui/src')
       }
     }
 

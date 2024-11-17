@@ -1,5 +1,11 @@
+import '@config/libs/globals.css'
+
 import { pretendardFont } from './_fonts'
-import '@/styles/globals.css'
+import { Flex } from '@repo/ui/server'
+import Header from '@/shared/ui/header'
+
+// TODO: 로그인 상태 추가
+const isLoggedIn = false
 
 export default function RootLayout({
   children
@@ -10,7 +16,15 @@ export default function RootLayout({
     <html
       className={`${pretendardFont.variable}`}
       lang='ko'>
-      <body>{children}</body>
+      <Flex
+        asChild
+        direction={'column'}
+        className='w-full'>
+        <body className='gap-[3.25rem] bg-background-alternative'>
+          <Header isLoggedIn={isLoggedIn} />
+          {children}
+        </body>
+      </Flex>
     </html>
   )
 }
