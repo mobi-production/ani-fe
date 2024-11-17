@@ -1,5 +1,6 @@
 import {
   BellOutlined,
+  CheckCircleFilled,
   ExclamationCircleOutlined,
   FileOutlined,
   PlayCircleOutlined,
@@ -13,7 +14,8 @@ export const IconsMap = {
   BellOutlined: BellOutlined,
   ExclamationCircleOutlined: ExclamationCircleOutlined,
   FileOutlined: FileOutlined,
-  PlayCircleOutlined: PlayCircleOutlined
+  PlayCircleOutlined: PlayCircleOutlined,
+  CheckCircleFilled: CheckCircleFilled
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
