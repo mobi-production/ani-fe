@@ -26,10 +26,7 @@ function LeftButton({ isActive, ...props }: LeftButtonProps) {
         isActive ? 'border-line-normal text-neutral-10' : 'border-neutral-99 text-neutral-90'
       }`}
       {...props}>
-      <Icon
-        name='LeftOutlined'
-        color={isActive ? '' : '#c4c4c4'}
-      />
+      <Icon name='LeftOutlined' />
     </button>
   )
 }
