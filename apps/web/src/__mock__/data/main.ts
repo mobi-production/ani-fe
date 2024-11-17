@@ -187,6 +187,16 @@ export const mainData: MainData = {
         status: 'IN_PROGRESS',
         applyPeriod: '2024-12-30 ~ 2024-01-10',
         progressPeriod: '2024-12-30 ~ 2024-01-10'
+      },
+      {
+        id: 5,
+        image: '/avif/placeholder.avif',
+        isApplied: true,
+        pathName: 'Vue.js 심화 이해',
+        level: 3,
+        status: 'IN_PROGRESS',
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
       }
     ],
     upcomingPaths: [
@@ -218,6 +228,22 @@ export const mainData: MainData = {
         id: 4,
         image: '/avif/placeholder.avif',
         pathName: 'CSS 애니메이션',
+        level: 2,
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
+      },
+      {
+        id: 5,
+        image: '/avif/placeholder.avif',
+        pathName: 'Angular 기초 이해',
+        level: 2,
+        applyPeriod: '2024-12-30 ~ 2024-01-10',
+        progressPeriod: '2024-12-30 ~ 2024-01-10'
+      },
+      {
+        id: 6,
+        image: '/avif/placeholder.avif',
+        pathName: 'Angular 기초 이해',
         level: 2,
         applyPeriod: '2024-12-30 ~ 2024-01-10',
         progressPeriod: '2024-12-30 ~ 2024-01-10'

@@ -10,7 +10,7 @@ function OpenSoonPathList({ pathData }: OpenSoonPathListProps) {
   return (
     <Flex
       direction='column'
-      className='mb-[3.5rem] w-full rounded-[0.75rem] bg-white p-[2.375rem]'>
+      className='mb-[3.5rem] w-full rounded-[0.75rem] bg-white p-[2.375rem] pb-[0.75rem]'>
       <Typography
         className='mb-[1.625rem]'
         variant='title-3'
@@ -21,12 +21,12 @@ function OpenSoonPathList({ pathData }: OpenSoonPathListProps) {
         direction='row'
         wrap='wrap'
         align='center'
-        justify='between'>
+        className='gap-[0.75rem]'>
         {pathData.upcomingPaths.map((path) => {
           return (
             <div
               key={path.id}
-              className='w-[18.75rem] rounded-[0.5rem] border p-[1.25rem]'>
+              className='mb-[1.5rem] w-[18.75rem] rounded-[0.5rem] border p-[1.25rem]'>
               <PathProductItemBasic>
                 <PathProductItemBasic.Image
                   src={path.image}
