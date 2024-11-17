@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemAssignment from './PathProductItemAssignment'
 
 const meta = {
-  title: 'ProductItem/Assignment',
+  title: 'Shared/PathProductItem/Assignment',
   component: PathProductItemAssignment,
   parameters: {
     layout: 'centered',

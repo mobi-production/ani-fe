@@ -2,14 +2,17 @@ import { ComponentProps, useMemo } from 'react'
 
 import { PATH_STATUS_BADGE, PathStatusBadgeType } from './variants'
 import { Badge, Flex, ImageSection, ProgressBar, Typography } from '@repo/ui/server'
+import cn from '@repo/util/cn'
 
-type PathProductItemProgressProps = ComponentProps<'div'>
+type PathProductItemProgressProps = ComponentProps<'div'> & {
+  fullWidth?: boolean
+}
 
-function PathProductItemProgress({ ...props }: PathProductItemProgressProps) {
+function PathProductItemProgress({ fullWidth = false, ...props }: PathProductItemProgressProps) {
   return (
     <Flex
       direction='row'
-      className='min-h-[7.5rem] max-w-[22.75rem] gap-[0.75rem]'
+      className={cn('min-h-[7.5rem] max-w-[22.75rem] gap-[0.75rem]', fullWidth && 'w-full')}
       {...props}
     />
   )

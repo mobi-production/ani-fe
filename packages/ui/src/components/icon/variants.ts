@@ -3,6 +3,7 @@ import {
   CheckCircleFilled,
   ExclamationCircleOutlined,
   FileOutlined,
+  LeftOutlined,
   PlayCircleOutlined,
   RightOutlined,
   UserOutlined
@@ -10,6 +11,7 @@ import {
 
 export const IconsMap = {
   RightOutlined: RightOutlined,
+  LeftOutlined: LeftOutlined,
   UserOutlined: UserOutlined,
   BellOutlined: BellOutlined,
   ExclamationCircleOutlined: ExclamationCircleOutlined,
