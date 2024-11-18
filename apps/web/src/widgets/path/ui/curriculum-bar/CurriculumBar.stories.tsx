@@ -6,7 +6,7 @@ import { Typography } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 
 const meta = {
-  title: 'Entities/PathCurriculumBar',
+  title: 'Widget/Path/CurriculumBar',
   component: CurriculumBar,
   parameters: {
     layout: 'fullscreen',

@@ -22,8 +22,7 @@ function PathApplyButton({ pathId, isLoggedIn }: Props) {
     <SolidButton
       onClick={onClick}
       variant='primary'
-      fullWidth
-      rightIcon={<Icon name='RightOutlined' />}>
+      fullWidth>
       신청하기
     </SolidButton>
   )

@@ -1,14 +1,15 @@
 'use client'
 
-import { pathIntroduce } from '@/__mock__/data/path'
-import { PathIntroduce } from '@/entities/path/model/path-introduce'
-import CurriculumBar from '@/entities/path/ui/curriculum-bar'
+import { pathIntroduce as getMockData } from '@/__mock__/data/path'
+import { PathIntroduce } from '@/widgets/path/model/path-introduce'
+import CurriculumBar from '@/widgets/path/ui/curriculum-bar'
 import PathApplyButton from '@/features/path/ui/path-apply-button'
 import PathCancleButton from '@/features/path/ui/path-cancle-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
-import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
+import { Divider, Flex, ImageSection, SpacingBlock, Typography } from '@repo/ui/server'
 import { useRef } from 'react'
+import CurriculumCustomText from '@/widgets/path/ui/curriculum-custom-text'
 
 type InnerProps = {
   data: PathIntroduce
@@ -18,14 +19,12 @@ type InnerProps = {
 const LINKS = [
   { id: 'path_info', title: '패스 정보' },
   { id: 'path_feature', title: '패스 특징' },
-  { id: 'recommend_target', title: '추천 대상' },
   { id: 'curriculum', title: '커리큘럼' }
 ] as const
 
 export function Inner({ data, isLoggedIn }: InnerProps) {
   const pathInfoRef = useRef<HTMLDivElement>(null)
   const pathFeatureRef = useRef<HTMLDivElement>(null)
-  const recommendTargetRef = useRef<HTMLDivElement>(null)
   const curriculumRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -49,13 +48,14 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
               justify={'between'}>
               <Flex
                 direction={'column'}
-                gap={10}>
+                className='gap-[0.5rem]'>
                 <Typography
                   variant='display-2'
                   fontWeight={'bold'}>
                   {data.title}
                 </Typography>
                 <Typography
+                  className='whitespace-pre-line'
                   variant='body-1-normal'
                   fontWeight={'medium'}>
                   {data.description}
@@ -75,13 +75,12 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
 
         <Flex
           direction={'column'}
-          className='w-full'>
+          className='sticky top-0 w-full bg-inherit'>
           <NavigationLinks
             links={[
               { ...LINKS[0], ref: pathInfoRef },
               { ...LINKS[1], ref: pathFeatureRef },
-              { ...LINKS[2], ref: recommendTargetRef },
-              { ...LINKS[3], ref: curriculumRef }
+              { ...LINKS[2], ref: curriculumRef }
             ]}
             firstLinkActive={true}
           />
@@ -216,10 +215,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
           </Flex>
         </section>
 
-        <section
-          id={LINKS[2].id}
-          ref={recommendTargetRef}
-          className='flex flex-col gap-[1.5rem]'>
+        <section className='flex flex-col gap-[1.5rem]'>
           <Typography
             variant='title-3'
             fontWeight={'bold'}>
@@ -238,19 +234,23 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
                   justify={'center'}
                   asChild>
                   <div className='h-12 w-12 rounded-3xl bg-background-alternative px-[0.562rem] py-[0.812rem] text-[1.5rem]'>
-                    <Typography>{feature.emoji}</Typography>
+                    <Typography variant='heading-1'>{feature.emoji}</Typography>
                   </div>
                 </Flex>
-                <Typography variant='heading-1'>{feature.description}</Typography>
+                <Typography
+                  variant='body-1-normal'
+                  fontWeight={'medium'}>
+                  {feature.description}
+                </Typography>
               </Flex>
             ))}
           </Flex>
         </section>
 
         <section
-          id='curriculum'
           ref={curriculumRef}
-          className='flex flex-col gap-[1.5rem]'>
+          id={LINKS[2].id}
+          className='flex w-full flex-col gap-[1.5rem]'>
           <Typography
             variant='title-3'
             fontWeight={'bold'}>
@@ -262,32 +262,37 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
               direction={'column'}
               className='gap-[1.5rem]'>
               {data.pathContents.map((content, index) => (
-                <Flex
-                  key={index}
-                  direction={'column'}
-                  className='gap-[0.25rem]'>
+                <Flex direction={'column'}>
                   <Typography
                     variant='heading-2'
                     color='alternative'>
                     Part {index + 1}
                   </Typography>
+                  <SpacingBlock className='h-1' />
                   <Typography
                     variant='heading-2'
                     fontWeight={'semibold'}>
                     {content.title}
                   </Typography>
-                  {content.path.map((path, index) => (
-                    <Flex
-                      key={index}
-                      asChild
-                      align={'center'}
-                      className='gap-[0.5rem]'>
-                      <Typography variant='body-1-normal'>
-                        <Icon name={path.type === 'page' ? 'FileOutlined' : 'PlayCircleOutlined'} />
-                        {path.title}
-                      </Typography>
-                    </Flex>
-                  ))}
+                  <SpacingBlock height={4} />
+                  <Flex
+                    direction={'column'}
+                    className='gap-[0.75rem] pl-[1.25rem]'>
+                    {content.path.map((path, index) => (
+                      <Flex
+                        key={index}
+                        asChild
+                        align={'center'}
+                        className='gap-[0.5rem]'>
+                        <CurriculumCustomText
+                          variant='body-1-normal'
+                          subVariant='body-1-normal'
+                          className='gap-[0.25rem]'
+                          {...path}
+                        />
+                      </Flex>
+                    ))}
+                  </Flex>
                 </Flex>
               ))}
             </Flex>
@@ -298,12 +303,8 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
   )
 }
 
-type IntroducePageProps = {
-  pathId: string
-}
-
-export default function IntroducePage({ pathId }: IntroducePageProps) {
-  const data = pathIntroduce(pathId)
+export default function IntroducePage({ pathId }: { pathId: string }) {
+  const data = getMockData(pathId)
   const isLoggedIn = false
 
   return (

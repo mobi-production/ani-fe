@@ -14,12 +14,17 @@ type PathDescription = {
   subTitle: PathSubTitle[]
 }
 
-type PathContentItem = {
-  pathId: number
-  type: 'page' | 'video' | 'quiz'
-  title: string
-  videoLength?: string
-}
+type PathContentItem =
+  | {
+      pathId: number
+      type: 'page' | 'video' | 'quiz'
+      title: string
+    }
+  | {
+      type: 'video'
+      title: string
+      videoLength: string
+    }
 
 type PathContent = {
   partId: number

@@ -1,12 +1,12 @@
-import type { PathIntroduce } from '@/entities/path/model/path-introduce'
+import type { PathIntroduce } from '@/widgets/path/model/path-introduce'
 
 export const pathIntroduce = (pathId: string): PathIntroduce => {
   return {
     id: pathId,
     isApplied: false,
     title: 'HTML & CSS 패스',
-    description:
-      '웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다. 이 패스는 웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다.',
+    description: `웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다.
+HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다. 이 패스는 웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다. `,
     imageUrl: '/avif/placeholder.avif',
     recruitmentStartDate: '2024-11-15',
     applicationDeadline: '2024-12-15',

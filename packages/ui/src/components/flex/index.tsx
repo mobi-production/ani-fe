@@ -51,7 +51,7 @@ const flexVariants = cva('flex', {
     align: '',
     justify: '',
     wrap: '',
-    gap: FlexGap.NONE,
+    gap: '',
     direction: ''
   }
 })

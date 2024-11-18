@@ -17,8 +17,7 @@ function PathCancleButton({ pathId }: Props) {
     <SolidButton
       onClick={onClick}
       variant='secondary'
-      fullWidth
-      rightIcon={<Icon name='RightOutlined' />}>
+      fullWidth>
       신청 취소하기
     </SolidButton>
   )

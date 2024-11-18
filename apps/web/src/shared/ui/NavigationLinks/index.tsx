@@ -2,25 +2,56 @@
 
 import Link from 'next/link'
 import { Flex, Typography } from '@repo/ui/server'
-import { useCallback } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 import cn from '@repo/util/cn'
+import { useIntersectionObserver } from '@/shared/hook/use-intersection-observer'
 
-type NavigationLinksProps = {
-  links: { id: string; title: string; ref: React.RefObject<HTMLDivElement> }[]
+type NavigationLinksProps<T extends RefObject<Element>> = {
+  links: { id: string; title: string; ref: T }[]
   firstLinkActive?: boolean
+  moveHeightOffset?: number
 }
 
-const NavigationLinks = ({ links, firstLinkActive }: NavigationLinksProps) => {
+const NavigationLinks = <T extends RefObject<Element>>({
+  links,
+  firstLinkActive,
+  moveHeightOffset = 40
+}: NavigationLinksProps<T>) => {
+  const [activeIndex, setActiveIndex] = useState<number>(firstLinkActive ? 0 : -1)
+
   const handleLinkClick = useCallback((index: number, e: React.MouseEvent) => {
     e.preventDefault()
     if (typeof window !== 'undefined') {
-      links
-        .find((_, i) => i === index)
-        ?.ref.current?.scrollIntoView({
+      const element = links.find((_, i) => i === index)?.ref.current
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.scrollY - 70 - moveHeightOffset
+
+        window.scrollTo({
+          top: offsetPosition,
           behavior: 'smooth'
         })
+      }
+      setActiveIndex(index)
     }
   }, [])
+
+  links.forEach((_, index) => {
+    if (!links[index]) return
+
+    const { isIntersecting } = useIntersectionObserver({
+      threshold: 0.2,
+      root: null,
+      rootMargin: '-100px 0px',
+      targetRef: links[index].ref
+    })
+
+    useEffect(() => {
+      if (isIntersecting) {
+        setActiveIndex(index)
+      }
+    }, [isIntersecting])
+  })
 
   return (
     <Flex gap={12}>
@@ -31,12 +62,12 @@ const NavigationLinks = ({ links, firstLinkActive }: NavigationLinksProps) => {
           onClick={(e) => handleLinkClick(index, e)}
           className={cn(
             'cursor-pointer px-[0.5rem] py-[1.25rem]',
-            firstLinkActive && index === 0 && 'box-border border-b-2 border-solid border-neutral-5'
+            activeIndex === index && 'box-border border-b-2 border-solid border-neutral-5'
           )}>
           <Typography
             variant='title-3'
             fontWeight='bold'
-            color={firstLinkActive && index === 0 ? 'normal' : 'alternative'}>
+            color={activeIndex === index ? 'normal' : 'alternative'}>
             {title}
           </Typography>
         </Link>
