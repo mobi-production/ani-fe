@@ -8,16 +8,14 @@ import { useIntersectionObserver } from '@/shared/hook/use-intersection-observer
 
 type NavigationLinksProps<T extends RefObject<Element>> = {
   links: { id: string; title: string; ref: T }[]
-  firstLinkActive?: boolean
   moveHeightOffset?: number
 }
 
 const NavigationLinks = <T extends RefObject<Element>>({
   links,
-  firstLinkActive,
   moveHeightOffset = 40
 }: NavigationLinksProps<T>) => {
-  const [activeIndex, setActiveIndex] = useState<number>(firstLinkActive ? 0 : -1)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   const handleLinkClick = useCallback((index: number, e: React.MouseEvent) => {
     e.preventDefault()

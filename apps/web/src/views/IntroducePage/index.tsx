@@ -82,7 +82,6 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
               { ...LINKS[1], ref: pathFeatureRef },
               { ...LINKS[2], ref: curriculumRef }
             ]}
-            firstLinkActive={true}
           />
           <Divider />
         </Flex>
