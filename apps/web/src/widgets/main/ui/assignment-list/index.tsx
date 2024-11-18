@@ -34,7 +34,7 @@ function AssignmentList({ userData }: { userData: UserData }) {
       <Flex
         direction='row'
         align='center'
-        justify='between'>
+        className='gap-[0.75rem]'>
         {userData.assignment.map((assignment) => {
           return (
             <div
