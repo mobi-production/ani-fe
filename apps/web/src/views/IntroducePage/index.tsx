@@ -10,6 +10,7 @@ import { Icon } from '@repo/ui/client'
 import { Divider, Flex, ImageSection, SpacingBlock, Typography } from '@repo/ui/server'
 import { useRef } from 'react'
 import CurriculumCustomText from '@/widgets/path/ui/curriculum-custom-text'
+import CurriculumContent from '@/widgets/path/ui/curriculum-content'
 
 type InnerProps = {
   data: PathIntroduce
@@ -82,6 +83,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
               { ...LINKS[1], ref: pathFeatureRef },
               { ...LINKS[2], ref: curriculumRef }
             ]}
+            moveHeightOffset={0}
           />
           <Divider />
         </Flex>
@@ -257,44 +259,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
           </Typography>
           <Flex className='gap-[1.5rem]'>
             <CurriculumBar pathContents={data.pathContents} />
-            <Flex
-              direction={'column'}
-              className='gap-[1.5rem]'>
-              {data.pathContents.map((content, index) => (
-                <Flex direction={'column'}>
-                  <Typography
-                    variant='heading-2'
-                    color='alternative'>
-                    Part {index + 1}
-                  </Typography>
-                  <SpacingBlock className='h-1' />
-                  <Typography
-                    variant='heading-2'
-                    fontWeight={'semibold'}>
-                    {content.title}
-                  </Typography>
-                  <SpacingBlock height={4} />
-                  <Flex
-                    direction={'column'}
-                    className='gap-[0.75rem] pl-[1.25rem]'>
-                    {content.path.map((path, index) => (
-                      <Flex
-                        key={index}
-                        asChild
-                        align={'center'}
-                        className='gap-[0.5rem]'>
-                        <CurriculumCustomText
-                          variant='body-1-normal'
-                          subVariant='body-1-normal'
-                          className='gap-[0.25rem]'
-                          {...path}
-                        />
-                      </Flex>
-                    ))}
-                  </Flex>
-                </Flex>
-              ))}
-            </Flex>
+            <CurriculumContent pathContents={data.pathContents} />
           </Flex>
         </section>
       </main>
