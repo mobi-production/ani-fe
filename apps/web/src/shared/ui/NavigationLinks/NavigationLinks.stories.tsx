@@ -8,7 +8,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'id를 이용해 페이지 내 이동 링크를 구성합니다.'
+        component: 'id와 ref를 이용해 페이지 내 이동 링크를 구성합니다.'
       }
     }
   },
@@ -25,7 +25,6 @@ export const Primary: Story = {
       { id: 'path_feature', title: '패스 특징', ref: React.createRef<HTMLDivElement>() },
       { id: 'recommend_target', title: '추천 대상', ref: React.createRef<HTMLDivElement>() },
       { id: 'curriculum', title: '커리큘럼', ref: React.createRef<HTMLDivElement>() }
-    ],
-    firstLinkActive: true
+    ]
   }
 }
