@@ -18,7 +18,7 @@ type TextAreaContextType = {
 }
 
 const textAreaVariants = cva(
-  'resize-none rounded-[0.5rem] border-[0.094rem] bg-fill-alternative outline-none focus:border-label-normal placeholder:text-b1-normal placeholder:text-label-assistive',
+  'resize-none rounded-[0.5rem] border-[0.094rem] bg-bg-normal outline-none focus:border-label-normal placeholder:text-b1-normal placeholder:text-label-assistive',
   {
     variants: {
       variant: {
