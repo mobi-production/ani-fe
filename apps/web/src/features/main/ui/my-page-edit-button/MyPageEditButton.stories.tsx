@@ -6,7 +6,7 @@ const meta = {
   title: 'Feature/MyPageEditButton',
   component: MyPageEditButton,
   parameters: {
-    layout: 'fullscreen',
+    layout: 'center',
     docs: {
       description: {
         component: '마이페이지 내 상태 정보를 변경하는 모달을 오픈하는 버튼'
@@ -25,10 +25,8 @@ export const Preview: Story = {
       <Flex
         align={'center'}
         justify={'center'}
-        className='h-[20rem] w-full'>
-        <div className='w-[30rem]'>
-          <Story />
-        </div>
+        className='h-[30rem] w-full'>
+        <Story />
       </Flex>
     )
   ]

@@ -3,6 +3,7 @@
 import { myPageData, type MyPageData } from '@/__mock__/data/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
+import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
 import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
 import { Icon } from '@repo/ui/client'
@@ -100,6 +101,7 @@ export function Inner({ data }: InnerProps) {
       </section>
 
       <section
+        className='flex flex-col gap-[16px]'
         ref={assignmentRef}
         id={LINKS[1].id}>
         <Flex
@@ -111,29 +113,13 @@ export function Inner({ data }: InnerProps) {
             과제
           </Typography>
           <Typography
-            className='text-neutral-60'
+            className='mb-[0.5rem] text-neutral-60'
             variant='body-2-normal'
             fontWeight='medium'>
             진행 중인 패스의 과제 현황을 확인하세요
           </Typography>
         </Flex>
-        <div>
-          <div>필터 셀렉터</div>
-          {/* AssignmentList */}
-          <div>전체 과제들</div>
-          <Flex
-            direction='row'
-            align='center'
-            className='gap-[0.25rem] text-status-error'>
-            <Icon
-              name='InfoCircleOutlined'
-              size='20'
-            />
-            <Typography color='inherit'>
-              미제출 과제가 3개 이상일 경우, 과정이 미수료 처리될 수 있어요
-            </Typography>
-          </Flex>
-        </div>
+        <AssignmentList data={assignmentList} />
       </section>
       <section
         ref={feedbackRef}
@@ -147,7 +133,7 @@ export function Inner({ data }: InnerProps) {
             피드백
           </Typography>
           <Typography
-            className='text-neutral-60'
+            className='mb-[0.5rem] text-neutral-60'
             variant='body-2-normal'
             fontWeight='medium'>
             진행 중인 패스의 멘토 피드백을 받을 수 있어요
