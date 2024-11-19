@@ -16,9 +16,10 @@ const NavigationLinks = ({ links, moveHeightOffset = 40 }: NavigationLinksProps)
   const handleLinkClick = useCallback(
     (index: number, e: React.MouseEvent) => {
       e.preventDefault()
-      if (!links[index]) return
+      const link = links[index]
+      if (!link) return
 
-      const element = document.getElementById(links[index].id)
+      const element = document.getElementById(link!.id)
       if (element) {
         const elementPosition = element.getBoundingClientRect().top
         const offsetPosition = elementPosition + window.scrollY - 70 - moveHeightOffset

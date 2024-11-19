@@ -1,4 +1,4 @@
-import cn from 'node_modules/@repo/util/src/cn'
+import cn from '@repo/util/cn'
 import { ComponentPropsWithoutRef } from 'react'
 
 import Icon from '../icon'
