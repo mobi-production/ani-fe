@@ -1,5 +1,6 @@
-import { Meta } from '@storybook/react/*'
+import { Meta, StoryObj } from '@storybook/react/*'
 import RecruitingPathList from '.'
+import { mainData } from '@/__mock__/data/main'
 
 const meta = {
   title: 'Widget/Main/RecruitingPathList',
@@ -16,4 +17,10 @@ const meta = {
 } satisfies Meta<typeof RecruitingPathList>
 
 export default meta
-// type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>
+
+export const Preview: Story = {
+  args: {
+    pathData: mainData.pathData
+  }
+}

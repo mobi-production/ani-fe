@@ -91,18 +91,20 @@ function TextContentList({
         fontWeight='semibold'>
         {name}
       </Typography>
-      <Typography
-        color='alternative'
-        variant='caption-2'
-        fontWeight='regular'>
-        {`신청 기간 | ${applyPeriod}`}
-      </Typography>
-      <Typography
-        color='alternative'
-        variant='caption-2'
-        fontWeight='regular'>
-        {`진행 기간 | ${progressPeriod}`}
-      </Typography>
+      <div className='flex flex-col gap-[0.125rem]'>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`신청 기간 | ${applyPeriod}`}
+        </Typography>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`진행 기간 | ${progressPeriod}`}
+        </Typography>
+      </div>
     </Flex>
   )
 }

@@ -1,5 +1,7 @@
-import FeedbackPage from '@/views/FeedbackPage'
+import PathFeedbackPage from '@/views/PathFeedbackPage'
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 export async function generateMetadata({
   params
@@ -19,6 +21,10 @@ export async function generateMetadata({
   }
 }
 
-export default function Page() {
-  return <FeedbackPage />
+export default function Page({ params }: { params: { pathId: string } }) {
+  return (
+    <Suspense fallback={<Loading />}>
+      <PathFeedbackPage pathId={params.pathId} />
+    </Suspense>
+  )
 }

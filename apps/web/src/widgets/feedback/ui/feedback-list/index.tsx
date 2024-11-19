@@ -96,7 +96,7 @@ function OpenEndedResponse({ placeholder, maxLength, ...props }: OpenEndedRespon
         {...props}>
         <TextArea.form
           placeholder='의견을 자유롭게 적어주세요'
-          className='min-h-[12.5rem] p-4'
+          className='min-h-[12.5rem] w-[31.5rem] p-4'
         />
         <TextArea.indicator />
       </TextArea>

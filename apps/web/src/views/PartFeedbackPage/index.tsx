@@ -2,11 +2,13 @@
 
 import { FEEDBACK_STEP } from '@/widgets/feedback/config/feedback-step'
 import { extractKeysFromObject } from '@/shared/lib/utils'
-import { MentoFeedback, PairFeedback, PartFeedback } from '@/widgets/feedback/ui'
 import { useFunnel } from '@/shared/lib/hooks/use-funnel'
 import FeedbackStep from '@/widgets/feedback/ui/feedback-step'
+import { MentoFeedback, PairFeedback, PartFeedback } from '@/entities/feedback/ui/feedback-list'
 
-export default function FeedbackPage() {
+type InnerProps = {}
+
+export function Inner() {
   const feedbackStep = [...extractKeysFromObject(FEEDBACK_STEP)]
   const { FunnelStep } = useFunnel({
     steps: feedbackStep,
@@ -48,4 +50,10 @@ export default function FeedbackPage() {
       </div>
     </div>
   )
+}
+
+type PartFeedbackPageProps = { partId: string }
+
+export default function PartFeedbackPage({ partId }: PartFeedbackPageProps) {
+  return <Inner />
 }

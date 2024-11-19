@@ -34,7 +34,7 @@ function LeaningSummaryList({ userData }: { userData: UserData }) {
       <Flex
         direction='row'
         align='center'
-        justify='between'>
+        className='gap-[0.75rem]'>
         {userData.learningSummary.map((summary) => {
           return (
             <div
