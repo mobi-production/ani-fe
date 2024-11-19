@@ -13,7 +13,6 @@ function AssignmentList({ data }: AssignmentListProps) {
       direction='column'
       className='w-full rounded-[0.75rem] bg-white px-[2.375rem] py-[2.25rem]'>
       <div>필터 셀렉터</div>
-      {/* AssignmentList */}
       <div>전체 과제들</div>
       <Flex
         direction='row'

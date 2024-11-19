@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import PaginationControls from '.'
 import DropdownMenu from '.'
+import { OutlinedButton, Typography } from '@repo/ui/server'
 
 const meta = {
   title: 'shared/DropdownMenu',
@@ -21,25 +21,39 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   render: (args) => (
-    <DropdownMenu {...args}>
-      <DropdownMenu.Trigger>Trigger!!</DropdownMenu.Trigger>
-      <DropdownMenu.MenuContent>
-        <DropdownMenu.MenuItem
-          value='MenuItem 1'
-          onSelect={() => {}}>
-          MenuItem 1
-        </DropdownMenu.MenuItem>
-        <DropdownMenu.MenuItem
-          value='MenuItem 2'
-          onSelect={() => {}}>
-          MenuItem 2
-        </DropdownMenu.MenuItem>
-        <DropdownMenu.MenuItem
-          value='MenuItem 3'
-          onSelect={() => {}}>
-          MenuItem 3
-        </DropdownMenu.MenuItem>
-      </DropdownMenu.MenuContent>
-    </DropdownMenu>
+    <div className='flex items-center justify-center pb-[15rem] pt-[5rem]'>
+      <DropdownMenu {...args}>
+        <DropdownMenu.Trigger>
+          <OutlinedButton>Trigger!!</OutlinedButton>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.MenuContent triggerHeight='3.5rem'>
+          <DropdownMenu.MenuItem
+            value='MenuItem 1'
+            onSelect={(e) => {
+              console.log(e.currentTarget.dataset.value)
+            }}>
+            <Typography
+              variant='body-2-normal'
+              fontWeight='medium'>
+              MenuItem 1
+            </Typography>
+          </DropdownMenu.MenuItem>
+          <DropdownMenu.MenuItem value='MenuItem 2'>
+            <Typography
+              variant='body-2-normal'
+              fontWeight='medium'>
+              MenuItem 2
+            </Typography>
+          </DropdownMenu.MenuItem>
+          <DropdownMenu.MenuItem value='MenuItem 3'>
+            <Typography
+              variant='body-2-normal'
+              fontWeight='medium'>
+              MenuItem 3
+            </Typography>
+          </DropdownMenu.MenuItem>
+        </DropdownMenu.MenuContent>
+      </DropdownMenu>
+    </div>
   )
 }
