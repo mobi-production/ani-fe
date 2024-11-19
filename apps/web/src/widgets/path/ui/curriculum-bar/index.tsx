@@ -1,9 +1,9 @@
 import { Flex } from '@repo/ui/server'
-import { PathIntroduce } from '../../model/path-introduce'
 import { Fragment } from 'react'
+import { PartType } from '../../model'
 
 type Props = {
-  pathContents: PathIntroduce['pathContents']
+  parts: PartType[]
 }
 
 function CurriculumLine({ height }: { height: string }) {
@@ -11,7 +11,7 @@ function CurriculumLine({ height }: { height: string }) {
 }
 
 type PathLinesProps = {
-  content: PathIntroduce['pathContents'][0]
+  content: PartType
   isLastContent: boolean
 }
 
@@ -22,10 +22,10 @@ function PathLines({ content, isLastContent }: PathLinesProps) {
     <>
       <CurriculumLine height='h-[0.375rem]' /> {/* HeadLine */}
       <CurriculumLine height='h-[1rem]' /> {/* GapLine */}
-      {content.path.map((_, index) => (
+      {content.page.map((_, index) => (
         <Fragment key={index}>
           <CurriculumLine height='h-[1.5rem]' /> {/* PathLine */}
-          {index !== content.path.length - 1 && (
+          {index !== content.page.length - 1 && (
             <CurriculumLine height='h-[0.75rem]' /> /* PathGapLine */
           )}
         </Fragment>
@@ -37,21 +37,21 @@ function PathLines({ content, isLastContent }: PathLinesProps) {
   )
 }
 
-function CurriculumBar({ pathContents }: Props) {
+function CurriculumBar({ parts }: Props) {
   return (
     <Flex
       align='start'
       className='w-6 py-8'>
       <div className='w-[1.125rem]'>
-        {pathContents.map((content, index) => (
+        {parts.map((part, index) => (
           <Fragment key={index}>
             <div className='h-[1.125rem] w-[1.125rem] rounded-full border-[1.5px] border-primary-normal bg-mint-95' />
             <Flex
               direction='column'
               align='center'>
               <PathLines
-                content={content}
-                isLastContent={index === pathContents.length - 1}
+                content={part}
+                isLastContent={index === parts.length - 1}
               />
             </Flex>
           </Fragment>

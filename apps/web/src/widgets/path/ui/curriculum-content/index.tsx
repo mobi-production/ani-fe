@@ -2,18 +2,18 @@ import { SpacingBlock } from '@repo/ui/server'
 
 import { Flex, Typography } from '@repo/ui/server'
 import CurriculumCustomText from '../curriculum-custom-text'
-import { PathIntroduce } from '../../model/path-introduce'
+import { PartType } from '../../model'
 
 type CurriculumContentProps = {
-  pathContents: PathIntroduce['pathContents']
+  parts: PartType[]
 }
 
-function CurriculumContent({ pathContents }: CurriculumContentProps) {
+function CurriculumContent({ parts }: CurriculumContentProps) {
   return (
     <Flex
       direction={'column'}
       className='gap-[1.5rem]'>
-      {pathContents.map((content, index) => (
+      {parts.map((part, index) => (
         <Flex direction={'column'}>
           <Typography
             variant='heading-2'
@@ -24,13 +24,13 @@ function CurriculumContent({ pathContents }: CurriculumContentProps) {
           <Typography
             variant='heading-2'
             fontWeight={'semibold'}>
-            {content.title}
+            {part.title}
           </Typography>
           <SpacingBlock height={4} />
           <Flex
             direction={'column'}
             className='gap-[0.75rem] pl-[1.25rem]'>
-            {content.path.map((path, index) => (
+            {part.page.map((page, index) => (
               <Flex
                 key={index}
                 asChild
@@ -40,7 +40,7 @@ function CurriculumContent({ pathContents }: CurriculumContentProps) {
                   variant='body-1-normal'
                   subVariant='body-1-normal'
                   className='gap-[0.25rem]'
-                  {...path}
+                  {...page}
                 />
               </Flex>
             ))}

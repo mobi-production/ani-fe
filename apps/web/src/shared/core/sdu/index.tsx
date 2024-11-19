@@ -1,63 +1,86 @@
-import { Icon } from '@repo/ui/client'
-import {
-  Badge,
-  Flex,
-  ImageSection,
-  OutlinedButton,
-  ProgressBar,
-  SolidButton,
-  SpacingBlock,
-  TextButton,
-  Typography
-} from '@repo/ui/server'
-import { ServerDrivenComponentType } from './server-driven'
-import RadioGroup from './radio-group'
+import { Divider, Flex } from '@repo/ui/server'
+import FullScreenLayout from '@/shared/ui/layout/full-screen-layout'
+import PathTitleBanner from '@/widgets/path/ui/path-title-banner'
+import PathInformationBanner from '@/widgets/path/ui/path-information-banner'
+import PathRecommendBanner from '@/widgets/path/ui/path-recommend-banner'
+import PathCurriculum from '@/widgets/path/ui/path-curriculum'
+import PathNavigationLinks from '@/widgets/path/ui/path-navigation-links'
+import { ComponentProps } from 'react'
 
-export function renderComponents(componentData: ServerDrivenComponentType) {
-  const { type, props, children } = componentData
+type ComponentPropsMap = {
+  Flex: ComponentProps<typeof Flex>
+  Divider: ComponentProps<typeof Divider>
+  PathInformationBanner: ComponentProps<typeof PathInformationBanner>
+  PathRecommendBanner: ComponentProps<typeof PathRecommendBanner>
+  PathCurriculum: ComponentProps<typeof PathCurriculum>
+  FullScreenLayout: ComponentProps<typeof FullScreenLayout>
+  PathTitleBanner: ComponentProps<typeof PathTitleBanner>
+  PathNavigationLinks: ComponentProps<typeof PathNavigationLinks>
+}
+
+export type ServerDrivenComponentType =
+  | { type: 'Flex'; props: ComponentPropsMap['Flex']; content?: ServerDrivenComponentType[] }
+  | { type: 'Divider'; props: ComponentPropsMap['Divider']; content?: never }
+  | {
+      type: 'FullScreenLayout'
+      props?: never
+      content?: ServerDrivenComponentType[]
+    }
+  | { type: 'PathTitleBanner'; props: ComponentPropsMap['PathTitleBanner']; content?: never }
+  | {
+      type: 'PathInformationBanner'
+      props: ComponentPropsMap['PathInformationBanner']
+      content?: never
+    }
+  | {
+      type: 'PathRecommendBanner'
+      props: ComponentPropsMap['PathRecommendBanner']
+      content?: never
+    }
+  | {
+      type: 'PathCurriculum'
+      props: ComponentPropsMap['PathCurriculum']
+      content?: never
+    }
+  | {
+      type: 'PathNavigationLinks'
+      props: ComponentPropsMap['PathNavigationLinks']
+      content?: never
+    }
+
+export function ServerDrivenComponent({ data }: { data: ServerDrivenComponentType }) {
+  const { type, props, content } = data
 
   switch (type) {
-    case 'RadioGroup':
-      return <RadioGroup {...props}>{children?.map((child) => renderComponents(child))}</RadioGroup>
-
-    case 'RadioGroupItem':
+    case 'Flex':
       return (
-        <RadioGroup.Item
-          key={props.label}
-          {...props}>
-          {props.children}
-        </RadioGroup.Item>
+        <Flex {...props}>{content?.map((child) => ServerDrivenComponent({ data: child }))}</Flex>
       )
 
-    case 'Typography':
-      return <Typography {...props}>{props.children}</Typography>
+    case 'Divider':
+      return <Divider {...props} />
 
-    case 'SpacingBlock':
-      return <SpacingBlock {...props}>{props.children}</SpacingBlock>
+    case 'FullScreenLayout':
+      return (
+        <FullScreenLayout>
+          {content?.map((child) => ServerDrivenComponent({ data: child }))}
+        </FullScreenLayout>
+      )
 
-    case 'ImageSection':
-      return <ImageSection {...props} />
+    case 'PathTitleBanner':
+      return <PathTitleBanner {...props} />
 
-    case 'SolidButton':
-      return <SolidButton {...props} />
+    case 'PathInformationBanner':
+      return <PathInformationBanner {...props} />
 
-    case 'OutlinedButton':
-      return <OutlinedButton {...props} />
+    case 'PathRecommendBanner':
+      return <PathRecommendBanner {...props} />
 
-    case 'TextButton':
-      return <TextButton {...props} />
+    case 'PathCurriculum':
+      return <PathCurriculum {...props} />
 
-    case 'Flex':
-      return <Flex {...props}>{children?.map((child) => renderComponents(child))}</Flex>
-
-    case 'ProgressBar':
-      return <ProgressBar {...props} />
-
-    case 'Badge':
-      return <Badge {...props}>{props.children}</Badge>
-
-    case 'Icon':
-      return <Icon {...props} />
+    case 'PathNavigationLinks':
+      return <PathNavigationLinks {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)

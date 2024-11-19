@@ -1,6 +1,5 @@
 'use client'
 
-import { Icon } from '@repo/ui/client'
 import { SolidButton } from '@repo/ui/server'
 import { useCallback } from 'react'
 
