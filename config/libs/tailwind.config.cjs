@@ -12,8 +12,17 @@ module.exports = {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans]
       },
       spacing: {
+        '1r': '0.25rem',
+        '2r': '0.5rem',
+        '3r': '0.75rem',
         '4r': '1rem',
+        '5r': '1.25rem',
+        '6r': '1.5rem',
+        '7r': '1.75rem',
         '8r': '2rem',
+        '9r': '2.25rem',
+        '10r': '2.5rem',
+        '11r': '2.75rem',
         '12r': '3rem',
         '16r': '4rem',
         '20r': '5rem',
