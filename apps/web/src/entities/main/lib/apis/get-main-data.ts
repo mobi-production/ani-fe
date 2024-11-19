@@ -1,4 +1,4 @@
-import { MainData } from '@/__mock__/data/main'
+import type { MainData } from '@/__mock__/types/main'
 import { HTTP_HEADERS } from '@/shared/config/constants/http'
 
 /**
