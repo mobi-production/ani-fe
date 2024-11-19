@@ -1,7 +1,10 @@
 'use client'
 
+import { myPageData, type MyPageData } from '@/__mock__/data/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
+import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
+import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
 import { Icon } from '@repo/ui/client'
 import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
@@ -13,10 +16,16 @@ const LINKS = [
   { id: 'feedback', title: '피드백' }
 ] as const
 
-export function Inner() {
+type InnerProps = {
+  data: MyPageData
+}
+
+export function Inner({ data }: InnerProps) {
   const myPathRef = useRef<HTMLDivElement>(null)
   const assignmentRef = useRef<HTMLDivElement>(null)
   const feedbackRef = useRef<HTMLDivElement>(null)
+
+  const { inProgressPathList, completedPathList, assignmentList, feedbackList } = data
 
   return (
     <Flex
@@ -80,14 +89,14 @@ export function Inner() {
             내 패스
           </Typography>
           <Typography
-            className='text-neutral-60'
+            className='mb-[0.5rem] text-neutral-60'
             variant='body-2-normal'
             fontWeight='medium'>
             진행 중인 패스와 완료한 패스를 한눈에 확인하세요
           </Typography>
         </Flex>
-        <div>InProgressPathList</div>
-        <div>CompletedPathList</div>
+        <InProgressPathList data={inProgressPathList} />
+        <CompletedPathList data={completedPathList} />
       </section>
 
       <section
@@ -155,5 +164,5 @@ export function Inner() {
 }
 
 export default function MyPage() {
-  return <Inner />
+  return <Inner data={myPageData} />
 }

@@ -5,25 +5,25 @@ type AssignmentStatus = 'SUBMIT_AVAILABLE' | 'SUBMITTED' | 'DEADLINE_PASSED'
 type BasePath = {
   id: number
   image: string
-  level: number | string
+  level: number
   category: string
   pathName: string
   status: PathStatus
 }
 
-type InProgressPath = BasePath & {
+export type InProgressPath = BasePath & {
   status: PathStatus
   progress: number
 }
 
-type CompletedPath = BasePath & {
+export type CompletedPath = BasePath & {
   status: PathStatus
   startDate: string
   endDate: string
   action: string
 }
 
-type Assignment = {
+export type Assignment = {
   id: number
   image: string
   pathName: string
@@ -32,7 +32,7 @@ type Assignment = {
   dueDate: string
 }
 
-type FeedbackItem = {
+export type FeedbackItem = {
   authorProfileImage: string
   authorNickname: string
   description: string
@@ -75,7 +75,7 @@ export const myPageData: MyPageData = {
     {
       id: 2,
       image: '/avif/placeholder.avif',
-      level: 'Lv 1',
+      level: 1,
       category: '프론트엔드',
       status: 'IN_PROGRESS',
       pathName: '패스 이름 예제 텍스트',
@@ -84,7 +84,7 @@ export const myPageData: MyPageData = {
     {
       id: 3,
       image: '/avif/placeholder.avif',
-      level: 'Lv 3',
+      level: 3,
       category: '프론트엔드',
       status: 'SCHEDULE',
       pathName: '패스 이름 예제 텍스트',
@@ -93,7 +93,7 @@ export const myPageData: MyPageData = {
     {
       id: 4,
       image: '/avif/placeholder.avif',
-      level: 'Lv 1',
+      level: 1,
       category: '프론트엔드',
       status: 'IN_PROGRESS',
       pathName: '패스 이름 예제 텍스트',
