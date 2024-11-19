@@ -15,13 +15,14 @@ function PathProductItemDone({ ...props }: PathProductItemDoneProps) {
 }
 
 type ContentSectionProps = ComponentProps<'div'> & {
+  src: string
   level: number
   category: string
   title: string
   period: string
 }
 
-function ContentSection({ level, category, title, period, ...props }: ContentSectionProps) {
+function ContentSection({ src, level, category, title, period, ...props }: ContentSectionProps) {
   return (
     <Flex
       direction='row'
@@ -29,8 +30,8 @@ function ContentSection({ level, category, title, period, ...props }: ContentSec
       className='w-[100%] gap-[0.75rem]'>
       <ImageSection
         size='xs'
-        src='/avif/placeholder.avif'
-        alt='Placeholder Image'
+        src={src}
+        alt={`${title} 이미지`}
       />
       <Flex
         direction='column'
