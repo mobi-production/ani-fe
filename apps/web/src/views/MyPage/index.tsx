@@ -3,7 +3,7 @@
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
-import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import { useRef } from 'react'
 
@@ -68,6 +68,7 @@ export function Inner() {
         <Divider />
       </Flex>
       <section
+        className='flex flex-col gap-[16px]'
         ref={myPathRef}
         id={LINKS[0].id}>
         <Flex
@@ -85,11 +86,8 @@ export function Inner() {
             진행 중인 패스와 완료한 패스를 한눈에 확인하세요
           </Typography>
         </Flex>
-
-        <div>
-          {/* InProgressPassList */}
-          {/* CompletedPassList */}
-        </div>
+        <div>InProgressPathList</div>
+        <div>CompletedPathList</div>
       </section>
 
       <section
@@ -148,7 +146,7 @@ export function Inner() {
         </Flex>
 
         <div>
-          {/* FeedbackByPassList */}
+          {/* FeedbackList */}
           패스별 피드백 Section
         </div>
       </section>
