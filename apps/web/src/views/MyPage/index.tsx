@@ -1,5 +1,6 @@
 'use client'
 
+import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
 import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
@@ -51,12 +52,7 @@ export function Inner() {
               fontWeight='medium'>{`email@naver.com`}</Typography>
           </Flex>
         </Flex>
-        {/* MyPageEditButton */}
-        <SolidButton
-          size='medium'
-          disabled={false}>
-          수정하기
-        </SolidButton>
+        <MyPageEditButton />
       </Flex>
       <Flex
         direction={'column'}
@@ -91,8 +87,8 @@ export function Inner() {
         </Flex>
 
         <div>
-          {/* 진행 중인 패스들 */}
-          {/* 완료한 패스들 */}
+          {/* InProgressPassList */}
+          {/* CompletedPassList */}
         </div>
       </section>
 
@@ -116,7 +112,7 @@ export function Inner() {
         </Flex>
         <div>
           <div>필터 셀렉터</div>
-          {/* 전체 과제들 */}
+          {/* AssignmentList */}
           <div>전체 과제들</div>
           <Flex
             direction='row'
@@ -152,7 +148,7 @@ export function Inner() {
         </Flex>
 
         <div>
-          {/* 패스별 피드백 Section */}
+          {/* FeedbackByPassList */}
           패스별 피드백 Section
         </div>
       </section>
