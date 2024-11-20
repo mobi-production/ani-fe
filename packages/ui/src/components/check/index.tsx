@@ -17,7 +17,7 @@ function CheckBox({ checked, ...props }: Props) {
         className='hidden'
       />
       <Icon
-        size='24'
+        size={24}
         name='CheckCircleFilled'
         className={cn(checked ? 'text-primary-normal' : 'text-label-disable')}
       />

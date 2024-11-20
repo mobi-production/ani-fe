@@ -18,7 +18,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
   return (
     <Flex
       asChild
-      gap={12}
+      gap={'3rem'}
       direction={'column'}
       align={'start'}
       justify={'center'}>

@@ -11,21 +11,6 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans]
       },
-      spacing: {
-        '4r': '1rem',
-        '8r': '2rem',
-        '12r': '3rem',
-        '16r': '4rem',
-        '20r': '5rem',
-        '24r': '6rem',
-        '28r': '7rem',
-        '32r': '8rem',
-        '36r': '9rem',
-        '40r': '10rem',
-        '44r': '11rem',
-        '48r': '12rem',
-        '64r': '16rem'
-      },
       screens: {
         mobile: {
           max: '479px'

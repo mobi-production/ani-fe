@@ -22,7 +22,7 @@ export const Preview: Story = {
   },
   render: (args) => {
     return (
-      <Flex gap='4'>
+      <Flex gap={4}>
         <Check checked={!args.checked} />
         <Check checked={args.checked} />
       </Flex>
