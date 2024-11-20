@@ -6,7 +6,7 @@ const meta = {
   title: 'MDS/Divider',
   component: Divider,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'centered'
   },
   tags: ['autodocs']
 } satisfies Meta<typeof Divider>
@@ -15,5 +15,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
-  args: {}
+  args: {},
+  render: (args) => (
+    <div className='w-[200px] bg-background-alternative p-4'>
+      <Divider {...args} />
+    </div>
+  )
 }

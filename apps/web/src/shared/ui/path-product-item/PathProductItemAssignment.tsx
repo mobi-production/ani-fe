@@ -33,7 +33,8 @@ function LeftSection({
     <Flex
       direction='row'
       align='center'
-      className='w-[16.75rem] gap-[0.75rem]'>
+      gap={12}
+      className='w-[16.75rem]'>
       <ImageSection
         src={src}
         alt={alt}

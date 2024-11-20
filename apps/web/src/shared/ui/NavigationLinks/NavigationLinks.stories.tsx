@@ -33,7 +33,7 @@ const Component = () => {
             { id: 'curriculum', title: '커리큘럼' }
           ]}
         />
-        <Divider />
+      <Divider />
       </Flex>
       {/* 패스 정보 */}
       <section id='path_information'>패스 정보</section>
