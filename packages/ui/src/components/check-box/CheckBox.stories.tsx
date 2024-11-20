@@ -39,8 +39,8 @@ export const Primary: Story = {
     return (
       <Flex
         direction='column'
-        gap='4'>
-        <Flex gap='4'>
+        gap={4}>
+        <Flex gap={4}>
           <CheckBox
             select={true}
             size={CheckBoxSize.S}
@@ -60,7 +60,7 @@ export const Primary: Story = {
             size={CheckBoxSize.S}
           />
         </Flex>
-        <Flex gap='4'>
+        <Flex gap={4}>
           <CheckBox
             select={true}
             size={CheckBoxSize.M}
@@ -80,7 +80,7 @@ export const Primary: Story = {
             size={CheckBoxSize.M}
           />
         </Flex>
-        <Flex gap='4'>
+        <Flex gap={4}>
           <CheckBox
             select={true}
             size={CheckBoxSize.L}
@@ -113,7 +113,7 @@ export const Preview: Story = {
   },
   render: (args) => {
     return (
-      <Flex gap='4'>
+      <Flex gap={4}>
         <CheckBox
           select={args.select}
           size={args.size}

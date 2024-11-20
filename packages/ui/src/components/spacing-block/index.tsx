@@ -28,9 +28,13 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['1.125']]: 'w-[1.125rem]',
       [SIZE_VARIANTS['1.1875']]: 'w-[1.1875rem]',
       [SIZE_VARIANTS['1.25']]: 'w-[1.25rem]',
+      [SIZE_VARIANTS['1.375']]: 'w-[1.375rem]',
       [SIZE_VARIANTS['1.5']]: 'w-[1.5rem]',
+      [SIZE_VARIANTS['1.625']]: 'w-[1.625rem]',
       [SIZE_VARIANTS['1.75']]: 'w-[1.75rem]',
+      [SIZE_VARIANTS['1.875']]: 'w-[1.875rem]',
       [SIZE_VARIANTS['2']]: 'w-[2rem]',
+      [SIZE_VARIANTS['2.125']]: 'w-[2.125rem]',
       [SIZE_VARIANTS['2.25']]: 'w-[2.25rem]',
       [SIZE_VARIANTS['2.5']]: 'w-[2.5rem]',
       [SIZE_VARIANTS['2.75']]: 'w-[2.75rem]',
@@ -44,7 +48,8 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['10']]: 'w-[10rem]',
       [SIZE_VARIANTS['11']]: 'w-[11rem]',
       [SIZE_VARIANTS['12']]: 'w-[12rem]',
-      [SIZE_VARIANTS['16']]: 'w-[16rem]'
+      [SIZE_VARIANTS['16']]: 'w-[16rem]',
+      full: 'w-full'
     },
     height: {
       default: '',
@@ -68,9 +73,13 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['1.125']]: 'h-[1.125rem]',
       [SIZE_VARIANTS['1.1875']]: 'h-[1.1875rem]',
       [SIZE_VARIANTS['1.25']]: 'h-[1.25rem]',
+      [SIZE_VARIANTS['1.375']]: 'h-[1.375rem]',
       [SIZE_VARIANTS['1.5']]: 'h-[1.5rem]',
+      [SIZE_VARIANTS['1.625']]: 'h-[1.625rem]',
       [SIZE_VARIANTS['1.75']]: 'h-[1.75rem]',
+      [SIZE_VARIANTS['1.875']]: 'h-[1.875rem]',
       [SIZE_VARIANTS['2']]: 'h-[2rem]',
+      [SIZE_VARIANTS['2.125']]: 'h-[2.125rem]',
       [SIZE_VARIANTS['2.25']]: 'h-[2.25rem]',
       [SIZE_VARIANTS['2.5']]: 'h-[2.5rem]',
       [SIZE_VARIANTS['2.75']]: 'h-[2.75rem]',
@@ -84,7 +93,8 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['10']]: 'h-[10rem]',
       [SIZE_VARIANTS['11']]: 'h-[11rem]',
       [SIZE_VARIANTS['12']]: 'h-[12rem]',
-      [SIZE_VARIANTS['16']]: 'h-[16rem]'
+      [SIZE_VARIANTS['16']]: 'h-[16rem]',
+      full: 'h-full'
     },
     size: {
       default: '',
@@ -108,9 +118,13 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['1.125']]: 'w-[1.125rem] h-[1.125rem]',
       [SIZE_VARIANTS['1.1875']]: 'w-[1.1875rem] h-[1.1875rem]',
       [SIZE_VARIANTS['1.25']]: 'w-[1.25rem] h-[1.25rem]',
+      [SIZE_VARIANTS['1.375']]: 'w-[1.375rem] h-[1.375rem]',
       [SIZE_VARIANTS['1.5']]: 'w-[1.5rem] h-[1.5rem]',
+      [SIZE_VARIANTS['1.625']]: 'w-[1.625rem] h-[1.625rem]',
       [SIZE_VARIANTS['1.75']]: 'w-[1.75rem] h-[1.75rem]',
+      [SIZE_VARIANTS['1.875']]: 'w-[1.875rem] h-[1.875rem]',
       [SIZE_VARIANTS['2']]: 'w-[2rem] h-[2rem]',
+      [SIZE_VARIANTS['2.125']]: 'w-[2.125rem] h-[2.125rem]',
       [SIZE_VARIANTS['2.25']]: 'w-[2.25rem] h-[2.25rem]',
       [SIZE_VARIANTS['2.5']]: 'w-[2.5rem] h-[2.5rem]',
       [SIZE_VARIANTS['2.75']]: 'w-[2.75rem] h-[2.75rem]',
@@ -124,7 +138,8 @@ const spacingBlockVariants = cva('', {
       [SIZE_VARIANTS['10']]: 'w-[10rem] h-[10rem]',
       [SIZE_VARIANTS['11']]: 'w-[11rem] h-[11rem]',
       [SIZE_VARIANTS['12']]: 'w-[12rem] h-[12rem]',
-      [SIZE_VARIANTS['16']]: 'w-[16rem] h-[16rem]'
+      [SIZE_VARIANTS['16']]: 'w-[16rem] h-[16rem]',
+      full: 'w-full h-full'
     },
     showBlock: {
       true: 'flex items-center box-border justify-center border-2 border-primary-normal',

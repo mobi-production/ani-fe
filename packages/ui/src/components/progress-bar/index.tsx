@@ -44,7 +44,8 @@ function ProgressBar({
     <Flex
       direction={FlexDirection.COLUMN}
       align={FlexAlign.END}
-      className={`w-[100%] gap-[0.25rem] ${className}`}
+      gap={4}
+      className={`w-[100%] ${className}`}
       {...props}>
       {showPercentage && (
         <Typography

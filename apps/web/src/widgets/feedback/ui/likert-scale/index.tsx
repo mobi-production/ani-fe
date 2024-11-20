@@ -1,6 +1,6 @@
 import { ComponentProps, MouseEvent, createContext, useContext, useMemo, useState } from 'react'
 import { cva } from 'class-variance-authority'
-import { Typography } from '@repo/ui/server'
+import { Flex, Typography } from '@repo/ui/server'
 import cn from '@repo/util/cn'
 import { LikertScaleType, SCORE_INDICATOR_TEXT_MAP } from '../../config/likert-scale'
 
@@ -32,11 +32,11 @@ function LikertScale({ children, defaultValue, ...props }: LikertScaleProps) {
 
   return (
     <LikertScaleContext.Provider value={{ selectedScore, onChange: setSelectedScore }}>
-      <div
-        className='flex gap-9'
+      <Flex
+        gap={36}
         {...props}>
         {children}
-      </div>
+      </Flex>
     </LikertScaleContext.Provider>
   )
 }
