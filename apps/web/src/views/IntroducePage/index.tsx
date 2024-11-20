@@ -8,26 +8,13 @@ import PathCancleButton from '@/features/path/ui/path-cancle-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import { Icon } from '@repo/ui/client'
 import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
-import { useRef } from 'react'
 
 type InnerProps = {
   data: PathIntroduce
   isLoggedIn: boolean
 }
 
-const LINKS = [
-  { id: 'path_info', title: '패스 정보' },
-  { id: 'path_feature', title: '패스 특징' },
-  { id: 'recommend_target', title: '추천 대상' },
-  { id: 'curriculum', title: '커리큘럼' }
-] as const
-
 export function Inner({ data, isLoggedIn }: InnerProps) {
-  const pathInfoRef = useRef<HTMLDivElement>(null)
-  const pathFeatureRef = useRef<HTMLDivElement>(null)
-  const recommendTargetRef = useRef<HTMLDivElement>(null)
-  const curriculumRef = useRef<HTMLDivElement>(null)
-
   return (
     <Flex
       asChild
@@ -36,7 +23,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
       align={'start'}
       justify={'center'}>
       <main className='w-max-[82rem] mb-[4.5rem] w-full rounded-[0.75rem] bg-background-normal px-[2.375rem] py-[4.5rem]'>
-        <section>
+        <section id='path_info'>
           <Flex className='gap-[2.5rem]'>
             <ImageSection
               size='l'
@@ -75,22 +62,19 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
 
         <Flex
           direction={'column'}
-          className='w-full'>
+          className='sticky top-0 w-full bg-inherit'>
           <NavigationLinks
             links={[
-              { ...LINKS[0], ref: pathInfoRef },
-              { ...LINKS[1], ref: pathFeatureRef },
-              { ...LINKS[2], ref: recommendTargetRef },
-              { ...LINKS[3], ref: curriculumRef }
+              { id: 'path_info', title: '패스 정보' },
+              { id: 'path_feature', title: '패스 특징' },
+              { id: 'curriculum', title: '커리큘럼' }
             ]}
-            firstLinkActive={true}
           />
           <Divider />
         </Flex>
 
         <section
-          ref={pathInfoRef}
-          id={LINKS[0].id}
+          id={'path_feature'}
           className='flex flex-col gap-[1.25rem]'>
           <Typography
             variant='title-3'
@@ -179,8 +163,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
         <Divider />
 
         <section
-          ref={pathFeatureRef}
-          id={LINKS[1].id}
+          id='path_feature'
           className='flex flex-col gap-[1.25rem]'>
           <Flex
             direction={'column'}
@@ -216,10 +199,7 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
           </Flex>
         </section>
 
-        <section
-          id={LINKS[2].id}
-          ref={recommendTargetRef}
-          className='flex flex-col gap-[1.5rem]'>
+        <section className='flex flex-col gap-[1.5rem]'>
           <Typography
             variant='title-3'
             fontWeight={'bold'}>
@@ -249,7 +229,6 @@ export function Inner({ data, isLoggedIn }: InnerProps) {
 
         <section
           id='curriculum'
-          ref={curriculumRef}
           className='flex flex-col gap-[1.5rem]'>
           <Typography
             variant='title-3'
