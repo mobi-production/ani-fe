@@ -29,6 +29,7 @@ export const Primary: Story = {
     <div className='mx-auto w-full max-w-[22.75rem]'>
       <PathProductItemDone>
         <PathProductItemDone.ContentSection
+          src='/avif/placeholder.avif'
           level={1}
           category='카테고리'
           title='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름'
