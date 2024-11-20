@@ -6,10 +6,8 @@ import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
 import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
-import { Icon } from '@repo/ui/client'
 import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
-import { useRef } from 'react'
 
 const LINKS = [
   { id: 'my_path', title: '내 패스' },
@@ -22,10 +20,6 @@ type InnerProps = {
 }
 
 export function Inner({ data }: InnerProps) {
-  const myPathRef = useRef<HTMLDivElement>(null)
-  const assignmentRef = useRef<HTMLDivElement>(null)
-  const feedbackRef = useRef<HTMLDivElement>(null)
-
   const { inProgressPathList, completedPathList, assignmentList, feedbackList } = data
 
   return (
@@ -68,18 +62,13 @@ export function Inner({ data }: InnerProps) {
         direction={'column'}
         className='sticky top-0 w-full bg-inherit'>
         <NavigationLinks
-          links={[
-            { ...LINKS[0], ref: myPathRef },
-            { ...LINKS[1], ref: assignmentRef },
-            { ...LINKS[2], ref: feedbackRef }
-          ]}
+          links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]}
           // TODO: moveHeightOffset로 위치 조정
         />
         <Divider />
       </Flex>
       <section
         className='flex flex-col gap-[16px]'
-        ref={myPathRef}
         id={LINKS[0].id}>
         <Flex
           direction='column'
@@ -102,7 +91,6 @@ export function Inner({ data }: InnerProps) {
 
       <section
         className='gap-[16px]] flex flex-col'
-        ref={assignmentRef}
         id={LINKS[1].id}>
         <Flex
           direction='column'
@@ -121,9 +109,7 @@ export function Inner({ data }: InnerProps) {
         </Flex>
         <AssignmentList data={assignmentList} />
       </section>
-      <section
-        ref={feedbackRef}
-        id={LINKS[2].id}>
+      <section id={LINKS[2].id}>
         <Flex
           direction='column'
           className='gap-[0.25rem]'>
