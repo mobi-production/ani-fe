@@ -29,6 +29,7 @@
     "@config/ts-config": "workspace:*",
     "@eslint/eslintrc": "^3.1.0",
     "@mswjs/http-middleware": "^0.10.2",
+    "@storybook/addon-docs": "^8.4.4",
     "@storybook/addon-essentials": "8.4.1",
     "@storybook/addon-interactions": "8.4.1",
     "@storybook/addon-onboarding": "8.4.1",
