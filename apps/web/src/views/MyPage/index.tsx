@@ -25,7 +25,7 @@ export function Inner({ data }: InnerProps) {
   return (
     <Flex
       direction='column'
-      gap='12'>
+      gap={48}>
       <Flex
         direction='row'
         align='center'
@@ -33,7 +33,7 @@ export function Inner({ data }: InnerProps) {
         <Flex
           direction='row'
           align='center'
-          className='gap-[1.5rem]'>
+          gap={24}>
           <div className='relative h-[120px] w-[120px] overflow-hidden rounded-full'>
             {/* TODO: 실제 이미지 연동 + 프로필 사진이 없을 경우의 이미지도 연동 */}
             <Image
@@ -59,7 +59,7 @@ export function Inner({ data }: InnerProps) {
         <MyPageEditButton />
       </Flex>
       <Flex
-        direction={'column'}
+        direction='column'
         className='sticky top-0 w-full bg-inherit'>
         <NavigationLinks
           links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]}
@@ -68,11 +68,11 @@ export function Inner({ data }: InnerProps) {
         <Divider />
       </Flex>
       <section
-        className='flex flex-col gap-[16px]'
+        className='flex flex-col gap-[1rem]'
         id={LINKS[0].id}>
         <Flex
-          direction='column'
-          className='gap-[0.25rem]'>
+          gap={4}
+          direction='column'>
           <Typography
             variant='title-3'
             fontWeight='bold'>
@@ -90,11 +90,11 @@ export function Inner({ data }: InnerProps) {
       </section>
 
       <section
-        className='gap-[16px]] flex flex-col'
+        className='flex flex-col gap-[16px]'
         id={LINKS[1].id}>
         <Flex
-          direction='column'
-          className='gap-[0.25rem]'>
+          gap={4}
+          direction='column'>
           <Typography
             variant='title-3'
             fontWeight='bold'>
@@ -111,8 +111,8 @@ export function Inner({ data }: InnerProps) {
       </section>
       <section id={LINKS[2].id}>
         <Flex
-          direction='column'
-          className='gap-[0.25rem]'>
+          gap={4}
+          direction='column'>
           <Typography
             variant='title-3'
             fontWeight='bold'>

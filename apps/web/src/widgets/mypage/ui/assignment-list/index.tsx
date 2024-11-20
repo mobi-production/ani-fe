@@ -27,7 +27,7 @@ function AssignmentList({ data }: AssignmentListProps) {
             className='gap-[0.25rem]'>
             <Typography>{assignmentFilterValue}</Typography>
             <Icon
-              size='16'
+              size={16}
               name='DownOutlined'
             />
           </Flex>
@@ -57,12 +57,13 @@ function AssignmentList({ data }: AssignmentListProps) {
       </DropdownMenu>
       <div>전체 과제들</div>
       <Flex
+        gap={4}
         direction='row'
         align='center'
-        className='gap-[0.25rem] text-status-error'>
+        className='text-status-error'>
         <Icon
           name='InfoCircleOutlined'
-          size='20'
+          size={16}
         />
         <Typography color='inherit'>
           미제출 과제가 3개 이상일 경우, 과정이 미수료 처리될 수 있어요

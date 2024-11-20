@@ -25,10 +25,10 @@ function CompletedPathList({ data }: CompletedPathListProps) {
         </Typography>
       </Flex>
       <Flex
+        gap={12}
         direction='row'
         align='center'
-        wrap='wrap'
-        className='gap-[0.75rem]'>
+        wrap='wrap'>
         {data.map((path) => (
           <div
             key={path.id}
