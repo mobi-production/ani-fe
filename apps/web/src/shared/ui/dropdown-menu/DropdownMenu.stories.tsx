@@ -29,8 +29,8 @@ export const Primary: Story = {
         <DropdownMenu.MenuContent triggerHeight='3.5rem'>
           <DropdownMenu.MenuItem
             value='MenuItem 1'
-            onSelect={(e) => {
-              console.log(e.currentTarget.dataset.value)
+            onValueSelect={(value) => {
+              console.log(value)
             }}>
             <Typography
               variant='body-2-normal'

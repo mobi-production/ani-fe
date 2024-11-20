@@ -66,14 +66,14 @@ export function Inner({ data }: InnerProps) {
       </Flex>
       <Flex
         direction={'column'}
-        className='w-full'>
+        className='sticky top-0 w-full bg-inherit'>
         <NavigationLinks
           links={[
             { ...LINKS[0], ref: myPathRef },
             { ...LINKS[1], ref: assignmentRef },
             { ...LINKS[2], ref: feedbackRef }
           ]}
-          firstLinkActive={true}
+          // TODO: moveHeightOffset로 위치 조정
         />
         <Divider />
       </Flex>
@@ -101,7 +101,7 @@ export function Inner({ data }: InnerProps) {
       </section>
 
       <section
-        className='flex flex-col gap-[16px]'
+        className='gap-[16px]] flex flex-col'
         ref={assignmentRef}
         id={LINKS[1].id}>
         <Flex

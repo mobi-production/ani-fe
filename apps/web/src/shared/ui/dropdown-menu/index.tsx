@@ -124,18 +124,14 @@ function MenuContent({ triggerHeight = '2rem', children, ...props }: MenuContent
 
 type MenuItemProps = ComponentProps<'button'> & {
   value: string
-  onSelect?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onValueSelect?: (value: string) => void
 }
 
-// @ 다음과 같이 선택된 값에 접근할 수 있습니다:
-// function handleSelect(event: React.MouseEvent<HTMLButtonElement>) {
-//   console.log(event.currentTarget.dataset.value);
-// }
-function MenuItem({ value, onSelect, children, ...props }: MenuItemProps) {
+function MenuItem({ value, onValueSelect, children, ...props }: MenuItemProps) {
   const { closeMenu } = useDropdownMenu()
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (onSelect) onSelect(event)
+  const handleClick = () => {
+    if (onValueSelect) onValueSelect(value)
     closeMenu()
   }
 
