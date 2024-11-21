@@ -1,4 +1,5 @@
 import RadioBtn from '@repo/ui/components/radio-btn'
+import { Flex, Typography } from '@repo/ui/server'
 import { ComponentProps, createContext, useContext, useState } from 'react'
 
 type RadioGroupProps = ComponentProps<'div'> & {
@@ -17,11 +18,13 @@ function RadioGroup({ children, defaultValue, ...props }: RadioGroupProps) {
 
   return (
     <RadioGroupContext.Provider value={{ value, onChange: setValue }}>
-      <div
-        className='flex flex-col items-start gap-3'
+      <Flex
+        align={'start'}
+        direction={'column'}
+        gap={12}
         {...props}>
         {children}
-      </div>
+      </Flex>
     </RadioGroupContext.Provider>
   )
 }
@@ -38,15 +41,20 @@ function RadioGroupItem({ label, ...props }: RadioGroupItemProps) {
   const checked = context.value === props.value
 
   return (
-    <label className='flex w-full cursor-pointer items-center justify-between rounded border border-[#000000] p-4'>
-      <span className='text-b2-normal'>{label}</span>
-      <RadioBtn
-        type='radio'
-        onChange={(e) => context.onChange(e.target.value)}
-        checked={checked}
-        {...props}
-      />
-    </label>
+    <Flex
+      asChild
+      align={'center'}
+      justify={'between'}>
+      <label className='w-full cursor-pointer rounded border border-common0 p-4'>
+        <Typography variant='body-2-normal'>{label}</Typography>
+        <RadioBtn
+          type='radio'
+          onChange={(e) => context.onChange(e.target.value)}
+          checked={checked}
+          {...props}
+        />
+      </label>
+    </Flex>
   )
 }
 

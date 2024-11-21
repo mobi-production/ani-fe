@@ -3,10 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react'
 import RadioGroup from '.'
 
 const meta = {
-  title: 'SDU/RadioGroup',
+  title: 'Widget/Path/RadioGroup',
   component: RadioGroup,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    docs: {
+      description: {
+        component: '패스 문제에서 선택을 하여 문제를 풀 수 있는 RadioGroup 컴포넌트'
+      }
+    }
   },
   tags: ['autodocs']
 } satisfies Meta<typeof RadioGroup>
