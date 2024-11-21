@@ -1,8 +1,8 @@
 import { SpacingBlock } from '@repo/ui/server'
 
 import { Flex, Typography } from '@repo/ui/server'
-import type { PageType, PartType } from '../../model'
 import { Icon } from '@repo/ui/client'
+import { PageType, PartType } from '@/types/common'
 
 type CurriculumCustomTextProps = {
   type: PageType['type']

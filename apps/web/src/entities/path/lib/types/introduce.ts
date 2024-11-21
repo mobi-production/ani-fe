@@ -1,5 +1,5 @@
 import { ServerDrivenComponentType } from '@/shared/core/sdu/ServerDrivenComponent'
-import { PartType } from '@/widgets/path/model'
+import { PartType } from '@/types/common'
 
 export type GetPathIntroduceParamsType = {
   pathId: string

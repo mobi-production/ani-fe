@@ -1,5 +1,3 @@
-type PageFeature = 'LEARNING_CONTENTS' | 'QUIZ' | 'VIDEO'
-
 export type PathType = {
   id: string | number
   title: string
@@ -14,6 +12,8 @@ export type PartType = {
   order: string | number
   page: PageType[]
 }
+
+type PageFeature = 'LEARNING_CONTENTS' | 'QUIZ' | 'VIDEO'
 
 export type PageType =
   | {

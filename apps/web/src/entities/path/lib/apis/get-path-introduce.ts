@@ -1,13 +1,15 @@
 import { ErrorResponseType } from '@/__mock__/types/feedback'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { PathIntroduceResponseType } from '../../model/path-introduce'
+import { GetPathIntroduceResponseType } from '../types/introduce'
 
 /**
  * 파트 피드백을 조회하는 함수
  * @param pathId 피드백 데이터를 조회할 파트 ID
  * @returns 서버 응답 데이터 또는 null
  */
-export async function getPathIntroduce(pathId: string): Promise<PathIntroduceResponseType | null> {
+export async function getPathIntroduce(
+  pathId: string | number
+): Promise<GetPathIntroduceResponseType | null> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/path/${pathId}`, {
       method: HTTP_METHODS.GET,

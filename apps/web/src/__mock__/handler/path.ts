@@ -14,7 +14,10 @@ import {
   PostPathFeedbackParamsType,
   PostPathFeedbackRequestType
 } from '../types/feedback'
-import { GetPathIntroduceParamsType, GetPathIntroduceResponseType } from '../types/introduce'
+import {
+  GetPathIntroduceParamsType,
+  GetPathIntroduceResponseType
+} from '@/entities/path/lib/types/introduce'
 
 const MOCK_SERVER_RESPONSE_DELAY = 3000
 

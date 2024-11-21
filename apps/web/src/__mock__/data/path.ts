@@ -1,5 +1,4 @@
-import { GetPathIntroduceResponseType } from '../types/introduce'
-
+import { GetPathIntroduceResponseType } from '@/entities/path/lib/types/introduce'
 export const pathIntroduceMock = (
   pathId: number | string
 ): GetPathIntroduceResponseType['data'] => {

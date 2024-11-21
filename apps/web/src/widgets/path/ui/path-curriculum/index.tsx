@@ -1,7 +1,7 @@
 import { Flex, Typography } from '@repo/ui/server'
-import { PartType } from '../../model'
 import CurriculumBar from './CurriculumBar'
 import CurriculumContent from './CurriculumContent'
+import { PartType } from '@/types/common'
 
 type Props = {
   parts: PartType[]
