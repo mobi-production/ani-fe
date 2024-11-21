@@ -1,7 +1,6 @@
+import { PartType } from '@/shared/types/common'
 import { Flex } from '@repo/ui/server'
 import { Fragment } from 'react'
-import { PartType } from '@/types/common'
-
 type Props = {
   parts: PartType[]
 }
