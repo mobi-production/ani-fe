@@ -1,8 +1,10 @@
 import {
   BellOutlined,
   CheckCircleFilled,
+  DownOutlined,
   ExclamationCircleOutlined,
   FileOutlined,
+  InfoCircleOutlined,
   LeftOutlined,
   PlayCircleOutlined,
   RightOutlined,
@@ -12,12 +14,14 @@ import {
 export const IconsMap = {
   RightOutlined: RightOutlined,
   LeftOutlined: LeftOutlined,
+  DownOutlined: DownOutlined,
   UserOutlined: UserOutlined,
   BellOutlined: BellOutlined,
   ExclamationCircleOutlined: ExclamationCircleOutlined,
   FileOutlined: FileOutlined,
   PlayCircleOutlined: PlayCircleOutlined,
-  CheckCircleFilled: CheckCircleFilled
+  CheckCircleFilled: CheckCircleFilled,
+  InfoCircleOutlined: InfoCircleOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
