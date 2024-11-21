@@ -1,8 +1,8 @@
+import { SIZE_VARIANTS } from '@repo/ui/variants/size'
 import { Meta, StoryObj } from '@storybook/react'
 
 import Icon from './index'
-import { IconsMap, IconsSizes } from './variants'
-
+import { IconsMap } from './variants'
 const meta = {
   title: 'MDS/Icon',
   component: Icon,
@@ -17,7 +17,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: Object.values(IconsSizes)
+      options: Object.values(SIZE_VARIANTS).filter((value) => value < 48)
     }
   }
 } satisfies Meta<typeof Icon>

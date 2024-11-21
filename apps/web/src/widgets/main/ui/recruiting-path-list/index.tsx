@@ -1,4 +1,4 @@
-import { PathData } from '@/__mock__/data/main'
+import { PathData } from '@/__mock__/types/main'
 import { PathProductItemBasic } from '@/shared/ui/path-product-item'
 import { Flex, Typography } from '@repo/ui/server'
 
@@ -22,7 +22,7 @@ function RecruitingPathList({ pathData }: RecruitingPathListProps) {
         direction='row'
         wrap='wrap'
         align='center'
-        className='gap-[0.75rem]'>
+        gap={12}>
         {pathData.inProgressPaths.map((path) => {
           return (
             <div

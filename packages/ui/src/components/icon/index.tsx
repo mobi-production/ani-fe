@@ -1,7 +1,8 @@
+import { SIZE_VARIANTS } from '@repo/ui/variants/size'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { ComponentPropsWithoutRef } from 'react'
 
-import { IconsMap, IconsSizes, IconVariantType } from './variants'
+import { IconsMap, IconVariantType } from './variants'
 
 type Props = {
   name: IconVariantType
@@ -12,23 +13,32 @@ type Props = {
 const iconVariants = cva('text-inherit', {
   variants: {
     size: {
-      [IconsSizes['1']]: 'text-[0.25rem]',
-      [IconsSizes['2']]: 'text-[0.5rem]',
-      [IconsSizes['3']]: 'text-[0.75rem]',
-      [IconsSizes['4']]: 'text-[1rem]',
-      [IconsSizes['5']]: 'text-[1.25rem]',
-      [IconsSizes['6']]: 'text-[1.5rem]',
-      [IconsSizes['7']]: 'text-[1.75rem]',
-      [IconsSizes['8']]: 'text-[2rem]',
-      [IconsSizes['9']]: 'text-[2.25rem]',
-      [IconsSizes['10']]: 'text-[2.5rem]',
-      [IconsSizes['11']]: 'text-[2.75rem]',
-      [IconsSizes['12']]: 'text-[3rem]',
-      [IconsSizes['16']]: 'text-[4rem]'
+      default: 'text-inherit',
+      [SIZE_VARIANTS['0.0625']]: 'text-[0.0625rem]',
+      [SIZE_VARIANTS['0.125']]: 'text-[0.125rem]',
+      [SIZE_VARIANTS['0.1875']]: 'text-[0.1875rem]',
+      [SIZE_VARIANTS['0.25']]: 'text-[0.25rem]',
+      [SIZE_VARIANTS['0.3125']]: 'text-[0.3125rem]',
+      [SIZE_VARIANTS['0.375']]: 'text-[0.375rem]',
+      [SIZE_VARIANTS['0.4375']]: 'text-[0.4375rem]',
+      [SIZE_VARIANTS['0.5']]: 'text-[0.5rem]',
+      [SIZE_VARIANTS['0.625']]: 'text-[0.625rem]',
+      [SIZE_VARIANTS['0.75']]: 'text-[0.75rem]',
+      [SIZE_VARIANTS['0.875']]: 'text-[0.875rem]',
+      [SIZE_VARIANTS['0.9375']]: 'text-[0.9375rem]',
+      [SIZE_VARIANTS['1']]: 'text-[1rem]',
+      [SIZE_VARIANTS['1.125']]: 'text-[1.125rem]',
+      [SIZE_VARIANTS['1.25']]: 'text-[1.25rem]',
+      [SIZE_VARIANTS['1.5']]: 'text-[1.5rem]',
+      [SIZE_VARIANTS['1.75']]: 'text-[1.75rem]',
+      [SIZE_VARIANTS['2']]: 'text-[2rem]',
+      [SIZE_VARIANTS['2.25']]: 'text-[2.25rem]',
+      [SIZE_VARIANTS['2.5']]: 'text-[2.5rem]',
+      [SIZE_VARIANTS['2.75']]: 'text-[2.75rem]'
     }
   },
   defaultVariants: {
-    size: IconsSizes['4']
+    size: 'default'
   }
 })
 

@@ -31,7 +31,7 @@ export function Inner({ data }: { data: MainData }) {
         </div>
         <Flex
           direction='column'
-          className='gap-[1.625rem]'>
+          gap={26}>
           <Flex
             align='center'
             justify='between'>
@@ -49,7 +49,7 @@ export function Inner({ data }: { data: MainData }) {
             <Link href='/'>
               <Icon
                 name='RightOutlined'
-                size='24'
+                size={24}
               />
             </Link>
           </Flex>
