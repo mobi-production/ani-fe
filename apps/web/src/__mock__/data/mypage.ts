@@ -137,28 +137,52 @@ export const myPageData: MyPageData = {
   ],
   assignmentList: [
     {
-      id: 8,
+      id: 1,
       image: '/avif/placeholder.avif',
       pathName: 'HTML & CSS',
-      assignMentName: '기본 게시 기반 가져오기',
+      assignMentName: '기본 HTML 태그 과제',
       status: 'SUBMIT_AVAILABLE',
-      dueDate: '2024.03.01 12:00 AM'
+      dueDate: '2024.03.15 12:00 PM'
     },
     {
-      id: 9,
+      id: 2,
       image: '/avif/placeholder.avif',
-      pathName: 'HTML & CSS',
-      assignMentName: '기본 게시 기반 가져오기',
+      pathName: 'JavaScript',
+      assignMentName: 'JavaScript 기초 과제',
       status: 'SUBMITTED',
-      dueDate: '2024.03.01 12:00 AM'
+      dueDate: '2024.03.10 11:59 PM'
     },
     {
-      id: 10,
+      id: 3,
       image: '/avif/placeholder.avif',
       pathName: 'React',
-      assignMentName: '기본 게시 기반 가져오기',
+      assignMentName: 'React 컴포넌트 실습',
       status: 'DEADLINE_PASSED',
-      dueDate: '2024.03.01 12:00 AM'
+      dueDate: '2024.02.28 06:00 PM'
+    },
+    {
+      id: 4,
+      image: '/avif/placeholder.avif',
+      pathName: 'Python',
+      assignMentName: '파이썬 데이터 분석 과제',
+      status: 'SUBMIT_AVAILABLE',
+      dueDate: '2024.03.20 05:00 PM'
+    },
+    {
+      id: 5,
+      image: '/avif/placeholder.avif',
+      pathName: 'Vue.js',
+      assignMentName: 'Vue.js 시작하기 과제',
+      status: 'SUBMITTED',
+      dueDate: '2024.03.18 10:00 AM'
+    },
+    {
+      id: 6,
+      image: '/avif/placeholder.avif',
+      pathName: 'Django',
+      assignMentName: 'Django 프로젝트 설정 과제',
+      status: 'DEADLINE_PASSED',
+      dueDate: '2024.03.05 09:00 AM'
     }
   ],
   feedbackList: [

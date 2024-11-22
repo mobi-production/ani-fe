@@ -61,10 +61,7 @@ export function Inner({ data }: InnerProps) {
       <Flex
         direction='column'
         className='sticky top-0 w-full bg-inherit'>
-        <NavigationLinks
-          links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]}
-          // TODO: moveHeightOffset로 위치 조정
-        />
+        <NavigationLinks links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]} />
         <Divider />
       </Flex>
       <section

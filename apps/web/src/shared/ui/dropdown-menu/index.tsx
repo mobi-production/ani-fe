@@ -24,8 +24,14 @@ const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const toggleMenu = () => setIsOpen((prev) => !prev)
-  const closeMenu = () => setIsOpen(false)
+  const toggleMenu = () => {
+    console.log('toggleMenu', isOpen)
+    setIsOpen((prev) => !prev)
+  }
+  const closeMenu = () => {
+    console.log('closeMenu', isOpen)
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -68,7 +74,7 @@ const useDropdownMenu = (): DropdownMenuContextProps => {
 
 type DropdownMenuProps = ComponentProps<'div'>
 
-function DropdownMenu({ ...props }: DropdownMenuProps) {
+function DropdownMenu({ className, ...props }: DropdownMenuProps) {
   return (
     <DropdownMenuProvider>
       <div
@@ -109,6 +115,7 @@ type MenuContentProps = ComponentProps<'div'> & {
 function MenuContent({ triggerHeight = '2rem', children, ...props }: MenuContentProps) {
   const { isOpen, menuRef } = useDropdownMenu()
 
+  console.log('MenuContent 렌더링 상태:', isOpen)
   if (!isOpen) return null
   return (
     <div
