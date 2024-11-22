@@ -7,6 +7,7 @@ import {
   InfoCircleOutlined,
   LeftOutlined,
   PlayCircleOutlined,
+  QuestionCircleOutlined,
   RightOutlined,
   UserOutlined
 } from '@ant-design/icons'
@@ -21,7 +22,8 @@ export const IconsMap = {
   FileOutlined: FileOutlined,
   PlayCircleOutlined: PlayCircleOutlined,
   CheckCircleFilled: CheckCircleFilled,
-  InfoCircleOutlined: InfoCircleOutlined
+  InfoCircleOutlined: InfoCircleOutlined,
+  QuestionCircleOutlined: QuestionCircleOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

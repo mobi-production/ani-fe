@@ -1,5 +1,7 @@
-import IntroducePage from '@/views/IntroducePage'
+import { getPathIntroduce } from '@/entities/path/lib/apis'
+import { PathIntroducePage } from '@/views/IntroducePage'
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({
   params
@@ -15,6 +17,10 @@ export async function generateMetadata({
   }
 }
 
-export default function Page({ params }: { params: { pathId: string } }) {
-  return <IntroducePage pathId={params.pathId} />
+export default async function Page({ params }: { params: { pathId: string } }) {
+  const data = await getPathIntroduce(params.pathId)
+  if (!data) {
+    return notFound()
+  }
+  return <PathIntroducePage data={data.data} />
 }

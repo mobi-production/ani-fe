@@ -5,7 +5,7 @@ import { SolidButton } from '@repo/ui/server'
 import { useCallback } from 'react'
 
 type Props = {
-  pathId: string
+  pathId: string | number
 }
 
 function PathCancleButton({ pathId }: Props) {
