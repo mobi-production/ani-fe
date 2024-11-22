@@ -21,8 +21,7 @@ type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
   args: {
-    pathId: '1',
-    isLoggedIn: true
+    pathId: '1'
   },
   decorators: [
     (Story) => (
