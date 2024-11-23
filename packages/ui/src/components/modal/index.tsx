@@ -17,7 +17,7 @@ const BackDrop = forwardRef<HTMLDivElement, OptionalModalProps>(
     return (
       <div
         ref={ref}
-        className={`fixed inset-0 bg-black/50 ${className}`}
+        className={`fixed inset-0 bg-[#404040] ${className}`}
         onClick={onClose}
         {...props}></div>
     )
@@ -31,7 +31,7 @@ const Overlay = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
     return (
       <div
         ref={ref}
-        className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded bg-background-normal p-4 shadow-lg ${className}`}>
+        className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl bg-background-normal p-4 ${className}`}>
         {children}
       </div>
     )
