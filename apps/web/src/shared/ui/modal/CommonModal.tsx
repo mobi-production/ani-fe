@@ -96,7 +96,7 @@ function Description({ className, children }: ChildrenProps) {
 
 type ButtonProps = {
   buttonText: string
-} & ComponentProps<'div'>
+} & ComponentProps<'button'>
 
 function Button({ buttonText, onClick }: ButtonProps) {
   return (
@@ -117,7 +117,7 @@ type ButtonSetProps = {
   subText: string
   onSubmit: () => void | Promise<void>
   onCancel: () => void
-} & ComponentProps<'div'>
+} & ComponentProps<'button'>
 
 function ButtonSet({ primaryText, subText, onSubmit, onCancel }: ButtonSetProps) {
   return (
