@@ -48,7 +48,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             gap={4}
             align='center'
             className='text-status-error'>
-            <Icon name='ExclamationCircleOutlined' />
+            <Icon
+              size={14}
+              name='ExclamationCircleOutlined'
+            />
             <Typography
               color='inherit'
               variant='label-normal'
@@ -62,7 +65,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             gap={4}
             align='center'
             className='text-status-success'>
-            <Icon name='ExclamationCircleOutlined' />
+            <Icon
+              size={14}
+              name='ExclamationCircleOutlined'
+            />
             <Typography
               color='inherit'
               variant='label-normal'
