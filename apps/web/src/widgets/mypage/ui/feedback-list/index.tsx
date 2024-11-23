@@ -22,6 +22,7 @@ function FeedbackList({ data }: FeedbackListProps) {
         gap={16}>
         {data.map((feedback) => (
           <Flex
+            key={feedback.id}
             className='w-[38rem] rounded-[8px] border border-line-normal p-[1.25rem]'
             direction='column'
             gap={24}>
@@ -34,9 +35,8 @@ function FeedbackList({ data }: FeedbackListProps) {
                 <Image
                   src='/avif/placeholder.avif'
                   alt='프로필 이미지'
-                  layout='fill'
-                  objectFit='cover'
-                  objectPosition='center'
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
                   priority
                   sizes='2.5rem'
                 />
