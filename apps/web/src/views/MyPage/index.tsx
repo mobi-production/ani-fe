@@ -5,6 +5,7 @@ import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
+import FeedbackListSection from '@/widgets/mypage/ui/feedback-list-section'
 import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
 import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
@@ -106,7 +107,9 @@ export function Inner({ data }: InnerProps) {
         </Flex>
         <AssignmentList data={assignmentList} />
       </section>
-      <section id={LINKS[2].id}>
+      <section
+        className='flex flex-col gap-[16px]'
+        id={LINKS[2].id}>
         <Flex
           gap={4}
           direction='column'>
@@ -123,10 +126,7 @@ export function Inner({ data }: InnerProps) {
           </Typography>
         </Flex>
 
-        <div>
-          {/* FeedbackList */}
-          패스별 피드백 Section
-        </div>
+        <FeedbackListSection data={feedbackList} />
       </section>
     </Flex>
   )
