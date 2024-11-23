@@ -2,7 +2,7 @@ import { SpacingBlock } from '@repo/ui/server'
 
 import { Flex, Typography } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
-import { PageType, PartType } from '@/types/common'
+import { PageType, PartType } from '@/shared/types/common'
 
 type CurriculumCustomTextProps = {
   type: PageType['type']
