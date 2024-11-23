@@ -3,6 +3,30 @@ export type ErrorResponse = {
   message: string
 }
 
+// 마이페이지 프로필 데이터 Response Type
+export type GetMyPageProfileResponse = MyPageProfileData | ErrorResponse
+
+export type PutMyPageProfileParamsType = {
+  userId: string
+}
+
+export type PutMyPageProfileRequestType = Omit<MyPageProfileData, 'userId' | 'emailVerified'>
+
+export type PutMyPageProfileResponse = {
+  status: number
+  message?: string
+}
+
+export type MyPageProfileData = {
+  userId: string
+  nickname: string
+  image: string
+  email: string
+  emailVerified: boolean
+  password: string
+  passwordConfirmation: string
+}
+
 // 마이페이지 데이터 Response Type
 export type GetMyPageResponse = MyPageData | ErrorResponse
 

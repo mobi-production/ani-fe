@@ -1,7 +1,6 @@
 'use client'
 
-import { myPageData } from '@/__mock__/data/mypage'
-import type { MyPageData } from '@/__mock__/types/mypage'
+import type { MyPageData, MyPageProfileData } from '@/__mock__/types/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
@@ -18,10 +17,14 @@ const LINKS = [
 ] as const
 
 type InnerProps = {
-  data: MyPageData
+  myPageData: MyPageData
+  myPageProfileData: MyPageProfileData
 }
 
-export function Inner({ data }: InnerProps) {
+export function Inner({ myPageData, myPageProfileData }: InnerProps) {
+  // TODO: 모달에 사용 예정 Data
+  console.log('myPageProfileData', myPageProfileData)
+
   return (
     <Flex
       direction='column'
@@ -37,11 +40,10 @@ export function Inner({ data }: InnerProps) {
           <div className='relative h-[120px] w-[120px] overflow-hidden rounded-full'>
             {/* TODO: 실제 이미지 연동 + 프로필 사진이 없을 경우의 이미지도 연동 */}
             <Image
-              src='/avif/placeholder.avif'
+              src={myPageProfileData.image}
               alt='프로필 이미지'
-              layout='fill'
-              objectFit='cover'
-              objectPosition='center'
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
               priority
               sizes='120px'
             />
@@ -49,11 +51,15 @@ export function Inner({ data }: InnerProps) {
           <Flex direction='column'>
             <Typography
               variant='title-3'
-              fontWeight='bold'>{`닉네임`}</Typography>
+              fontWeight='bold'>
+              {myPageProfileData.nickname}
+            </Typography>
             <Typography
               className='text-neutral-60'
               variant='heading-1'
-              fontWeight='medium'>{`email@naver.com`}</Typography>
+              fontWeight='medium'>
+              {myPageProfileData.email}
+            </Typography>
           </Flex>
         </Flex>
         <MyPageEditButton />
@@ -82,8 +88,8 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스와 완료한 패스를 한눈에 확인하세요
           </Typography>
         </Flex>
-        <InProgressPathList data={data.inProgressPathList} />
-        <CompletedPathList data={data.completedPathList} />
+        <InProgressPathList data={myPageData.inProgressPathList} />
+        <CompletedPathList data={myPageData.completedPathList} />
       </section>
 
       <section
@@ -104,7 +110,7 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스의 과제 현황을 확인하세요
           </Typography>
         </Flex>
-        <AssignmentList data={data.assignmentList} />
+        <AssignmentList data={myPageData.assignmentList} />
       </section>
       <section
         className='flex flex-col gap-[16px]'
@@ -125,16 +131,22 @@ export function Inner({ data }: InnerProps) {
           </Typography>
         </Flex>
 
-        <FeedbackListSection data={data.feedbackList} />
+        <FeedbackListSection data={myPageData.feedbackList} />
       </section>
     </Flex>
   )
 }
 
 type MyPageProps = {
-  data: MyPageData
+  myPageData: MyPageData
+  myPageProfileData: MyPageProfileData
 }
 
-export default function MyPage({ data }: MyPageProps) {
-  return <Inner data={data} />
+export default function MyPage({ myPageData, myPageProfileData }: MyPageProps) {
+  return (
+    <Inner
+      myPageData={myPageData}
+      myPageProfileData={myPageProfileData}
+    />
+  )
 }

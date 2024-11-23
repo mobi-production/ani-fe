@@ -2,7 +2,7 @@ import { MyPageData } from '@/__mock__/types/mypage'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 /**
- * 메인 페이지 데이터를 조회하는 함수
+ * 마이페이지 데이터를 조회하는 함수
  * @returns 서버 응답 데이터 또는 null
  */
 export async function getMyPageData(): Promise<MyPageData | null> {
@@ -13,14 +13,14 @@ export async function getMyPageData(): Promise<MyPageData | null> {
     })
 
     if (!response.ok) {
-      console.error('메인 데이터 조회 중 오류 발생:', response.statusText)
+      console.error('마이페이지 데이터 조회 중 오류 발생:', response.statusText)
       return null
     }
 
     const data: MyPageData = await response.json()
     return data
   } catch (error) {
-    console.error('메인 데이터 조회 에러', error)
+    console.error('마이페이지 데이터 조회 에러', error)
     return null
   }
 }

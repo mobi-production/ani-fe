@@ -1,4 +1,4 @@
-import { getMyPageData } from '@/entities/mypage/apis/get-mypage-data'
+import { getMyPageData, getMyProfileData } from '@/entities/mypage/lib/apis'
 import MyPage from '@/views/MyPage'
 
 export const metadata = {
@@ -6,10 +6,16 @@ export const metadata = {
 }
 
 export default async function Page() {
-  const data = await getMyPageData()
+  const myPageData = await getMyPageData()
+  const myPageProfileData = await getMyProfileData()
 
-  if (!data) {
+  if (!myPageData || !myPageProfileData) {
     return <div>데이터를 불러오는 데 실패했습니다.</div>
   }
-  return <MyPage data={data} />
+  return (
+    <MyPage
+      myPageData={myPageData}
+      myPageProfileData={myPageProfileData}
+    />
+  )
 }

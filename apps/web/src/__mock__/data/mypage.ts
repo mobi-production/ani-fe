@@ -1,4 +1,14 @@
-import type { MyPageData } from '../types/mypage'
+import type { MyPageData, MyPageProfileData } from '../types/mypage'
+
+export const myPageProfileData: MyPageProfileData = {
+  userId: '1',
+  nickname: 'Creme',
+  image: '/avif/placeholder.avif',
+  email: 'email@naver.com',
+  emailVerified: true,
+  password: 'creme1234@',
+  passwordConfirmation: 'creme1234@'
+}
 
 export const myPageData: MyPageData = {
   inProgressPathList: [
