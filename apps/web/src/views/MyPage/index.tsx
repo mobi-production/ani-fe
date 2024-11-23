@@ -40,7 +40,7 @@ export function Inner({ myPageData, myPageProfileData }: InnerProps) {
           <div className='relative h-[120px] w-[120px] overflow-hidden rounded-full'>
             {/* TODO: 실제 이미지 연동 + 프로필 사진이 없을 경우의 이미지도 연동 */}
             <Image
-              src={myPageProfileData.image}
+              src={myPageProfileData?.image || '/avif/placeholder.avif'}
               alt='프로필 이미지'
               fill
               style={{ objectFit: 'cover', objectPosition: 'center' }}
