@@ -34,7 +34,7 @@ const iconVariants = cva(
   }
 )
 
-function ComfirmIcon({ iconTheme, iconName }: IconProps) {
+function ModalIcon({ iconTheme, iconName }: IconProps) {
   if (iconTheme !== 'SUCCESS' && iconTheme !== 'ERROR' && !iconName) return null
   const icon = useMemo(() => {
     switch (iconTheme) {
@@ -95,13 +95,31 @@ function Description({ className, children }: ChildrenProps) {
 }
 
 type ButtonProps = {
+  buttonText: string
+} & ComponentProps<'div'>
+
+function Button({ buttonText, onClick }: ButtonProps) {
+  return (
+    <div className='mt-[3rem] flex w-full justify-center'>
+      <SolidButton
+        onClick={onClick}
+        variant='primary'
+        size={'large'}
+        className='w-[25rem]'>
+        {buttonText}
+      </SolidButton>
+    </div>
+  )
+}
+
+type ButtonSetProps = {
   primaryText: string
   subText: string
   onSubmit: () => void | Promise<void>
   onCancel: () => void
 } & ComponentProps<'div'>
 
-function Buttons({ primaryText, subText, onSubmit, onCancel }: ButtonProps) {
+function ButtonSet({ primaryText, subText, onSubmit, onCancel }: ButtonSetProps) {
   return (
     <div className='mt-[3rem] flex justify-center gap-2'>
       <SolidButton
@@ -129,7 +147,7 @@ type Props = {
   withCloseButton?: boolean
 } & ComponentProps<'div'>
 
-function ConfirmModal({ isOpen, onClose, className, children }: Props) {
+function CommonModal({ isOpen, onClose, className, children }: Props) {
   return (
     <Portal>
       <Modal
@@ -145,9 +163,10 @@ function ConfirmModal({ isOpen, onClose, className, children }: Props) {
   )
 }
 
-ConfirmModal.icon = ComfirmIcon
-ConfirmModal.title = Title
-ConfirmModal.description = Description
-ConfirmModal.buttons = Buttons
+CommonModal.icon = ModalIcon
+CommonModal.title = Title
+CommonModal.description = Description
+CommonModal.button = Button
+CommonModal.buttonSet = ButtonSet
 
-export default ConfirmModal
+export default CommonModal
