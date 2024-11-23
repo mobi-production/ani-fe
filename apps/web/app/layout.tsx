@@ -21,6 +21,7 @@ export default function RootLayout({
         direction={'column'}
         className='w-full'>
         <body className='gap-[3.25rem] bg-background-alternative'>
+          <div id='portal-container'></div>
           <Header isLoggedIn={isLoggedIn} />
           {children}
         </body>
