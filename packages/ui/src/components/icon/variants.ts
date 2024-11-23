@@ -5,6 +5,8 @@ import {
   CodeOutlined,
   DownOutlined,
   ExclamationCircleOutlined,
+  EyeInvisibleOutlined,
+  EyeOutlined,
   FileExcelOutlined,
   FileImageOutlined,
   FileOutlined,
@@ -45,7 +47,9 @@ export const IconsMap = {
   FilePptOutlined: FilePptOutlined,
   FileWordOutlined: FileWordOutlined,
   Html5Outlined: Html5Outlined,
-  CodeOutlined: CodeOutlined
+  CodeOutlined: CodeOutlined,
+  EyeOutlined: EyeOutlined,
+  EyeInvisibleOutlined: EyeInvisibleOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
