@@ -62,7 +62,7 @@ function BadgeList({ level = 0, category = '', badgeType }: BadgeListProps) {
   return (
     <Flex
       direction='row'
-      className='gap-[0.375rem]'>
+      gap={6}>
       <Badge>Lv.{level}</Badge>
       <Badge>{category}</Badge>
       {badgeType && <Badge color={badgeColor}>{badgeLabel}</Badge>}
@@ -84,25 +84,29 @@ function TextContentList({
   return (
     <Flex
       direction='column'
-      className='gap-[0.375rem]'>
+      gap={6}>
       <Typography
         className='line-clamp-2'
         variant='label-normal'
         fontWeight='semibold'>
         {name}
       </Typography>
-      <Typography
-        color='alternative'
-        variant='caption-2'
-        fontWeight='regular'>
-        {`신청 기간 | ${applyPeriod}`}
-      </Typography>
-      <Typography
-        color='alternative'
-        variant='caption-2'
-        fontWeight='regular'>
-        {`진행 기간 | ${progressPeriod}`}
-      </Typography>
+      <Flex
+        direction='column'
+        gap={2}>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`신청 기간 | ${applyPeriod}`}
+        </Typography>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`진행 기간 | ${progressPeriod}`}
+        </Typography>
+      </Flex>
     </Flex>
   )
 }

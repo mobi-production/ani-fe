@@ -1,6 +1,6 @@
 'use client'
 
-import { mainData, MainData } from '@/__mock__/data/main'
+import type { MainData } from '@/__mock__/types/main'
 import AssignmentList from '@/widgets/main/ui/assignment-list'
 import LeaningSummaryList from '@/widgets/main/ui/leaning-summary-list'
 import OpenSoonPathList from '@/widgets/main/ui/open-soon-path-list'
@@ -11,8 +11,7 @@ import { Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function MainPageInner({ data }: { data: MainData }) {
-  const { mainBanner, userData, pathData } = data
+export function Inner({ data }: { data: MainData }) {
   return (
     <Flex
       className='w-full'
@@ -24,7 +23,7 @@ export function MainPageInner({ data }: { data: MainData }) {
         className='max-w-[82rem] gap-[3.5rem]'>
         <div className='max-h-[29.75rem] overflow-hidden rounded-[0.75rem]'>
           <Image
-            src={mainBanner[0] ? mainBanner[0].image : '/avif/placeholder.avif'}
+            src={data?.mainBanner[0] ? data?.mainBanner[0].image : '/avif/placeholder.avif'}
             alt='mainBanner'
             width={1312}
             height={476}
@@ -32,7 +31,7 @@ export function MainPageInner({ data }: { data: MainData }) {
         </div>
         <Flex
           direction='column'
-          className='gap-[1.625rem]'>
+          gap={26}>
           <Flex
             align='center'
             justify='between'>
@@ -50,20 +49,20 @@ export function MainPageInner({ data }: { data: MainData }) {
             <Link href='/'>
               <Icon
                 name='RightOutlined'
-                size='24'
+                size={24}
               />
             </Link>
           </Flex>
-          <LeaningSummaryList userData={userData} />
-          <AssignmentList userData={userData} />
+          <LeaningSummaryList userData={data?.userData || []} />
+          <AssignmentList userData={data?.userData || []} />
         </Flex>
-        <RecruitingPathList pathData={pathData} />
-        <OpenSoonPathList pathData={pathData} />
+        <RecruitingPathList pathData={data?.pathData || []} />
+        <OpenSoonPathList pathData={data?.pathData || []} />
       </Flex>
     </Flex>
   )
 }
 
-export default function MainPage() {
-  return <MainPageInner data={mainData} />
+export default function MainPage({ data }: { data: MainData }) {
+  return <Inner data={data} />
 }

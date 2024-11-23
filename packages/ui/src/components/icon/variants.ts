@@ -1,43 +1,53 @@
 import {
+  AudioOutlined,
   BellOutlined,
   CheckCircleFilled,
   CloseOutlined,
+  CodeOutlined,
+  DownOutlined,
   ExclamationCircleOutlined,
+  FileExcelOutlined,
+  FileImageOutlined,
   FileOutlined,
+  FilePdfOutlined,
+  FilePptOutlined,
+  FileTextOutlined,
+  FileWordOutlined,
+  FileZipOutlined,
+  Html5Outlined,
+  InfoCircleOutlined,
   LeftOutlined,
   PlayCircleOutlined,
+  QuestionCircleOutlined,
   RightOutlined,
-  UserOutlined
+  UserOutlined,
+  VideoCameraOutlined
 } from '@ant-design/icons'
 
 export const IconsMap = {
   RightOutlined: RightOutlined,
   LeftOutlined: LeftOutlined,
+  DownOutlined: DownOutlined,
   UserOutlined: UserOutlined,
   BellOutlined: BellOutlined,
   ExclamationCircleOutlined: ExclamationCircleOutlined,
   FileOutlined: FileOutlined,
   PlayCircleOutlined: PlayCircleOutlined,
   CheckCircleFilled: CheckCircleFilled,
-  CloseOutlined: CloseOutlined
+  CloseOutlined: CloseOutlined,
+  InfoCircleOutlined: InfoCircleOutlined,
+  QuestionCircleOutlined: QuestionCircleOutlined,
+  FileImageOutlined: FileImageOutlined,
+  FilePdfOutlined: FilePdfOutlined,
+  VideoCameraOutlined: VideoCameraOutlined,
+  AudioOutlined: AudioOutlined,
+  FileTextOutlined: FileTextOutlined,
+  FileZipOutlined: FileZipOutlined,
+  FileExcelOutlined: FileExcelOutlined,
+  FilePptOutlined: FilePptOutlined,
+  FileWordOutlined: FileWordOutlined,
+  Html5Outlined: Html5Outlined,
+  CodeOutlined: CodeOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
-
-export const IconsSizes = {
-  '1': '4',
-  '2': '8',
-  '3': '12',
-  '4': '16',
-  '5': '20',
-  '6': '24',
-  '7': '28',
-  '8': '32',
-  '9': '36',
-  '10': '40',
-  '11': '44',
-  '12': '48',
-  '16': '64'
-} as const
-
-export type IconSizesType = keyof typeof IconsSizes

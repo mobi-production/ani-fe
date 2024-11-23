@@ -1,4 +1,4 @@
-import type { UserData } from '@/__mock__/data/main'
+import { UserData } from '@/__mock__/types/main'
 import PaginationControls from '@/shared/ui/pagination-controls'
 import { PathProductItemProgress } from '@/shared/ui/path-product-item'
 import { Flex, Typography } from '@repo/ui/server'
@@ -34,7 +34,7 @@ function LeaningSummaryList({ userData }: { userData: UserData }) {
       <Flex
         direction='row'
         align='center'
-        justify='between'>
+        gap={12}>
         {userData.learningSummary.map((summary) => {
           return (
             <div

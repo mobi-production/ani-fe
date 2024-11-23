@@ -1,4 +1,4 @@
-import cn from 'node_modules/@repo/util/src/cn'
+import cn from '@repo/util/cn'
 import { ComponentPropsWithoutRef } from 'react'
 
 import Icon from '../icon'
@@ -17,7 +17,7 @@ function CheckBox({ checked, ...props }: Props) {
         className='hidden'
       />
       <Icon
-        size='24'
+        size={24}
         name='CheckCircleFilled'
         className={cn(checked ? 'text-primary-normal' : 'text-label-disable')}
       />

@@ -32,14 +32,14 @@ function Header({ isLoggedIn }: HeaderProps) {
         {isLoggedIn ? (
           <Flex
             align={'center'}
-            gap={'8'}>
+            gap={8}>
             <button
               onClick={onAlarmClick}
               className='h-9 w-9'
               aria-label='alarm'
               type='button'>
               <Icon
-                size={'36'}
+                size={36}
                 name='BellOutlined'
               />
             </button>
@@ -49,7 +49,7 @@ function Header({ isLoggedIn }: HeaderProps) {
               aria-label='my-page'
               type='button'>
               <Icon
-                size={'36'}
+                size={36}
                 name='UserOutlined'
               />
             </button>

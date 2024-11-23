@@ -1,8 +1,9 @@
+import { SIZE_VARIANTS } from '@repo/ui/variants/size'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import SpacingBlock from '../spacing-block'
 import Flex from '.'
-import { FlexAlign, FlexDirection, FlexGap, FlexJustify, FlexWrap } from './variants'
+import { FlexAlign, FlexDirection, FlexJustify, FlexWrap } from './variants'
 
 const meta = {
   title: 'MDS/Flex',
@@ -27,7 +28,7 @@ const meta = {
     gap: {
       description: 'Flex 컨테이너 내부 요소의 간격',
       control: 'select',
-      options: Object.values(FlexGap)
+      options: Object.values(SIZE_VARIANTS)
     },
     direction: {
       description: 'Flex 컨테이너 내부 요소의 방향',
@@ -46,7 +47,7 @@ export const Preview: Story = {
     align: FlexAlign.START,
     justify: FlexJustify.START,
     wrap: FlexWrap.NOWRAP,
-    gap: FlexGap['1'],
+    gap: SIZE_VARIANTS['1'],
     direction: FlexDirection.ROW
   },
 
@@ -75,7 +76,7 @@ export const Align: Story = {
     align: FlexAlign.START,
     justify: FlexJustify.START,
     wrap: FlexWrap.WRAP,
-    gap: FlexGap['1'],
+    gap: SIZE_VARIANTS['1'],
     direction: FlexDirection.ROW
   },
 

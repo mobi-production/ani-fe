@@ -1,0 +1,9 @@
+{
+  "type": "bookmark",
+  "props": {
+    "url": "https://www.google.com",
+    "title": "Google",
+    "description": "Google is a search engine. Google is a search engine. Google is a search engine. Google is a search engine.",
+    "preview": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+  }
+}
