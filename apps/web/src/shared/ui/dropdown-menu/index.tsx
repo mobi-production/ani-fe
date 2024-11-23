@@ -1,4 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
+import cn from '@repo/util/cn'
 import {
   ComponentProps,
   createContext,
@@ -25,11 +26,9 @@ const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
   const menuRef = useRef<HTMLDivElement>(null)
 
   const toggleMenu = () => {
-    console.log('toggleMenu', isOpen)
     setIsOpen((prev) => !prev)
   }
   const closeMenu = () => {
-    console.log('closeMenu', isOpen)
     setIsOpen(false)
   }
 
@@ -78,7 +77,7 @@ function DropdownMenu({ className, ...props }: DropdownMenuProps) {
   return (
     <DropdownMenuProvider>
       <div
-        className='relative'
+        className={cn('relative', className)}
         {...props}
       />
     </DropdownMenuProvider>
@@ -115,7 +114,6 @@ type MenuContentProps = ComponentProps<'div'> & {
 function MenuContent({ triggerHeight = '2rem', children, ...props }: MenuContentProps) {
   const { isOpen, menuRef } = useDropdownMenu()
 
-  console.log('MenuContent 렌더링 상태:', isOpen)
   if (!isOpen) return null
   return (
     <div
