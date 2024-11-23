@@ -90,22 +90,13 @@ function Pagination({ totalItems, itemsPerPage, className, ...props }: Paginatio
 }
 
 function Prev({ onClick, ...props }: ComponentProps<'button'>) {
-  const { currentPage, setCurrentPage, itemsPerPage } = usePagination()
+  const { currentPage, setCurrentPage } = usePagination()
 
   const onPrev = () => {
-    const isStartOfGroup = (currentPage - 1) % itemsPerPage === 0
-    const newPage = currentPage - 1
-
-    if (newPage < 1) return
-
-    if (isStartOfGroup) {
-      // 그룹 시작일 경우, 이전 그룹의 마지막 페이지로 이동
-      setCurrentPage(newPage)
-    } else {
-      // 같은 그룹 내에서 한 페이지 뒤로 이동
-      setCurrentPage(newPage)
-    }
+    if (currentPage === 1) return
+    setCurrentPage(currentPage - 1)
   }
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     onPrev()
     if (onClick) {
@@ -189,10 +180,12 @@ function PageButton({ value, onClick, ...props }: ComponentProps<'button'>) {
   )
 }
 
-function PageButtonList() {
-  const { itemsPerPage, currentGroupStart, currentGroupEnd } = usePagination()
+type PageButtonListProps = {
+  onClickPage?: () => void
+}
 
-  // 현재 그룹에 해당하는 페이지 배열 생성
+function PageButtonList({ onClickPage }: PageButtonListProps) {
+  const { itemsPerPage, currentGroupStart, currentGroupEnd } = usePagination()
 
   const pageArray = useMemo(
     () => Array.from({ length: itemsPerPage }, (_, index) => currentGroupStart + index),
@@ -205,6 +198,7 @@ function PageButtonList() {
         <PageButton
           value={page}
           key={page}
+          onClick={onClickPage}
         />
       ))}
     </div>
