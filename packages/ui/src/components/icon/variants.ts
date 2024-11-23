@@ -1,11 +1,13 @@
 import {
   AudioOutlined,
   BellOutlined,
+  BulbOutlined,
   CheckCircleFilled,
   CloseOutlined,
   CodeOutlined,
   DownOutlined,
   ExclamationCircleOutlined,
+  ExclamationOutlined,
   FileExcelOutlined,
   FileImageOutlined,
   FileOutlined,
@@ -17,9 +19,11 @@ import {
   Html5Outlined,
   InfoCircleOutlined,
   LeftOutlined,
+  LikeOutlined,
   PlayCircleOutlined,
   QuestionCircleOutlined,
   RightOutlined,
+  RocketOutlined,
   UserOutlined,
   VideoCameraOutlined
 } from '@ant-design/icons'
@@ -47,7 +51,11 @@ export const IconsMap = {
   FilePptOutlined: FilePptOutlined,
   FileWordOutlined: FileWordOutlined,
   Html5Outlined: Html5Outlined,
-  CodeOutlined: CodeOutlined
+  CodeOutlined: CodeOutlined,
+  RocketOutlined: RocketOutlined,
+  BulbOutlined: BulbOutlined,
+  LikeOutlined: LikeOutlined,
+  ExclamationOutlined: ExclamationOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

@@ -17,7 +17,7 @@ const BackDrop = forwardRef<HTMLDivElement, OptionalModalProps>(
     return (
       <div
         ref={ref}
-        className={`fixed inset-0 bg-[#404040] ${className}`}
+        className={`fixed inset-0 bg-neutral-10/60 ${className}`}
         onClick={onClose}
         {...props}></div>
     )
@@ -65,6 +65,7 @@ function Modal({
   withCloseButton = false,
   isOpen,
   onClose,
+  className,
   children
 }: ModalProps) {
   if (!isOpen) return null
@@ -74,7 +75,7 @@ function Modal({
         onClose={onClose}
         isRendered={withBackDrop}
       />
-      <Overlay>
+      <Overlay className={className}>
         <Close
           onClose={onClose}
           isRendered={withCloseButton}
