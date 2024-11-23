@@ -36,7 +36,7 @@ export function PathIntroducePage({ data }: Props) {
 
       <Flex
         direction={'column'}
-        className='sticky top-0 w-full bg-inherit'>
+        className='sticky top-0 z-10 w-full bg-inherit'>
         <NavigationLinks
           links={[
             { id: 'path_title_banner', title: '패스 정보' },

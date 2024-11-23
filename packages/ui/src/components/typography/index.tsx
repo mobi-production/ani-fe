@@ -27,7 +27,8 @@ export const typographyVariants = cva('', {
       [TypographyFontWeights.REGULAR]: 'font-normal',
       [TypographyFontWeights.MEDIUM]: 'font-medium',
       [TypographyFontWeights.SEMIBOLD]: 'font-semibold',
-      [TypographyFontWeights.BOLD]: 'font-bold'
+      [TypographyFontWeights.BOLD]: 'font-bold',
+      [TypographyFontWeights.EXTRA_BOLD]: 'font-extrabold'
     },
     color: {
       [TypographyColors.INHERIT]: 'text-inherit',
