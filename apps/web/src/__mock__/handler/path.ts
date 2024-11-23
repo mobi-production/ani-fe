@@ -1,5 +1,5 @@
-import { DefaultBodyType, http, HttpHandler, HttpResponse } from 'msw'
-import { pathIntroduce } from '../data/path'
+import { http, HttpHandler, HttpResponse } from 'msw'
+import { pathIntroduceMock } from '../data/path'
 import { FEEDBACK_CATEGORY, MOCK_MENTO, MOCK_USER, mockFeedbackList } from '../data/feedback'
 import { withDelay } from '../utils/withDelay'
 import {
@@ -14,13 +14,25 @@ import {
   PostPathFeedbackParamsType,
   PostPathFeedbackRequestType
 } from '../types/feedback'
+import {
+  GetPathIntroduceParamsType,
+  GetPathIntroduceResponseType
+} from '@/entities/path/lib/types/introduce'
 
 const MOCK_SERVER_RESPONSE_DELAY = 3000
 
 export const pathHandlers: HttpHandler[] = [
-  http.get('/path/:id', () => {
-    return HttpResponse.json(pathIntroduce)
-  }),
+  // 패스 상세 조회
+  http.get<GetPathIntroduceParamsType, never, GetPathIntroduceResponseType | ErrorResponseType>(
+    '/path/:pathId',
+    ({ params }) => {
+      const { pathId } = params
+      return HttpResponse.json({
+        status: 200,
+        data: pathIntroduceMock(pathId)
+      })
+    }
+  ),
   // 패스 피드백 조회
   http.get<GetPathFeedbackParamsType, never, GetPathFeedbackResponseType | ErrorResponseType>(
     '/path/:pathId/feedback',
