@@ -18,14 +18,15 @@ function AssignmentList({ data }: AssignmentListProps) {
   if (!data) return null
   return (
     <Flex
+      gap={26}
       direction='column'
-      className='w-full gap-[1.625rem] rounded-[0.75rem] bg-white px-[2.375rem] py-[2.25rem]'>
+      className='w-full rounded-[0.75rem] bg-white px-[2.375rem] py-[2.25rem]'>
       <DropdownMenu>
         <DropdownMenu.Trigger>
           <Flex
+            gap={4}
             direction='row'
-            align='center'
-            className='gap-[0.25rem]'>
+            align='center'>
             <Typography>{assignmentFilterValue}</Typography>
             <Icon
               size={16}
