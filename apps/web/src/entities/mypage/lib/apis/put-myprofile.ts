@@ -1,9 +1,9 @@
 import type { PutMyPageProfileRequestType, PutMyPageProfileResponse } from '@/__mock__/types/mypage'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
-export async function putMyProfile(userId: string, userData: PutMyPageProfileRequestType) {
+export async function putMyProfile(userData: PutMyPageProfileRequestType) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-profile/${userId}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-profile`, {
       method: HTTP_METHODS.PUT,
       headers: HTTP_HEADERS.JSON,
       body: JSON.stringify(userData)

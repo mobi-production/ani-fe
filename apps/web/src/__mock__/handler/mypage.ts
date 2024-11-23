@@ -4,7 +4,6 @@ import { myPageData, myPageProfileData } from '../data/mypage'
 import type {
   GetMyPageProfileResponse,
   GetMyPageResponse,
-  PutMyPageProfileParamsType,
   PutMyPageProfileRequestType,
   PutMyPageProfileResponse
 } from '../types/mypage'
@@ -24,14 +23,34 @@ export const myPageHandlers: HttpHandler[] = [
       return HttpResponse.json(myPageProfileData, { status: 200 })
     })
   ),
-  http.put<PutMyPageProfileParamsType, PutMyPageProfileRequestType, PutMyPageProfileResponse>(
+  http.put<never, PutMyPageProfileRequestType, PutMyPageProfileResponse>(
     `/my-profile`,
-    withDelay(MOCK_SERVER_RESPONSE_DELAY, async ({ params, request }) => {
+    withDelay(MOCK_SERVER_RESPONSE_DELAY, async ({ request }) => {
       try {
-        const { userId } = params
-        console.log('userId:', userId)
+        const body: PutMyPageProfileRequestType = await request.json()
+        const { userId, nickname, password, passwordConfirmation } = body
 
-        const body = await request.json()
+        if (!userId) {
+          return HttpResponse.json(
+            { status: 400, message: '유저 아이디가 존재하지 않습니다.' },
+            { status: 400 }
+          )
+        }
+
+        if (password !== passwordConfirmation) {
+          return HttpResponse.json(
+            { status: 400, message: '비밀번호와 비밀번호 확인이 일치하지 않습니다.' },
+            { status: 400 }
+          )
+        }
+
+        if (!nickname) {
+          return HttpResponse.json(
+            { status: 400, message: '닉네임이 존재하지 않습니다.' },
+            { status: 400 }
+          )
+        }
+
         console.log('유저 데이터 수정:', body)
 
         return HttpResponse.json(
