@@ -1,4 +1,4 @@
-import type { FeedbackItem } from '@/__mock__/data/mypage'
+import type { FeedbackItem } from '@/__mock__/types/mypage'
 import Pagination from '@/shared/ui/pagination'
 import { Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'

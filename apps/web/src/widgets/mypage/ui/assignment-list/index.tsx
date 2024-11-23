@@ -1,4 +1,4 @@
-import { Assignment } from '@/__mock__/data/mypage'
+import type { Assignment } from '@/__mock__/types/mypage'
 import DropdownMenu from '@/shared/ui/dropdown-menu'
 import { PathProductItemAssignment } from '@/shared/ui/path-product-item'
 import { Icon } from '@repo/ui/client'

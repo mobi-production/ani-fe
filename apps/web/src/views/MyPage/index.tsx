@@ -1,6 +1,7 @@
 'use client'
 
-import { myPageData, type MyPageData } from '@/__mock__/data/mypage'
+import { myPageData } from '@/__mock__/data/mypage'
+import type { MyPageData } from '@/__mock__/types/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
@@ -21,8 +22,6 @@ type InnerProps = {
 }
 
 export function Inner({ data }: InnerProps) {
-  const { inProgressPathList, completedPathList, assignmentList, feedbackList } = data
-
   return (
     <Flex
       direction='column'
@@ -83,8 +82,8 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스와 완료한 패스를 한눈에 확인하세요
           </Typography>
         </Flex>
-        <InProgressPathList data={inProgressPathList} />
-        <CompletedPathList data={completedPathList} />
+        <InProgressPathList data={data.inProgressPathList} />
+        <CompletedPathList data={data.completedPathList} />
       </section>
 
       <section
@@ -105,7 +104,7 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스의 과제 현황을 확인하세요
           </Typography>
         </Flex>
-        <AssignmentList data={assignmentList} />
+        <AssignmentList data={data.assignmentList} />
       </section>
       <section
         className='flex flex-col gap-[16px]'
@@ -126,12 +125,16 @@ export function Inner({ data }: InnerProps) {
           </Typography>
         </Flex>
 
-        <FeedbackListSection data={feedbackList} />
+        <FeedbackListSection data={data.feedbackList} />
       </section>
     </Flex>
   )
 }
 
-export default function MyPage() {
-  return <Inner data={myPageData} />
+type MyPageProps = {
+  data: MyPageData
+}
+
+export default function MyPage({ data }: MyPageProps) {
+  return <Inner data={data} />
 }

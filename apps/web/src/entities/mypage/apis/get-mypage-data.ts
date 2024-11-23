@@ -1,13 +1,13 @@
-import type { MainData } from '@/__mock__/types/main'
+import { MyPageData } from '@/__mock__/types/mypage'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 /**
  * 메인 페이지 데이터를 조회하는 함수
  * @returns 서버 응답 데이터 또는 null
  */
-export async function getMainData(): Promise<MainData | null> {
+export async function getMyPageData(): Promise<MyPageData | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/main`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/mypage`, {
       method: HTTP_METHODS.GET,
       headers: HTTP_HEADERS.JSON
     })
@@ -17,7 +17,7 @@ export async function getMainData(): Promise<MainData | null> {
       return null
     }
 
-    const data: MainData = await response.json()
+    const data: MyPageData = await response.json()
     return data
   } catch (error) {
     console.error('메인 데이터 조회 에러', error)

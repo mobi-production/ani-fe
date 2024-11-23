@@ -1,7 +1,7 @@
-import { Feedback } from '@/__mock__/data/mypage'
 import Tabs from '@/shared/ui/tabs'
 import { Flex, Typography } from '@repo/ui/server'
 import FeedbackList from '../feedback-list'
+import type { Feedback } from '@/__mock__/types/mypage'
 
 type FeedbackListSectionProps = {
   data: Feedback[]
