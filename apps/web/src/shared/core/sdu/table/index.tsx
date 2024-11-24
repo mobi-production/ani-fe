@@ -1,5 +1,8 @@
 import { Typography } from '@repo/ui/server'
-import SDUParagraph, { textVariants } from '../paragraph'
+import { textVariants } from '../paragraph'
+import cn from '@repo/util/cn'
+import SDUText from '../text'
+import { ComponentProps } from 'react'
 
 interface TableProps {
   type: 'table'
@@ -8,20 +11,16 @@ interface TableProps {
   rows: {
     type: 'table_row'
     table_row: {
-      cells: Array<
-        Array<{
+      cells: Array<{
+        rich_text: Array<{
           type: 'text'
-          props: {
-            text: string
-            link: string | null
-            bold: boolean
-            italic: boolean
-            strikethrough: boolean
-            underline: boolean
-            code: boolean
-          }
+          props: ComponentProps<typeof SDUText>
         }>
-      >
+        style?: {
+          color?: string
+          backgroundColor?: string
+        }
+      }>
     }
   }[]
 }
@@ -34,34 +33,24 @@ const SDUTable = ({ has_column_header, has_row_header, rows }: TableProps) => {
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.table_row.cells.map((cell, cellIndex) => {
-                const isColumnHeader = has_column_header && rowIndex === 0
-                const isRowHeader = has_row_header && cellIndex === 0
-
+                const isHeader =
+                  (has_column_header && rowIndex === 0) || (has_row_header && cellIndex === 0)
                 return (
                   <td
                     key={cellIndex}
-                    className={`border border-neutral-95 p-4 ${
-                      isColumnHeader || isRowHeader ? 'bg-background-alternative' : ''
-                    } `}>
-                    {cell.map((content, contentIndex) => (
-                      <Typography
+                    className={cn(
+                      'border border-neutral-95 p-4',
+                      isHeader && 'bg-background-alternative'
+                    )}
+                    style={cell.style}>
+                    {cell.rich_text.map(({ props }, contentIndex) => (
+                      <SDUText
                         key={contentIndex}
+                        {...props}
                         variant='body-2-reading'
-                        fontWeight={content.props.bold ? 'semibold' : 'medium'}
-                        className={textVariants({
-                          link: !!content.props.link,
-                          strikethrough: content.props.strikethrough,
-                          underline: content.props.underline,
-                          code: content.props.code,
-                          italic: content.props.italic
-                        })}
-                        asChild>
-                        {content.props.link ? (
-                          <a href={content.props.link}>{content.props.text}</a>
-                        ) : (
-                          <span>{content.props.text}</span>
-                        )}
-                      </Typography>
+                        defaultFontWeight={'medium'}
+                        boldFontWeight={'semibold'}
+                      />
                     ))}
                   </td>
                 )
