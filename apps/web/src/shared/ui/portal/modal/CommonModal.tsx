@@ -1,10 +1,10 @@
 import { Modal, SolidButton, Typography } from '@repo/ui/server'
 import { ComponentProps, useMemo } from 'react'
-import Portal from './Portal'
+import Portal from '../Portal'
 import cn from '@repo/util/cn'
-import { Icon, IconsMap } from '@repo/ui/client'
+import { Icon } from '@repo/ui/client'
 import Image from 'next/image'
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import { IconVariantType } from '@repo/ui/components/icon/variants'
 
 export const ICON_THEME = {

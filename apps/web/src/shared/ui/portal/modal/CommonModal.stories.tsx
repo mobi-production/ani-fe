@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import CommonModal, { ICON_THEME } from './CommonModal'
+import React from 'react'
 
 const meta = {
-  title: 'Shared/Modal/CommonModal',
+  title: 'Shared/Portal/CommonModal',
   component: CommonModal,
   parameters: {
     layout: 'centered',
