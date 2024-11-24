@@ -1,7 +1,7 @@
 import { Typography } from '@repo/ui/server'
 import { ComponentProps } from 'react'
 import { VariantProps } from 'class-variance-authority'
-import { textVariants } from '../paragraph'
+import { textVariants } from '../text/variants'
 
 type Props = Omit<ComponentProps<typeof Typography>, 'children'> & {
   text: string
