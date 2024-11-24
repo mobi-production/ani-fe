@@ -1,0 +1,156 @@
+{
+  "type": "table",
+  "props": {
+    "has_column_header": false,
+    "has_row_header": true,
+    "rows": [
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 1 content ",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 2 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 3 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 1 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 2 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 3 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ]
+          ]
+        }
+      },
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 1 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 2 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ],
+            [
+              {
+                "type": "text",
+                "props": {
+                  "text": "column 3 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              }
+            ]
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -14,6 +14,7 @@ import SDUFile from './file'
 import SDUBookmark from './bookmark'
 import SDUQuote from './quote'
 import SDUCallout from './callout'
+import SDUTable from './table'
 
 type ComponentPropsMap = {
   SDUHeading1: ComponentProps<typeof SDUHeading1>
@@ -30,6 +31,7 @@ type ComponentPropsMap = {
   SDUBookmark: ComponentProps<typeof SDUBookmark>
   SDUQuote: ComponentProps<typeof SDUQuote>
   SDUCallout: ComponentProps<typeof SDUCallout>
+  SDUTable: ComponentProps<typeof SDUTable>
 }
 
 export type ServerDrivenComponentType =
@@ -117,6 +119,12 @@ export type ServerDrivenComponentType =
       content?: never
       order?: number
     }
+  | {
+      type: 'table'
+      props: ComponentPropsMap['SDUTable']
+      content?: never
+      order?: number
+    }
 
 export function SDUComponent({ content }: { content: ServerDrivenComponentType }) {
   const { type, props, content: children } = content
@@ -175,6 +183,9 @@ export function SDUComponent({ content }: { content: ServerDrivenComponentType }
 
     case 'callout':
       return <SDUCallout {...props} />
+
+    case 'table':
+      return <SDUTable {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)
