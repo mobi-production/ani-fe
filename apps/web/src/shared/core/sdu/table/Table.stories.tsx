@@ -4,6 +4,7 @@ import { ServerDrivenComponent, ServerDrivenComponentType } from '../ServerDrive
 import example from './example.json'
 import columnHeader from './column-header.json'
 import rowHeader from './row-header.json'
+import tableStyle from './table-style.json'
 import { wrapWithAppRouterContext } from '@/shared/lib/utils/wrap-with-app-router-context'
 
 const meta = {
@@ -27,18 +28,16 @@ props
 rows: Array<{
   type: 'table_row'
   table_row: {
-    cells: Array<Array<{
-      type: 'text'
-      props: {
-        text: string
-        link: string | null
-        bold: boolean
-        italic: boolean
-        strikethrough: boolean
-        underline: boolean
-        code: boolean
+    cells: Array<{
+      rich_text: Array<{
+        type: 'text'
+        props: TextProps # Text 컴포넌트 props
+      }>
+      style?: { // 테이블 셀 스타일
+        color?: string
+        backgroundColor?: string
       }
-    }>>
+    }>
   }
 }>
 \`\`\`
@@ -108,6 +107,30 @@ ${JSON.stringify(rowHeader, null, 2)}
   },
   args: {
     content: [rowHeader as ServerDrivenComponentType]
+  },
+  render: (args) => (
+    <div className='w-[500px]'>
+      <ServerDrivenComponent content={args.content} />
+    </div>
+  )
+}
+
+export const WithTableStyle: StoryObj<typeof ServerDrivenComponent> = {
+  parameters: {
+    docs: {
+      description: {
+        story: `
+#### 테이블 스타일
+
+\`\`\`json
+${JSON.stringify(tableStyle, null, 2)}
+\`\`\`
+        `
+      }
+    }
+  },
+  args: {
+    content: [tableStyle as ServerDrivenComponentType]
   },
   render: (args) => (
     <div className='w-[500px]'>

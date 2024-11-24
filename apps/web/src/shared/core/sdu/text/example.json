@@ -1,0 +1,67 @@
+[
+  {
+    "type": "text",
+    "props": {
+      "text": "Hello, World!"
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": "I am bold",
+      "bold": true
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": " "
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": "I am underline",
+      "underline": true
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": " "
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": "I am italic",
+      "italic": true
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": " "
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": "I am strikethrough",
+      "strikethrough": true
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": " "
+    }
+  },
+  {
+    "type": "text",
+    "props": {
+      "text": "I am code",
+      "code": true
+    }
+  }
+]
