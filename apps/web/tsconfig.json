@@ -9,7 +9,8 @@
       "@repo/util/*": ["../../packages/util/src/*"],
       "@repo/sdu/*": ["../../packages/sdu/src/*"],
       "@config/es-config/*": ["../../config/es-config/*"],
-      "@config/ts-config/*": ["../../config/ts-config/*"]
+      "@config/ts-config/*": ["../../config/ts-config/*"],
+      "@storybook/react": ["./node_modules/@storybook/react"]
     },
     "plugins": [
       {
