@@ -1,0 +1,51 @@
+{
+  "type": "bulleted_list_item",
+  "props": {
+    "rich_text": [
+      {
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    ],
+    "depth": 0
+  },
+  "content": [
+    {
+      "type": "bulleted_list_item",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": null
+          }
+        ],
+        "depth": 1
+      },
+      "order": 1
+    },
+    {
+      "type": "bulleted_list_item",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": null
+          }
+        ],
+        "depth": 1
+      },
+      "order": 2
+    },
+    {
+      "type": "paragraph",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      "order": 3
+    }
+  ],
+  "order": 0
+}

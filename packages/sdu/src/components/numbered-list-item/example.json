@@ -1,0 +1,55 @@
+{
+  "type": "numbered_list_item",
+  "props": {
+    "rich_text": [
+      {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      }
+    ],
+    "number": 1
+  },
+  "content": [
+    {
+      "type": "numbered_list_item",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": null
+          }
+        ],
+        "number": 1
+      },
+      "order": 1
+    },
+    {
+      "type": "numbered_list_item",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "link": null
+          }
+        ],
+        "number": 2
+      },
+      "order": 2
+    },
+    {
+      "type": "paragraph",
+      "props": {
+        "rich_text": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        ]
+      },
+      "order": 3
+    }
+  ],
+  "order": 0
+}

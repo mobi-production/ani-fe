@@ -1,0 +1,101 @@
+{
+  "type": "table",
+  "props": {
+    "has_column_header": false,
+    "has_row_header": false,
+    "rows": [
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            {
+              "rich_text": [
+                {
+                  "text": "column 1 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            },
+            {
+              "rich_text": [
+                {
+                  "text": "column 2 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            },
+            {
+              "rich_text": [
+                {
+                  "text": "column 3 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            {
+              "rich_text": [
+                {
+                  "text": "column 1 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            },
+            {
+              "rich_text": [
+                {
+                  "text": "column 2 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            },
+            {
+              "rich_text": [
+                {
+                  "text": "column 3 content",
+                  "link": null,
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
