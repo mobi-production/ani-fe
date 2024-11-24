@@ -1,5 +1,3 @@
-import { Typography } from '@repo/ui/server'
-import { textVariants } from '../paragraph'
 import cn from '@repo/util/cn'
 import SDUText from '../text'
 import { ComponentProps } from 'react'
