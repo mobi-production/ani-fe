@@ -2,6 +2,7 @@ import { Typography } from '@repo/ui/server'
 import Link from 'next/link'
 import { ComponentProps } from 'react'
 import { cva, VariantProps } from 'class-variance-authority'
+import { textVariants } from '../text/variants'
 
 type Props = {
   text?: string | number
