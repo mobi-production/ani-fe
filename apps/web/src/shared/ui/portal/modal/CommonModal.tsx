@@ -1,6 +1,6 @@
 import { Modal, SolidButton, Typography } from '@repo/ui/server'
 import { ComponentProps, useMemo } from 'react'
-import Portal from './Portal'
+import Portal from '../Portal'
 import cn from '@repo/util/cn'
 import { Icon } from '@repo/ui/client'
 import Image from 'next/image'

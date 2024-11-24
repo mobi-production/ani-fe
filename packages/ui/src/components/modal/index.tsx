@@ -1,5 +1,6 @@
 import { ComponentProps, forwardRef, Fragment } from 'react'
 
+import Flex from '../flex'
 import Icon from '../icon'
 
 type BasicModalProps = ComponentProps<'div'> & {
@@ -43,14 +44,14 @@ Overlay.displayName = 'Overlay'
 function Close({ onClose, isRendered }: OptionalModalProps) {
   if (!isRendered) return null
   return (
-    <div className='flex justify-end'>
+    <Flex justify='end'>
       <Icon
         name='CloseOutlined'
         onClick={onClose}
-        className='text-[0.875rem]'
+        size={14}
       />
       <span className='sr-only'>Close</span>
-    </div>
+    </Flex>
   )
 }
 
