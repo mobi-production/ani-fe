@@ -30,8 +30,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         gap={8}>
         <div
           className={cn(
-            'flex items-center justify-between rounded-[8px] border-[1.5px] border-transparent bg-[#17171703] px-[20px] py-[11px]',
-            isFocused && 'border-[1.5px] border-[#171717]',
+            'flex items-center justify-between rounded-[0.5rem] border-[1.5px] border-transparent bg-[#17171703] px-[1.25rem] py-[0.69rem]',
+            isFocused && 'border-[1.5px] border-neutral-10',
             isError && 'border-[1.5px] border-status-error'
           )}>
           <input
