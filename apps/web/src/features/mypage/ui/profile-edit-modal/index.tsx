@@ -15,10 +15,11 @@ import ImageUpload from '@/shared/ui/image-upload'
 type ProfileEditModalProps = {
   isOpen: boolean
   onClose: () => void
+  onOpenWithdrawalModal: () => void
   data: MyPageProfileData
 }
 
-function ProfileEditModal({ isOpen, onClose, data }: ProfileEditModalProps) {
+function ProfileEditModal({ isOpen, onClose, onOpenWithdrawalModal, data }: ProfileEditModalProps) {
   const [image, setImage] = useState<string | null>(null)
   const {
     register,
@@ -173,7 +174,7 @@ function ProfileEditModal({ isOpen, onClose, data }: ProfileEditModalProps) {
           </Flex>
           <Flex
             direction='column'
-            gap={8}>
+            gap={20}>
             <Flex
               direction='row'
               gap={8}>
@@ -196,7 +197,9 @@ function ProfileEditModal({ isOpen, onClose, data }: ProfileEditModalProps) {
               direction='row'
               align='center'
               gap={4}>
-              <button>
+              <button
+                type='button'
+                onClick={onOpenWithdrawalModal}>
                 <Typography
                   variant='label-normal'
                   fontWeight='medium'>

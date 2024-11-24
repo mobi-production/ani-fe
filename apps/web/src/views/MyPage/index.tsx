@@ -3,6 +3,7 @@
 import type { MyPageData, MyPageProfileData } from '@/__mock__/types/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
 import ProfileEditModal from '@/features/mypage/ui/profile-edit-modal'
+import WithdrawalModal from '@/features/mypage/ui/withdrawal-modal'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
@@ -142,7 +143,13 @@ type MyPageProps = {
 }
 
 export default function MyPage({ myPageData, myPageProfileData }: MyPageProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false)
+  const [isProfileEditModalOpen, setIsProfileEditModalOpen] = useState(false)
+
+  const handleOpenWithdrawalModal = () => {
+    setIsProfileEditModalOpen(false)
+    setIsWithdrawalModalOpen(true)
+  }
 
   return (
     <>
@@ -150,13 +157,18 @@ export default function MyPage({ myPageData, myPageProfileData }: MyPageProps) {
         myPageData={myPageData}
         myPageProfileData={myPageProfileData}
         onOpenModal={() => {
-          setIsModalOpen(true)
+          setIsProfileEditModalOpen(true)
         }}
       />
       <ProfileEditModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isProfileEditModalOpen}
+        onClose={() => setIsProfileEditModalOpen(false)}
+        onOpenWithdrawalModal={handleOpenWithdrawalModal}
         data={myPageProfileData}
+      />
+      <WithdrawalModal
+        isOpen={isWithdrawalModalOpen}
+        onClose={() => setIsWithdrawalModalOpen(false)}
       />
     </>
   )

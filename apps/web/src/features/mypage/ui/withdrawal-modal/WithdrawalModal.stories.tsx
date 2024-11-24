@@ -1,21 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Flex } from '@repo/ui/server'
-import ProfileEditModal from '.'
-import { myPageProfileData } from '@/__mock__/data/mypage'
+import WithdrawalModal from '.'
 
 const meta = {
-  title: 'Feature/ProfileEditModal',
-  component: ProfileEditModal,
+  title: 'Feature/WithdrawalModal',
+  component: WithdrawalModal,
   parameters: {
     layout: 'center',
     docs: {
       description: {
-        component: '마이페이지 내 상태 정보를 변경하는 모달입니다'
+        component: '회원 탈퇴 확인을 위한 모달입니다'
       }
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof ProfileEditModal>
+} satisfies Meta<typeof WithdrawalModal>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -23,9 +22,7 @@ type Story = StoryObj<typeof meta>
 export const Preview: Story = {
   args: {
     isOpen: true,
-    onClose: () => {},
-    onOpenWithdrawalModal: () => {},
-    data: myPageProfileData
+    onClose: () => {}
   },
   decorators: [
     (Story) => (

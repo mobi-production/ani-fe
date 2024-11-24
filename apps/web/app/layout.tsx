@@ -20,8 +20,11 @@ export default function RootLayout({
         asChild
         direction={'column'}
         className='w-full'>
-        <body className='gap-[3.25rem] bg-background-alternative'>
-          <Header isLoggedIn={isLoggedIn} />
+        <body className='bg-background-alternative'>
+          <div id='portal-container'></div>
+          <div className='mb-[3.25rem]'>
+            <Header isLoggedIn={isLoggedIn} />
+          </div>
           {children}
         </body>
       </Flex>
