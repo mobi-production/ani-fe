@@ -2,6 +2,7 @@
 
 import type { MyPageData, MyPageProfileData } from '@/__mock__/types/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
+import ProfileEditModal from '@/features/mypage/ui/profile-edit-modal'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
@@ -9,6 +10,7 @@ import FeedbackListSection from '@/widgets/mypage/ui/feedback-list-section'
 import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
 import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const LINKS = [
   { id: 'my_path', title: '내 패스' },
@@ -19,12 +21,10 @@ const LINKS = [
 type InnerProps = {
   myPageData: MyPageData
   myPageProfileData: MyPageProfileData
+  onOpenModal: () => void
 }
 
-export function Inner({ myPageData, myPageProfileData }: InnerProps) {
-  // TODO: 모달에 사용 예정 Data
-  console.log('myPageProfileData', myPageProfileData)
-
+export function Inner({ myPageData, myPageProfileData, onOpenModal }: InnerProps) {
   return (
     <Flex
       direction='column'
@@ -38,7 +38,6 @@ export function Inner({ myPageData, myPageProfileData }: InnerProps) {
           align='center'
           gap={24}>
           <div className='relative h-[120px] w-[120px] overflow-hidden rounded-full'>
-            {/* TODO: 실제 이미지 연동 + 프로필 사진이 없을 경우의 이미지도 연동 */}
             <Image
               src={myPageProfileData?.image || '/avif/placeholder.avif'}
               alt='프로필 이미지'
@@ -62,11 +61,11 @@ export function Inner({ myPageData, myPageProfileData }: InnerProps) {
             </Typography>
           </Flex>
         </Flex>
-        <MyPageEditButton />
+        <MyPageEditButton onClick={onOpenModal} />
       </Flex>
       <Flex
         direction='column'
-        className='sticky top-0 w-full bg-inherit'>
+        className='sticky top-0 w-full bg-neutral-99'>
         <NavigationLinks links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]} />
         <Divider />
       </Flex>
@@ -143,10 +142,22 @@ type MyPageProps = {
 }
 
 export default function MyPage({ myPageData, myPageProfileData }: MyPageProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
-    <Inner
-      myPageData={myPageData}
-      myPageProfileData={myPageProfileData}
-    />
+    <>
+      <Inner
+        myPageData={myPageData}
+        myPageProfileData={myPageProfileData}
+        onOpenModal={() => {
+          setIsModalOpen(true)
+        }}
+      />
+      <ProfileEditModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        data={myPageProfileData}
+      />
+    </>
   )
 }
