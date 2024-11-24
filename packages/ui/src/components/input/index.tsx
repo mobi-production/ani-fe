@@ -30,10 +30,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         gap={8}>
         <div
           className={cn(
-            'flex items-center justify-between rounded-[0.5rem] border-[1.5px] border-transparent bg-[#17171703] px-[1.25rem] py-[0.69rem]',
+            'flex items-center justify-between rounded-[0.5rem] border-[1.5px] border-transparent px-[1.25rem] py-[0.69rem]',
             isFocused && 'border-[1.5px] border-neutral-10',
             isError && 'border-[1.5px] border-status-error'
-          )}>
+          )}
+          style={{ backgroundColor: 'rgba(23, 23, 23, 0.03)' }}>
           <input
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
