@@ -10,7 +10,33 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs']
+  tags: ['autodocs'],
+  argTypes: {
+    placeholder: {
+      description: '입력 필드의 플레이스홀더 텍스트입니다.',
+      control: 'text'
+    },
+    isSuccess: {
+      description: '입력 상태가 성공인 경우 true로 설정합니다.',
+      control: 'boolean'
+    },
+    successMessage: {
+      description: '성공 상태일 때 표시할 메시지입니다.',
+      control: 'text'
+    },
+    isError: {
+      description: '입력 상태가 오류인 경우 true로 설정합니다.',
+      control: 'boolean'
+    },
+    errorMessage: {
+      description: '오류 상태일 때 표시할 메시지입니다.',
+      control: 'text'
+    },
+    rightIcon: {
+      description: '입력 필드의 오른쪽에 표시할 아이콘 요소를 설정합니다.',
+      control: 'object'
+    }
+  }
 } satisfies Meta<typeof Input>
 
 export default meta
