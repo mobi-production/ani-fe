@@ -1,27 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Flex } from '@repo/ui/server'
-import MyPageEditButton from '.'
+import WithdrawalModal from '.'
 
 const meta = {
-  title: 'Feature/MyPageEditButton',
-  component: MyPageEditButton,
+  title: 'Feature/WithdrawalModal',
+  component: WithdrawalModal,
   parameters: {
     layout: 'center',
     docs: {
       description: {
-        component: '마이페이지 내 상태 정보를 변경하는 모달을 오픈하는 버튼'
+        component: '회원 탈퇴 확인을 위한 모달입니다'
       }
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof MyPageEditButton>
+} satisfies Meta<typeof WithdrawalModal>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
   args: {
-    onClick: () => {}
+    isOpen: true,
+    onClose: () => {}
   },
   decorators: [
     (Story) => (

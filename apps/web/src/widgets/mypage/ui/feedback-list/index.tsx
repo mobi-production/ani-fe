@@ -1,5 +1,5 @@
-import type { FeedbackItem } from '@/__mock__/data/mypage'
-import Pagination from '@/shared/ui/pagination'
+import type { FeedbackItem } from '@/__mock__/types/mypage'
+import { Pagination } from '@repo/ui/client'
 import { Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 
@@ -19,6 +19,7 @@ function FeedbackList({ data }: FeedbackListProps) {
         gap={16}>
         {data.map((feedback) => (
           <Flex
+            key={feedback.id}
             className='w-[38rem] rounded-[8px] border border-line-normal p-[1.25rem]'
             direction='column'
             gap={24}>
@@ -31,9 +32,8 @@ function FeedbackList({ data }: FeedbackListProps) {
                 <Image
                   src='/avif/placeholder.avif'
                   alt='프로필 이미지'
-                  layout='fill'
-                  objectFit='cover'
-                  objectPosition='center'
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
                   priority
                   sizes='2.5rem'
                 />
@@ -62,7 +62,15 @@ function FeedbackList({ data }: FeedbackListProps) {
           </Flex>
         ))}
       </Flex>
-      <Pagination />
+      <Pagination
+        className='gap-[0.75rem]'
+        totalItems={2}
+        itemsPerPage={1}
+        onChange={() => {}}>
+        <Pagination.Prev />
+        <Pagination.PageButtonList />
+        <Pagination.Next />
+      </Pagination>
     </Flex>
   )
 }
