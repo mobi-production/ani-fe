@@ -1,15 +1,15 @@
 import type { FeedbackItem } from '@/__mock__/types/mypage'
-import Pagination from '@/shared/ui/pagination'
+// import Pagination from '@/shared/ui/pagination'
 import { Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
-import { useState } from 'react'
+// import { useState } from 'react'
 
 type FeedbackListProps = {
   data: FeedbackItem[]
 }
 
 function FeedbackList({ data }: FeedbackListProps) {
-  const [currentPage, setCurrentPage] = useState(1)
+  // const [currentPage, setCurrentPage] = useState(1)
 
   if (!data) return null
   return (
@@ -65,11 +65,11 @@ function FeedbackList({ data }: FeedbackListProps) {
           </Flex>
         ))}
       </Flex>
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
         totalPages={3}
         onPageChange={setCurrentPage}
-      />
+      /> */}
     </Flex>
   )
 }
