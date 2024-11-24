@@ -1,4 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
+import cn from '@repo/util/cn'
 import {
   ComponentProps,
   createContext,
@@ -24,8 +25,12 @@ const DropdownMenuProvider = ({ children }: { children: ReactNode }) => {
   const triggerRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
 
-  const toggleMenu = () => setIsOpen((prev) => !prev)
-  const closeMenu = () => setIsOpen(false)
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev)
+  }
+  const closeMenu = () => {
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -68,11 +73,11 @@ const useDropdownMenu = (): DropdownMenuContextProps => {
 
 type DropdownMenuProps = ComponentProps<'div'>
 
-function DropdownMenu({ ...props }: DropdownMenuProps) {
+function DropdownMenu({ className, ...props }: DropdownMenuProps) {
   return (
     <DropdownMenuProvider>
       <div
-        className='relative'
+        className={cn('relative', className)}
         {...props}
       />
     </DropdownMenuProvider>
