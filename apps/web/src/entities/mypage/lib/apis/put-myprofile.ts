@@ -9,6 +9,7 @@ export async function putMyProfile(userData: PutMyPageProfileRequestType) {
       body: JSON.stringify(userData)
     })
 
+    console.log('response', response)
     if (!response.ok) {
       console.error('마이프로필 데이터 수정 중 오류 발생:', response.statusText)
       return null

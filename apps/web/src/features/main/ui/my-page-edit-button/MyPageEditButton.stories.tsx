@@ -20,6 +20,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
+  args: {
+    onClick: () => {}
+  },
   decorators: [
     (Story) => (
       <Flex
