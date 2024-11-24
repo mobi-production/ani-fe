@@ -1,5 +1,5 @@
-import { CommonModal } from '@/shared/ui/modal'
-import { ICON_THEME } from '@/shared/ui/modal/CommonModal'
+import { CommonModal } from '@/shared/ui/portal'
+import { ICON_THEME } from '@/shared/ui/portal/modal/CommonModal'
 
 type WithdrawalModalProps = {
   isOpen: boolean
