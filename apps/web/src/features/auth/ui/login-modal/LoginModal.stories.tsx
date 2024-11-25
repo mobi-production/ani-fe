@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Divider, Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
 import LoginModal from '.'
-import { useAuthModalStore } from '../../store'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
 import Link from 'next/link'
 import { useState } from 'react'
-import Divider from '@/shared/core/sdu/divider'
 import Image from 'next/image'
 
 const meta = {
