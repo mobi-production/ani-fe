@@ -1,3 +1,4 @@
+import FilterAnsweredQuestions from '@/features/quesion/ui/filter-answered-questions'
 import QuestionSearchBar from '@/features/quesion/ui/question-search-bar'
 import { Flex, Typography } from '@repo/ui/server'
 
@@ -21,6 +22,9 @@ export default function QuestionListPage() {
         </Typography>
       </Flex>
       <QuestionSearchBar />
+      <Flex justify={'end'}>
+        <FilterAnsweredQuestions />
+      </Flex>
     </Flex>
   )
 }
