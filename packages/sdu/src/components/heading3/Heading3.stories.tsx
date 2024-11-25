@@ -1,6 +1,6 @@
-import { ServerDrivenComponent, ServerDrivenComponentType } from '@repo/sdu'
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { ServerDrivenComponent, ServerDrivenComponentType } from '../../'
 import example from './example.json'
 import heading3Style from './heading3-style.json'
 

@@ -1,8 +1,8 @@
-import { ServerDrivenComponent, ServerDrivenComponentType } from '@repo/sdu'
 import { IconsMap } from '@repo/ui/client'
 import { Flex } from '@repo/ui/server'
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { ServerDrivenComponent, ServerDrivenComponentType } from '../../'
 import example from './example.json'
 
 const meta = {

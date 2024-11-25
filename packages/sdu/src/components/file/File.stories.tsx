@@ -1,8 +1,8 @@
-import { ServerDrivenComponent, ServerDrivenComponentType } from '@repo/sdu'
 import { Icon } from '@repo/ui/client'
 import { Flex, Typography } from '@repo/ui/server'
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { ServerDrivenComponent, ServerDrivenComponentType } from '../../'
 import example from './example.json'
 import style from './style.json'
 
