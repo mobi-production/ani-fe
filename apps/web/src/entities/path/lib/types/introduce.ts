@@ -1,4 +1,4 @@
-import { ServerDrivenComponentType } from '@repo/sdu'
+import { ServerDrivenComponentType } from '@repo/sdu/index'
 import { PartType } from '@/shared/types/common'
 
 export type GetPathIntroduceParamsType = {
