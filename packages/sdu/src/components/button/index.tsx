@@ -1,15 +1,15 @@
-'use client'
-
+import { Icon } from '@repo/ui/client'
 import { OutlinedButton, SolidButton, TextButton } from '@repo/ui/server'
-import { useRouter } from 'next/navigation'
 import { ComponentPropsWithoutRef } from 'react'
 
 import { serverDrivenFunction, ServerDrivenFunctionType } from '../../core/server-driven-function'
 
 type Props = {
-  onClick: ServerDrivenFunctionType
   text: string
+  onClick: ServerDrivenFunctionType
   buttonType: 'solid' | 'outlined' | 'text'
+  leftIcon?: ComponentPropsWithoutRef<typeof Icon>['name']
+  rightIcon?: ComponentPropsWithoutRef<typeof Icon>['name']
 } & (
   | ({
       buttonType: 'solid'
@@ -22,11 +22,9 @@ type Props = {
     } & Omit<ComponentPropsWithoutRef<typeof TextButton>, 'onClick'>)
 )
 
-function SDUButton({ onClick, text, buttonType, ...props }: Props) {
-  const router = useRouter()
-
+function SDUButton({ onClick, text, buttonType, leftIcon, rightIcon, ...props }: Props) {
   const handleClick = () => {
-    serverDrivenFunction(onClick, router)
+    serverDrivenFunction(onClick)
   }
 
   if (buttonType === 'solid') {
@@ -34,7 +32,9 @@ function SDUButton({ onClick, text, buttonType, ...props }: Props) {
       <SolidButton
         {...props}
         onClick={handleClick}>
+        {leftIcon && <Icon name={leftIcon} />}
         {text}
+        {rightIcon && <Icon name={rightIcon} />}
       </SolidButton>
     )
   }
@@ -43,7 +43,9 @@ function SDUButton({ onClick, text, buttonType, ...props }: Props) {
       <OutlinedButton
         {...props}
         onClick={handleClick}>
+        {leftIcon && <Icon name={leftIcon} />}
         {text}
+        {rightIcon && <Icon name={rightIcon} />}
       </OutlinedButton>
     )
   }
@@ -53,7 +55,9 @@ function SDUButton({ onClick, text, buttonType, ...props }: Props) {
       <TextButton
         {...props}
         onClick={handleClick}>
+        {leftIcon && <Icon name={leftIcon} />}
         {text}
+        {rightIcon && <Icon name={rightIcon} />}
       </TextButton>
     )
   }
