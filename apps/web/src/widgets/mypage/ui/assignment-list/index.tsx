@@ -63,7 +63,7 @@ function AssignmentList({ data }: AssignmentListProps) {
         className='text-status-error'>
         <Icon
           name='InfoCircleOutlined'
-          size={16}
+          size={1}
         />
         <Typography color='inherit'>
           미제출 과제가 3개 이상일 경우, 과정이 미수료 처리될 수 있어요
