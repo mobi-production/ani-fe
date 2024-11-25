@@ -1,56 +1,13 @@
-type PathStatus = 'SCHEDULE' | 'IN_PROGRESS' | 'COMPLETED' | 'NOT_COMPLETE'
+import type { MyPageData, MyPageProfileData } from '../types/mypage'
 
-type AssignmentStatus = 'SUBMIT_AVAILABLE' | 'SUBMITTED' | 'DEADLINE_PASSED'
-
-type BasePath = {
-  id: number
-  image: string
-  level: number
-  category: string
-  pathName: string
-  status: PathStatus
-}
-
-export type InProgressPath = BasePath & {
-  status: PathStatus
-  progress: number
-}
-
-export type CompletedPath = BasePath & {
-  status: PathStatus
-  startDate: string
-  endDate: string
-  action: string
-}
-
-export type Assignment = {
-  id: number
-  image: string
-  pathName: string
-  assignMentName: string
-  status: AssignmentStatus
-  dueDate: string
-}
-
-export type FeedbackItem = {
-  id: string
-  authorProfileImage: string
-  authorNickname: string
-  description: string
-}
-
-export type Feedback = {
-  pathName: string
-  feedbackListByPath: FeedbackItem[]
-  feedbackListByPart: FeedbackItem[]
-  feedbackListByPage: FeedbackItem[]
-}
-
-export type MyPageData = {
-  inProgressPathList: InProgressPath[]
-  completedPathList: CompletedPath[]
-  assignmentList: Assignment[]
-  feedbackList: Feedback[]
+export const myPageProfileData: MyPageProfileData = {
+  userId: '1',
+  nickname: 'Creme',
+  image: '/avif/placeholder.avif',
+  email: 'email@naver.com',
+  emailVerified: true,
+  password: 'creme1234@',
+  passwordConfirmation: 'creme1234@'
 }
 
 export const myPageData: MyPageData = {

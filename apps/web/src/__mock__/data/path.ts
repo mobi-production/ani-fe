@@ -22,88 +22,12 @@ export const pathIntroduceMock = (
         {
           type: 'heading_1',
           props: {
-            text: 'HTML & CSS 패스'
-          },
-          order: 0
-        },
-        {
-          type: 'heading_2',
-          props: {
-            text: 'HTML 개요(1)'
-          },
-          order: 1
-        },
-        {
-          type: 'divider',
-          order: 2
-        },
-        {
-          type: 'paragraph',
-          props: {
-            text: 'HTML에 관련된 내용들을 배웁니다!'
-          },
-          order: 3
-        },
-        {
-          type: 'paragraph',
-          props: {
-            bold: true,
-            text: '어떤 내용을 배워야 할까요? 재밌는 것들을 배울 수 있어요'
-          },
-          order: 3
-        },
-        {
-          type: 'paragraph',
-          props: {
-            text: '이글루 영역에 대해 알아봅니다.'
-          },
-          order: 4
-        },
-        {
-          type: 'paragraph',
-          props: {
-            bold: true,
-            italic: true,
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-          },
-          order: 5
-        },
-        {
-          type: 'toggle',
-          props: {
-            summary: 'HTML 개요(1)'
-          },
-          content: [
-            {
-              type: 'paragraph',
-              props: {
-                text: '첫 인사 및 강의 개요'
-              },
-              order: 0
-            },
-            {
-              type: 'paragraph',
-              props: {
-                text: '기본 문법'
-              },
-              order: 1
-            },
-            {
-              type: 'paragraph',
-              props: {
-                text: '부모와 자식 관계의 이해'
-              },
-              order: 2
-            },
-            {
-              type: 'paragraph',
-              props: {
-                text: 'Doctype(DTD)'
-              },
-              order: 3
-            }
-          ],
-          order: 6
+            rich_text: [
+              {
+                text: 'HTML & CSS 패스'
+              }
+            ]
+          }
         }
       ]
     },

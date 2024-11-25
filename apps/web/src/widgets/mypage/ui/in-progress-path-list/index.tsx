@@ -1,4 +1,4 @@
-import { InProgressPath } from '@/__mock__/data/mypage'
+import type { InProgressPath } from '@/__mock__/types/mypage'
 import { PathProductItemProgress } from '@/shared/ui/path-product-item'
 import { Flex, Typography } from '@repo/ui/server'
 

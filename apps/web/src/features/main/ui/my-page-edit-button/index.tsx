@@ -1,10 +1,10 @@
 import { SolidButton } from '@repo/ui/server'
 
-function MyPageEditButton() {
-  const onClick = () => {
-    // 모달 visible 상태 변경
-  }
+type MyPageEditButtonProps = {
+  onClick: () => void
+}
 
+function MyPageEditButton({ onClick }: MyPageEditButtonProps) {
   return (
     <SolidButton
       onClick={onClick}

@@ -1,7 +1,7 @@
-import { Feedback } from '@/__mock__/data/mypage'
 import Tabs from '@/shared/ui/tabs'
 import { Flex, Typography } from '@repo/ui/server'
 import FeedbackList from '../feedback-list'
+import type { Feedback } from '@/__mock__/types/mypage'
 
 type FeedbackListSectionProps = {
   data: Feedback[]
@@ -16,6 +16,7 @@ function FeedbackListSection({ data }: FeedbackListSectionProps) {
       className='mb-[3rem]'>
       {data.map((feedback) => (
         <Flex
+          key={feedback.pathName}
           direction='column'
           className='w-full gap-[1.625rem] rounded-[0.75rem] bg-white px-[2.375rem] py-[2.25rem]'>
           <Flex gap={16}>
