@@ -1,43 +1,45 @@
-import { Flex } from '@repo/ui/server'
-import { ComponentProps, PropsWithChildren } from 'react'
+import { ColorStyle } from '@repo/sdu/types/common'
+import { Flex, Typography } from '@repo/ui/server'
+import { PropsWithChildren } from 'react'
 
-import SDUText from '../text'
+import { ServerDrivenComponentType } from '../..'
+import SDUText, { TextProps } from '../text'
 
-type ListItemProps = ComponentProps<typeof SDUText>
-
-function SDUNumberedListItem({ ...props }: ListItemProps) {
-  return (
-    <li>
-      <SDUText
-        {...props}
-        tag='li'
-      />
-    </li>
-  )
+type SDUBulletedListProps = {
+  id?: string
+  rich_text: TextProps[]
+  numbered: number
+  content: ServerDrivenComponentType[]
+  style?: ColorStyle
 }
 
-type SDUNumberedListProps = {
-  text: ListItemProps[]
-  number: number
-}
-
-function SDUNumberedList({ text, number = 1, children }: PropsWithChildren<SDUNumberedListProps>) {
+function SDUNumberedList({
+  id,
+  rich_text,
+  numbered,
+  style,
+  children
+}: PropsWithChildren<SDUBulletedListProps>) {
   return (
-    <Flex gap={8}>
-      <SDUText
-        rich_text={[{ text: number + '.', bold: true }]}
-        tag='li'
-      />
+    <Flex
+      id={id}
+      gap={8}
+      style={style}>
+      <div
+        className='p-2'
+        style={{ color: style?.color }}>
+        <Typography
+          variant='body-1-normal'
+          fontWeight='medium'
+          color={style?.color ? 'inherit' : 'normal'}>
+          {numbered}.
+        </Typography>
+      </div>
       <Flex
         asChild
         direction='column'>
-        <ul>
-          {text.map((item, index) => (
-            <SDUNumberedListItem
-              key={index}
-              {...item}
-            />
-          ))}
+        <ul className='pt-2'>
+          <SDUNumberedListItem rich_text={rich_text} />
           {children}
         </ul>
       </Flex>
@@ -45,7 +47,17 @@ function SDUNumberedList({ text, number = 1, children }: PropsWithChildren<SDUNu
   )
 }
 
-SDUNumberedList.displayName = 'SDUNumberedList'
-SDUNumberedList.Item = SDUNumberedListItem
+type SDUNumberedListItemProps = {
+  rich_text: TextProps[]
+}
+
+function SDUNumberedListItem({ rich_text }: SDUNumberedListItemProps) {
+  return (
+    <SDUText
+      tag='li'
+      rich_text={rich_text}
+    />
+  )
+}
 
 export default SDUNumberedList

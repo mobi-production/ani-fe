@@ -2,7 +2,7 @@ import { ServerDrivenComponent, ServerDrivenComponentType } from '@repo/sdu'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import example from './example.json'
-
+import style from './style.json'
 const meta = {
   title: 'SDU/NumberedListItem',
   component: ServerDrivenComponent,
@@ -10,9 +10,15 @@ const meta = {
     docs: {
       description: {
         component: `
-#### 기본 NumberedListItem 컴포넌트 
+번호가 붙은 리스트 아이템을 표시하는 컴포넌트입니다.
 
-#### 예시
+### props
+
+#### \`rich_text\`: 텍스트를 전달합니다.
+
+#### \`style\`: 컴포넌트의 색상과 배경색을 조절합니다.
+
+### example
 \`\`\`json
 ${JSON.stringify(example, null, 2)}
 \`\`\`
@@ -28,6 +34,14 @@ export default meta
 
 export const Default: StoryObj<typeof ServerDrivenComponent> = {
   args: {
-    content: [example as unknown as ServerDrivenComponentType]
-  }
+    content: [example, example] as unknown as ServerDrivenComponentType[]
+  },
+  render: (args) => <ServerDrivenComponent content={args.content} />
+}
+
+export const WithStyle: StoryObj<typeof ServerDrivenComponent> = {
+  args: {
+    content: [style] as unknown as ServerDrivenComponentType[]
+  },
+  render: (args) => <ServerDrivenComponent content={args.content} />
 }
