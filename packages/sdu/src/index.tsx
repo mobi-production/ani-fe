@@ -21,7 +21,6 @@ type ComponentPropsMap = {
   SDUHeading1: ComponentProps<typeof SDUHeading1>
   SDUHeading2: ComponentProps<typeof SDUHeading2>
   SDUHeading3: ComponentProps<typeof SDUHeading3>
-  SDUButton: ComponentProps<typeof SDUButton>
   SDUToggle: ComponentProps<typeof SDUToggle>
   SDUText: ComponentProps<typeof SDUText>
   SDUDivider: ComponentProps<typeof SDUDivider>
@@ -33,6 +32,7 @@ type ComponentPropsMap = {
   SDUQuote: ComponentProps<typeof SDUQuote>
   SDUCallout: ComponentProps<typeof SDUCallout>
   SDUTable: ComponentProps<typeof SDUTable>
+  SDUButton: ComponentProps<typeof SDUButton>
 }
 
 export type ServerDrivenComponentType =
@@ -75,11 +75,13 @@ export type ServerDrivenComponentType =
       type: 'bulleted_list_item'
       props: ComponentPropsMap['SDUBulletedListItem']
       content?: ServerDrivenComponentType[]
+      depth?: number
     }
   | {
       type: 'numbered_list_item'
       props: ComponentPropsMap['SDUNumberedListItem']
       content?: ServerDrivenComponentType[]
+      numbered?: number
     }
   | {
       type: 'image'
@@ -111,8 +113,21 @@ export type ServerDrivenComponentType =
       props: ComponentPropsMap['SDUTable']
       content?: never
     }
+  | {
+      type: 'button'
+      props: ComponentPropsMap['SDUButton']
+      content?: never
+    }
 
-export function SDUComponent({ content }: { content: ServerDrivenComponentType }) {
+export function SDUComponent({
+  content,
+  depth,
+  numbered
+}: {
+  content: ServerDrivenComponentType
+  depth: number
+  numbered: number
+}) {
   const { type, props, content: children } = content
 
   switch (type) {
@@ -143,15 +158,29 @@ export function SDUComponent({ content }: { content: ServerDrivenComponentType }
 
     case 'bulleted_list_item':
       return (
-        <SDUBulletedListItem {...props}>
-          <ServerDrivenComponent content={children ?? []} />
+        <SDUBulletedListItem
+          {...props}
+          depth={depth}>
+          <ServerDrivenComponent
+            content={children ?? []}
+            depth={depth + 1}
+            isChild
+          />
         </SDUBulletedListItem>
       )
 
     case 'numbered_list_item':
       return (
-        <SDUNumberedListItem {...props}>
-          <ServerDrivenComponent content={children ?? []} />
+        <SDUNumberedListItem
+          {...props}
+          numbered={numbered}>
+          {children && (
+            <ServerDrivenComponent
+              content={children}
+              numbered={1}
+              isChild
+            />
+          )}
         </SDUNumberedListItem>
       )
 
@@ -179,19 +208,49 @@ export function SDUComponent({ content }: { content: ServerDrivenComponentType }
   }
 }
 
-export function ServerDrivenComponent({ content }: { content: ServerDrivenComponentType[] }) {
+export function ServerDrivenComponent({
+  content,
+  depth = 0,
+  numbered = 1,
+  isChild = false
+}: {
+  content: ServerDrivenComponentType[]
+  depth?: number
+  numbered?: number
+  isChild?: boolean
+}) {
+  let currentNumbered = numbered
+
   return (
     <Flex
       direction='column'
-      gap={4}
+      gap={isChild ? 4 : 8}
       asChild>
       <section>
-        {content.map((component, index) => (
-          <SDUComponent
-            key={index}
-            content={component}
-          />
-        ))}
+        {content.map((component, index) => {
+          if (component.type === 'numbered_list_item') {
+            const currentComponent = (
+              <SDUComponent
+                key={index}
+                content={component}
+                depth={depth}
+                numbered={currentNumbered}
+              />
+            )
+            currentNumbered++
+            return currentComponent
+          }
+          currentNumbered = 1
+
+          return (
+            <SDUComponent
+              key={index}
+              content={component}
+              depth={depth}
+              numbered={currentNumbered}
+            />
+          )
+        })}
       </section>
     </Flex>
   )
