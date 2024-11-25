@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 export type ServerDrivenFunctionType =
   | {
       type: 'API_CALL'
-      endpoint: string
+      url: string
       method: 'GET' | 'POST' | 'PUT' | 'DELETE'
       payload: {
         [key: string]: string | number | boolean | null
@@ -22,9 +22,8 @@ export async function serverDrivenFunction(
   router?: ReturnType<typeof useRouter>
 ) {
   if (onClickConfig.type === 'API_CALL') {
-    const { endpoint, method, payload } = onClickConfig
+    const { url, method, payload } = onClickConfig
     try {
-      const url = endpoint
       const options = {
         method,
         body: JSON.stringify(payload)
@@ -37,6 +36,10 @@ export async function serverDrivenFunction(
   }
   if (onClickConfig.type === 'NAVIGATE' && router) {
     const { type, path } = onClickConfig.payload
-    router[type === 'REPLACE' ? 'replace' : 'push'](path)
+    if (type === 'REPLACE') {
+      window.location.replace(path)
+    } else {
+      window.location.href = path
+    }
   }
 }

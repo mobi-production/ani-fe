@@ -1,6 +1,13 @@
 import { cva } from 'class-variance-authority'
 
-export const textVariants = cva('', {
+export const typographyMap = {
+  heading_1: 'title-2',
+  heading_2: 'title-3',
+  heading_3: 'heading-1',
+  text: 'body-1-reading'
+} as const
+
+export const textVariants = cva('whitespace-pre-wrap inline', {
   variants: {
     link: {
       true: 'underline text-label-alternative',
