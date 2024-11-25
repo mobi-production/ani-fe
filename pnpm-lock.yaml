@@ -252,9 +252,6 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../ui
-      '@repo/util':
-        specifier: workspace:*
-        version: link:../util
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
