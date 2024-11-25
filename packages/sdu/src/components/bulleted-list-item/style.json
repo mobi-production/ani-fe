@@ -16,7 +16,11 @@
       {
         "text": "\n재미있게 사용해주세요 :)"
       }
-    ]
+    ],
+    "style": {
+      "color": "#ff0000",
+      "backgroundColor": "#f0f0f0"
+    }
   },
   "content": [
     {
@@ -37,7 +41,11 @@
           {
             "text": "\n재미있게 사용해주세요 :)"
           }
-        ]
+        ],
+        "style": {
+          "color": "#ff00ff",
+          "backgroundColor": "#f0f0f0"
+        }
       },
       "content": [
         {
@@ -51,14 +59,17 @@
                 "text": "속성",
                 "bold": true,
                 "style": {
-                  "color": "#000000",
-                  "backgroundColor": "#FFFFFF"
+                  "color": "#000000"
                 }
               },
               {
                 "text": "\n재미있게 사용해주세요 :)"
               }
-            ]
+            ],
+            "style": {
+              "color": "#ffff00",
+              "backgroundColor": "#000000"
+            }
           }
         }
       ]

@@ -1,56 +1,87 @@
+import cn from '@repo/sdu/libs/cn'
+import { ColorStyle } from '@repo/sdu/types/common'
 import { Flex } from '@repo/ui/server'
-import { ComponentProps, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
-import SDUText from '../text'
-
-type ListItemProps = ComponentProps<typeof SDUText>
-
-function SDUBulletedListItem({ ...props }: ListItemProps) {
-  return (
-    <li>
-      <SDUText {...props} />
-    </li>
-  )
-}
+import { ServerDrivenComponentType } from '../..'
+import SDUText, { TextProps } from '../text'
 
 type SDUBulletedListProps = {
-  text: ListItemProps[]
+  id?: string
+  rich_text: TextProps[]
   depth: number
+  content: ServerDrivenComponentType[]
+  style?: ColorStyle
 }
 
-const Bullet = ({ depth }: { depth: number }) => {
+const Bullet = ({ depth, color }: { depth: number; color?: string }) => {
   const level = depth % 3
 
   switch (level) {
     case 0:
-      return <div className='h-2 w-2 rounded-lg bg-label-neutral' />
+      return (
+        <div
+          className={cn('h-2 w-2 rounded-lg', !color && 'bg-label-neutral')}
+          style={{ backgroundColor: color }}
+        />
+      )
     case 1:
-      return <div className='h-2 w-2 rounded-lg border border-label-neutral' />
+      return (
+        <div
+          className={cn('h-2 w-2 rounded-lg border', !color && 'border-label-neutral')}
+          style={{ borderColor: color }}
+        />
+      )
     case 2:
-      return <div className='h-2 w-2 rounded-sm bg-label-neutral' />
+      return (
+        <div
+          className={cn('h-2 w-2 rounded-sm', !color && 'bg-label-neutral')}
+          style={{ backgroundColor: color }}
+        />
+      )
   }
 }
 
-function SDUBulletedList({ text, depth = 0, children }: PropsWithChildren<SDUBulletedListProps>) {
+function SDUBulletedList({
+  id,
+  rich_text,
+  depth,
+  style,
+  children
+}: PropsWithChildren<SDUBulletedListProps>) {
   return (
-    <Flex gap={8}>
+    <Flex
+      id={id}
+      gap={8}
+      style={style}>
       <div className='p-2'>
-        <Bullet depth={depth} />
+        <Bullet
+          depth={depth}
+          color={style?.color}
+        />
       </div>
       <Flex
         asChild
         direction='column'>
         <ul>
-          {text.map((item, index) => (
-            <SDUBulletedListItem
-              key={index}
-              {...item}
-            />
-          ))}
+          <SDUBulletedListItem rich_text={rich_text} />
           {children}
         </ul>
       </Flex>
     </Flex>
+  )
+}
+
+type SDUBulletedListItemProps = {
+  rich_text: TextProps[]
+}
+
+function SDUBulletedListItem({ rich_text }: SDUBulletedListItemProps) {
+  return (
+    <SDUText
+      tag='li'
+      rich_text={rich_text}
+    />
   )
 }
 
