@@ -21,8 +21,9 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    totalItems: 15,
-    itemsPerPage: 5
+    totalItems: 100,
+    itemsPerPage: 10,
+    pagesPerSection: 5
   },
   render: (args) => (
     <div className='flex items-center justify-center pb-[15rem] pt-[5rem]'>
