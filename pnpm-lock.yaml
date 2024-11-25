@@ -50,6 +50,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@repo/sdu':
+        specifier: workspace:*
+        version: link:../../packages/sdu
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -240,6 +243,70 @@ importers:
       typescript:
         specifier: 5.3.3
         version: 5.3.3
+
+  packages/sdu:
+    dependencies:
+      '@ant-design/icons':
+        specifier: ^5.5.1
+        version: 5.5.1(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-slot':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../ui
+      class-variance-authority:
+        specifier: ^0.7.0
+        version: 0.7.0
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      tailwind-merge:
+        specifier: ^2.3.0
+        version: 2.5.4
+      vite-plugin-dts:
+        specifier: ^4.3.0
+        version: 4.3.0(@types/node@20.17.6)(typescript@5.3.3)(vite@5.4.11)
+    devDependencies:
+      '@config/es-config':
+        specifier: workspace:*
+        version: link:../../config/es-config
+      '@config/libs':
+        specifier: workspace:*
+        version: link:../../config/libs
+      '@config/ts-config':
+        specifier: workspace:*
+        version: link:../../config/ts-config
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      '@vitejs/plugin-react':
+        specifier: ^4.3.3
+        version: 4.3.3(vite@5.4.11)
+      globals:
+        specifier: ^15.11.0
+        version: 15.12.0
+      postcss:
+        specifier: ^8.4.47
+        version: 8.4.48
+      storybook:
+        specifier: 8.4.1
+        version: 8.4.1(prettier@3.3.3)
+      tailwindcss:
+        specifier: ^3.4.14
+        version: 3.4.14
+      vite:
+        specifier: ^5.4.10
+        version: 5.4.11(@types/node@20.17.6)
 
   packages/ui:
     dependencies:

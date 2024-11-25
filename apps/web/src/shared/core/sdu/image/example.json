@@ -1,8 +1,0 @@
-{
-  "type": "image",
-  "props": {
-    "url": "/avif/placeholder.avif",
-    "alt": "이미지 설명"
-  },
-  "order": 0
-}

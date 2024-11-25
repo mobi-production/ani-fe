@@ -1,0 +1,46 @@
+{
+  "name": "@repo/sdu",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "format": "prettier \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@repo/ui": "workspace:*",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.3.0",
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "devDependencies": {
+    "@config/es-config": "workspace:*",
+    "@config/libs": "workspace:*",
+    "@config/ts-config": "workspace:*",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "globals": "^15.11.0",
+    "postcss": "^8.4.47",
+    "storybook": "8.4.1",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  }
+}

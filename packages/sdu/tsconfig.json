@@ -1,0 +1,29 @@
+{
+  "extends": "@config/ts-config/react-library.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@repo/sdu/*": ["./src/*"],
+      "@repo/ui/*": ["../../packages/ui/src/*"],
+      "@repo/util/*": ["../../packages/util/src/*"],
+      "@config/es-config/*": ["../../config/es-config/*"],
+      "@config/ts-config/*": ["../../config/ts-config/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/index.tsx"
+  ],
+  "exclude": ["node_modules"]
+}

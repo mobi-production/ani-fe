@@ -1,0 +1,9 @@
+{
+  "type": "image",
+  "props": {
+    "url": "/avif/placeholder.avif",
+    "alt": "이미지 설명",
+    "width": 600,
+    "height": 400
+  }
+}

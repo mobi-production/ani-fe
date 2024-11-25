@@ -8,19 +8,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen'
   },
-  tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          padding: '20px',
-          boxSizing: 'border-box',
-          width: '110vw'
-        }}>
-        <Story />
-      </div>
-    )
-  ]
+  tags: ['autodocs']
 } satisfies Meta<typeof Inner>
 
 export default meta
