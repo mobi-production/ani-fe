@@ -2,6 +2,7 @@ import { QuestionType } from '../types/question'
 
 export const mockQuestionList: QuestionType[] = [
   {
+    id: 'erwtert',
     title: 'How to center a div using CSS?',
     content: 'I want to center a div both vertically and horizontally. What is the best approach?',
     createdDate: '2024-11-01',
@@ -9,6 +10,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'a1',
         user: 'JohnDoe',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -16,6 +18,7 @@ export const mockQuestionList: QuestionType[] = [
         answerDate: '2024-11-02'
       },
       {
+        id: 'a2',
         user: 'JaneSmith',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -25,6 +28,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'jhh77-',
     title: 'What is the difference between let and var in JavaScript?',
     content: 'I am confused about when to use let instead of var. Can someone explain?',
     createdDate: '2024-11-05',
@@ -32,6 +36,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'b1',
         user: 'CodeGuru',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -41,6 +46,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'opii',
     title: 'How to fetch data from an API in React?',
     content: 'What is the recommended way to fetch API data in React components?',
     createdDate: '2024-11-08',
@@ -49,6 +55,7 @@ export const mockQuestionList: QuestionType[] = [
     answers: []
   },
   {
+    id: 'eewr',
     title: 'How to set up ESLint in a React project?',
     content: 'I want to add ESLint to my React project for consistent coding styles. Any tips?',
     createdDate: '2024-11-10',
@@ -56,6 +63,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'd1',
         user: 'DevPro',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -65,6 +73,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'aaaa',
     title: 'How to deploy a Node.js app?',
     content: 'Can someone guide me on deploying a Node.js application to a cloud server?',
     createdDate: '2024-11-12',
@@ -73,6 +82,7 @@ export const mockQuestionList: QuestionType[] = [
     answers: []
   },
   {
+    id: 'ewweew',
     title: 'What is Redux used for?',
     content: 'I have heard about Redux in React projects. What problems does it solve?',
     createdDate: '2024-11-14',
@@ -80,6 +90,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'c1',
         user: 'StateMaster',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -89,6 +100,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'wegwger',
     title: 'How to handle authentication in Next.js?',
     content: 'I want to implement authentication in my Next.js app. What is the best practice?',
     createdDate: '2024-11-16',
@@ -96,6 +108,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'e1',
         user: 'AuthExpert',
         profileImage: '/avif/placeholder.avif',
         answerContent: 'Use NextAuth.js for easy integration with OAuth providers.',
@@ -104,6 +117,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'efwdfwe',
     title: 'What is the difference between GraphQL and REST?',
     content: 'When should I use GraphQL instead of REST APIs?',
     createdDate: '2024-11-18',
@@ -111,6 +125,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'f1',
         user: 'APIWizard',
         profileImage: '/avif/placeholder.avif',
         answerContent:
@@ -120,6 +135,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'wevwevwe-ggg',
     title: 'How to improve Webpack build speed?',
     content: 'My Webpack builds are taking too long. Any suggestions to speed them up?',
     createdDate: '2024-11-20',
@@ -127,6 +143,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'g1',
         user: 'FastBuilder',
         profileImage: '/avif/placeholder.avif',
         answerContent: 'Use caching, thread-loader, and split your chunks to optimize builds.',
@@ -135,6 +152,7 @@ export const mockQuestionList: QuestionType[] = [
     ]
   },
   {
+    id: 'sdbwewebweb',
     title: 'How to optimize React performance?',
     content: 'My React app is slow. What are some common performance optimization techniques?',
     createdDate: '2024-11-22',
@@ -142,6 +160,7 @@ export const mockQuestionList: QuestionType[] = [
     isAnswered: true,
     answers: [
       {
+        id: 'h1',
         user: 'ReactWizard',
         profileImage: '/avif/placeholder.avif',
         answerContent: 'Use React.memo, lazy loading, and avoid unnecessary re-renders.',

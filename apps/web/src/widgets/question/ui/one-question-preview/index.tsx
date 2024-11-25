@@ -29,11 +29,12 @@ function Tag({ label, theme }: LabelProps) {
   )
 }
 
-function Title({ children, ...props }: ComponentProps<'div'>) {
+function Title({ children, className, ...props }: ComponentProps<'div'>) {
   return (
-    <div {...props}>
+    <div
+      className={cn('overflow-hidden text-ellipsis whitespace-nowrap', className)}
+      {...props}>
       <Typography
-        className='truncate'
         variant={'body-2-reading'}
         fontWeight={'semibold'}>
         {children}

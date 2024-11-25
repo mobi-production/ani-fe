@@ -1,3 +1,4 @@
+import QuestionList from '@/entities/question/ui/question-list'
 import FilterAnsweredQuestions from '@/features/quesion/ui/filter-answered-questions'
 import QuestionSearchBar from '@/features/quesion/ui/question-search-bar'
 import NavigateToFormButton from '@/widgets/question/ui/navigate-to-form-button'
@@ -26,6 +27,7 @@ export default function QuestionListPage() {
       <Flex justify={'end'}>
         <FilterAnsweredQuestions />
       </Flex>
+      <QuestionList />
       <NavigateToFormButton />
     </Flex>
   )

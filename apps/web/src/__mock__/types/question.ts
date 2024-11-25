@@ -1,4 +1,5 @@
 export type AnswerType = {
+  id: string
   user: string
   profileImage: string
   answerContent: string
@@ -6,6 +7,7 @@ export type AnswerType = {
 }
 
 export type QuestionType = {
+  id: string
   title: string
   content: string
   createdDate: Date | string
