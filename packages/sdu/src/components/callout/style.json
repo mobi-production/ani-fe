@@ -1,0 +1,23 @@
+{
+  "type": "callout",
+  "props": {
+    "icon": "❤️",
+    "rich_text": [
+      {
+        "type": "text",
+        "text": "돋보이는 콜아웃을 작성하세요\n배경색이 코드와 달라요 유념 ~! "
+      },
+      {
+        "type": "text",
+        "text": "세부 컬러를 적용할 수 있어요",
+        "style": {
+          "color": "#000000"
+        }
+      }
+    ],
+    "style": {
+      "color": "#ff0000",
+      "backgroundColor": "#00ff00"
+    }
+  }
+}
