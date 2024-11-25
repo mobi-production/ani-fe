@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react/*'
+import { Meta, StoryObj } from '@storybook/react'
 import LeaningSummaryList from '.'
 import { mainData } from '@/__mock__/data/main'
 

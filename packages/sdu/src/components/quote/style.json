@@ -1,0 +1,22 @@
+{
+  "type": "quote",
+  "props": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+      },
+      {
+        "type": "text",
+        "text": "Lorem ipsum dolor sit amet, consectetur do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "style": {
+          "color": "#00ff00"
+        }
+      }
+    ],
+    "style": {
+      "color": "#ffffff",
+      "backgroundColor": "#000000"
+    }
+  }
+}

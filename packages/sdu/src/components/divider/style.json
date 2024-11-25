@@ -1,0 +1,8 @@
+{
+  "type": "divider",
+  "props": {
+    "style": {
+      "backgroundColor": "#ff0000"
+    }
+  }
+}

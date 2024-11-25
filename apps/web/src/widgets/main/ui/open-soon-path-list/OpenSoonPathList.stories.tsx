@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react/*'
+import { Meta, StoryObj } from '@storybook/react'
 import OpenSoonPathList from '.'
 import { mainData } from '@/__mock__/data/main'
 

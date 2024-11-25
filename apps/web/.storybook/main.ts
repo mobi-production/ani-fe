@@ -14,7 +14,9 @@ const config: StorybookConfig = {
     '../src/**/*.mdx',
     '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
     '../../../packages/ui/src/**/*.mdx',
-    '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
+    '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    '../../../packages/sdu/src/**/*.mdx',
+    '../../../packages/sdu/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
   staticDirs: ['../public'],
   addons: [
@@ -35,7 +37,8 @@ const config: StorybookConfig = {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@': resolve(__dirname, '../src'),
-        '@repo/ui': resolve(__dirname, '../../../packages/ui/src')
+        '@repo/ui': resolve(__dirname, '../../../packages/ui/src'),
+        '@repo/sdu': resolve(__dirname, '../../../packages/sdu/src')
       }
     }
 

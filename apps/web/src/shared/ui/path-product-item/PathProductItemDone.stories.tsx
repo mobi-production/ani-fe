@@ -13,12 +13,7 @@ const meta = {
       }
     }
   },
-  tags: ['autodocs'],
-  decorators: (Story) => (
-    <div className='px-40 py-10'>
-      <Story />
-    </div>
-  )
+  tags: ['autodocs']
 } satisfies Meta<typeof PathProductItemDone>
 
 export default meta
