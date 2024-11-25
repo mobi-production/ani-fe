@@ -14,14 +14,17 @@ const meta = {
     docs: {
       description: {
         component: `
-#### Table 컴포넌트
+테이블 컴포넌트는 테이블 형식의 데이터를 표시하는 컴포넌트입니다.
 
-테이블 컴포넌트는 테이블 형식의 데이터를 표시하는 컴포넌트입니다. 기본적으로 가로길이 100%를 차지합니다.
+### props
 
-props
+#### \`has_column_header\`: \`boolean\` 열 헤더가 있는지 여부
 
-- has_column_header: \`boolean\` 열 헤더가 있는지 여부
-- has_row_header: \`boolean\` 행 헤더가 있는지 여부
+#### \`has_row_header\`: \`boolean\` 행 헤더가 있는지 여부
+
+#### \`rows\`: 테이블 데이터를 전달합니다.
+
+테이블 데이터는 아래와 같습니다.
 
 \`\`\` typescript
 rows: Array<{
@@ -30,18 +33,15 @@ rows: Array<{
     cells: Array<{
       rich_text: Array<{
         type: 'text'
-        props: TextProps # Text 컴포넌트 props
+        props: TextProps
       }>
-      style?: { // 테이블 셀 스타일
-        color?: string
-        backgroundColor?: string
-      }
+      style?: ColorStyle
     }>
   }
 }>
 \`\`\`
 
-#### 예시
+### example
 \`\`\`json
 ${JSON.stringify(example, null, 2)}
 \`\`\`

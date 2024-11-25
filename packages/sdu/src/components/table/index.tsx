@@ -1,9 +1,10 @@
+import { ColorStyle } from '@repo/sdu/types/common'
 import cn from '@repo/util/cn'
 
 import SDUText, { TextProps } from '../text'
 
 interface TableProps {
-  type: 'table'
+  id?: string
   has_column_header?: boolean
   has_row_header?: boolean
   rows: {
@@ -11,18 +12,17 @@ interface TableProps {
     table_row: {
       cells: Array<{
         rich_text: TextProps[]
-        style?: {
-          color?: string
-          backgroundColor?: string
-        }
+        style?: ColorStyle
       }>
     }
   }[]
 }
 
-const SDUTable = ({ has_column_header, has_row_header, rows }: TableProps) => {
+const SDUTable = ({ id, has_column_header, has_row_header, rows }: TableProps) => {
   return (
-    <div className='w-full overflow-x-auto'>
+    <div
+      id={id}
+      className='w-full overflow-x-auto'>
       <table className='min-w-full border-collapse border border-gray-200'>
         <tbody>
           {rows.map((row, rowIndex) => (
