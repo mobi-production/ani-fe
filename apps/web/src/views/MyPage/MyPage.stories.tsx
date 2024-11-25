@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Inner } from '.'
-import { myPageData } from '@/__mock__/data/mypage'
+import { myPageData, myPageProfileData } from '@/__mock__/data/mypage'
 
 const meta = {
   title: 'Page/MyPage',
@@ -8,19 +8,7 @@ const meta = {
   parameters: {
     layout: 'fullscreen'
   },
-  tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          padding: '20px',
-          boxSizing: 'border-box',
-          width: '110vw'
-        }}>
-        <Story />
-      </div>
-    )
-  ]
+  tags: ['autodocs']
 } satisfies Meta<typeof Inner>
 
 export default meta
@@ -28,6 +16,8 @@ type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
   args: {
-    data: myPageData
+    myPageData: myPageData,
+    myPageProfileData: myPageProfileData,
+    onOpenModal: () => {}
   }
 }

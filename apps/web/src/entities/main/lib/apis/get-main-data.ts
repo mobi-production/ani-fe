@@ -1,5 +1,5 @@
 import type { MainData } from '@/__mock__/types/main'
-import { HTTP_HEADERS } from '@/shared/config/constants/http'
+import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 /**
  * 메인 페이지 데이터를 조회하는 함수
@@ -8,7 +8,7 @@ import { HTTP_HEADERS } from '@/shared/config/constants/http'
 export async function getMainData(): Promise<MainData | null> {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/main`, {
-      method: 'GET',
+      method: HTTP_METHODS.GET,
       headers: HTTP_HEADERS.JSON
     })
 

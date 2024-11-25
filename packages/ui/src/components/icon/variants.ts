@@ -1,16 +1,34 @@
 import {
+  AudioOutlined,
   BellOutlined,
+  BulbOutlined,
   CheckCircleFilled,
+  CloseOutlined,
+  CodeOutlined,
   DownOutlined,
   ExclamationCircleOutlined,
+  ExclamationOutlined,
+  EyeInvisibleOutlined,
+  EyeOutlined,
+  FileExcelOutlined,
+  FileImageOutlined,
   FileOutlined,
+  FilePdfOutlined,
+  FilePptOutlined,
+  FileTextOutlined,
+  FileWordOutlined,
+  FileZipOutlined,
+  Html5Outlined,
   InfoCircleOutlined,
   LeftOutlined,
+  LikeOutlined,
   PlayCircleOutlined,
   QuestionCircleOutlined,
   RightOutlined,
   SearchOutlined,
-  UserOutlined
+  UserOutlined,
+  RocketOutlined,
+  VideoCameraOutlined
 } from '@ant-design/icons'
 
 export const IconsMap = {
@@ -23,9 +41,27 @@ export const IconsMap = {
   FileOutlined: FileOutlined,
   PlayCircleOutlined: PlayCircleOutlined,
   CheckCircleFilled: CheckCircleFilled,
+  CloseOutlined: CloseOutlined,
   InfoCircleOutlined: InfoCircleOutlined,
   QuestionCircleOutlined: QuestionCircleOutlined,
   SearchOutlined: SearchOutlined
+  FileImageOutlined: FileImageOutlined,
+  FilePdfOutlined: FilePdfOutlined,
+  VideoCameraOutlined: VideoCameraOutlined,
+  AudioOutlined: AudioOutlined,
+  FileTextOutlined: FileTextOutlined,
+  FileZipOutlined: FileZipOutlined,
+  FileExcelOutlined: FileExcelOutlined,
+  FilePptOutlined: FilePptOutlined,
+  FileWordOutlined: FileWordOutlined,
+  Html5Outlined: Html5Outlined,
+  CodeOutlined: CodeOutlined,
+  EyeOutlined: EyeOutlined,
+  EyeInvisibleOutlined: EyeInvisibleOutlined,
+  RocketOutlined: RocketOutlined,
+  BulbOutlined: BulbOutlined,
+  LikeOutlined: LikeOutlined,
+  ExclamationOutlined: ExclamationOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

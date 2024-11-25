@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react/*'
+import { Meta, StoryObj } from '@storybook/react'
 import CompletedPathList from '.'
 import { myPageData } from '@/__mock__/data/mypage'
 

@@ -1,13 +1,17 @@
 'use client'
 
-import { myPageData, type MyPageData } from '@/__mock__/data/mypage'
+import type { MyPageData, MyPageProfileData } from '@/__mock__/types/mypage'
 import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
+import ProfileEditModal from '@/features/mypage/ui/profile-edit-modal'
+import WithdrawalModal from '@/features/mypage/ui/withdrawal-modal'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import AssignmentList from '@/widgets/mypage/ui/assignment-list'
 import CompletedPathList from '@/widgets/mypage/ui/completed-path-list'
+import FeedbackListSection from '@/widgets/mypage/ui/feedback-list-section'
 import InProgressPathList from '@/widgets/mypage/ui/in-progress-path-list'
 import { Divider, Flex, Typography } from '@repo/ui/server'
 import Image from 'next/image'
+import { useState } from 'react'
 
 const LINKS = [
   { id: 'my_path', title: '내 패스' },
@@ -16,12 +20,12 @@ const LINKS = [
 ] as const
 
 type InnerProps = {
-  data: MyPageData
+  myPageData: MyPageData
+  myPageProfileData: MyPageProfileData
+  onOpenModal: () => void
 }
 
-export function Inner({ data }: InnerProps) {
-  const { inProgressPathList, completedPathList, assignmentList, feedbackList } = data
-
+export function Inner({ myPageData, myPageProfileData, onOpenModal }: InnerProps) {
   return (
     <Flex
       direction='column'
@@ -35,13 +39,11 @@ export function Inner({ data }: InnerProps) {
           align='center'
           gap={24}>
           <div className='relative h-[120px] w-[120px] overflow-hidden rounded-full'>
-            {/* TODO: 실제 이미지 연동 + 프로필 사진이 없을 경우의 이미지도 연동 */}
             <Image
-              src='/avif/placeholder.avif'
+              src={myPageProfileData?.image || '/avif/placeholder.avif'}
               alt='프로필 이미지'
-              layout='fill'
-              objectFit='cover'
-              objectPosition='center'
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
               priority
               sizes='120px'
             />
@@ -49,22 +51,23 @@ export function Inner({ data }: InnerProps) {
           <Flex direction='column'>
             <Typography
               variant='title-3'
-              fontWeight='bold'>{`닉네임`}</Typography>
+              fontWeight='bold'>
+              {myPageProfileData.nickname}
+            </Typography>
             <Typography
               className='text-neutral-60'
               variant='heading-1'
-              fontWeight='medium'>{`email@naver.com`}</Typography>
+              fontWeight='medium'>
+              {myPageProfileData.email}
+            </Typography>
           </Flex>
         </Flex>
-        <MyPageEditButton />
+        <MyPageEditButton onClick={onOpenModal} />
       </Flex>
       <Flex
         direction='column'
-        className='sticky top-0 w-full bg-inherit'>
-        <NavigationLinks
-          links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]}
-          // TODO: moveHeightOffset로 위치 조정
-        />
+        className='sticky top-0 w-full bg-neutral-99'>
+        <NavigationLinks links={[{ ...LINKS[0] }, { ...LINKS[1] }, { ...LINKS[2] }]} />
         <Divider />
       </Flex>
       <section
@@ -85,8 +88,8 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스와 완료한 패스를 한눈에 확인하세요
           </Typography>
         </Flex>
-        <InProgressPathList data={inProgressPathList} />
-        <CompletedPathList data={completedPathList} />
+        <InProgressPathList data={myPageData.inProgressPathList} />
+        <CompletedPathList data={myPageData.completedPathList} />
       </section>
 
       <section
@@ -107,9 +110,11 @@ export function Inner({ data }: InnerProps) {
             진행 중인 패스의 과제 현황을 확인하세요
           </Typography>
         </Flex>
-        <AssignmentList data={assignmentList} />
+        <AssignmentList data={myPageData.assignmentList} />
       </section>
-      <section id={LINKS[2].id}>
+      <section
+        className='flex flex-col gap-[16px]'
+        id={LINKS[2].id}>
         <Flex
           gap={4}
           direction='column'>
@@ -126,15 +131,45 @@ export function Inner({ data }: InnerProps) {
           </Typography>
         </Flex>
 
-        <div>
-          {/* FeedbackList */}
-          패스별 피드백 Section
-        </div>
+        <FeedbackListSection data={myPageData.feedbackList} />
       </section>
     </Flex>
   )
 }
 
-export default function MyPage() {
-  return <Inner data={myPageData} />
+type MyPageProps = {
+  myPageData: MyPageData
+  myPageProfileData: MyPageProfileData
+}
+
+export default function MyPage({ myPageData, myPageProfileData }: MyPageProps) {
+  const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false)
+  const [isProfileEditModalOpen, setIsProfileEditModalOpen] = useState(false)
+
+  const handleOpenWithdrawalModal = () => {
+    setIsProfileEditModalOpen(false)
+    setIsWithdrawalModalOpen(true)
+  }
+
+  return (
+    <>
+      <Inner
+        myPageData={myPageData}
+        myPageProfileData={myPageProfileData}
+        onOpenModal={() => {
+          setIsProfileEditModalOpen(true)
+        }}
+      />
+      <ProfileEditModal
+        isOpen={isProfileEditModalOpen}
+        onClose={() => setIsProfileEditModalOpen(false)}
+        onOpenWithdrawalModal={handleOpenWithdrawalModal}
+        data={myPageProfileData}
+      />
+      <WithdrawalModal
+        isOpen={isWithdrawalModalOpen}
+        onClose={() => setIsWithdrawalModalOpen(false)}
+      />
+    </>
+  )
 }

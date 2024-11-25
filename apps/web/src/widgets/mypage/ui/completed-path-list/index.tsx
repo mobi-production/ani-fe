@@ -1,4 +1,4 @@
-import type { CompletedPath } from '@/__mock__/data/mypage'
+import type { CompletedPath } from '@/__mock__/types/mypage'
 import { PathProductItemDone } from '@/shared/ui/path-product-item'
 import { Flex, Typography } from '@repo/ui/server'
 

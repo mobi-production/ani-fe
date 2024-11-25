@@ -22,33 +22,11 @@ export const pathIntroduceMock = (
         {
           type: 'heading_1',
           props: {
-            text: 'HTML & CSS 패스'
-          }
-        },
-        {
-          type: 'paragraph',
-          props: {
-            text: `엄청 재밌어요 큭큭`,
-            style: {
-              variant: 'body-1-normal'
-            }
-          }
-        },
-        {
-          type: 'paragraph',
-          props: {
-            style: {
-              variant: 'body-1-normal'
-            }
-          }
-        },
-        {
-          type: 'divider'
-        },
-        {
-          type: 'heading_2',
-          props: {
-            text: 'HTML 개요(1)'
+            rich_text: [
+              {
+                text: 'HTML & CSS 패스'
+              }
+            ]
           }
         }
       ]
