@@ -1,23 +1,24 @@
 import { Flex, Typography } from '@repo/ui/server'
-import Image from 'next/image'
-import Link from 'next/link'
 
 type Props = {
+  id?: string
   url: string
   title: string
   description: string
   preview: string
 }
 
-function SDUBookmark({ url, title, description, preview }: Props) {
+function SDUBookmark({ id, url, title, description, preview }: Props) {
   return (
-    <Link href={url}>
+    <a
+      id={id}
+      href={url}>
       <Flex
         gap={16}
         align='center'
         asChild>
         <div className='overflow-hidden rounded-[4px] border border-line-normal duration-200 ease-in-out hover:bg-background-alternative focus:bg-background-alternative'>
-          <Image
+          <img
             src={preview}
             alt={title}
             className='aspect-square object-contain'
@@ -44,7 +45,7 @@ function SDUBookmark({ url, title, description, preview }: Props) {
           </Flex>
         </div>
       </Flex>
-    </Link>
+    </a>
   )
 }
 
