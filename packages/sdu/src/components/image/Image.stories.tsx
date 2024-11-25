@@ -2,7 +2,7 @@ import { ServerDrivenComponent, ServerDrivenComponentType } from '@repo/sdu'
 import type { Meta, StoryObj } from '@storybook/react'
 
 import example from './example.json'
-
+import sizeExample from './size-example.json'
 const meta = {
   title: 'SDU/Image',
   component: ServerDrivenComponent,
@@ -11,9 +11,21 @@ const meta = {
     docs: {
       description: {
         component: `
-#### Image 컴포넌트
+이미지를 표시하는 컴포넌트입니다.
 
-#### 예시
+### props
+
+#### \`url\`: 이미지를 표시할 URL을 전달합니다.
+
+#### \`alt\`: 이미지의 설명을 전달합니다.
+
+#### \`width\`: 이미지의 너비를 전달합니다.
+
+#### \`height\`: 이미지의 높이를 전달합니다.
+
+#### \`style\`: 이미지의 스타일을 전달합니다.
+
+### example
 \`\`\`json
 ${JSON.stringify(example, null, 2)}
 \`\`\`
@@ -34,14 +46,7 @@ export const Default: StoryObj<typeof ServerDrivenComponent> = {
 이미지 크기를 지정하지 않고 사용할 수 있습니다.
 
 \`\`\`json
-{
-  "type": "image",
-  "props": {
-    "url": "/avif/placeholder.avif",
-    "alt": "이미지 설명"
-  },
-  "order": 0
-}
+${JSON.stringify(example, null, 2)}
 \`\`\`
         `
       }
@@ -53,7 +58,7 @@ export const Default: StoryObj<typeof ServerDrivenComponent> = {
   render: (args) => <ServerDrivenComponent content={args.content} />
 }
 
-export const PreviewWithSize: StoryObj<typeof ServerDrivenComponent> = {
+export const WithSize: StoryObj<typeof ServerDrivenComponent> = {
   parameters: {
     docs: {
       description: {
@@ -77,9 +82,7 @@ export const PreviewWithSize: StoryObj<typeof ServerDrivenComponent> = {
     }
   },
   args: {
-    content: [
-      { ...example, props: { ...example.props, width: 600, height: 400 } }
-    ] as ServerDrivenComponentType[]
+    content: [sizeExample as ServerDrivenComponentType]
   },
   render: (args) => <ServerDrivenComponent content={args.content} />
 }
