@@ -1,7 +1,8 @@
+import { ColorStyle } from '@repo/sdu/types/common'
 import { Typography } from '@repo/ui/server'
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
-import { textVariants } from '../../config/variants'
+import { textVariants, typographyMap } from '../../config/variants'
 
 export type TextProps = {
   text: string
@@ -11,15 +12,14 @@ export type TextProps = {
   italic?: boolean
   strikethrough?: boolean
   underline?: boolean
-  style?: {
-    color?: string
-    backgroundColor?: string
-  }
+  style?: ColorStyle
 }
 
 type Props = {
+  id?: string
   tag: ElementType
   rich_text: TextProps[]
+  style?: ColorStyle
   isToggle?: boolean
   variant?: ComponentPropsWithoutRef<typeof Typography>['variant']
   defaultFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']
@@ -27,30 +27,35 @@ type Props = {
 }
 
 function SDUText({
+  id,
   rich_text,
-  variant = 'body-1-reading',
+  variant = typographyMap['text'],
   defaultFontWeight = 'medium',
   boldFontWeight = 'semibold',
-  tag = 'p'
+  tag = 'p',
+  style
 }: Props) {
   const Component = tag ?? 'span'
   return (
-    <Component>
+    <Component
+      id={id}
+      style={style}>
       {rich_text.map(({ text, ...rest }, index) => (
         <Typography
           key={index}
           variant={variant}
+          color={rest.style?.color ? undefined : 'inherit'}
           fontWeight={rest.bold ? boldFontWeight : defaultFontWeight}
-          className={`${textVariants({
+          className={textVariants({
             code: rest.code,
             italic: rest.italic,
             link: !!rest.link,
             strikethrough: rest.strikethrough,
             underline: rest.underline
-          })} whitespace-pre-wrap`}
+          })}
           style={rest.style}
           asChild>
-          {rest.link ? <a href={rest.link}>{text}</a> : <span>{text}</span>}
+          {rest.link ? <a href={rest.link}>{text}</a> : <p>{text}</p>}
         </Typography>
       ))}
     </Component>
