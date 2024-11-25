@@ -1,13 +1,21 @@
-import { Icon } from '@repo/ui/client'
+import { Icon, Input } from '@repo/ui/client'
+import { Flex, SpacingBlock } from '@repo/ui/server'
 
 function QuestionSearchBar() {
   return (
-    <div className='w-full rounded-[0.25rem] bg-background-alternative p-[0.75rem] text-label-assistive'>
-      <Icon
-        name='SearchOutlined'
-        size={16}
-      />
-    </div>
+    <Input
+      placeholder='검색해보세요'
+      className='text-b2-normal'
+      leftIcon={
+        <Flex className='text-label-assistive'>
+          <Icon
+            name='SearchOutlined'
+            size={16}
+          />
+          <SpacingBlock size={4} />
+        </Flex>
+      }
+    />
   )
 }
 

@@ -11,11 +11,21 @@ type InputProps = ComponentProps<'input'> & {
   isSuccess?: boolean
   successMessage?: string
   rightIcon?: ReactNode
+  leftIcon?: ReactNode
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { isError = false, errorMessage, isSuccess = false, successMessage, rightIcon, ...props },
+    {
+      isError = false,
+      errorMessage,
+      isSuccess = false,
+      successMessage,
+      rightIcon,
+      leftIcon,
+      className,
+      ...props
+    },
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false)
@@ -35,11 +45,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             isError && 'border-[1.5px] border-status-error'
           )}
           style={{ backgroundColor: 'rgba(23, 23, 23, 0.03)' }}>
+          {leftIcon && <div>{leftIcon}</div>}
           <input
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             ref={ref}
-            className='flex-1 border-none bg-transparent text-b1-normal font-medium text-neutral-10 placeholder-label-assistive outline-none placeholder:text-b1-normal placeholder:font-medium'
+            className={cn(
+              'flex-1 border-none bg-transparent text-b1-normal font-medium text-neutral-10 placeholder-label-assistive outline-none placeholder:text-b1-normal placeholder:font-medium',
+              className
+            )}
             {...props}
           />
           {rightIcon && <div>{rightIcon}</div>}
