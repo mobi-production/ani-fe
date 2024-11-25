@@ -2,8 +2,6 @@
   "type": "file",
   "props": {
     "url": "/avif/placeholder.avif",
-    "expiry_time": "2024-12-31T23:59:59Z",
     "file_size": "27.4KB"
-  },
-  "order": 0
+  }
 }

@@ -1,19 +1,20 @@
+import { ColorStyle } from '@repo/sdu/types/common'
 import Icon from '@repo/ui/components/icon'
 import { Flex, Typography } from '@repo/ui/server'
 import { getFileIcon } from '@repo/util/get-file-icon'
 
 type Props = {
+  id?: string
   url: string
   file_size: number
-  expiry_time: Date
+  style?: ColorStyle
 }
 
 function getFileName(url: string) {
   return url.split('/').pop()
 }
 
-function SDUFile({ url, expiry_time, file_size }: Props) {
-  const isExpired = new Date(expiry_time) < new Date()
+function SDUFile({ id, url, file_size, style }: Props) {
   const fileName = getFileName(url)
   const icon = getFileIcon(url)
 
@@ -24,9 +25,10 @@ function SDUFile({ url, expiry_time, file_size }: Props) {
       justify='center'
       asChild>
       <a
+        id={id}
         href={url}
         download={fileName}
-        color={isExpired ? '#808080' : '#171717'}>
+        style={style}>
         <Icon
           name={icon}
           size={20}
@@ -36,7 +38,9 @@ function SDUFile({ url, expiry_time, file_size }: Props) {
           align='center'>
           <Typography
             variant='body-1-normal'
-            fontWeight='medium'>
+            fontWeight='medium'
+            color='inherit'
+            style={style}>
             {fileName}
           </Typography>
           <Typography
