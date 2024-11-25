@@ -1,19 +1,23 @@
 'use client'
 
 import { Flex, Modal, Typography } from '@repo/ui/server'
-import { useState } from 'react'
+import { useAuthModalStore } from '../../store'
 
 function SignupModal() {
-  const [isOpen, setIsOpen] = useState(false)
+  const isSignupModalOpen = useAuthModalStore((state) => state.isSignupModalOpen)
+  const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
+
+  const onCloseSignupModal = () => {
+    setIsSignupModalOpen(false)
+  }
+
   return (
     <Modal
       className='p-0'
       withCloseButton={false}
       withBackDrop
-      isOpen={isOpen}
-      onClose={() => {
-        setIsOpen(false)
-      }}>
+      isOpen={isSignupModalOpen}
+      onClose={onCloseSignupModal}>
       <Flex>
         <Typography>SignupModal</Typography>
       </Flex>

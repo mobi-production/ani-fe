@@ -9,7 +9,7 @@ const meta = {
     layout: 'center',
     docs: {
       description: {
-        component: '회원가입을 위한 모달 컴포넌트입니다.'
+        component: '마이페이지 내 상태 정보를 변경하는 모달을 오픈하는 버튼'
       }
     }
   },
@@ -20,9 +20,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
-  args: {
-    onClick: () => {}
-  },
+  args: {},
   decorators: [
     (Story) => (
       <Flex

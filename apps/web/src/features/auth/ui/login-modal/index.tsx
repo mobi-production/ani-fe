@@ -7,14 +7,43 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useAuthModalStore } from '../../store'
+import { LoginModalFormData, loginModalSchema } from '../../model/loginModalSchema'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 function LoginModal() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const isLoginModalOpen = useAuthModalStore((state) => state.isLoginModalOpen)
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
+  const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    watch
+  } = useForm<LoginModalFormData>({
+    resolver: zodResolver(loginModalSchema),
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  })
+
+  const email = watch('email')
+  const password = watch('password')
 
   const onCloseLoginModal = () => {
     setIsLoginModalOpen(false)
+  }
+
+  const onOpenSignupModal = () => {
+    setIsLoginModalOpen(false)
+    setIsSignupModalOpen(true)
+  }
+
+  const onSubmit = async (formData: LoginModalFormData) => {
+    console.log(formData)
   }
 
   return (
@@ -29,7 +58,9 @@ function LoginModal() {
         direction='column'
         align='start'
         className='min-w-[37.5rem] px-[3.125rem] py-[3rem]'>
-        <form className='gap-[3rem]'>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='gap-[3rem]'>
           <Flex
             justify='center'
             className='w-full'>
@@ -47,9 +78,13 @@ function LoginModal() {
                 fontWeight='semibold'>
                 이메일
               </Typography>
-              <Input placeholder='이메일을 입력해주세요' />
+              <Input
+                {...register('email')}
+                placeholder='이메일을 입력해주세요'
+                isError={!!errors.email}
+                errorMessage={errors.email?.message}
+              />
             </Flex>
-
             <Flex
               direction='column'
               gap={12}>
@@ -73,16 +108,20 @@ function LoginModal() {
                 </Link>
               </Flex>
               <Input
+                {...register('password')}
+                type={isPasswordVisible ? 'text' : 'password'}
                 placeholder='비밀번호를 입력해주세요'
                 rightIcon={
                   <div className='text-label-alternative'>
                     <Icon
                       size={20}
-                      onClick={() => setIsVisible((prev) => !prev)}
-                      name={isVisible ? 'EyeOutlined' : 'EyeInvisibleOutlined'}
+                      onClick={() => setIsPasswordVisible((prev) => !prev)}
+                      name={isPasswordVisible ? 'EyeOutlined' : 'EyeInvisibleOutlined'}
                     />
                   </div>
                 }
+                isError={!!errors.password}
+                errorMessage={errors.password?.message}
               />
             </Flex>
           </Flex>
@@ -93,7 +132,7 @@ function LoginModal() {
             <SolidButton
               type='submit'
               size='large'
-              disabled={false}
+              disabled={isSubmitting || !email || !password}
               fullWidth>
               로그인
             </SolidButton>
@@ -107,14 +146,16 @@ function LoginModal() {
                 fontWeight='medium'>
                 계정이 없으신가요?
               </Typography>
-              <Link href='/'>
+              <button
+                onClick={onOpenSignupModal}
+                type='button'>
                 <Typography
                   className='text-primary-normal'
                   variant='body-1-normal'
                   fontWeight='medium'>
                   회원가입하기
                 </Typography>
-              </Link>
+              </button>
             </Flex>
           </Flex>
           <Flex
