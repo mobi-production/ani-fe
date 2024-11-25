@@ -40,6 +40,18 @@ export const Default: StoryObj<typeof ServerDrivenComponent> = {
 }
 
 export const WithStyle: StoryObj<typeof ServerDrivenComponent> = {
+  parameters: {
+    docs: {
+      description: {
+        story: `
+\`\`\`json
+### style
+${JSON.stringify(style, null, 2)}
+\`\`\`
+        `
+      }
+    }
+  },
   args: {
     content: [style] as unknown as ServerDrivenComponentType[]
   },
