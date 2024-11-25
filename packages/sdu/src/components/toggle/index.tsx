@@ -1,11 +1,25 @@
+import { typographyMap } from '@repo/sdu/config/variants'
+import { ColorStyle } from '@repo/sdu/types/common'
 import { Flex } from '@repo/ui/server'
 import { memo, useState } from 'react'
 
+import SDUText, { TextProps } from '../text'
+
 type Props = {
-  summary: string
+  variant?: keyof typeof typographyMap
+  id?: string
+  summary: TextProps[]
+  style?: ColorStyle
 }
 
-function SDUToggle({ summary, children, ...props }: Props & { children?: React.ReactNode }) {
+function SDUToggle({
+  id,
+  variant = 'text',
+  summary,
+  style,
+  children,
+  ...props
+}: Props & { children?: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -22,6 +36,8 @@ function SDUToggle({ summary, children, ...props }: Props & { children?: React.R
 
   return (
     <details
+      id={id}
+      style={style}
       className='group overflow-hidden'
       open={isOpen || isAnimating}>
       <summary
@@ -47,7 +63,12 @@ function SDUToggle({ summary, children, ...props }: Props & { children?: React.R
             />
           </svg>
         </Flex>
-        {summary}
+        <SDUText
+          variant={typographyMap[variant]}
+          tag='span'
+          style={style}
+          rich_text={summary}
+        />
       </summary>
       <div
         className='ml-8 mt-1 origin-top transition-all duration-200'

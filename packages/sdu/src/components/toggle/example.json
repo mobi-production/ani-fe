@@ -1,23 +1,36 @@
 {
   "type": "toggle",
   "props": {
-    "summary": "Toggle"
+    "variant": "heading_1",
+    "summary": [
+      {
+        "type": "text",
+        "text": "Toggle"
+      }
+    ]
   },
   "content": [
     {
-      "type": "paragraph",
+      "type": "heading_1",
       "props": {
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      },
-      "order": 1
+        "rich_text": [
+          {
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        ]
+      }
     },
     {
-      "type": "paragraph",
+      "type": "text",
       "props": {
-        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      },
-      "order": 2
+        "rich_text": [
+          {
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        ]
+      }
     }
-  ],
-  "order": 0
+  ]
 }
