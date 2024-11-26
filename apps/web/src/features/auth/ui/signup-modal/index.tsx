@@ -6,7 +6,7 @@ import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
 import { useState } from 'react'
 import { SignupModalFormData, signupModalSchema } from '../../model/signupModalSchema'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 function SignupModal() {
@@ -18,7 +18,7 @@ function SignupModal() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    watch
+    control
   } = useForm<SignupModalFormData>({
     resolver: zodResolver(signupModalSchema),
     defaultValues: {
@@ -28,9 +28,17 @@ function SignupModal() {
     }
   })
 
-  const email = watch('email')
-  const nickname = watch('nickname')
-  const password = watch('password')
+  const [email, nickname, password] = useWatch({
+    control,
+    name: ['email', 'nickname', 'password'],
+    defaultValue: {
+      email: '',
+      nickname: '',
+      password: ''
+    }
+  })
+
+  const isFormInvalid = !email || !nickname || !password || isSubmitting
 
   const onCloseSignupModal = () => {
     setIsSignupModalOpen(false)
@@ -133,7 +141,7 @@ function SignupModal() {
           <SolidButton
             size='large'
             fullWidth
-            disabled={isSubmitting || !email || !nickname || !password}
+            disabled={isFormInvalid}
             type='submit'>
             회원가입
           </SolidButton>

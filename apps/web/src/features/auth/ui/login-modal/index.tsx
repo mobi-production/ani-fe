@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useAuthModalStore } from '../../store'
 import { LoginModalFormData, loginModalSchema } from '../../model/loginModalSchema'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 function LoginModal() {
@@ -21,7 +21,7 @@ function LoginModal() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    watch
+    control
   } = useForm<LoginModalFormData>({
     resolver: zodResolver(loginModalSchema),
     defaultValues: {
@@ -30,8 +30,16 @@ function LoginModal() {
     }
   })
 
-  const email = watch('email')
-  const password = watch('password')
+  const [email, password] = useWatch({
+    control,
+    name: ['email', 'password'],
+    defaultValue: {
+      email: '',
+      password: ''
+    }
+  })
+
+  const isFormInvalid = !email || !password || isSubmitting
 
   const onCloseLoginModal = () => {
     setIsLoginModalOpen(false)
@@ -132,7 +140,7 @@ function LoginModal() {
             <SolidButton
               type='submit'
               size='large'
-              disabled={isSubmitting || !email || !password}
+              disabled={isFormInvalid}
               fullWidth>
               로그인
             </SolidButton>
@@ -161,7 +169,7 @@ function LoginModal() {
           <Flex
             className='w-full'
             direction='row'
-            align='center'
+            justify='center'
             gap={20}>
             <Divider className='w-full bg-[rgba(35,35,35,0.15)]' />
             <Typography
