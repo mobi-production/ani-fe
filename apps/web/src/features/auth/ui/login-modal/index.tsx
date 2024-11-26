@@ -186,12 +186,7 @@ function LoginModal() {
               height={36}
               alt='discord'
             />
-            <Flex
-              direction='row'
-              align='center'
-              gap={8}>
-              디스코드로 로그인
-            </Flex>
+            디스코드로 로그인
           </Flex>
         </SolidButton>
       </form>
