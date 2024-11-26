@@ -55,98 +55,77 @@ function SignupModal() {
       withBackDrop
       isOpen={isSignupModalOpen}
       onClose={onCloseSignupModal}>
-      <Flex
-        asChild
-        direction='column'
-        align='start'
-        className='min-w-[37.5rem] px-[3.125rem] py-[3rem]'>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className='gap-[3rem]'>
-          <Flex
-            justify='center'
-            className='w-full'>
-            <Logo />
-          </Flex>
-          <Flex
-            className='w-full'
-            direction='column'
-            gap={28}>
-            <Flex
-              direction='column'
-              gap={12}>
-              <Typography
-                variant='heading-2'
-                fontWeight='semibold'>
-                이메일
-              </Typography>
-              <Input
-                {...register('email')}
-                placeholder='이메일을 입력해주세요'
-                isError={!!errors.email}
-                errorMessage={errors.email?.message}
-              />
-            </Flex>
-          </Flex>
-          <Flex
-            className='w-full'
-            direction='column'
-            gap={28}>
-            <Flex
-              direction='column'
-              gap={12}>
-              <Typography
-                variant='heading-2'
-                fontWeight='semibold'>
-                닉네임
-              </Typography>
-              <Input
-                {...register('nickname')}
-                placeholder='닉네임을 입력해주세요'
-                isError={!!errors.nickname}
-                errorMessage={errors.nickname?.message}
-              />
-            </Flex>
-          </Flex>
-          <Flex
-            className='w-full'
-            direction='column'
-            gap={28}>
-            <Flex
-              direction='column'
-              gap={12}>
-              <Typography
-                variant='heading-2'
-                fontWeight='semibold'>
-                비밀번호
-              </Typography>
-              <Input
-                {...register('password')}
-                type={isPasswordVisible ? 'text' : 'password'}
-                placeholder='비밀번호를 입력해주세요'
-                rightIcon={
-                  <div className='text-label-alternative'>
-                    <Icon
-                      size={20}
-                      onClick={() => setIsPasswordVisible((prev) => !prev)}
-                      name={isPasswordVisible ? 'EyeOutlined' : 'EyeInvisibleOutlined'}
-                    />
-                  </div>
-                }
-                isError={!!errors.password}
-                errorMessage={errors.password?.message}
-              />
-            </Flex>
-          </Flex>
-          <SolidButton
-            size='large'
-            fullWidth
-            disabled={isFormInvalid}
-            type='submit'>
-            회원가입
-          </SolidButton>
-        </form>
-      </Flex>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className='flex min-w-[37.5rem] flex-col gap-[3rem] px-[3.125rem] py-[3rem]'>
+        <Flex
+          justify='center'
+          className='w-full'>
+          <Logo />
+        </Flex>
+        <Flex
+          direction='column'
+          gap={12}>
+          <Typography
+            variant='heading-2'
+            fontWeight='semibold'>
+            이메일
+          </Typography>
+          <Input
+            {...register('email')}
+            placeholder='이메일을 입력해주세요'
+            isError={!!errors.email}
+            errorMessage={errors.email?.message}
+          />
+        </Flex>
+        <Flex
+          direction='column'
+          gap={12}>
+          <Typography
+            variant='heading-2'
+            fontWeight='semibold'>
+            닉네임
+          </Typography>
+          <Input
+            {...register('nickname')}
+            placeholder='닉네임을 입력해주세요'
+            isError={!!errors.nickname}
+            errorMessage={errors.nickname?.message}
+          />
+        </Flex>
+        <Flex
+          direction='column'
+          gap={12}>
+          <Typography
+            variant='heading-2'
+            fontWeight='semibold'>
+            비밀번호
+          </Typography>
+          <Input
+            {...register('password')}
+            type={isPasswordVisible ? 'text' : 'password'}
+            placeholder='비밀번호를 입력해주세요'
+            rightIcon={
+              <div className='text-label-alternative'>
+                <Icon
+                  size={20}
+                  onClick={() => setIsPasswordVisible((prev) => !prev)}
+                  name={isPasswordVisible ? 'EyeOutlined' : 'EyeInvisibleOutlined'}
+                />
+              </div>
+            }
+            isError={!!errors.password}
+            errorMessage={errors.password?.message}
+          />
+        </Flex>
+        <SolidButton
+          size='large'
+          fullWidth
+          disabled={isFormInvalid}
+          type='submit'>
+          회원가입
+        </SolidButton>
+      </form>
     </Modal>
   )
 }
