@@ -10,27 +10,7 @@ const meta = {
     docs: {
       description: {
         component: `
-#### 패스의 주요 정보를 한눈에 볼 수 있도록 표시하는 배너 컴포넌트입니다.
-
-#### 주요 기능
-- 패스 운영 기간 표시
-- 모집 기간 정보 표시
-- 합격자 발표일 안내
-- 수강 정원 및 난이도 레벨 표시
-
-#### 사용 예시
-
-\`\`\`tsx
-<PathInformationBanner
-  startDate="2024-11-18"
-  endDate="2024-11-25"
-  recruitStartDate="2024-12-23"
-  recruitEndDate="2024-12-30"
-  announcementDate="2025-01-01"
-  maxStudent={20}
-  level="초급"
-/>
-\`\`\`
+패스의 주요 정보를 한눈에 볼 수 있도록 표시하는 배너 컴포넌트입니다.
             `
       },
       argTypes: {
