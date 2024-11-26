@@ -9,7 +9,7 @@ export type PaginationContextProps = {
   setCurrentPage: (page: number) => void
   itemsPerPage: number
   totalItems: number
-  totalSection: number
+  totalPages: number
   currentSection: number
   currentGroupStart: number
   currentGroupEnd: number
@@ -23,28 +23,34 @@ type PaginationProviderProps = {
   totalItems: number
   children: ReactNode
   itemsPerPage: number
+  pagesPerSection: number
 }
 
-const PaginationProvider = ({ totalItems, itemsPerPage, children }: PaginationProviderProps) => {
+const PaginationProvider = ({
+  totalItems,
+  itemsPerPage,
+  pagesPerSection,
+  children
+}: PaginationProviderProps) => {
   const [currentPage, setCurrentPage] = useState(DEFAULT_CURRENT_PAGE)
 
-  const totalSection = useMemo(
-    () => Math.ceil(totalItems / itemsPerPage),
-    [totalItems, itemsPerPage]
-  )
+  const totalPages = useMemo(() => Math.ceil(totalItems / itemsPerPage), [totalItems, itemsPerPage])
+
   const currentSection = useMemo(
-    () => Math.ceil(currentPage / itemsPerPage),
-    [currentPage, itemsPerPage]
+    () => Math.ceil(currentPage / pagesPerSection),
+    [currentPage, pagesPerSection]
   )
 
-  const currentGroupStart = useMemo(
-    () => (currentSection - 1) * itemsPerPage + 1,
-    [currentSection, itemsPerPage]
-  )
   const currentGroupEnd = useMemo(
-    () => Math.min(currentSection * itemsPerPage, totalItems),
-    [currentSection, itemsPerPage, totalItems]
+    () => Math.min(totalPages, currentSection * pagesPerSection),
+    [currentSection, pagesPerSection, totalPages]
   )
+
+  const currentGroupStart = useMemo(() => {
+    const result = currentGroupEnd - (pagesPerSection - 1)
+
+    return result <= 0 ? 1 : result
+  }, [currentGroupEnd, pagesPerSection])
 
   return (
     <PaginationContext.Provider
@@ -53,7 +59,7 @@ const PaginationProvider = ({ totalItems, itemsPerPage, children }: PaginationPr
         currentPage,
         setCurrentPage,
         totalItems,
-        totalSection,
+        totalPages,
         currentSection,
         currentGroupStart,
         currentGroupEnd
@@ -74,13 +80,21 @@ const usePagination = (): PaginationContextProps => {
 type PaginationProps = ComponentProps<'div'> & {
   totalItems: number
   itemsPerPage: number
+  pagesPerSection: number
 }
 
-function Pagination({ totalItems, itemsPerPage, className, ...props }: PaginationProps) {
+function Pagination({
+  totalItems,
+  itemsPerPage,
+  pagesPerSection,
+  className,
+  ...props
+}: PaginationProps) {
   return (
     <PaginationProvider
       totalItems={totalItems}
-      itemsPerPage={itemsPerPage}>
+      itemsPerPage={itemsPerPage}
+      pagesPerSection={pagesPerSection}>
       <div
         className={cn('relative flex', className)}
         {...props}
@@ -120,10 +134,10 @@ function Prev({ onClick, ...props }: ComponentProps<'button'>) {
 }
 
 function Next({ onClick, ...props }: ComponentProps<'button'>) {
-  const { currentPage, setCurrentPage, totalItems } = usePagination()
+  const { currentPage, setCurrentPage, totalPages } = usePagination()
 
   const onNext = () => {
-    if (currentPage === totalItems) return
+    if (currentPage === totalPages) return
     setCurrentPage(currentPage + 1)
   }
 
@@ -134,7 +148,7 @@ function Next({ onClick, ...props }: ComponentProps<'button'>) {
     }
   }
 
-  const isButtonDisabled = useMemo(() => currentPage === totalItems, [currentPage, totalItems])
+  const isButtonDisabled = useMemo(() => currentPage === totalPages, [currentPage, totalPages])
 
   return (
     <button
@@ -162,18 +176,17 @@ function PageButton({ value, onClick, ...props }: ComponentProps<'button'>) {
     }
   }
 
-  const isButtonDisabled = useMemo(() => currentPage === pageValue, [currentPage, pageValue])
+  const isButtonHighlighted = useMemo(() => currentPage === pageValue, [currentPage, pageValue])
 
   return (
     <button
       onClick={handleClick}
-      disabled={isButtonDisabled}
       className='flex min-w-4 items-center justify-center'
       {...props}>
       <Typography
         variant='caption-1'
         fontWeight='medium'
-        color={isButtonDisabled ? 'assistive' : 'normal'}>
+        color={isButtonHighlighted ? 'assistive' : 'normal'}>
         {pageValue}
       </Typography>
     </button>
@@ -185,10 +198,14 @@ type PageButtonListProps = {
 }
 
 function PageButtonList({ onClickPage }: PageButtonListProps) {
-  const { itemsPerPage, currentGroupStart, currentGroupEnd } = usePagination()
+  const { currentGroupStart, currentGroupEnd } = usePagination()
 
   const pageArray = useMemo(
-    () => Array.from({ length: itemsPerPage }, (_, index) => currentGroupStart + index),
+    () =>
+      Array.from(
+        { length: currentGroupEnd - currentGroupStart + 1 },
+        (_, index) => currentGroupStart + index
+      ),
     [currentGroupStart, currentGroupEnd]
   )
 

@@ -64,8 +64,9 @@ function FeedbackList({ data }: FeedbackListProps) {
       </Flex>
       <Pagination
         className='gap-[0.75rem]'
-        totalItems={2}
-        itemsPerPage={1}
+        totalItems={10}
+        itemsPerPage={2}
+        pagesPerSection={5}
         onChange={() => {}}>
         <Pagination.Prev />
         <Pagination.PageButtonList />
