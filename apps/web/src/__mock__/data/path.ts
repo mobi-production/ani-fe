@@ -1,17 +1,21 @@
-import { GetPathIntroduceResponseType } from '@/entities/path/lib/types/introduce'
-export const pathIntroduceMock = (
-  pathId: number | string
-): GetPathIntroduceResponseType['data'] => {
+import {
+  GetPathDetailResponseType,
+  GetPathLoadResponseType,
+  GetPathPageResponseType,
+  GetPathSidebarStatusResponseType
+} from '@/entities/path/lib/types/apis'
+import { User } from '../handler/member'
+export const pathIntroduceMock = (pathId: number | string): GetPathDetailResponseType['data'] => {
   return {
     isSubscribed: false,
     status: 'PENDING',
     pathId,
-    startDate: '2024-11-15',
-    endDate: '2025-03-31',
+    startDate: '2024-11-15T00:00:00.000Z',
+    endDate: '2025-03-31T00:00:00.000Z',
     level: '중급',
     maxStudent: 10,
-    recruitStartDate: '2024-11-15',
-    recruitEndDate: '2024-12-15',
+    recruitStartDate: '2024-11-15T00:00:00.000Z',
+    recruitEndDate: '2024-12-15T00:00:00.000Z',
     announcementDate: '2024-12-15',
     path: {
       thumbnail: '/avif/placeholder.avif',
@@ -239,5 +243,150 @@ export const pathIntroduceMock = (
         ]
       }
     ]
+  }
+}
+
+export const pathSidebarStatusMock = (
+  pathId: number | string
+): GetPathSidebarStatusResponseType['data'] => {
+  return {
+    path: {
+      id: pathId,
+      title: 'HTML & CSS 패스',
+      thumbnail: '/avif/placeholder.avif',
+      startDate: '2024-11-15T00:00:00.000Z',
+      endDate: '2025-03-31T00:00:00.000Z',
+      progress: 100,
+      status: 'COMPLETED',
+      mentors: [
+        {
+          nickname: '김멘토',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'mentor1@example.com'
+        },
+        {
+          nickname: '이멘토',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'mentor2@example.com'
+        }
+      ],
+      crews: [
+        {
+          nickname: '김크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew1@example.com'
+        },
+        {
+          nickname: '이크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew2@example.com'
+        },
+        {
+          nickname: '박크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew3@example.com'
+        }
+      ]
+    },
+    curriculum: {
+      parts: [
+        {
+          id: 1,
+          order: 1,
+          title: 'HTML 개요(1)',
+          page: [
+            {
+              id: 1,
+              title: 'HTML 개요(1)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 2,
+              title: 'HTML 개요(2)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 3,
+              title: 'HTML 개요(3)',
+              type: 'LEARNING_CONTENTS',
+              checked: false
+            }
+          ]
+        },
+        {
+          id: 2,
+          order: 2,
+          title: 'HTML 개요(2)',
+          page: [
+            {
+              id: 4,
+              title: 'HTML 개요(1)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 5,
+              title: 'HTML 개요(2)',
+              type: 'VIDEO',
+              videoLength: '15:30',
+              checked: true
+            },
+            {
+              id: 6,
+              title: 'HTML 개요(3)',
+              type: 'LEARNING_CONTENTS',
+              checked: false
+            }
+          ]
+        }
+      ]
+    },
+    quiz: {
+      parts: [
+        {
+          id: 3,
+          order: 1,
+          title: 'HTML 개요(1)',
+          page: [
+            {
+              id: 4,
+              title: 'HTML 개요(1)',
+              type: 'QUIZ',
+              checked: true
+            }
+          ]
+        },
+        {
+          id: 4,
+          order: 2,
+          title: 'HTML 개요(2)',
+          page: [
+            {
+              id: 5,
+              title: 'HTML 개요(2)',
+              type: 'QUIZ',
+              checked: false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+export const pathPageMock: GetPathPageResponseType['data'] = {
+  partName: 'HTML 개요(1)',
+  pageName: '마무리 퀴즈',
+  type: 'LEARNING_CONTENTS',
+  content: []
+}
+
+export const pathLoadMock = (pathId: string): GetPathLoadResponseType['data'] => {
+  return {
+    pathId,
+    partId: '1',
+    pageId: '1'
   }
 }
