@@ -26,6 +26,7 @@ import {
   QuestionCircleOutlined,
   RightOutlined,
   RocketOutlined,
+  SearchOutlined,
   UserOutlined,
   VideoCameraOutlined
 } from '@ant-design/icons'
@@ -43,6 +44,7 @@ export const IconsMap = {
   CloseOutlined: CloseOutlined,
   InfoCircleOutlined: InfoCircleOutlined,
   QuestionCircleOutlined: QuestionCircleOutlined,
+  SearchOutlined: SearchOutlined,
   FileImageOutlined: FileImageOutlined,
   FilePdfOutlined: FilePdfOutlined,
   VideoCameraOutlined: VideoCameraOutlined,

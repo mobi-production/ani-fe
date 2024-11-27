@@ -9,5 +9,6 @@ export const BadgeColors = {
   ORANGE: 'orange',
   GREEN: 'green',
   BLUE: 'blue',
-  RED: 'red'
+  RED: 'red',
+  MINT: 'mint'
 } as const
