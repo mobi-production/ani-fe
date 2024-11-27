@@ -3,6 +3,7 @@ import {
   BellOutlined,
   BulbOutlined,
   CheckCircleFilled,
+  CheckOutlined,
   CloseOutlined,
   CodeOutlined,
   DownOutlined,
@@ -61,7 +62,8 @@ export const IconsMap = {
   RocketOutlined: RocketOutlined,
   BulbOutlined: BulbOutlined,
   LikeOutlined: LikeOutlined,
-  ExclamationOutlined: ExclamationOutlined
+  ExclamationOutlined: ExclamationOutlined,
+  CheckOutlined: CheckOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

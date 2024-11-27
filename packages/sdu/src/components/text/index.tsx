@@ -1,6 +1,5 @@
-import { ColorStyle } from '@repo/sdu/types/common'
 import { Typography } from '@repo/ui/server'
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, CSSProperties, ElementType } from 'react'
 
 import { textVariants, typographyMap } from '../../config/variants'
 
@@ -12,14 +11,14 @@ export type TextProps = {
   italic?: boolean
   strikethrough?: boolean
   underline?: boolean
-  style?: ColorStyle
+  style?: CSSProperties
 }
 
 type Props = {
   id?: string
   tag: ElementType
   rich_text: TextProps[]
-  style?: ColorStyle
+  style?: CSSProperties
   isToggle?: boolean
   variant?: ComponentPropsWithoutRef<typeof Typography>['variant']
   defaultFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']

@@ -5,6 +5,7 @@ import SDUBookmark from './components/bookmark'
 import SDUBulletedListItem from './components/bulleted-list-item'
 import SDUButton from './components/button'
 import SDUCallout from './components/callout'
+import SDUCheckbox from './components/checkbox'
 import SDUDivider from './components/divider'
 import SDUFile from './components/file'
 import SDUHeading1 from './components/heading1'
@@ -33,6 +34,7 @@ type ComponentPropsMap = {
   SDUCallout: ComponentProps<typeof SDUCallout>
   SDUTable: ComponentProps<typeof SDUTable>
   SDUButton: ComponentProps<typeof SDUButton>
+  SDUCheckbox: ComponentProps<typeof SDUCheckbox>
 }
 
 export type ServerDrivenComponentType =
@@ -118,6 +120,11 @@ export type ServerDrivenComponentType =
       props: ComponentPropsMap['SDUButton']
       content?: never
     }
+  | {
+      type: 'checkbox'
+      props: ComponentPropsMap['SDUCheckbox']
+      content?: ServerDrivenComponentType[]
+    }
 
 export function SDUComponent({
   content,
@@ -201,6 +208,16 @@ export function SDUComponent({
 
     case 'table':
       return <SDUTable {...props} />
+
+    case 'checkbox':
+      return (
+        <SDUCheckbox {...props}>
+          <ServerDrivenComponent
+            content={children ?? []}
+            isChild
+          />
+        </SDUCheckbox>
+      )
 
     default:
       console.warn(`Unknown component type: ${type}`)
