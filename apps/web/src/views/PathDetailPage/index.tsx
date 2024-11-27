@@ -15,7 +15,6 @@ export default function PathDetailPage({ data }: Props) {
       direction='column'
       gap={24}
       align='start'
-      className='flex-1'
       asChild>
       <section className='rounded-xl bg-background-normal px-[2.375rem] py-[4.5rem]'>
         <Flex

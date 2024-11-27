@@ -18,6 +18,7 @@ import {
   FileTextOutlined,
   FileWordOutlined,
   FileZipOutlined,
+  FireOutlined,
   Html5Outlined,
   InfoCircleOutlined,
   LeftOutlined,
@@ -59,7 +60,8 @@ export const IconsMap = {
   RocketOutlined: RocketOutlined,
   BulbOutlined: BulbOutlined,
   LikeOutlined: LikeOutlined,
-  ExclamationOutlined: ExclamationOutlined
+  ExclamationOutlined: ExclamationOutlined,
+  FireOutlined: FireOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

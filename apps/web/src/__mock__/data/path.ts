@@ -247,7 +247,8 @@ export const pathIntroduceMock = (pathId: number | string): GetPathDetailRespons
 }
 
 export const pathSidebarStatusMock = (
-  pathId: number | string
+  pathId: number | string,
+  status?: 'IN_PROGRESS' | 'PENDING_REVIEW' | 'COMPLETED'
 ): GetPathSidebarStatusResponseType['data'] => {
   return {
     path: {
@@ -257,7 +258,7 @@ export const pathSidebarStatusMock = (
       startDate: '2024-11-15T00:00:00.000Z',
       endDate: '2025-03-31T00:00:00.000Z',
       progress: 100,
-      status: 'COMPLETED',
+      status: status ? status : 'PENDING_REVIEW',
       mentors: [
         {
           nickname: '김멘토',
