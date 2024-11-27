@@ -3,11 +3,13 @@
 import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
+import { useAuthModalStore } from '@/features/auth/store'
 type HeaderProps = {
   isLoggedIn: boolean
 }
 
 function Header({ isLoggedIn }: HeaderProps) {
+  const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')
   }
@@ -17,7 +19,7 @@ function Header({ isLoggedIn }: HeaderProps) {
   }
 
   const onLoginClick = () => {
-    console.log('login')
+    setIsLoginModalOpen(true)
   }
 
   return (
