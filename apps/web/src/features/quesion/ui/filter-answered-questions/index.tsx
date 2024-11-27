@@ -4,12 +4,7 @@ function FilterAnsweredQuestions() {
   return (
     <Flex gap={8}>
       <RadioBtn />
-      <Typography
-        variant={'caption-1'}
-        fontWeight={'regular'}
-        color='normal'>
-        답변된 질문만 보기
-      </Typography>
+      <Typography variant={'caption-1'}>답변된 질문만 보기</Typography>
     </Flex>
   )
 }

@@ -48,8 +48,7 @@ function Contents({ children, ...props }: ComponentProps<'div'>) {
     <div {...props}>
       <Typography
         className='line-clamp-2 overflow-hidden text-ellipsis'
-        variant={'body-2-normal'}
-        fontWeight={'regular'}>
+        variant={'body-2-normal'}>
         {children}
       </Typography>
     </div>
@@ -65,7 +64,6 @@ function Date({ date, ...props }: DateProps) {
     <Typography
       variant={'caption-1'}
       color='alternative'
-      fontWeight={'regular'}
       {...props}>
       {formatDate(date, 'yyyy.MM.dd')}
     </Typography>

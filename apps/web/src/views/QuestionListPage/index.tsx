@@ -1,10 +1,14 @@
 import QuestionList from '@/entities/question/ui/question-list'
 import FilterAnsweredQuestions from '@/features/quesion/ui/filter-answered-questions'
 import QuestionSearchBar from '@/features/quesion/ui/question-search-bar'
-import NavigateToFormButton from '@/widgets/question/ui/navigate-to-form-button'
+import { SolidButton } from '@repo/ui/server'
 import { Flex, Typography } from '@repo/ui/server'
 
 export default function QuestionListPage() {
+  const onNavigateToFormPage = () => {
+    // 질문 남기기 섹션으로 이동
+  }
+
   return (
     <Flex
       direction='column'
@@ -28,7 +32,13 @@ export default function QuestionListPage() {
         <FilterAnsweredQuestions />
       </Flex>
       <QuestionList />
-      <NavigateToFormButton />
+      <SolidButton
+        onClick={onNavigateToFormPage}
+        variant='primary'
+        fullWidth
+        className='rounded-[0.25rem]'>
+        질문 남기기
+      </SolidButton>
     </Flex>
   )
 }
