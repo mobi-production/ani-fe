@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import QuestionSearchBar from '.'
 
 const meta = {
-  title: 'Feature/QuestionSearchBar',
+  title: 'Feature/Question/QuestionSearchBar',
   component: QuestionSearchBar,
   parameters: {
     layout: 'centered',

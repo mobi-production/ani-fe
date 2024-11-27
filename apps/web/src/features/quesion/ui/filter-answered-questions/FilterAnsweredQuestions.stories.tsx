@@ -3,7 +3,7 @@ import FilterAnsweredQuestions from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/FilterAnsweredQuestions',
+  title: 'Feature/Question/FilterAnsweredQuestions',
   component: FilterAnsweredQuestions,
   parameters: {
     layout: 'center',

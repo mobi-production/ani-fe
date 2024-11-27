@@ -3,7 +3,7 @@ import PartFeedbackSubmitButton from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/PartFeedbackSubmitButton',
+  title: 'Feature/Feedback/PartFeedbackSubmitButton',
   component: PartFeedbackSubmitButton,
   parameters: {
     layout: 'fullscreen',
