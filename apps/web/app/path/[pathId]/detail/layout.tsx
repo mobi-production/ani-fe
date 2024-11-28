@@ -1,10 +1,9 @@
-import { getPathSidebarStatus } from '@/entities/path/lib/apis'
-import { GetPathSidebarStatusResponseType } from '@/entities/path/lib/types/apis'
-import PathDetailNavLink from '@/widgets/path/ui/path-detail-nav-link'
+import { getPathStatus, GetPathStatusResponseType } from '@/views/path/api/get-path-status'
+import SidebarPathDetailNavLink from '@/widgets/path/ui/sidebar/PathDetailNavLink'
 import { Icon } from '@repo/ui/client'
 import { Flex, Typography } from '@repo/ui/server'
 import { notFound } from 'next/navigation'
-import cn from 'node_modules/@repo/util/src/cn'
+import cn from '@repo/util/cn'
 import { PropsWithChildren } from 'react'
 
 type Props = {
@@ -14,14 +13,14 @@ type Props = {
 export function DetailPageLayoutInner({
   children,
   data
-}: PropsWithChildren<{ data: GetPathSidebarStatusResponseType['data'] }>) {
+}: PropsWithChildren<{ data: GetPathStatusResponseType['data'] }>) {
   return (
     <Flex
       asChild
       gap={28}
       direction='row'>
       <main className='mb-[4.5rem] w-full max-w-[82rem] overflow-x-auto'>
-        <PathDetailNavLink data={data} />
+        <SidebarPathDetailNavLink data={data} />
         <section
           className={cn('flex-1', data.path.status === 'COMPLETED' && 'flex flex-col gap-7')}>
           {data.path.status === 'COMPLETED' && (
@@ -61,7 +60,7 @@ export function DetailPageLayoutInner({
 }
 
 export default async function Layout({ params: { pathId }, children }: PropsWithChildren<Props>) {
-  const sidebarStatus = await getPathSidebarStatus({ pathId })
+  const sidebarStatus = await getPathStatus({ pathId })
 
   if (!sidebarStatus) {
     return notFound()

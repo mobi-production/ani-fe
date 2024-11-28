@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import { getPathPage } from '@/entities/path/lib/apis/get-path-page'
+import { getPathPage } from '@/views/path/api/get-path-page'
 import { notFound } from 'next/navigation'
-import PathDetailPage from '@/views/PathDetailPage'
+import DetailPage from '@/views/path/ui/DetailPage'
 
 export async function generateMetadata({
   params,
@@ -48,5 +48,5 @@ export default async function Page({
     return notFound()
   }
 
-  return <PathDetailPage data={data.data} />
+  return <DetailPage data={data.data} />
 }
