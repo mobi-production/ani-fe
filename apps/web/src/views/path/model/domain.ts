@@ -1,30 +1,24 @@
-import { BasePageType, BaseVideoPageType } from '@/shared/types/path'
+import { PathStatus } from '@/shared/types/path'
+import { ServerDrivenComponentType } from '@repo/sdu'
 
-export type UserType = {
-  email: string
-  nickname: string
-  profileUrl: string | null
+// 패스 소개 데이터 타입
+export type PathIntroduceType = {
+  isSubscribed: boolean
+  status: PathStatus
+  pathId: number | string
+  startDate: string | Date
+  endDate: string | Date
+  level: string
+  maxStudent: number
+  recruitStartDate: string | Date
+  recruitEndDate: string | Date
+  announcementDate: string | Date
 }
 
-export type CurriculumPageType = {
-  checked: boolean
-} & (BasePageType | BaseVideoPageType)
-
-export type CurriculumPartType = {
-  id: number
-  order: number
+// 패스 상세 데이터 타입
+export type PathDetailType = {
   title: string
-  page: CurriculumPageType[]
-}
-
-export type CurriculumType = {
-  parts: CurriculumPartType[]
-}
-
-export type QuizType = {
-  quizs: {
-    question: string
-    answers: string[]
-    correctAnswer: string
-  }[]
+  description: string
+  thumbnail: string
+  content: ServerDrivenComponentType[]
 }

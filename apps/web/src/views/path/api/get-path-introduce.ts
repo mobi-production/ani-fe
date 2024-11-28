@@ -1,26 +1,11 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { BasePartType, PathStatus } from '@/shared/types/path'
-import { ServerDrivenComponentType } from '@repo/sdu/index'
+import type { BasePartType } from '@/shared/types/path'
+import type { PathDetailType, PathIntroduceType } from '../model/domain'
 
 type Data = {
-  isSubscribed: boolean
-  status: PathStatus
-  pathId: number | string
-  startDate: string | Date
-  endDate: string | Date
-  level: string
-  maxStudent: number
-  recruitStartDate: string | Date
-  recruitEndDate: string | Date
-  announcementDate: string | Date
-  path: {
-    title: string
-    description: string
-    thumbnail: string
-    content: ServerDrivenComponentType[]
-  }
+  path: PathDetailType
   parts: BasePartType[]
-}
+} & PathIntroduceType
 
 export type GetPathIntroduceParamsType = {
   pathId: string

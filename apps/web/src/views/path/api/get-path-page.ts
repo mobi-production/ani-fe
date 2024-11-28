@@ -1,6 +1,6 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import { ServerDrivenComponentType } from '@repo/sdu/index'
-import { QuizType } from '../model/domain'
+import { PathPageType, QuizType } from '@/entities/path/model/domain'
 
 export type GetPathPageParamsType = {
   pathId: string
@@ -10,19 +10,7 @@ export type GetPathPageParamsType = {
 
 export type GetPathPageResponseType = {
   status: number
-  data: {
-    partName: string
-    pageName: string
-  } & (
-    | {
-        type: 'LEARNING_CONTENTS'
-        content: ServerDrivenComponentType[]
-      }
-    | {
-        type: 'QUIZ'
-        quiz: QuizType
-      }
-  )
+  data: PathPageType
 }
 
 /**

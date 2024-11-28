@@ -6,11 +6,9 @@ import InformationBlock from './InformationBlock'
 import CheckCurriculumBlock from './CheckCurriculumBlock'
 import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
 
-type Props = {
-  data: GetPathStatusResponseType['data']
-}
+type Props = GetPathStatusResponseType['data']
 
-function SidebarPathDetailNavLink({ data: { path, curriculum, quiz } }: Props) {
+function SidebarPathDetailNavLink({ path, curriculum, quiz }: Props) {
   return (
     <Flex
       direction='column'

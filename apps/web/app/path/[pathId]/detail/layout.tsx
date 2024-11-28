@@ -1,10 +1,12 @@
-import { getPathStatus, GetPathStatusResponseType } from '@/views/path/api/get-path-status'
+import { getPathStatus } from '@/views/path/api/get-path-status'
 import SidebarPathDetailNavLink from '@/widgets/path/ui/sidebar/PathDetailNavLink'
 import { Icon } from '@repo/ui/client'
 import { Flex, Typography } from '@repo/ui/server'
 import { notFound } from 'next/navigation'
 import cn from '@repo/util/cn'
 import { PropsWithChildren } from 'react'
+import { PathStatusType } from '@/entities/path/model/domain'
+import { CurriculumType } from '@/entities/path/model/domain'
 
 type Props = {
   params: { pathId: string }
@@ -12,18 +14,27 @@ type Props = {
 
 export function DetailPageLayoutInner({
   children,
-  data
-}: PropsWithChildren<{ data: GetPathStatusResponseType['data'] }>) {
+  curriculum,
+  path,
+  quiz
+}: PropsWithChildren<{
+  path: PathStatusType
+  curriculum: CurriculumType
+  quiz: CurriculumType
+}>) {
   return (
     <Flex
       asChild
       gap={28}
       direction='row'>
       <main className='mb-[4.5rem] w-full max-w-[82rem] overflow-x-auto'>
-        <SidebarPathDetailNavLink data={data} />
-        <section
-          className={cn('flex-1', data.path.status === 'COMPLETED' && 'flex flex-col gap-7')}>
-          {data.path.status === 'COMPLETED' && (
+        <SidebarPathDetailNavLink
+          curriculum={curriculum}
+          path={path}
+          quiz={quiz}
+        />
+        <section className={cn('flex-1', path.status === 'COMPLETED' && 'flex flex-col gap-7')}>
+          {path.status === 'COMPLETED' && (
             <Flex
               direction='row'
               gap={20}
@@ -46,7 +57,7 @@ export function DetailPageLayoutInner({
                     이수를 완료했어요
                   </Typography>
                   <Typography variant='body-1-normal'>
-                    {data.path.title} 패스의 모든 과정을 이수했어요.
+                    {path.title} 패스의 모든 과정을 이수했어요.
                   </Typography>
                 </Flex>
               </div>
@@ -66,5 +77,5 @@ export default async function Layout({ params: { pathId }, children }: PropsWith
     return notFound()
   }
 
-  return <DetailPageLayoutInner data={sidebarStatus.data}>{children}</DetailPageLayoutInner>
+  return <DetailPageLayoutInner {...sidebarStatus.data}>{children}</DetailPageLayoutInner>
 }

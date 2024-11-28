@@ -1,19 +1,8 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { PathStatus } from '@/shared/types/path'
-import { UserType, CurriculumType } from '../model/domain'
+import { CurriculumType, PathStatusType } from '@/entities/path/model/domain'
 
 type Data = {
-  path: {
-    id: number | string
-    title: string
-    thumbnail: string
-    startDate: string | Date
-    endDate: string | Date
-    progress: number
-    status: PathStatus
-    mentors: UserType[]
-    crews: UserType[]
-  }
+  path: PathStatusType
   curriculum: CurriculumType
   quiz: CurriculumType
 }

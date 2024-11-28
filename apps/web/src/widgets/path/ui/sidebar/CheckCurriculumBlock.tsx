@@ -3,12 +3,16 @@
 import { Flex, Typography, SpacingBlock } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import CheckBox from '@repo/ui/components/check'
-import { notFound, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { memo, useCallback, useMemo, useOptimistic, useState } from 'react'
 import cn from 'node_modules/@repo/util/src/cn'
 import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
-import { CurriculumPageType, CurriculumPartType } from '@/views/path/model/domain'
+import {
+  CurriculumPageType,
+  CurriculumPartType,
+  CurriculumType
+} from '@/entities/path/model/domain'
 
 type PageTypeProps = CurriculumPageType & {
   active: boolean
@@ -176,7 +180,9 @@ interface CurrentParams {
   pageId: string
 }
 
-type Props = GetPathStatusResponseType['data']['curriculum']
+type Props = {
+  parts: CurriculumPartType[]
+}
 
 function SidebarCheckCurriculumBlock({ parts }: Props) {
   const router = useRouter()

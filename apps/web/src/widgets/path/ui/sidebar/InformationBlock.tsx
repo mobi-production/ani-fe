@@ -1,9 +1,10 @@
-import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
 import { Flex, ImageSection, Typography, ProgressBar, SolidButton, Divider } from '@repo/ui/server'
 import { formatDate } from '@repo/util/formatDate'
 import Image from 'next/image'
 
-type Props = GetPathStatusResponseType['data']['path']
+import { PathStatusType } from '@/entities/path/model/domain'
+
+type Props = PathStatusType
 
 function SidebarInformationBlock({
   crews,
