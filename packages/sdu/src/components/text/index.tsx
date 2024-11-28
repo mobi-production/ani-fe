@@ -23,7 +23,7 @@ type Props = {
   variant?: ComponentPropsWithoutRef<typeof Typography>['variant']
   defaultFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']
   boldFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']
-}
+} & ComponentPropsWithoutRef<'span'>
 
 function SDUText({
   id,
@@ -32,13 +32,15 @@ function SDUText({
   defaultFontWeight = 'medium',
   boldFontWeight = 'semibold',
   tag = 'p',
-  style
+  style,
+  ...props
 }: Props) {
   const Component = tag ?? 'span'
   return (
     <Component
       id={id}
-      style={style}>
+      style={style}
+      {...props}>
       {rich_text.map(({ text, ...rest }, index) => (
         <Typography
           key={index}
@@ -54,7 +56,7 @@ function SDUText({
           })}
           style={rest.style}
           asChild>
-          {rest.link ? <a href={rest.link}>{text}</a> : <p>{text}</p>}
+          {rest.link ? <a href={rest.link}>{text}</a> : <span>{text}</span>}
         </Typography>
       ))}
     </Component>

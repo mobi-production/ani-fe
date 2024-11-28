@@ -12,7 +12,12 @@ const meta = {
     docs: {
       description: {
         component: `
-#### Heading2 텍스트를 표시하는 컴포넌트
+Heading2 텍스트를 표시하는 컴포넌트
+
+### Props
+
+- \`text\`: 목차와 같이 표시할 텍스트
+- \`rich_text\`: 세부적인 스타일을 포함한 텍스트
 
 #### 예시
 \`\`\`json

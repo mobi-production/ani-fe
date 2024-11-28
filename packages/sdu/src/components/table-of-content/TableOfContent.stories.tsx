@@ -1,24 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { ServerDrivenComponent, ServerDrivenComponentType } from '../../'
+import heading1Example from '../heading1/heading1-content.json'
+import heading2Example from '../heading2/example.json'
+import heading3Example from '../heading3/example.json'
+import textExample from '../text/example.json'
 import example from './example.json'
-import heading1WithChild from './heading1-content.json'
-import heading1Style from './heading1-style.json'
+import styleExample from './style.json'
 
 const meta = {
-  title: 'SDU/Heading1',
+  title: 'SDU/TableOfContent',
   component: ServerDrivenComponent,
   parameters: {
     layout: 'centered',
     docs: {
       description: {
         component: `
-Heading1 텍스트를 표시하는 컴포넌트
+목차를 표시하는 컴포넌트
 
-### Props
+heading으로 시작하는 id를 가진 모든 요소를 찾아서 목차를 표시합니다.
 
-- \`text\`: 목차와 같이 표시할 텍스트
-- \`rich_text\`: 세부적인 스타일을 포함한 텍스트
+
+### props
+
+#### \`style\`: 컴포넌트의 색상과 배경색을 조절합니다.
 
 #### 예시
 \`\`\`json
@@ -40,42 +45,42 @@ export const Preview: StoryObj<typeof ServerDrivenComponent> = {
   render: (args) => <ServerDrivenComponent content={args.content} />
 }
 
-export const WithBold: StoryObj<typeof ServerDrivenComponent> = {
+const preview = [example, heading1Example, heading2Example, heading3Example, textExample]
+
+export const WithContent: StoryObj<typeof ServerDrivenComponent> = {
   parameters: {
     docs: {
       description: {
         story: `
 #### 예시
 \`\`\`json
-${JSON.stringify(heading1Style, null, 2)}
-}
+${JSON.stringify(preview, null, 2)}
 \`\`\`
         `
       }
     }
   },
   args: {
-    content: [heading1Style as ServerDrivenComponentType]
+    content: preview as ServerDrivenComponentType[]
   },
   render: (args) => <ServerDrivenComponent content={args.content} />
 }
 
-export const WithChild: StoryObj<typeof ServerDrivenComponent> = {
+export const WithStyle: StoryObj<typeof ServerDrivenComponent> = {
   parameters: {
     docs: {
       description: {
         story: `
 #### 예시
 \`\`\`json
-${JSON.stringify(heading1WithChild, null, 2)}
-}
+${JSON.stringify(styleExample, null, 2)}
 \`\`\`
         `
       }
     }
   },
   args: {
-    content: [heading1WithChild as ServerDrivenComponentType]
+    content: [styleExample as ServerDrivenComponentType]
   },
   render: (args) => <ServerDrivenComponent content={args.content} />
 }

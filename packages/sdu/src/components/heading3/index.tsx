@@ -4,13 +4,18 @@ import { ColorStyle } from '@repo/sdu/types/common'
 import SDUText, { TextProps } from '../text'
 
 type Props = {
+  id: string
+  text: string
   rich_text: TextProps[]
   style?: ColorStyle
+  depth: number
 }
 
-function SDUHeading3({ rich_text, style, ...props }: Props) {
+function SDUHeading3({ text, rich_text, style, depth, id, ...props }: Props) {
   return (
     <SDUText
+      id={`heading3-${depth}-${id}`}
+      data-text={text}
       tag='h3'
       rich_text={rich_text}
       variant={typographyMap['heading_3']}
