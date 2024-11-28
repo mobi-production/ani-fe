@@ -8,11 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { memo, useCallback, useMemo, useOptimistic, useState } from 'react'
 import cn from 'node_modules/@repo/util/src/cn'
 import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
-import {
-  CurriculumPageType,
-  CurriculumPartType,
-  CurriculumType
-} from '@/entities/path/model/domain'
+import { CurriculumPageType, CurriculumPartType, CurriculumType } from '@/entities/path/model/apis'
 
 type PageTypeProps = CurriculumPageType & {
   active: boolean

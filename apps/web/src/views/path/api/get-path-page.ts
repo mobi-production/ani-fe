@@ -1,6 +1,5 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { ServerDrivenComponentType } from '@repo/sdu/index'
-import { PathPageType, QuizType } from '@/entities/path/model/domain'
+import { PathPageType } from '@/entities/path/model/apis'
 
 export type GetPathPageParamsType = {
   pathId: string

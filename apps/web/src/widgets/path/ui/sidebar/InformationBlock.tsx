@@ -2,7 +2,7 @@ import { Flex, ImageSection, Typography, ProgressBar, SolidButton, Divider } fro
 import { formatDate } from '@repo/util/formatDate'
 import Image from 'next/image'
 
-import { PathStatusType } from '@/entities/path/model/domain'
+import { PathStatusType } from '@/entities/path/model/apis'
 
 type Props = PathStatusType
 

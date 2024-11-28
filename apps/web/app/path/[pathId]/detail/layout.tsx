@@ -5,8 +5,8 @@ import { Flex, Typography } from '@repo/ui/server'
 import { notFound } from 'next/navigation'
 import cn from '@repo/util/cn'
 import { PropsWithChildren } from 'react'
-import { PathStatusType } from '@/entities/path/model/domain'
-import { CurriculumType } from '@/entities/path/model/domain'
+import { PathStatusType } from '@/entities/path/model/apis'
+import { CurriculumType } from '@/entities/path/model/apis'
 
 type Props = {
   params: { pathId: string }

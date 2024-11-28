@@ -1,5 +1,5 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { CurriculumType, PathStatusType } from '@/entities/path/model/domain'
+import { CurriculumType, PathStatusType } from '@/entities/path/model/apis'
 
 type Data = {
   path: PathStatusType
