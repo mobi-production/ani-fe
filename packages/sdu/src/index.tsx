@@ -6,6 +6,7 @@ import SDUBulletedListItem from './components/bulleted-list-item'
 import SDUButton from './components/button'
 import SDUCallout from './components/callout'
 import SDUCheckbox from './components/checkbox'
+import SDUCode from './components/code'
 import SDUDivider from './components/divider'
 import SDUFile from './components/file'
 import SDUHeading1 from './components/heading1'
@@ -37,6 +38,7 @@ type ComponentPropsMap = {
   SDUButton: ComponentProps<typeof SDUButton>
   SDUCheckbox: ComponentProps<typeof SDUCheckbox>
   SDUTableOfContent: ComponentProps<typeof SDUTableOfContent>
+  SDUCode: ComponentProps<typeof SDUCode>
 }
 
 export type ServerDrivenComponentType =
@@ -130,6 +132,11 @@ export type ServerDrivenComponentType =
   | {
       type: 'table_of_content'
       props?: ComponentPropsMap['SDUTableOfContent']
+      content?: never
+    }
+  | {
+      type: 'code'
+      props: ComponentPropsMap['SDUCode']
       content?: never
     }
 
@@ -297,6 +304,9 @@ export function SDUComponent({
 
     case 'table_of_content':
       return <SDUTableOfContent {...props} />
+
+    case 'code':
+      return <SDUCode {...props} />
 
     default:
       console.warn(`Unknown component type: ${type}`)
