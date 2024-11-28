@@ -3,7 +3,7 @@ import PathCancleButton from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/PathCancleButton',
+  title: 'Feature/Path/CancleButton',
   component: PathCancleButton,
   parameters: {
     layout: 'fullscreen',

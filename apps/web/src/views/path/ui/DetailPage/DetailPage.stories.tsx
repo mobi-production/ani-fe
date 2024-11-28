@@ -52,7 +52,7 @@ export const Preview: Story = {
           <option value='COMPLETED'>Completed</option>
           <option value='IN_PROGRESS'>In Progress</option>
         </select>
-        <DetailPageLayoutInner data={sidebarStatus('3', status)}>
+        <DetailPageLayoutInner {...sidebarStatus('3', status)}>
           {args.data && <PathDetailPage {...args} />}
         </DetailPageLayoutInner>
       </div>
