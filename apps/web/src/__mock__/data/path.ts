@@ -22,6 +22,8 @@ export const pathIntroduceMock = (
         {
           type: 'heading_1',
           props: {
+            id: 'heading-1-1',
+            text: 'HTML & CSS 패스',
             rich_text: [
               {
                 text: 'HTML & CSS 패스'

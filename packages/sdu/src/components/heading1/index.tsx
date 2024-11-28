@@ -9,10 +9,17 @@ type Props = {
   text: string
   rich_text: TextProps[]
   style?: ColorStyle
-  depth: number
+  depth?: number
 }
 
-function SDUHeading1({ text, rich_text, style, depth, id, ...props }: PropsWithChildren<Props>) {
+function SDUHeading1({
+  text,
+  rich_text,
+  style,
+  depth = 0,
+  id,
+  ...props
+}: PropsWithChildren<Props>) {
   return (
     <SDUText
       id={`heading1-${depth}-${id}`}

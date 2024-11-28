@@ -8,10 +8,10 @@ type Props = {
   text: string
   rich_text: TextProps[]
   style?: ColorStyle
-  depth: number
+  depth?: number
 }
 
-function SDUHeading3({ text, rich_text, style, depth, id, ...props }: Props) {
+function SDUHeading3({ text, rich_text, style, depth = 0, id, ...props }: Props) {
   return (
     <SDUText
       id={`heading3-${depth}-${id}`}
