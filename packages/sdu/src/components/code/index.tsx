@@ -1,4 +1,4 @@
-import Flex from 'node_modules/@repo/ui/src/components/flex'
+import { Flex } from '@repo/ui/server'
 import { useState } from 'react'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import jsx from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
