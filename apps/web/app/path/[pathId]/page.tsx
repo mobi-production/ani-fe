@@ -19,8 +19,10 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { pathId: string } }) {
   const data = await getPathIntroduce(params.pathId)
+
   if (!data) {
     return notFound()
   }
+
   return <PathIntroducePage data={data.data} />
 }
