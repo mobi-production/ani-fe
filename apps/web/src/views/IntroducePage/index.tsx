@@ -1,6 +1,5 @@
 'use client'
 
-import { GetPathIntroduceResponseType } from '@/entities/path/lib/types/introduce'
 import FullScreenLayout from '@/shared/ui/layout/full-screen-layout'
 import NavigationLinks from '@/shared/ui/NavigationLinks'
 import PathCurriculum from '@/widgets/path/ui/path-curriculum'
@@ -8,9 +7,10 @@ import PathInformationBanner from '@/widgets/path/ui/path-information-banner'
 import PathTitleBanner from '@/widgets/path/ui/path-title-banner'
 import { Divider, Flex } from '@repo/ui/server'
 import { ServerDrivenComponent } from '@repo/sdu/index'
+import { GetPathDetailResponseType } from '@/entities/path/lib/types/apis'
 
 type Props = {
-  data: GetPathIntroduceResponseType['data']
+  data: GetPathDetailResponseType['data']
 }
 
 export function PathIntroducePage({ data }: Props) {
