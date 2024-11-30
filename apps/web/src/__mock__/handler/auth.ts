@@ -1,5 +1,6 @@
 import { http, HttpHandler, HttpResponse, StrictRequest } from 'msw'
 import type { User } from '../types/auth'
+import { END_POINT } from '@/shared/config/constants/end-point'
 
 const correctUser: Map<User['email'], User> = new Map()
 correctUser.set('creme@naver.com', {
@@ -11,7 +12,7 @@ correctUser.set('creme@naver.com', {
 
 export const authHandlers: HttpHandler[] = [
   http.post(
-    '/auth/login',
+    END_POINT.AUTH.LOGIN,
     async ({ request }: { request: StrictRequest<{ email: string; password: string }> }) => {
       const { email, password } = await request.json()
       const user = correctUser.get(email)
@@ -36,7 +37,7 @@ export const authHandlers: HttpHandler[] = [
       )
     }
   ),
-  http.post('/auth/signup', async ({ request }: { request: StrictRequest<User> }) => {
+  http.post(END_POINT.AUTH.SIGNUP, async ({ request }: { request: StrictRequest<User> }) => {
     const { email, nickname, password, profileUrl } = await request.json()
 
     if (correctUser.has(email)) {

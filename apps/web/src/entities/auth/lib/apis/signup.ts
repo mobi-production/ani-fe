@@ -1,9 +1,10 @@
 import type { SignupRequestType, AuthResponse } from '@/__mock__/types/auth'
+import { END_POINT } from '@/shared/config/constants/end-point'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 export async function signup(signupData: SignupRequestType) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.AUTH.SIGNUP, {
       method: HTTP_METHODS.POST,
       headers: HTTP_HEADERS.JSON,
       body: JSON.stringify(signupData)
