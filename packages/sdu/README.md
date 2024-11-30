@@ -4,7 +4,7 @@
 
 - `type`: 컴포넌트 타입
 - `props`: 컴포넌트 속성
-- `content`: 컴포넌트내 하위 컴포넌트가 필요한 경우(예: list 내의 item)
+- `children`: 컴포넌트내 하위 컴포넌트가 필요한 경우(예: list 내의 item)
 
 #### example
 
@@ -34,6 +34,8 @@
 - [table](./src/components/table)
 - [quote](./src/components/quote)
 - [table](./src/components/table)
+- [code](./src/components/code)
+- [table_of_content](./src/components/table-of-content)
 
 ### 사용 방법
 
@@ -44,6 +46,12 @@ const content = [
   {
     type: 'text',
     props: { rich_text: [{ text: 'Hello, world!' }] }
+    children: [
+      {
+        type: 'text',
+        props: { rich_text: [{ text: 'Hello, world!' }] }
+      }
+    ]
   }
 ]
 
