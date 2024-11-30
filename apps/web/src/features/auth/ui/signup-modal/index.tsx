@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { SignupModalFormData, signupModalSchema } from '../../model/signupModalSchema'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { signup } from '@/entities/auth/lib/apis'
 
 function SignupModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -45,7 +46,12 @@ function SignupModal() {
   }
 
   const onSubmit = async (formData: SignupModalFormData) => {
-    console.log(formData)
+    const response = await signup(formData)
+    if (response?.status === 201) {
+      console.log(response.message)
+    } else {
+      console.error('회원가입 실패:', response?.message)
+    }
   }
 
   return (

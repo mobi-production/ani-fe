@@ -10,6 +10,7 @@ import { useAuthModalStore } from '../../store'
 import { LoginModalFormData, loginModalSchema } from '../../model/loginModalSchema'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { login } from '@/entities/auth/lib/apis'
 
 function LoginModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -51,7 +52,13 @@ function LoginModal() {
   }
 
   const onSubmit = async (formData: LoginModalFormData) => {
-    console.log(formData)
+    const response = await login(formData)
+    onCloseLoginModal()
+    if (response?.status === 200) {
+      console.log(response.message)
+    } else {
+      console.error('로그인 실패:', response?.message)
+    }
   }
 
   return (
