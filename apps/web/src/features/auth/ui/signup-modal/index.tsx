@@ -49,6 +49,7 @@ function SignupModal() {
     const response = await signup(formData)
     if (response?.status === 201) {
       console.log(response.message)
+      onCloseSignupModal()
     } else {
       console.error('회원가입 실패:', response?.message)
     }
