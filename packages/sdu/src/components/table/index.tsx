@@ -3,7 +3,7 @@ import cn from '@repo/util/cn'
 
 import SDUText, { TextProps } from '../text'
 
-interface TableProps {
+type Props = {
   id?: string
   has_column_header?: boolean
   has_row_header?: boolean
@@ -18,7 +18,7 @@ interface TableProps {
   }[]
 }
 
-const SDUTable = ({ id, has_column_header, has_row_header, rows }: TableProps) => {
+const SDUTable = ({ id, has_column_header, has_row_header, rows }: Props) => {
   return (
     <div
       id={id}
