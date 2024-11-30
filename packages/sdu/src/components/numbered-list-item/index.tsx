@@ -6,7 +6,6 @@ import { ServerDrivenComponentType } from '../..'
 import SDUText, { TextProps } from '../text'
 
 type SDUBulletedListProps = {
-  id?: string
   rich_text: TextProps[]
   numbered: number
   content: ServerDrivenComponentType[]
@@ -14,7 +13,6 @@ type SDUBulletedListProps = {
 }
 
 function SDUNumberedList({
-  id,
   rich_text,
   numbered,
   style,
@@ -22,7 +20,6 @@ function SDUNumberedList({
 }: PropsWithChildren<SDUBulletedListProps>) {
   return (
     <Flex
-      id={id}
       gap={8}
       style={style}>
       <div

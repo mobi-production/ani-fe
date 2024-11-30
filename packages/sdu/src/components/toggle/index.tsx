@@ -1,4 +1,5 @@
 import { typographyMap } from '@repo/sdu/config/variants'
+import uuid from '@repo/sdu/libs/uuid'
 import { ColorStyle } from '@repo/sdu/types/common'
 import { Flex } from '@repo/ui/server'
 import { memo, useState } from 'react'
@@ -6,7 +7,6 @@ import { memo, useState } from 'react'
 import SDUText, { TextProps } from '../text'
 
 type Props = {
-  id: string
   text: string
   variant?: keyof typeof typographyMap
   summary: TextProps[]
@@ -20,7 +20,6 @@ function SDUToggle({
   summary,
   style,
   depth,
-  id,
   children,
   ...props
 }: Props & { children?: React.ReactNode }) {
@@ -40,7 +39,7 @@ function SDUToggle({
 
   return (
     <details
-      id={variant !== 'text' ? `heading${variant.split('_')[1]}toggle-${depth}-${id}` : id}
+      id={variant !== 'text' ? `heading${variant.split('_')[1]}toggle-${depth}-${uuid()}` : ''}
       data-text={text}
       style={style}
       className='group overflow-hidden'

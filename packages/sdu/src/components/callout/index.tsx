@@ -5,7 +5,6 @@ import { Flex, Typography } from '@repo/ui/server'
 import SDUText, { TextProps } from '../text'
 
 type Props = {
-  id?: string
   icon: string
   rich_text: TextProps[]
   style?: ColorStyle
