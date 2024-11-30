@@ -18,6 +18,7 @@ import {
   FileTextOutlined,
   FileWordOutlined,
   FileZipOutlined,
+  FireOutlined,
   Html5Outlined,
   InfoCircleOutlined,
   LeftOutlined,
@@ -26,6 +27,7 @@ import {
   QuestionCircleOutlined,
   RightOutlined,
   RocketOutlined,
+  SearchOutlined,
   UserOutlined,
   VideoCameraOutlined
 } from '@ant-design/icons'
@@ -43,6 +45,7 @@ export const IconsMap = {
   CloseOutlined: CloseOutlined,
   InfoCircleOutlined: InfoCircleOutlined,
   QuestionCircleOutlined: QuestionCircleOutlined,
+  SearchOutlined: SearchOutlined,
   FileImageOutlined: FileImageOutlined,
   FilePdfOutlined: FilePdfOutlined,
   VideoCameraOutlined: VideoCameraOutlined,
@@ -59,7 +62,8 @@ export const IconsMap = {
   RocketOutlined: RocketOutlined,
   BulbOutlined: BulbOutlined,
   LikeOutlined: LikeOutlined,
-  ExclamationOutlined: ExclamationOutlined
+  ExclamationOutlined: ExclamationOutlined,
+  FireOutlined: FireOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

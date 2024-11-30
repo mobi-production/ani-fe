@@ -3,7 +3,7 @@ import PathFeedbackSubmitButton from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/PathFeedbackSubmitButton',
+  title: 'Feature/Feedback/PathFeedbackSubmitButton',
   component: PathFeedbackSubmitButton,
   parameters: {
     layout: 'fullscreen',

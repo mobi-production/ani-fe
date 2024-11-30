@@ -1,5 +1,5 @@
 import { http, HttpHandler, HttpResponse } from 'msw'
-import { pathIntroduceMock } from '../data/path'
+import { pathIntroduceMock, pathLoadMock, pathPageMock, pathSidebarStatusMock } from '../data/path'
 import { FEEDBACK_CATEGORY, MOCK_MENTO, MOCK_USER, mockFeedbackList } from '../data/feedback'
 import { withDelay } from '../utils/withDelay'
 import {
@@ -15,16 +15,23 @@ import {
   PostPathFeedbackRequestType
 } from '../types/feedback'
 import {
-  GetPathIntroduceParamsType,
-  GetPathIntroduceResponseType
-} from '@/entities/path/lib/types/introduce'
+  GetPathDetailParamsType,
+  GetPathDetailResponseType,
+  GetPathLoadParamsType,
+  GetPathLoadResponseType,
+  GetPathPageParamsType,
+  GetPathPageResponseType,
+  GetPathSidebarStatusParamsType,
+  GetPathSidebarStatusResponseType
+} from '@/entities/path/lib/types/apis'
+import { END_POINT } from '@/shared/config/constants/end-point'
 
 const MOCK_SERVER_RESPONSE_DELAY = 3000
 
 export const pathHandlers: HttpHandler[] = [
   // 패스 상세 조회
-  http.get<GetPathIntroduceParamsType, never, GetPathIntroduceResponseType | ErrorResponseType>(
-    '/path/:pathId',
+  http.get<GetPathDetailParamsType, never, GetPathDetailResponseType | ErrorResponseType>(
+    END_POINT.PATH.INTRODUCE(':pathId'),
     ({ params }) => {
       const { pathId } = params
       return HttpResponse.json({
@@ -181,6 +188,45 @@ export const pathHandlers: HttpHandler[] = [
           { status: 500 }
         )
       }
+    })
+  ),
+  // 패스 사이드바 상태 조회
+  http.get<
+    GetPathSidebarStatusParamsType,
+    never,
+    GetPathSidebarStatusResponseType | ErrorResponseType
+  >(
+    END_POINT.PATH.PATH_SIDEBAR_STATUS(':pathId'),
+    withDelay(MOCK_SERVER_RESPONSE_DELAY, ({ params }) => {
+      const { pathId } = params
+      return HttpResponse.json({ status: 200, data: pathSidebarStatusMock(pathId) })
+    })
+  ),
+
+  // 패스 페이지 조회
+  http.get<GetPathPageParamsType, never, GetPathPageResponseType | ErrorResponseType>(
+    '/path/:pathId/detail',
+    withDelay(500, async ({ params, request }) => {
+      const { pathId } = params
+
+      const url = new URL(request.url)
+      const partId = url.searchParams.get('partId')
+      const pageId = url.searchParams.get('pageId')
+
+      if (!pathId || !partId || !pageId) {
+        return HttpResponse.json({ status: 400, message: '잘못된 요청입니다.' }, { status: 400 })
+      }
+
+      return HttpResponse.json({ status: 200, data: pathPageMock })
+    })
+  ),
+
+  // 패스 로드 조회
+  http.get<GetPathLoadParamsType, never, GetPathLoadResponseType | ErrorResponseType>(
+    END_POINT.PATH.PATH_LOAD(':pathId'),
+    withDelay(MOCK_SERVER_RESPONSE_DELAY, ({ params }) => {
+      const { pathId } = params
+      return HttpResponse.json({ status: 200, data: pathLoadMock(pathId) })
     })
   )
 ]
