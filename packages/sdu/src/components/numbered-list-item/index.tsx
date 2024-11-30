@@ -30,7 +30,7 @@ function SDUNumberedList({ rich_text, numbered, style }: PropsWithChildren<SDUBu
       <Flex
         asChild
         direction='column'>
-        <ul className='pt-2'>
+        <ul>
           <SDUNumberedListItem rich_text={rich_text} />
         </ul>
       </Flex>
