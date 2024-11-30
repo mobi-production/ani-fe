@@ -1,14 +1,13 @@
-import {
-  GetPathDetailResponseType,
-  GetPathLoadResponseType,
-  GetPathPageResponseType,
-  GetPathSidebarStatusResponseType
-} from '@/entities/path/lib/types/apis'
-import { User } from '../handler/member'
-export const pathIntroduceMock = (pathId: number | string): GetPathDetailResponseType['data'] => {
+import { GetPathIntroduceResponseType } from '@/views/path/api/get-path-introduce'
+import { GetPathLoadResponseType } from '@/views/path/api/get-path-load'
+import { GetPathPageResponseType } from '@/views/path/api/get-path-page'
+import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
+export const pathIntroduceMock = (
+  pathId: number | string
+): GetPathIntroduceResponseType['data'] => {
   return {
     isSubscribed: false,
-    status: 'PENDING',
+    status: 'PENDING_REVIEW',
     pathId,
     startDate: '2024-11-15T00:00:00.000Z',
     endDate: '2025-03-31T00:00:00.000Z',
@@ -251,7 +250,7 @@ export const pathIntroduceMock = (pathId: number | string): GetPathDetailRespons
 export const pathSidebarStatusMock = (
   pathId: number | string,
   status?: 'IN_PROGRESS' | 'PENDING_REVIEW' | 'COMPLETED'
-): GetPathSidebarStatusResponseType['data'] => {
+): GetPathStatusResponseType['data'] => {
   return {
     path: {
       id: pathId,
@@ -300,18 +299,21 @@ export const pathSidebarStatusMock = (
           page: [
             {
               id: 1,
+              order: 1,
               title: 'HTML 개요(1)',
               type: 'LEARNING_CONTENTS',
               checked: true
             },
             {
               id: 2,
+              order: 2,
               title: 'HTML 개요(2)',
               type: 'LEARNING_CONTENTS',
               checked: true
             },
             {
               id: 3,
+              order: 3,
               title: 'HTML 개요(3)',
               type: 'LEARNING_CONTENTS',
               checked: false
@@ -325,12 +327,14 @@ export const pathSidebarStatusMock = (
           page: [
             {
               id: 4,
+              order: 4,
               title: 'HTML 개요(1)',
               type: 'LEARNING_CONTENTS',
               checked: true
             },
             {
               id: 5,
+              order: 5,
               title: 'HTML 개요(2)',
               type: 'VIDEO',
               videoLength: '15:30',
@@ -338,6 +342,7 @@ export const pathSidebarStatusMock = (
             },
             {
               id: 6,
+              order: 6,
               title: 'HTML 개요(3)',
               type: 'LEARNING_CONTENTS',
               checked: false
@@ -355,6 +360,7 @@ export const pathSidebarStatusMock = (
           page: [
             {
               id: 4,
+              order: 4,
               title: 'HTML 개요(1)',
               type: 'QUIZ',
               checked: true
@@ -368,6 +374,7 @@ export const pathSidebarStatusMock = (
           page: [
             {
               id: 5,
+              order: 5,
               title: 'HTML 개요(2)',
               type: 'QUIZ',
               checked: false
