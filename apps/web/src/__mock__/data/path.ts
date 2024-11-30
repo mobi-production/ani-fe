@@ -2,6 +2,7 @@ import { GetPathIntroduceResponseType } from '@/views/path/api/get-path-introduc
 import { GetPathLoadResponseType } from '@/views/path/api/get-path-load'
 import { GetPathPageResponseType } from '@/views/path/api/get-path-page'
 import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
+import { ServerDrivenComponentType } from '@repo/sdu'
 export const pathIntroduceMock = (
   pathId: number | string
 ): GetPathIntroduceResponseType['data'] => {
@@ -25,7 +26,6 @@ export const pathIntroduceMock = (
         {
           type: 'heading_1',
           props: {
-            id: 'heading-1-1',
             text: 'HTML & CSS 패스',
             rich_text: [
               {
@@ -34,7 +34,7 @@ export const pathIntroduceMock = (
             ]
           }
         }
-      ]
+      ] as unknown as ServerDrivenComponentType[]
     },
     parts: [
       {
