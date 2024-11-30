@@ -6,17 +6,21 @@ import { memo, useState } from 'react'
 import SDUText, { TextProps } from '../text'
 
 type Props = {
+  id: string
+  text: string
   variant?: keyof typeof typographyMap
-  id?: string
   summary: TextProps[]
   style?: ColorStyle
+  depth: number
 }
 
 function SDUToggle({
-  id,
+  text,
   variant = 'text',
   summary,
   style,
+  depth,
+  id,
   children,
   ...props
 }: Props & { children?: React.ReactNode }) {
@@ -36,7 +40,8 @@ function SDUToggle({
 
   return (
     <details
-      id={id}
+      id={variant !== 'text' ? `heading${variant.split('_')[1]}toggle-${depth}-${id}` : id}
+      data-text={text}
       style={style}
       className='group overflow-hidden'
       open={isOpen || isAnimating}>

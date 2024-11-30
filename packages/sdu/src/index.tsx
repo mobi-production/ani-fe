@@ -5,6 +5,8 @@ import SDUBookmark from './components/bookmark'
 import SDUBulletedListItem from './components/bulleted-list-item'
 import SDUButton from './components/button'
 import SDUCallout from './components/callout'
+import SDUCheckbox from './components/checkbox'
+import SDUCode from './components/code'
 import SDUDivider from './components/divider'
 import SDUFile from './components/file'
 import SDUHeading1 from './components/heading1'
@@ -14,9 +16,10 @@ import SDUImage from './components/image'
 import SDUNumberedListItem from './components/numbered-list-item'
 import SDUQuote from './components/quote'
 import SDUTable from './components/table'
+import SDUTableOfContent from './components/table-of-content'
 import SDUText from './components/text'
 import SDUToggle from './components/toggle'
-
+import ChildrenDepthComponent from './config/ChildrenDepthComponent'
 type ComponentPropsMap = {
   SDUHeading1: ComponentProps<typeof SDUHeading1>
   SDUHeading2: ComponentProps<typeof SDUHeading2>
@@ -33,23 +36,26 @@ type ComponentPropsMap = {
   SDUCallout: ComponentProps<typeof SDUCallout>
   SDUTable: ComponentProps<typeof SDUTable>
   SDUButton: ComponentProps<typeof SDUButton>
+  SDUCheckbox: ComponentProps<typeof SDUCheckbox>
+  SDUTableOfContent: ComponentProps<typeof SDUTableOfContent>
+  SDUCode: ComponentProps<typeof SDUCode>
 }
 
 export type ServerDrivenComponentType =
   | {
       type: 'heading_1'
       props: ComponentPropsMap['SDUHeading1']
-      content?: never
+      content?: ServerDrivenComponentType[]
     }
   | {
       type: 'heading_2'
       props: ComponentPropsMap['SDUHeading2']
-      content?: never
+      content?: ServerDrivenComponentType[]
     }
   | {
       type: 'heading_3'
       props: ComponentPropsMap['SDUHeading3']
-      content?: never
+      content?: ServerDrivenComponentType[]
     }
   | {
       type: 'toggle'
@@ -59,7 +65,7 @@ export type ServerDrivenComponentType =
   | {
       type: 'text'
       props: ComponentPropsMap['SDUText']
-      content?: never
+      content?: ServerDrivenComponentType[]
     }
   | {
       type: 'button'
@@ -118,6 +124,21 @@ export type ServerDrivenComponentType =
       props: ComponentPropsMap['SDUButton']
       content?: never
     }
+  | {
+      type: 'checkbox'
+      props: ComponentPropsMap['SDUCheckbox']
+      content?: ServerDrivenComponentType[]
+    }
+  | {
+      type: 'table_of_content'
+      props?: ComponentPropsMap['SDUTableOfContent']
+      content?: never
+    }
+  | {
+      type: 'code'
+      props: ComponentPropsMap['SDUCode']
+      content?: never
+    }
 
 export function SDUComponent({
   content,
@@ -135,21 +156,88 @@ export function SDUComponent({
       return <SDUButton {...props} />
 
     case 'heading_1':
-      return <SDUHeading1 {...props} />
+      return (
+        <>
+          <SDUHeading1
+            {...props}
+            depth={depth}
+          />
+          {children && (
+            <ChildrenDepthComponent>
+              <ServerDrivenComponent
+                content={children ?? []}
+                depth={depth + 1}
+                isChild
+              />
+            </ChildrenDepthComponent>
+          )}
+        </>
+      )
 
     case 'heading_2':
-      return <SDUHeading2 {...props} />
+      return (
+        <>
+          <SDUHeading2
+            {...props}
+            depth={depth}
+          />
+          {children && (
+            <ChildrenDepthComponent>
+              <ServerDrivenComponent
+                content={children ?? []}
+                depth={depth + 1}
+                isChild
+              />
+            </ChildrenDepthComponent>
+          )}
+        </>
+      )
 
     case 'heading_3':
-      return <SDUHeading3 {...props} />
+      return (
+        <>
+          <SDUHeading3
+            {...props}
+            depth={depth}
+          />
+          {children && (
+            <ChildrenDepthComponent>
+              <ServerDrivenComponent
+                content={children ?? []}
+                depth={depth + 1}
+                isChild
+              />
+            </ChildrenDepthComponent>
+          )}
+        </>
+      )
 
     case 'text':
-      return <SDUText {...props} />
+      return (
+        <>
+          <SDUText {...props} />
+          {children && (
+            <ChildrenDepthComponent>
+              <ServerDrivenComponent
+                content={children ?? []}
+                depth={depth + 1}
+                isChild
+              />
+            </ChildrenDepthComponent>
+          )}
+        </>
+      )
 
     case 'toggle':
       return (
-        <SDUToggle {...props}>
-          <ServerDrivenComponent content={children ?? []} />
+        <SDUToggle
+          {...props}
+          depth={depth}>
+          <ServerDrivenComponent
+            content={children ?? []}
+            depth={depth + 1}
+            isChild
+          />
         </SDUToggle>
       )
 
@@ -178,6 +266,7 @@ export function SDUComponent({
             <ServerDrivenComponent
               content={children}
               numbered={1}
+              depth={depth + 1}
               isChild
             />
           )}
@@ -202,6 +291,23 @@ export function SDUComponent({
     case 'table':
       return <SDUTable {...props} />
 
+    case 'checkbox':
+      return (
+        <SDUCheckbox {...props}>
+          <ServerDrivenComponent
+            content={children ?? []}
+            depth={depth + 1}
+            isChild
+          />
+        </SDUCheckbox>
+      )
+
+    case 'table_of_content':
+      return <SDUTableOfContent {...props} />
+
+    case 'code':
+      return <SDUCode {...props} />
+
     default:
       console.warn(`Unknown component type: ${type}`)
       return null
@@ -221,12 +327,13 @@ export function ServerDrivenComponent({
 }) {
   let currentNumbered = numbered
 
+  const Component = isChild ? 'section' : 'div'
+
   return (
     <Flex
       direction='column'
-      gap={isChild ? 4 : 8}
       asChild>
-      <section>
+      <Component>
         {content.map((component, index) => {
           if (component.type === 'numbered_list_item') {
             const currentComponent = (
@@ -251,7 +358,7 @@ export function ServerDrivenComponent({
             />
           )
         })}
-      </section>
+      </Component>
     </Flex>
   )
 }

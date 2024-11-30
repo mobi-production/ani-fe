@@ -26,6 +26,8 @@ export const pathIntroduceMock = (pathId: number | string): GetPathDetailRespons
         {
           type: 'heading_1',
           props: {
+            id: 'heading-1-1',
+            text: 'HTML & CSS 패스',
             rich_text: [
               {
                 text: 'HTML & CSS 패스'

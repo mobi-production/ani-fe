@@ -1,6 +1,8 @@
 {
   "type": "toggle",
   "props": {
+    "text": "Toggle",
+    "id": "1",
     "variant": "heading_1",
     "summary": [
       {
@@ -13,6 +15,7 @@
     {
       "type": "heading_1",
       "props": {
+        "id": "toggle-1-1",
         "rich_text": [
           {
             "type": "text",
@@ -24,6 +27,7 @@
     {
       "type": "text",
       "props": {
+        "id": "toggle-1-2",
         "rich_text": [
           {
             "type": "text",

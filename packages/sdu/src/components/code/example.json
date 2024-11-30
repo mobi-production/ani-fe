@@ -1,0 +1,43 @@
+{
+  "type": "code",
+  "props": {
+    "caption": [
+      {
+        "text": "변수 name",
+        "bold": true,
+        "code": true
+      },
+      {
+        "text": "을 입력받아 이름을 출력해주세요!"
+      }
+    ],
+    "code": {
+      "text": [
+        {
+          "text": "function greet("
+        },
+        {
+          "text": "name"
+        },
+        {
+          "text": ")"
+        },
+        {
+          "text": " {\n  return `Hello, "
+        },
+        {
+          "text": "${name}",
+          "blank": true
+        },
+        {
+          "text": "!`;\n}"
+        }
+      ],
+      "language": "javascript",
+      "example": {
+        "input": "Claude",
+        "output": "Hello, Claude!"
+      }
+    }
+  }
+}

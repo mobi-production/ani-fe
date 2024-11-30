@@ -1,0 +1,9 @@
+{
+  "type": "table_of_content",
+  "props": {
+    "style": {
+      "color": "#ff0000",
+      "backgroundColor": "#00ff00"
+    }
+  }
+}
