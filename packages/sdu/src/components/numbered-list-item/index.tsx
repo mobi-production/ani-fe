@@ -12,12 +12,7 @@ type SDUBulletedListProps = {
   style?: ColorStyle
 }
 
-function SDUNumberedList({
-  rich_text,
-  numbered,
-  style,
-  children
-}: PropsWithChildren<SDUBulletedListProps>) {
+function SDUNumberedList({ rich_text, numbered, style }: PropsWithChildren<SDUBulletedListProps>) {
   return (
     <Flex
       gap={8}
@@ -37,7 +32,6 @@ function SDUNumberedList({
         direction='column'>
         <ul className='pt-2'>
           <SDUNumberedListItem rich_text={rich_text} />
-          {children}
         </ul>
       </Flex>
     </Flex>

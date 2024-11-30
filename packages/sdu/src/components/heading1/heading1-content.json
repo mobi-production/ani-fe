@@ -19,7 +19,7 @@
       }
     ]
   },
-  "content": [
+  "children": [
     {
       "type": "heading_1",
       "props": {
@@ -30,7 +30,7 @@
           }
         ]
       },
-      "content": [
+      "children": [
         {
           "type": "heading_3",
           "props": {

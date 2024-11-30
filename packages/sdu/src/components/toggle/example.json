@@ -10,7 +10,7 @@
       }
     ]
   },
-  "content": [
+  "children": [
     {
       "type": "heading_1",
       "props": {

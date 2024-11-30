@@ -9,7 +9,7 @@
     ],
     "checked": true
   },
-  "content": [
+  "children": [
     {
       "type": "text",
       "props": {
