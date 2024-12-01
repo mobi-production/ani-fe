@@ -1,9 +1,5 @@
 export const END_POINT = {
   MAIN: '/main',
-  AUTH: {
-    LOGIN: '/auth/login',
-    SIGNUP: '/auth/signup'
-  },
   MYPAGE: {
     MAIN: '/mypage',
     MY_PROFILE: '/my-profile'

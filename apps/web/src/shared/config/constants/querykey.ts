@@ -1,9 +1,5 @@
 export const QUERY_KEYS = {
   MAIN: ['main'] as string[],
-  AUTH: {
-    LOGIN: ['authLogin'] as string[],
-    SIGNUP: ['authSignup'] as string[]
-  },
   MYPAGE: {
     MAIN: ['mypageMain'] as string[],
     MY_PROFILE: ['mypageMyProfile'] as string[]

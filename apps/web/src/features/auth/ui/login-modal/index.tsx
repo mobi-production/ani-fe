@@ -6,11 +6,12 @@ import { Divider, Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { useAuthModalStore } from '../../store'
-import { LoginModalFormData, loginModalSchema } from '../../model/loginModalSchema'
+
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { login } from '@/entities/auth/lib/apis'
+import { useAuthModalStore } from '../../model'
+import { type LoginModalFormData, loginModalSchema } from '@/entities/auth/model'
+import { login } from '../../api'
 
 function LoginModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -53,9 +54,9 @@ function LoginModal() {
 
   const onSubmit = async (formData: LoginModalFormData) => {
     const response = await login(formData)
-    onCloseLoginModal()
     if (response?.status === 200) {
       console.log(response.message)
+      onCloseLoginModal()
     } else {
       console.error('로그인 실패:', response?.message)
     }

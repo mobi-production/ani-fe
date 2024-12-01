@@ -1,6 +1,6 @@
 import { http, HttpHandler, HttpResponse, StrictRequest } from 'msw'
 import type { User } from '../types/auth'
-import { END_POINT } from '@/shared/config/constants/end-point'
+import { END_POINT } from '@/features/auth/config/auth-config'
 
 const correctUser: Map<User['email'], User> = new Map()
 correctUser.set('creme@naver.com', {
