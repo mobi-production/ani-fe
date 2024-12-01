@@ -32,5 +32,6 @@ export const TypographyColors = {
   ALTERNATIVE: 'alternative',
   ASSISTIVE: 'assistive',
   DISABLE: 'disable',
-  ERROR: 'error'
+  ERROR: 'error',
+  MINT99: 'mint99'
 } as const
