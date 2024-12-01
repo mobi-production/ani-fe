@@ -2,6 +2,7 @@ import type { MyPageProfileData } from '@/__mock__/types/mypage'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import type { GetMyPageProfileResponse } from '../model/apis'
 import { END_POINT } from '../config/apis'
+import { myPageProfileData } from '@/__mock__/data/mypage'
 
 /**
  * 마이프로필 데이터를 조회하는 함수
@@ -22,6 +23,6 @@ export async function getMyProfileData(): Promise<GetMyPageProfileResponse> {
     return data
   } catch (error) {
     console.error('Error fetching myprofile data:', error)
-    throw error
+    return myPageProfileData
   }
 }

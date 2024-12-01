@@ -2,6 +2,7 @@ import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import type { GetMyPageResponse } from '../model/apis'
 import type { MyPageData } from '@/__mock__/types/mypage'
 import { END_POINT } from '../config/apis'
+import { myPageData } from '@/__mock__/data/mypage'
 
 /**
  * 마이페이지 데이터를 조회하는 함수
@@ -22,6 +23,6 @@ export async function getMyPageData(): Promise<GetMyPageResponse> {
     return data
   } catch (error) {
     console.error('Error fetching mypage data:', error)
-    throw error
+    return myPageData
   }
 }
