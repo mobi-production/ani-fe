@@ -1,5 +1,6 @@
 import { CommonModal } from '@/shared/ui/portal'
 import { ICON_THEME } from '@/shared/ui/portal/modal/CommonModal'
+import { deleteMyProfile } from '../../api'
 
 type WithdrawalModalProps = {
   isOpen: boolean
@@ -7,6 +8,11 @@ type WithdrawalModalProps = {
 }
 
 function WithdrawalModal({ isOpen, onClose }: WithdrawalModalProps) {
+  const onSubmit = async () => {
+    const response = await deleteMyProfile({ userId: '1' })
+    console.log(response)
+  }
+
   return (
     <CommonModal
       isOpen={isOpen}
@@ -19,7 +25,7 @@ function WithdrawalModal({ isOpen, onClose }: WithdrawalModalProps) {
       <CommonModal.buttonSet
         primaryText='탈퇴하기'
         subText='계정 유지하기'
-        onSubmit={() => {}}
+        onSubmit={onSubmit}
         onCancel={onClose}
       />
     </CommonModal>

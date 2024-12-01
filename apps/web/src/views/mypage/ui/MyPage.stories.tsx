@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Inner } from '.'
 import { myPageData, myPageProfileData } from '@/__mock__/data/mypage'
+import { Inner } from '.'
 
 const meta = {
   title: 'Page/MyPage',
