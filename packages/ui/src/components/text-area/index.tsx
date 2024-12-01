@@ -32,7 +32,7 @@ const textAreaVariants = cva(
   {
     variants: {
       variant: {
-        [TextAreaVariants.ACTIVE]: 'border-label-assistive ',
+        [TextAreaVariants.ACTIVE]: 'border-line-normal/15',
         [TextAreaVariants.ERROR]: 'border-status-error'
       }
     },
