@@ -1,7 +1,7 @@
 import UserPathDropdown from '@/entities/question/ui/user-path-drop-down'
 import { useState } from 'react'
 import { SolidButton, Flex, Typography, SpacingBlock } from '@repo/ui/server'
-import { Input } from '@repo/ui/client'
+import { Input, TextArea } from '@repo/ui/client'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import {
@@ -39,7 +39,7 @@ function SubmitQuestionSection() {
 
   const isFormInvalid = !title || !contents || isSubmitting
 
-  const onSubmitQuestion = async (formData: LoginModalFormData) => {
+  const onSubmitQuestion = async (formData: QuestionFormData) => {
     console.log(formData)
     // 질문 남기기 섹션으로 이동
   }
@@ -59,19 +59,22 @@ function SubmitQuestionSection() {
           placeholder='제목을 입력해주세요'
           isError={!!errors.title}
           errorMessage={errors.title?.message}
+          styleVariant='GHOST'
         />
         <SpacingBlock size={16} />
         <Typography>질문 내용</Typography>
         <SpacingBlock size={8} />
-        <Input
-          {...register('contents')}
-          placeholder='궁금하신 내용을 입력해주세요'
-          isError={!!errors.contents}
-          errorMessage={errors.contents?.message}
-        />
+        <TextArea>
+          <TextArea.form
+            {...register('contents')}
+            placeholder='궁금하신 내용을 입력해주세요'
+            isError={!!errors.contents}
+            errorMessage={errors.contents?.message}
+            className='h-[12.5rem] w-full p-3 placeholder:font-medium'
+          />
+        </TextArea>
         <SpacingBlock size={20} />
         <SolidButton
-          onClick={onSubmitQuestion}
           variant='primary'
           fullWidth
           className='rounded-[0.25rem]'>
