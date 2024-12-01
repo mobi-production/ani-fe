@@ -8,15 +8,20 @@ import type { GetMainResponse } from '../model/apis'
  * @returns 서버 응답 데이터
  */
 export async function getMainData(): Promise<GetMainResponse> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MAIN, {
-    method: HTTP_METHODS.GET,
-    headers: HTTP_HEADERS.JSON
-  })
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MAIN, {
+      method: HTTP_METHODS.GET,
+      headers: HTTP_HEADERS.JSON
+    })
 
-  if (!response.ok) {
-    throw new Error(response.statusText)
+    if (!response.ok) {
+      throw new Error(response.statusText)
+    }
+
+    const data: MainData = await response.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching main data:', error)
+    throw error
   }
-
-  const data: MainData = await response.json()
-  return data
 }

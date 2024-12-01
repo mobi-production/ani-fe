@@ -8,15 +8,20 @@ import { END_POINT } from '../config/apis'
  * @returns 서버 응답 데이터 또는 null
  */
 export async function getMyProfileData(): Promise<GetMyPageProfileResponse> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MYPAGE.MY_PROFILE, {
-    method: HTTP_METHODS.GET,
-    headers: HTTP_HEADERS.JSON
-  })
+  try {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MYPAGE.MY_PROFILE, {
+      method: HTTP_METHODS.GET,
+      headers: HTTP_HEADERS.JSON
+    })
 
-  if (!response.ok) {
-    throw new Error(response.statusText)
+    if (!response.ok) {
+      throw new Error(response.statusText)
+    }
+
+    const data: MyPageProfileData = await response.json()
+    return data
+  } catch (error) {
+    console.error('Error fetching myprofile data:', error)
+    throw error
   }
-
-  const data: MyPageProfileData = await response.json()
-  return data
 }
