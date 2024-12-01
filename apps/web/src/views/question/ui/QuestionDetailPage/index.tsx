@@ -4,6 +4,7 @@ import { GetQuestionDetailResponseType } from '../../api/get-question-detail'
 import { BadgeColors } from '@repo/ui/components/badge/variants'
 import { formatDate } from '@repo/util/formatDate'
 import { Icon } from '@repo/ui/client'
+import SubmitReplySection from '@/features/quesion/ui/submit-reply-section'
 
 type Props = {
   data: GetQuestionDetailResponseType['data']
@@ -51,6 +52,7 @@ export default function QuestionDetailPage({ data }: Props) {
       </div>
       <Divider />
       <Typography variant={'body-2-normal'}>{content}</Typography>
+      <SubmitReplySection />
     </Flex>
   )
 }
