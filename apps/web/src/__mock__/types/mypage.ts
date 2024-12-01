@@ -3,13 +3,6 @@ export type ErrorResponse = {
   message: string
 }
 
-export type PutMyPageProfileRequestType = Omit<MyPageProfileData, 'emailVerified'>
-
-export type PutMyPageProfileResponse = {
-  status: number
-  message?: string
-}
-
 export type MyPageProfileData = {
   userId: string
   nickname: string
