@@ -1,7 +1,17 @@
 import cn from '@repo/util/cn'
 import { cva } from 'class-variance-authority'
-import { ChangeEvent, ComponentProps, createContext, useContext, useMemo, useState } from 'react'
+import {
+  ChangeEvent,
+  ComponentProps,
+  createContext,
+  forwardRef,
+  useContext,
+  useMemo,
+  useState
+} from 'react'
 
+import Flex from '../flex'
+import Icon from '../icon'
 import Typography from '../typography'
 import { TextAreaVariants } from './variants'
 
@@ -54,36 +64,80 @@ function TextArea({ children, defaultValue, maxLength, ...props }: TextAreaProps
 }
 
 type TextAreaFormProps = ComponentProps<'textarea'> & {
-  placeholder?: string
+  isError?: boolean
+  errorMessage?: string
+  isSuccess?: boolean
+  successMessage?: string
 }
 
-function TextAreaForm({ placeholder, className, ...props }: TextAreaFormProps) {
-  const context = useContext(TextAreaContext)
-  if (!context) {
-    throw new Error('useTextAreaContext must be used within a TextArea')
+const TextAreaForm = forwardRef<HTMLTextAreaElement, TextAreaFormProps>(
+  ({ isError, errorMessage, isSuccess, successMessage, placeholder, className, ...props }, ref) => {
+    const context = useContext(TextAreaContext)
+    if (!context) {
+      throw new Error('useTextAreaContext must be used within a TextArea')
+    }
+
+    const { value, onChange, maxLength, isOverLimitLength } = context
+
+    const handleChangeValue = (event: ChangeEvent<HTMLTextAreaElement>) =>
+      onChange?.(event.currentTarget.value)
+
+    return (
+      <div>
+        <textarea
+          ref={ref}
+          value={value}
+          onChange={handleChangeValue}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          className={cn(
+            textAreaVariants({
+              variant: isOverLimitLength ? TextAreaVariants.ERROR : TextAreaVariants.ACTIVE
+            }),
+            className
+          )}
+          {...props}
+        />
+        {isError && (
+          <Flex
+            gap={4}
+            align='center'
+            className='text-status-error'>
+            <Icon
+              size={14}
+              name='ExclamationCircleOutlined'
+            />
+            <Typography
+              color='inherit'
+              variant='label-normal'
+              fontWeight='regular'>
+              {errorMessage}
+            </Typography>
+          </Flex>
+        )}
+        {isSuccess && (
+          <Flex
+            gap={4}
+            align='center'
+            className='text-status-success'>
+            <Icon
+              size={14}
+              name='ExclamationCircleOutlined'
+            />
+            <Typography
+              color='inherit'
+              variant='label-normal'
+              fontWeight='regular'>
+              {successMessage}
+            </Typography>
+          </Flex>
+        )}
+      </div>
+    )
   }
+)
 
-  const { value, onChange, maxLength, isOverLimitLength } = context
-
-  const handleChangeValue = (event: ChangeEvent<HTMLTextAreaElement>) =>
-    onChange?.(event.currentTarget.value)
-
-  return (
-    <textarea
-      value={value}
-      onChange={handleChangeValue}
-      placeholder={placeholder}
-      maxLength={maxLength}
-      className={cn(
-        textAreaVariants({
-          variant: isOverLimitLength ? TextAreaVariants.ERROR : TextAreaVariants.ACTIVE
-        }),
-        className
-      )}
-      {...props}
-    />
-  )
-}
+TextAreaForm.displayName = ''
 
 type CharCountIndicatorProps = ComponentProps<'div'>
 
