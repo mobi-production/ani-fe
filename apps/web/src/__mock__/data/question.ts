@@ -1,32 +1,33 @@
 import { QuestionType } from '../types/question'
 
+export const mockQuestion: QuestionType = {
+  id: 'erwtert',
+  title: 'How to center a div using CSS?',
+  content: 'I want to center a div both vertically and horizontally. What is the best approach?',
+  createdDate: '2024-11-01',
+  tag: 'CSS',
+  isAnswered: true,
+  answers: [
+    {
+      id: 'a1',
+      user: 'JohnDoe',
+      profileImage: '/avif/placeholder.avif',
+      answerContent: 'You can use Flexbox with `justify-content` and `align-items` set to center.',
+      answerDate: '2024-11-02'
+    },
+    {
+      id: 'a2',
+      user: 'JaneSmith',
+      profileImage: '/avif/placeholder.avif',
+      answerContent:
+        'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',
+      answerDate: '2024-11-03'
+    }
+  ]
+}
+
 export const mockQuestionList: QuestionType[] = [
-  {
-    id: 'erwtert',
-    title: 'How to center a div using CSS?',
-    content: 'I want to center a div both vertically and horizontally. What is the best approach?',
-    createdDate: '2024-11-01',
-    tag: 'CSS',
-    isAnswered: true,
-    answers: [
-      {
-        id: 'a1',
-        user: 'JohnDoe',
-        profileImage: '/avif/placeholder.avif',
-        answerContent:
-          'You can use Flexbox with `justify-content` and `align-items` set to center.',
-        answerDate: '2024-11-02'
-      },
-      {
-        id: 'a2',
-        user: 'JaneSmith',
-        profileImage: '/avif/placeholder.avif',
-        answerContent:
-          'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',
-        answerDate: '2024-11-03'
-      }
-    ]
-  },
+  mockQuestion,
   {
     id: 'jhh77-',
     title: 'What is the difference between let and var in JavaScript?',

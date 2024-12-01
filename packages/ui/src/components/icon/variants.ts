@@ -7,6 +7,7 @@ import {
   CloseOutlined,
   CodeOutlined,
   DownOutlined,
+  EllipsisOutlined,
   ExclamationCircleOutlined,
   ExclamationOutlined,
   EyeInvisibleOutlined,
@@ -65,7 +66,8 @@ export const IconsMap = {
   LikeOutlined: LikeOutlined,
   ExclamationOutlined: ExclamationOutlined,
   CheckOutlined: CheckOutlined,
-  FireOutlined: FireOutlined
+  FireOutlined: FireOutlined,
+  EllipsisOutlined: EllipsisOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

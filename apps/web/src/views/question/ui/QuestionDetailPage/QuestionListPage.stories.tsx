@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import EditQuestionPage from '.'
+import QuestionDetailPage from '.'
 import { mockQuestion as data } from '@/__mock__/data/question'
 
 const meta = {
-  title: 'Page/EditQuestionPage',
-  component: EditQuestionPage,
+  title: 'Page/QuestionDetailPage',
+  component: QuestionDetailPage,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof EditQuestionPage>
+} satisfies Meta<typeof QuestionDetailPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -20,7 +20,7 @@ export const Preview: Story = {
   },
   render: (args) => (
     <div className='w-[20.938rem]'>
-      <EditQuestionPage {...args} />
+      <QuestionDetailPage {...args} />
     </div>
   )
 }
