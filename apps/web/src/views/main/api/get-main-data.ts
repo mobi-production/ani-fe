@@ -1,7 +1,7 @@
 import type { MainData } from '@/__mock__/types/main'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import type { GetMainResponse } from '../model/apis'
 import { END_POINT } from '../config/main-config'
+import type { GetMainResponse } from '../model/apis'
 
 /**
  * 메인 페이지 데이터를 조회하는 함수
