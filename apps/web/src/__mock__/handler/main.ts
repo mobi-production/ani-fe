@@ -1,7 +1,7 @@
 import { http, HttpHandler, HttpResponse } from 'msw'
 import { mainData } from '../data/main'
 import { withDelay } from '../utils/withDelay'
-import { GetMainResponse } from '@/views/main/model/apis'
+import type { GetMainResponse } from '@/views/main/model/apis'
 import { END_POINT } from '@/views/main/config/main-config'
 
 const MOCK_SERVER_RESPONSE_DELAY = 500
