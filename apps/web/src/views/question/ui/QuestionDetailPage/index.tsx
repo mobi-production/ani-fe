@@ -73,7 +73,8 @@ export default function QuestionDetailPage({ data }: Props) {
       <Typography variant={'body-2-normal'}>{content}</Typography>
       <Flex
         direction={'column'}
-        gap={20}>
+        gap={20}
+        className='scrollbar-hidden max-h-[58.75rem] overflow-y-scroll'>
         {answers.map((answer) => (
           <OneReplyBubble>
             {answer.user === userId && (

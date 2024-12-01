@@ -1,8 +1,7 @@
-import { Badge, Typography } from '@repo/ui/server'
+import { Typography } from '@repo/ui/server'
 import cn from '@repo/util/cn'
 import { formatDate } from '@repo/util/formatDate'
 import { ComponentProps } from 'react'
-import { BadgeColors } from '@repo/ui/components/badge/variants'
 import Image from 'next/image'
 import { Flex } from '@repo/ui/server'
 
