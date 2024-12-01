@@ -9,6 +9,8 @@ import { Icon } from '@repo/ui/client'
 import SubmitReplySection from '@/features/quesion/ui/submit-reply-section'
 import { useState } from 'react'
 import EditQuestionModal from '@/features/quesion/ui/edit-question-modal'
+import OneReplyBubble from '@/widgets/question/ui/one-reply-bubble'
+import { myPageProfileData } from '@/__mock__/data/mypage'
 
 type Props = {
   data: GetQuestionDetailResponseType['data']
@@ -16,6 +18,9 @@ type Props = {
 
 export default function QuestionDetailPage({ data }: Props) {
   const { tag, title, content, createdDate, answers } = data
+
+  // @todo: 실제 사용자 정보 가져오는 hooks
+  const userId = myPageProfileData.nickname
 
   const [isEditQuestionModalOpen, setIsEditQuestionModalOpen] = useState(false)
   const onCloseEditQuestionModal = () => setIsEditQuestionModalOpen(false)
@@ -66,6 +71,29 @@ export default function QuestionDetailPage({ data }: Props) {
       </div>
       <Divider />
       <Typography variant={'body-2-normal'}>{content}</Typography>
+      <Flex
+        direction={'column'}
+        gap={20}>
+        {answers.map((answer) => (
+          <OneReplyBubble>
+            {answer.user === userId && (
+              <OneReplyBubble.Menti
+                imageUrl={answer.profileImage}
+                contents={answer.answerContent}
+                date={answer.answerDate}
+              />
+            )}
+            {answer.user !== userId && (
+              <OneReplyBubble.Mento
+                nickName={answer.user}
+                imageUrl={answer.profileImage}
+                contents={answer.answerContent}
+                date={answer.answerDate}
+              />
+            )}
+          </OneReplyBubble>
+        ))}
+      </Flex>
       <SubmitReplySection />
     </Flex>
   )

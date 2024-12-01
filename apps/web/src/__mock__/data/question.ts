@@ -16,8 +16,8 @@ export const mockQuestion: QuestionType = {
       answerDate: '2024-11-02'
     },
     {
-      id: 'a2',
-      user: 'JaneSmith',
+      id: '1',
+      user: 'Creme',
       profileImage: '/avif/placeholder.avif',
       answerContent:
         'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',

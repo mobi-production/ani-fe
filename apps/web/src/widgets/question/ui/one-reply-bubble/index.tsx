@@ -18,7 +18,7 @@ function OneReplyBubble({ children, className, ...props }: ComponentProps<'div'>
 
 type UserProps = {
   isMe: boolean
-  nickName: string
+  nickName?: string
   imageUrl?: string
 }
 
@@ -81,9 +81,9 @@ function Date({ date, ...props }: DateProps) {
 }
 
 type BubbleProps = {
-  nickName: string
   contents: string
   date: Date | string
+  nickName?: string
   imageUrl?: string
 } & ComponentProps<'div'>
 

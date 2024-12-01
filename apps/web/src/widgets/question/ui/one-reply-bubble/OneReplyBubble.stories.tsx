@@ -35,7 +35,6 @@ export const Menti: Story = {
   render: () => (
     <OneReplyBubble>
       <OneReplyBubble.Menti
-        nickName='Jane'
         contents='dsfdsf'
         date={'2024-09-09'}
       />
