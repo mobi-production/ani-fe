@@ -77,7 +77,8 @@ function SubmitQuestionSection() {
         <SolidButton
           variant='primary'
           fullWidth
-          className='rounded-[0.25rem]'>
+          className='rounded-[0.25rem]'
+          disabled={isFormInvalid}>
           질문 남기기
         </SolidButton>
       </form>

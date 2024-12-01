@@ -1,7 +1,3 @@
-import QuestionList from '@/entities/question/ui/question-list'
-import FilterAnsweredQuestions from '@/features/quesion/ui/filter-answered-questions'
-import QuestionSearchBar from '@/features/quesion/ui/question-search-bar'
-import { SolidButton } from '@repo/ui/server'
 import { Flex, Typography } from '@repo/ui/server'
 import SubmitQuestionSection from '@/features/quesion/ui/submit-question-section'
 
