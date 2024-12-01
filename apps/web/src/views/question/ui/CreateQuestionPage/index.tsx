@@ -1,7 +1,7 @@
 import { Flex, Typography } from '@repo/ui/server'
 import SubmitQuestionSection from '@/features/quesion/ui/submit-question-section'
 
-export default function QuestionFormPage() {
+export default function CreateQuestionPage() {
   return (
     <Flex
       direction='column'

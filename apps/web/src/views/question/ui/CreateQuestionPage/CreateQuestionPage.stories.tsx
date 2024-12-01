@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import QuestionFormPage from '.'
+import CreateQuestionPage from '.'
 
 const meta = {
-  title: 'Page/QuestionFormPage',
-  component: QuestionFormPage,
+  title: 'Page/CreateQuestionPage',
+  component: CreateQuestionPage,
   parameters: {
     layout: 'centered'
   },
   tags: ['autodocs']
-} satisfies Meta<typeof QuestionFormPage>
+} satisfies Meta<typeof CreateQuestionPage>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>
 export const Preview: Story = {
   render: () => (
     <div className='w-[20.938rem]'>
-      <QuestionFormPage />
+      <CreateQuestionPage />
     </div>
   )
 }

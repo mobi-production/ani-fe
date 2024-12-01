@@ -9,8 +9,14 @@ import {
   questionSubmitSchema
 } from '@/features/path/model/question-submit-schema'
 
-function SubmitQuestionSection() {
-  const [currentPathName, setCurrentPathName] = useState('전체')
+type Props = {
+  defaultPathName?: string
+  defaultTitle?: string
+  defaultContents?: string
+}
+
+function SubmitQuestionSection({ defaultContents, defaultPathName, defaultTitle }: Props) {
+  const [currentPathName, setCurrentPathName] = useState(defaultPathName ?? '전체')
   const handleSelectPathName = (value: string) => {
     setCurrentPathName(value)
   }
@@ -23,8 +29,8 @@ function SubmitQuestionSection() {
   } = useForm<QuestionFormData>({
     resolver: zodResolver(questionSubmitSchema),
     defaultValues: {
-      title: '',
-      contents: ''
+      title: defaultTitle ?? '',
+      contents: defaultContents ?? ''
     }
   })
 
@@ -52,7 +58,11 @@ function SubmitQuestionSection() {
       />
       <SpacingBlock size={20} />
       <form onSubmit={handleSubmit(onSubmitQuestion)}>
-        <Typography>제목</Typography>
+        <Typography
+          variant={'body-2-normal'}
+          fontWeight={'semibold'}>
+          제목
+        </Typography>
         <SpacingBlock size={8} />
         <Input
           {...register('title')}
@@ -62,7 +72,11 @@ function SubmitQuestionSection() {
           styleVariant='GHOST'
         />
         <SpacingBlock size={16} />
-        <Typography>질문 내용</Typography>
+        <Typography
+          variant={'body-2-normal'}
+          fontWeight={'semibold'}>
+          질문 내용
+        </Typography>
         <SpacingBlock size={8} />
         <TextArea>
           <TextArea.form
