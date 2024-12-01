@@ -29,7 +29,6 @@ function SubmitReplySection() {
 
   const onSubmitReply = async (formData: ReplyFormData) => {
     console.log(formData)
-    // 질문 남기기 섹션으로 이동
   }
 
   return (

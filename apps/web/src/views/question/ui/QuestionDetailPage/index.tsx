@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge, SpacingBlock, Divider } from '@repo/ui/server'
 import { Flex, Typography } from '@repo/ui/server'
 import { GetQuestionDetailResponseType } from '../../api/get-question-detail'
@@ -5,6 +7,8 @@ import { BadgeColors } from '@repo/ui/components/badge/variants'
 import { formatDate } from '@repo/util/formatDate'
 import { Icon } from '@repo/ui/client'
 import SubmitReplySection from '@/features/quesion/ui/submit-reply-section'
+import { useState } from 'react'
+import EditQuestionModal from '@/features/quesion/ui/edit-question-modal'
 
 type Props = {
   data: GetQuestionDetailResponseType['data']
@@ -12,6 +16,9 @@ type Props = {
 
 export default function QuestionDetailPage({ data }: Props) {
   const { tag, title, content, createdDate, answers } = data
+
+  const [isEditQuestionModalOpen, setIsEditQuestionModalOpen] = useState(false)
+  const onCloseEditQuestionModal = () => setIsEditQuestionModalOpen(false)
 
   return (
     <Flex
@@ -36,7 +43,9 @@ export default function QuestionDetailPage({ data }: Props) {
               {title}
             </Typography>
           </div>
-          <Flex justify='between'>
+          <Flex
+            justify='between'
+            className='relative'>
             <Typography
               variant={'caption-1'}
               color='alternative'>
@@ -46,6 +55,11 @@ export default function QuestionDetailPage({ data }: Props) {
               name='EllipsisOutlined'
               size={12}
               className='rotate-90 cursor-pointer'
+              onClick={() => setIsEditQuestionModalOpen((prev: boolean) => !prev)}
+            />
+            <EditQuestionModal
+              isEditQuestionModalOpen={isEditQuestionModalOpen}
+              onCloseEditQuestionModal={onCloseEditQuestionModal}
             />
           </Flex>
         </Flex>
