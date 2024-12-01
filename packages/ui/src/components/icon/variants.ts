@@ -3,6 +3,7 @@ import {
   BellOutlined,
   BulbOutlined,
   CheckCircleFilled,
+  CheckOutlined,
   CloseOutlined,
   CodeOutlined,
   DownOutlined,
@@ -63,6 +64,7 @@ export const IconsMap = {
   BulbOutlined: BulbOutlined,
   LikeOutlined: LikeOutlined,
   ExclamationOutlined: ExclamationOutlined,
+  CheckOutlined: CheckOutlined,
   FireOutlined: FireOutlined
 } as const
 

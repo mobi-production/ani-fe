@@ -3,7 +3,7 @@ import PathApplyButton from '.'
 import { Flex } from '@repo/ui/server'
 
 const meta = {
-  title: 'Feature/PathApplyButton',
+  title: 'Feature/Path/ApplyButton',
   component: PathApplyButton,
   parameters: {
     layout: 'fullscreen',

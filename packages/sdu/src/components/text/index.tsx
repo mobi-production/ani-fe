@@ -1,6 +1,5 @@
-import { ColorStyle } from '@repo/sdu/types/common'
 import { Typography } from '@repo/ui/server'
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, CSSProperties, ElementType } from 'react'
 
 import { textVariants, typographyMap } from '../../config/variants'
 
@@ -12,19 +11,19 @@ export type TextProps = {
   italic?: boolean
   strikethrough?: boolean
   underline?: boolean
-  style?: ColorStyle
+  style?: CSSProperties
 }
 
 type Props = {
   id?: string
   tag: ElementType
   rich_text: TextProps[]
-  style?: ColorStyle
+  style?: CSSProperties
   isToggle?: boolean
   variant?: ComponentPropsWithoutRef<typeof Typography>['variant']
   defaultFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']
   boldFontWeight?: ComponentPropsWithoutRef<typeof Typography>['fontWeight']
-}
+} & ComponentPropsWithoutRef<'span'>
 
 function SDUText({
   id,
@@ -33,13 +32,15 @@ function SDUText({
   defaultFontWeight = 'medium',
   boldFontWeight = 'semibold',
   tag = 'p',
-  style
+  style,
+  ...props
 }: Props) {
   const Component = tag ?? 'span'
   return (
     <Component
       id={id}
-      style={style}>
+      style={style}
+      {...props}>
       {rich_text.map(({ text, ...rest }, index) => (
         <Typography
           key={index}
@@ -55,7 +56,7 @@ function SDUText({
           })}
           style={rest.style}
           asChild>
-          {rest.link ? <a href={rest.link}>{text}</a> : <p>{text}</p>}
+          {rest.link ? <a href={rest.link}>{text}</a> : <span>{text}</span>}
         </Typography>
       ))}
     </Component>
