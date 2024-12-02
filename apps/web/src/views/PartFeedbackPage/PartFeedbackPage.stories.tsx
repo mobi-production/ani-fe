@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { wrapWithAppRouterContext } from '@/shared/lib/utils'
 import PartFeedbackPage from '.'
 import { MOCK_PART_ID } from '@/__mock__/data/feedback'
+import { wrapWithAppRouterContext } from '@/shared/utils'
 
 const meta = {
   title: 'Page/PartFeedbackPage',

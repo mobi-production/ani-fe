@@ -1,18 +1,15 @@
 import { Flex, Typography } from '@repo/ui/server'
 
 type Props = {
-  id?: string
   url: string
   title: string
   description: string
   preview: string
 }
 
-function SDUBookmark({ id, url, title, description, preview }: Props) {
+function SDUBookmark({ url, title, description, preview }: Props) {
   return (
-    <a
-      id={id}
-      href={url}>
+    <a href={url}>
       <Flex
         gap={16}
         align='center'

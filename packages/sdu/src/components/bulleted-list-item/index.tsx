@@ -7,7 +7,6 @@ import { ServerDrivenComponentType } from '../..'
 import SDUText, { TextProps } from '../text'
 
 type SDUBulletedListProps = {
-  id?: string
   rich_text: TextProps[]
   depth: number
   content: ServerDrivenComponentType[]
@@ -43,7 +42,6 @@ const Bullet = ({ depth, color }: { depth: number; color?: string }) => {
 }
 
 function SDUBulletedList({
-  id,
   rich_text,
   depth,
   style,
@@ -51,7 +49,6 @@ function SDUBulletedList({
 }: PropsWithChildren<SDUBulletedListProps>) {
   return (
     <Flex
-      id={id}
       gap={8}
       style={style}>
       <div className='p-2'>
