@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { wrapWithAppRouterContext } from '@/shared/lib/utils'
 import PathDetailPage from '.'
 import { pathPageMock as data, pathSidebarStatusMock as sidebarStatus } from '@/__mock__/data/path'
 import { useState } from 'react'
 import { DetailPageLayoutInner } from 'app/path/[pathId]/detail/layout'
+import { wrapWithAppRouterContext } from '@/shared/utils'
 
 const meta = {
   title: 'Page/Path/DetailPage',

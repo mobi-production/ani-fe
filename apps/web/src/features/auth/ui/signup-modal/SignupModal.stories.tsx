@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import SignupModal from '.'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'

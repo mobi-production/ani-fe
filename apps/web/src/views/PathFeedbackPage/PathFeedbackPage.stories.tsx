@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import PathFeedbackPage from '.'
-import { wrapWithAppRouterContext } from '@/shared/lib/utils'
 import { MOCK_PATH_ID } from '@/__mock__/data/feedback'
+import { wrapWithAppRouterContext } from '@/shared/utils'
 
 const meta = {
   title: 'Page/PathFeedbackPage',
