@@ -34,7 +34,7 @@ export default meta
 
 export const Preview: StoryObj<typeof ServerDrivenComponent> = {
   args: {
-    content: [example as ServerDrivenComponentType]
+    content: [example as unknown as ServerDrivenComponentType]
   },
   render: (args) => (
     <div className='w-[500px]'>
@@ -45,6 +45,6 @@ export const Preview: StoryObj<typeof ServerDrivenComponent> = {
 
 export const WithStyle: StoryObj<typeof ServerDrivenComponent> = {
   args: {
-    content: [style as ServerDrivenComponentType]
+    content: [style as unknown as ServerDrivenComponentType]
   }
 }

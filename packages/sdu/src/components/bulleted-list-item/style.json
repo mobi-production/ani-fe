@@ -22,7 +22,7 @@
       "backgroundColor": "#f0f0f0"
     }
   },
-  "content": [
+  "children": [
     {
       "type": "bulleted_list_item",
       "props": {
@@ -47,7 +47,7 @@
           "backgroundColor": "#f0f0f0"
         }
       },
-      "content": [
+      "children": [
         {
           "type": "bulleted_list_item",
           "props": {

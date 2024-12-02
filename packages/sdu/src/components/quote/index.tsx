@@ -4,15 +4,13 @@ import { Flex } from '@repo/ui/server'
 import SDUText, { TextProps } from '../text'
 
 type Props = {
-  id?: string
   rich_text: TextProps[]
   style?: ColorStyle
 }
 
-function SDUQuote({ id, rich_text, style }: Props) {
+function SDUQuote({ rich_text, style }: Props) {
   return (
     <Flex
-      id={id}
       align='center'
       justify='center'
       direction='column'

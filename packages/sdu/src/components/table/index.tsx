@@ -3,8 +3,7 @@ import cn from '@repo/util/cn'
 
 import SDUText, { TextProps } from '../text'
 
-interface TableProps {
-  id?: string
+type Props = {
   has_column_header?: boolean
   has_row_header?: boolean
   rows: {
@@ -18,11 +17,9 @@ interface TableProps {
   }[]
 }
 
-const SDUTable = ({ id, has_column_header, has_row_header, rows }: TableProps) => {
+const SDUTable = ({ has_column_header, has_row_header, rows }: Props) => {
   return (
-    <div
-      id={id}
-      className='w-full overflow-x-auto'>
+    <div className='w-full overflow-x-auto'>
       <table className='min-w-full border-collapse border border-gray-200'>
         <tbody>
           {rows.map((row, rowIndex) => (

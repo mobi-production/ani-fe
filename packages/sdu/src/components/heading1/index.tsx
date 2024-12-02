@@ -1,28 +1,22 @@
 import { typographyMap } from '@repo/sdu/config/variants'
+import uuid from '@repo/sdu/libs/uuid'
 import { ColorStyle } from '@repo/sdu/types/common'
 import { PropsWithChildren } from 'react'
 
 import SDUText, { TextProps } from '../text'
 
 type Props = {
-  id: string
   text: string
   rich_text: TextProps[]
   style?: ColorStyle
-  depth?: number
+  depth: number
 }
 
-function SDUHeading1({
-  text,
-  rich_text,
-  style,
-  depth = 0,
-  id,
-  ...props
-}: PropsWithChildren<Props>) {
+function SDUHeading1({ text, rich_text, style, depth, ...props }: PropsWithChildren<Props>) {
+  console.log('depth', depth)
   return (
     <SDUText
-      id={`heading1-${depth}-${id}`}
+      id={`heading1-${depth}-${uuid()}`}
       data-text={text}
       tag='h1'
       rich_text={rich_text}
