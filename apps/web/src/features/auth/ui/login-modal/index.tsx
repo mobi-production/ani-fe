@@ -2,7 +2,8 @@
 
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
-import { Divider, Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -10,6 +11,7 @@ import { useAuthModalStore } from '../../store'
 import { LoginModalFormData, loginModalSchema } from '../../model/loginModalSchema'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { login } from '@/entities/auth/lib/apis'
 
 function LoginModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -51,7 +53,13 @@ function LoginModal() {
   }
 
   const onSubmit = async (formData: LoginModalFormData) => {
-    console.log(formData)
+    const response = await login(formData)
+    onCloseLoginModal()
+    if (response?.status === 200) {
+      console.log(response.message)
+    } else {
+      console.error('로그인 실패:', response?.message)
+    }
   }
 
   return (

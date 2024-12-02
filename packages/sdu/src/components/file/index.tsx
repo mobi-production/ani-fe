@@ -4,7 +4,6 @@ import { Flex, Typography } from '@repo/ui/server'
 import { getFileIcon } from '@repo/util/get-file-icon'
 
 type Props = {
-  id?: string
   url: string
   file_size: number
   style?: ColorStyle
@@ -14,7 +13,7 @@ function getFileName(url: string) {
   return url.split('/').pop()
 }
 
-function SDUFile({ id, url, file_size, style }: Props) {
+function SDUFile({ url, file_size, style }: Props) {
   const fileName = getFileName(url)
   const icon = getFileIcon(url)
 
@@ -25,7 +24,6 @@ function SDUFile({ id, url, file_size, style }: Props) {
       justify='center'
       asChild>
       <a
-        id={id}
         href={url}
         download={fileName}
         style={style}>

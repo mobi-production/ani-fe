@@ -1,4 +1,5 @@
 import type { MainData } from '@/__mock__/types/main'
+import { END_POINT } from '@/shared/config/constants/end-point'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 /**
@@ -7,7 +8,7 @@ import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
  */
 export async function getMainData(): Promise<MainData | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/main`, {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MAIN, {
       method: HTTP_METHODS.GET,
       headers: HTTP_HEADERS.JSON
     })

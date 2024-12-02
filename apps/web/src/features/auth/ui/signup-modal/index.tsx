@@ -1,6 +1,7 @@
 'use client'
 
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import { useAuthModalStore } from '../../store'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
@@ -8,6 +9,7 @@ import { useState } from 'react'
 import { SignupModalFormData, signupModalSchema } from '../../model/signupModalSchema'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { signup } from '@/entities/auth/lib/apis'
 
 function SignupModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -45,7 +47,13 @@ function SignupModal() {
   }
 
   const onSubmit = async (formData: SignupModalFormData) => {
-    console.log(formData)
+    const response = await signup(formData)
+    if (response?.status === 201) {
+      console.log(response.message)
+      onCloseSignupModal()
+    } else {
+      console.error('회원가입 실패:', response?.message)
+    }
   }
 
   return (

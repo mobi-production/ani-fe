@@ -7,24 +7,25 @@ import type {
   PutMyPageProfileRequestType,
   PutMyPageProfileResponse
 } from '../types/mypage'
+import { END_POINT } from '@/shared/config/constants/end-point'
 
 const MOCK_SERVER_RESPONSE_DELAY = 500
 
 export const myPageHandlers: HttpHandler[] = [
   http.get<never, never, GetMyPageResponse>(
-    `/mypage`,
+    END_POINT.MYPAGE.MAIN,
     withDelay(MOCK_SERVER_RESPONSE_DELAY, () => {
       return HttpResponse.json(myPageData, { status: 200 })
     })
   ),
   http.get<never, never, GetMyPageProfileResponse>(
-    `/my-profile`,
+    END_POINT.MYPAGE.MY_PROFILE,
     withDelay(MOCK_SERVER_RESPONSE_DELAY, () => {
       return HttpResponse.json(myPageProfileData, { status: 200 })
     })
   ),
   http.put<never, PutMyPageProfileRequestType, PutMyPageProfileResponse>(
-    `/my-profile`,
+    END_POINT.MYPAGE.MY_PROFILE,
     withDelay(MOCK_SERVER_RESPONSE_DELAY, async ({ request }) => {
       try {
         const body: PutMyPageProfileRequestType = await request.json()

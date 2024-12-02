@@ -1,4 +1,5 @@
 import { MyPageProfileData } from '@/__mock__/types/mypage'
+import { END_POINT } from '@/shared/config/constants/end-point'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 
 /**
@@ -7,7 +8,7 @@ import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
  */
 export async function getMyProfileData(): Promise<MyPageProfileData | null> {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-profile`, {
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MYPAGE.MY_PROFILE, {
       method: HTTP_METHODS.GET,
       headers: HTTP_HEADERS.JSON
     })

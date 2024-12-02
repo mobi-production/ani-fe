@@ -39,7 +39,7 @@ function TableOfContents({ style }: Props) {
       <nav style={style}>
         {headings.map((heading) => (
           <Typography
-            key={heading.id}
+            key={heading.id + 'heading_content'}
             className='inline-block underline'
             variant='body-2-normal'
             color={style?.color ? 'inherit' : 'alternative'}>
