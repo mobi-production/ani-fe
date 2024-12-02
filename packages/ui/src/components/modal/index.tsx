@@ -5,7 +5,7 @@ import { ComponentProps, forwardRef, Fragment, useEffect } from 'react'
 import { usePortal } from '../../hooks/use-portal'
 import Flex from '../flex'
 import Icon from '../icon'
-import { ModalRounded, ModalXPosition } from './variants'
+import { ModalRounded } from './variants'
 
 type BasicModalProps = ComponentProps<'div'> & {
   onClose: () => void
@@ -32,22 +32,16 @@ const BackDrop = forwardRef<HTMLDivElement, OptionalModalProps>(
 BackDrop.displayName = 'BackDrop'
 
 export const overlayVariants = cva(
-  'pointer-events-auto fixed top-1/2 -translate-y-1/2 transform rounded-2xl bg-background-normal p-4',
+  'pointer-events-auto left-1/2 -translate-x-1/2 fixed top-1/2 -translate-y-1/2 transform bg-background-normal p-4',
   {
     variants: {
       rounded: {
         [ModalRounded.SMALL]: 'rounded',
         [ModalRounded.NORMAL]: 'rounded-2xl'
-      },
-      xPosition: {
-        [ModalXPosition.LEFT]: 'left-0',
-        [ModalXPosition.CENTER]: 'left-1/2 -translate-x-1/2',
-        [ModalXPosition.RIGHT]: 'right-0'
       }
     },
     defaultVariants: {
-      rounded: ModalRounded.NORMAL,
-      xPosition: ModalXPosition.CENTER
+      rounded: ModalRounded.NORMAL
     }
   }
 )
@@ -55,11 +49,11 @@ export const overlayVariants = cva(
 type OverlayProps = VariantProps<typeof overlayVariants> & ComponentProps<'div'>
 
 const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
-  ({ xPosition, rounded, className, children }, ref) => {
+  ({ rounded, className, children }, ref) => {
     return (
       <aside
         ref={ref}
-        className={cn(overlayVariants({ rounded, xPosition }), className)}>
+        className={cn(overlayVariants({ rounded }), className)}>
         {children}
       </aside>
     )
@@ -96,8 +90,7 @@ function Modal({
   onClose,
   className,
   children,
-  rounded,
-  xPosition
+  rounded
 }: ModalProps) {
   const { renderInPortal } = usePortal()
 
@@ -127,8 +120,7 @@ function Modal({
       />
       <Overlay
         className={className}
-        rounded={rounded}
-        xPosition={xPosition}>
+        rounded={rounded}>
         <Close
           onClose={onClose}
           isRendered={withCloseButton}

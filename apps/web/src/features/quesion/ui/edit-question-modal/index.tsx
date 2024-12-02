@@ -1,14 +1,16 @@
 'use client'
 
-import { Flex, Modal, Typography } from '@repo/ui/server'
-import { Dispatch, SetStateAction } from 'react'
+import { Flex, Typography } from '@repo/ui/server'
+import { useEffect, useRef } from 'react'
 
-type Props = {
+interface Props {
   isEditQuestionModalOpen: boolean
   onCloseEditQuestionModal: () => void
 }
 
 function EditQuestionModal({ isEditQuestionModalOpen, onCloseEditQuestionModal }: Props) {
+  const modalRef = useRef<HTMLDivElement>(null)
+
   const onClickEditQuestion = () => {
     onCloseEditQuestionModal()
   }
@@ -17,15 +19,28 @@ function EditQuestionModal({ isEditQuestionModalOpen, onCloseEditQuestionModal }
     onCloseEditQuestionModal()
   }
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onCloseEditQuestionModal()
+      }
+    }
+
+    if (isEditQuestionModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isEditQuestionModalOpen, onCloseEditQuestionModal])
+
+  if (!isEditQuestionModalOpen) return null
+
   return (
-    <Modal
-      className='absolute top-16 border border-line-normal/15 p-4'
-      rounded={'SMALL'}
-      xPosition={'RIGHT'}
-      withCloseButton={false}
-      withBackDrop={false}
-      isOpen={isEditQuestionModalOpen}
-      onClose={onCloseEditQuestionModal}>
+    <div
+      ref={modalRef}
+      className='absolute right-0 top-6 transform rounded border border-line-normal/15 bg-background-normal p-4'>
       <Flex
         direction={'column'}
         gap={8}>
@@ -42,7 +57,7 @@ function EditQuestionModal({ isEditQuestionModalOpen, onCloseEditQuestionModal }
           삭제하기
         </Typography>
       </Flex>
-    </Modal>
+    </div>
   )
 }
 
