@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import EditQuestionPage from '.'
 
 const meta = {
-  title: 'Page/EditQuestionPage',
+  title: 'Page/Question/EditQuestionPage',
   component: EditQuestionPage,
   parameters: {
     layout: 'centered'

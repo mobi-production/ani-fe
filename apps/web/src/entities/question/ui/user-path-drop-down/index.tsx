@@ -12,10 +12,6 @@ type Props = {
 function UserPathDropdown({ currentPathName, handleSelectPathName }: Props) {
   // @Todo: 사용자의 패스 목록 조회하는 로직 추가
   const pathNameList = [
-    {
-      id: 'all',
-      title: '전체'
-    },
     ...myPageData.inProgressPathList.map((path) => ({
       id: path.id.toString(),
       title: path.pathName
