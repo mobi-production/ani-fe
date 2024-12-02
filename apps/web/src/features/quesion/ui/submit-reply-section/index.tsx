@@ -43,7 +43,7 @@ function SubmitReplySection() {
           errorMessage={errors.reply?.message}
           styleVariant='GHOST'
           backgroundClassName='h-[2.5rem] w-[17.5rem]'
-          className='text-caption-1 text-[0.75rem] placeholder:text-[0.75rem] placeholder:font-medium'
+          className='text-caption-1 placeholder:text-caption-1 text-[0.75rem] placeholder:text-[0.75rem] placeholder:font-medium'
         />
         <SolidButton
           variant='primary'
