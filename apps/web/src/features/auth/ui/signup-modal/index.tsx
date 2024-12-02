@@ -1,8 +1,8 @@
 'use client'
 
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Flex, SolidButton, Typography } from '@repo/ui/server'
 import Logo from '@/shared/ui/logo'
-import { Icon, Input } from '@repo/ui/client'
+import { Icon, Input, Modal } from '@repo/ui/client'
 import { useState } from 'react'
 
 import { useForm, useWatch } from 'react-hook-form'

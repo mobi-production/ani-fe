@@ -6,23 +6,15 @@ import { ServerDrivenComponentType } from '../..'
 import SDUText, { TextProps } from '../text'
 
 type SDUBulletedListProps = {
-  id?: string
   rich_text: TextProps[]
   numbered: number
   content: ServerDrivenComponentType[]
   style?: ColorStyle
 }
 
-function SDUNumberedList({
-  id,
-  rich_text,
-  numbered,
-  style,
-  children
-}: PropsWithChildren<SDUBulletedListProps>) {
+function SDUNumberedList({ rich_text, numbered, style }: PropsWithChildren<SDUBulletedListProps>) {
   return (
     <Flex
-      id={id}
       gap={8}
       style={style}>
       <div
@@ -38,9 +30,8 @@ function SDUNumberedList({
       <Flex
         asChild
         direction='column'>
-        <ul className='pt-2'>
+        <ul>
           <SDUNumberedListItem rich_text={rich_text} />
-          {children}
         </ul>
       </Flex>
     </Flex>

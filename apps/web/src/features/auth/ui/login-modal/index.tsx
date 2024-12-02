@@ -2,7 +2,8 @@
 
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
-import { Divider, Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'

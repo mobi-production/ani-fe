@@ -3,15 +3,14 @@ import { Divider } from '@repo/ui/server'
 import { ComponentProps, memo } from 'react'
 
 type Props = ComponentProps<typeof Divider> & {
-  id?: string
   style?: ColorStyle
 }
 
-function SDUDivider({ id, style }: Props) {
+function SDUDivider({ style, ...props }: Props) {
   return (
     <Divider
-      id={id}
       style={style}
+      {...props}
     />
   )
 }

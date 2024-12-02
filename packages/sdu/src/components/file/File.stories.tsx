@@ -40,7 +40,7 @@ export default meta
 
 export const Default: StoryObj<typeof ServerDrivenComponent> = {
   args: {
-    content: [example as ServerDrivenComponentType]
+    content: [example as unknown as ServerDrivenComponentType]
   },
   render: (args) => <ServerDrivenComponent content={args.content} />
 }
@@ -62,7 +62,7 @@ ${JSON.stringify(style, null, 2)}
     }
   },
   args: {
-    content: [style as ServerDrivenComponentType]
+    content: [style as unknown as ServerDrivenComponentType]
   },
   render: (args) => <ServerDrivenComponent content={args.content} />
 }

@@ -1,5 +1,6 @@
-import { ComponentProps, forwardRef, Fragment } from 'react'
+import { ComponentProps, forwardRef, Fragment, useEffect } from 'react'
 
+import { usePortal } from '../../hooks/use-portal'
 import Flex from '../flex'
 import Icon from '../icon'
 
@@ -18,7 +19,7 @@ const BackDrop = forwardRef<HTMLDivElement, OptionalModalProps>(
     return (
       <div
         ref={ref}
-        className={`fixed inset-0 bg-neutral-10/60 ${className}`}
+        className={`pointer-events-auto fixed inset-0 bg-neutral-10/60 ${className}`}
         onClick={onClose}
         {...props}></div>
     )
@@ -30,11 +31,11 @@ BackDrop.displayName = 'BackDrop'
 const Overlay = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
   ({ className, children }, ref) => {
     return (
-      <div
+      <aside
         ref={ref}
-        className={`fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl bg-background-normal p-4 ${className}`}>
+        className={`pointer-events-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl bg-background-normal p-4 ${className}`}>
         {children}
-      </div>
+      </aside>
     )
   }
 )
@@ -69,8 +70,27 @@ function Modal({
   className,
   children
 }: ModalProps) {
+  const { renderInPortal } = usePortal()
+
+  useEffect(() => {
+    if (isOpen) {
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollBarWidth}px`
+    } else {
+      document.body.style.overflow = 'unset'
+      document.body.style.paddingRight = '0px'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+      document.body.style.paddingRight = '0px'
+    }
+  }, [isOpen])
+
   if (!isOpen) return null
-  return (
+
+  return renderInPortal(
     <Fragment>
       <BackDrop
         onClose={onClose}
