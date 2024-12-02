@@ -1,11 +1,10 @@
 'use client'
 
 import { FEEDBACK_STEP } from '@/widgets/feedback/config/feedback-step'
-import { extractKeysFromObject } from '@/shared/lib/utils'
-import { useFunnel } from '@/shared/lib/hooks/use-funnel'
 import FeedbackStep from '@/widgets/feedback/ui/feedback-step'
 import { MentoFeedback, PairFeedback, PartFeedback } from '@/entities/feedback/ui/feedback-list'
-
+import { useFunnel } from '@/shared/hooks/use-funnel'
+import { extractKeysFromObject } from '@/shared/utils'
 type InnerProps = {}
 
 export function Inner() {
