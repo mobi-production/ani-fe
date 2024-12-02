@@ -3,7 +3,7 @@ import { Inner } from '.'
 import { mainData } from '@/__mock__/data/main'
 
 const meta = {
-  title: 'Page/MainPage',
+  title: 'Page/Main/MainPage',
   component: Inner,
   parameters: {
     layout: 'fullscreen'

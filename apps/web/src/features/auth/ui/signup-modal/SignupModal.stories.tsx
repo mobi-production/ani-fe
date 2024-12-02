@@ -6,7 +6,7 @@ import { Icon, Input } from '@repo/ui/client'
 import { useState } from 'react'
 
 const meta = {
-  title: 'Feature/SignupModal',
+  title: 'Feature/Auth/SignupModal',
   component: SignupModal,
   parameters: {
     layout: 'center',

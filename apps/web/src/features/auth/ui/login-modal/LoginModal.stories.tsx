@@ -8,7 +8,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const meta = {
-  title: 'Feature/LoginModal',
+  title: 'Feature/Auth/LoginModal',
   component: LoginModal,
   parameters: {
     layout: 'fullscreen',

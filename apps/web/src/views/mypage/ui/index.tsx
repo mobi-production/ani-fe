@@ -1,7 +1,7 @@
 'use client'
 
 import type { MyPageData, MyPageProfileData } from '@/__mock__/types/mypage'
-import MyPageEditButton from '@/features/main/ui/my-page-edit-button'
+import MyPageEditButton from '@/features/mypage/ui/my-page-edit-button'
 import ProfileEditModal from '@/features/mypage/ui/profile-edit-modal'
 import WithdrawalModal from '@/features/mypage/ui/withdrawal-modal'
 import NavigationLinks from '@/shared/ui/navigation-links'

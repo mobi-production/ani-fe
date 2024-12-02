@@ -3,7 +3,7 @@ import { Flex } from '@repo/ui/server'
 import WithdrawalModal from '.'
 
 const meta = {
-  title: 'Feature/WithdrawalModal',
+  title: 'Feature/MyPage/WithdrawalModal',
   component: WithdrawalModal,
   parameters: {
     layout: 'center',
