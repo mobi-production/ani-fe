@@ -3,7 +3,8 @@
 import type { MyPageProfileData } from '@/__mock__/types/mypage'
 import { putMyProfile } from '@/entities/mypage/lib/apis'
 
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Icon, Input } from '@repo/ui/client'

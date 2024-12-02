@@ -1,4 +1,5 @@
-import { Modal, SolidButton, Typography } from '@repo/ui/server'
+import { SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import { ComponentProps, useMemo } from 'react'
 import cn from '@repo/util/cn'
 import { Icon } from '@repo/ui/client'

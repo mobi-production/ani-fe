@@ -1,6 +1,7 @@
 'use client'
 
-import { Flex, Modal, SolidButton, Typography } from '@repo/ui/server'
+import { Flex, SolidButton, Typography } from '@repo/ui/server'
+import { Modal } from '@repo/ui/client'
 import { useAuthModalStore } from '../../store'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input } from '@repo/ui/client'
