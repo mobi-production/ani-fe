@@ -1,6 +1,5 @@
 import { Modal, SolidButton, Typography } from '@repo/ui/server'
 import { ComponentProps, useMemo } from 'react'
-import Portal from '../Portal'
 import cn from '@repo/util/cn'
 import { Icon } from '@repo/ui/client'
 import Image from 'next/image'
@@ -149,17 +148,15 @@ type Props = {
 
 function CommonModal({ isOpen, onClose, className, children }: Props) {
   return (
-    <Portal>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        className={cn(
-          'flex w-[37.5rem] flex-col items-center justify-center px-[2.25rem] py-[3rem] text-center',
-          className
-        )}>
-        {children}
-      </Modal>
-    </Portal>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      className={cn(
+        'flex w-[37.5rem] flex-col items-center justify-center px-[2.25rem] py-[3rem] text-center',
+        className
+      )}>
+      {children}
+    </Modal>
   )
 }
 
