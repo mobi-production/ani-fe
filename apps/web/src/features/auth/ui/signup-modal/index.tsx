@@ -1,15 +1,15 @@
 'use client'
 
 import { Flex, SolidButton, Typography } from '@repo/ui/server'
-import { Modal } from '@repo/ui/client'
-import { useAuthModalStore } from '../../store'
 import Logo from '@/shared/ui/logo'
-import { Icon, Input } from '@repo/ui/client'
+import { Icon, Input, Modal } from '@repo/ui/client'
 import { useState } from 'react'
-import { SignupModalFormData, signupModalSchema } from '../../model/signupModalSchema'
+
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { signup } from '@/entities/auth/lib/apis'
+import { useAuthModalStore } from '../../model'
+import { type SignupModalFormData, signupModalSchema } from '@/entities/auth/model'
+import { signup } from '../../api'
 
 function SignupModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)

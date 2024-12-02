@@ -3,16 +3,6 @@ export type ErrorResponse = {
   message: string
 }
 
-// 마이페이지 프로필 데이터 Response Type
-export type GetMyPageProfileResponse = MyPageProfileData | ErrorResponse
-
-export type PutMyPageProfileRequestType = Omit<MyPageProfileData, 'emailVerified'>
-
-export type PutMyPageProfileResponse = {
-  status: number
-  message?: string
-}
-
 export type MyPageProfileData = {
   userId: string
   nickname: string
@@ -22,9 +12,6 @@ export type MyPageProfileData = {
   password: string
   passwordConfirmation: string
 }
-
-// 마이페이지 데이터 Response Type
-export type GetMyPageResponse = MyPageData | ErrorResponse
 
 type PathStatus = 'SCHEDULE' | 'IN_PROGRESS' | 'COMPLETED' | 'NOT_COMPLETE'
 

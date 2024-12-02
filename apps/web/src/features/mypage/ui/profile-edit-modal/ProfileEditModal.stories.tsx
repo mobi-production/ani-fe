@@ -4,7 +4,7 @@ import ProfileEditModal from '.'
 import { myPageProfileData } from '@/__mock__/data/mypage'
 
 const meta = {
-  title: 'Feature/ProfileEditModal',
+  title: 'Feature/MyPage/ProfileEditModal',
   component: ProfileEditModal,
   parameters: {
     layout: 'center',
