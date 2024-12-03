@@ -1,12 +1,14 @@
 import type { MainData } from '@/__mock__/types/main'
-import { END_POINT } from '@/shared/config/constants/end-point'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
+import { END_POINT } from '../config/main-config'
+import type { GetMainResponse } from '../model/apis'
+import { mainData } from '@/__mock__/data/main'
 
 /**
  * 메인 페이지 데이터를 조회하는 함수
- * @returns 서버 응답 데이터 또는 null
+ * @returns 서버 응답 데이터
  */
-export async function getMainData(): Promise<MainData | null> {
+export async function getMainData(): Promise<GetMainResponse> {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MAIN, {
       method: HTTP_METHODS.GET,
@@ -14,14 +16,14 @@ export async function getMainData(): Promise<MainData | null> {
     })
 
     if (!response.ok) {
-      console.error('메인 데이터 조회 중 오류 발생:', response.statusText)
-      return null
+      throw new Error(response.statusText)
     }
 
     const data: MainData = await response.json()
     return data
   } catch (error) {
-    console.error('메인 데이터 조회 에러', error)
-    return null
+    console.error('Error fetching main data:', error)
+
+    return mainData
   }
 }

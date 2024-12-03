@@ -3,7 +3,8 @@
 import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
-import { useAuthModalStore } from '@/features/auth/store'
+import { useAuthModalStore } from '@/features/auth/model'
+
 type HeaderProps = {
   isLoggedIn: boolean
 }

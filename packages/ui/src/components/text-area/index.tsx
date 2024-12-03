@@ -137,7 +137,7 @@ const TextAreaForm = forwardRef<HTMLTextAreaElement, TextAreaFormProps>(
   }
 )
 
-TextAreaForm.displayName = ''
+TextAreaForm.displayName = 'TextAreaForm'
 
 type CharCountIndicatorProps = ComponentProps<'div'>
 

@@ -3,7 +3,7 @@ import EditQuestionPage from '.'
 import { mockQuestion as data } from '@/__mock__/data/question'
 
 const meta = {
-  title: 'Page/EditQuestionPage',
+  title: 'Page/Question/EditQuestionPage',
   component: EditQuestionPage,
   parameters: {
     layout: 'centered'

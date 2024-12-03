@@ -3,9 +3,6 @@ export type ErrorResponse = {
   message: string
 }
 
-// 메인 페이지 데이터 Response Type
-export type GetMainResponse = MainData | ErrorResponse
-
 type MainBanner = {
   image: string
   description: string

@@ -20,15 +20,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
-  args: {},
-  decorators: [
-    (Story) => (
-      <Flex
-        align={'center'}
-        justify={'center'}
-        className='h-[30rem] w-full'>
-        <Story />
-      </Flex>
+  render: () => {
+    return (
+      <div className='w-[20.938rem]'>
+        <SubmitQuestionSection />
+      </div>
     )
-  ]
+  }
 }
