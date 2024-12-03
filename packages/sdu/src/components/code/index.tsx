@@ -1,6 +1,6 @@
 import { Flex, Typography } from '@repo/ui/server'
 import clsx from 'clsx'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import jsx from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
 import typescript from 'react-syntax-highlighter/dist/esm/languages/hljs/typescript'
@@ -39,16 +39,20 @@ function SDUCode({ caption, code }: Props) {
   const resolvedLanguage =
     language === 'tsx' ? 'typescript' : language === 'jsx' ? 'javascript' : language || 'plaintext'
 
-  const blankFields = code.text
-    .map((item, index) => ({ item, originalIndex: index }))
-    .filter(({ item }) => item.blank)
+  const blankFields = useMemo(
+    () =>
+      code.text
+        .map((item, index) => ({ item, originalIndex: index }))
+        .filter(({ item }) => item.blank),
+    [code.text]
+  )
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     const isAllCorrect = blankFields.every(
       ({ item, originalIndex }) => answers[originalIndex] === item.text
     )
     setIsCorrect(isAllCorrect)
-  }
+  }, [blankFields, answers])
 
   const getCodeString = useCallback(() => {
     return code.text
