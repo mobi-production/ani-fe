@@ -69,7 +69,7 @@ function SubmitQuestionSection({ defaultContents, defaultPathName, defaultTitle 
           placeholder='제목을 입력해주세요'
           isError={!!errors.title}
           errorMessage={errors.title?.message}
-          styleVariant='GHOST'
+          variant='GHOST'
         />
         <SpacingBlock size={16} />
         <Typography

@@ -14,7 +14,7 @@ type InputProps = ComponentProps<'input'> & {
   successMessage?: string
   rightIcon?: ReactNode
   leftIcon?: ReactNode
-  styleVariant?: keyof typeof InputVariants
+  variant?: keyof typeof InputVariants
 }
 
 const inputBackgroundStyleVariant = cva(
@@ -42,7 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       leftIcon,
       className,
-      styleVariant = 'PRIMARY',
+      variant = 'PRIMARY',
       ...props
     },
     ref
@@ -59,7 +59,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         gap={8}>
         <div
           className={cn(
-            inputBackgroundStyleVariant({ variant: InputVariants[styleVariant] }),
+            inputBackgroundStyleVariant({ variant: InputVariants[variant] }),
             isFocused && 'border-[1.5px] border-neutral-10',
             isError && 'border-[1.5px] border-status-error'
           )}>
