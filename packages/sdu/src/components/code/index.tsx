@@ -1,5 +1,6 @@
-import { Flex } from '@repo/ui/server'
-import { useState } from 'react'
+import { Flex, Typography } from '@repo/ui/server'
+import clsx from 'clsx'
+import { useCallback, useState } from 'react'
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import jsx from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript'
 import typescript from 'react-syntax-highlighter/dist/esm/languages/hljs/typescript'
@@ -15,16 +16,18 @@ type CodeText = {
   blank?: boolean
 }
 
+type Code = {
+  text: CodeText[]
+  language: 'typescript' | 'javascript' | 'plaintext'
+  example?: {
+    input: string
+    output: string
+  }
+}
+
 type Props = {
   caption: TextProps[]
-  code: {
-    text: CodeText[]
-    language: string
-    example?: {
-      input: string
-      output: string
-    }
-  }
+  code: Code
 }
 
 function SDUCode({ caption, code }: Props) {
@@ -47,7 +50,7 @@ function SDUCode({ caption, code }: Props) {
     setIsCorrect(isAllCorrect)
   }
 
-  const getCodeString = () => {
+  const getCodeString = useCallback(() => {
     return code.text
       .map((item, index) => {
         if (item.blank) {
@@ -56,9 +59,9 @@ function SDUCode({ caption, code }: Props) {
         return item.text
       })
       .join('')
-  }
+  }, [answers, code.text])
 
-  const getCurrentExample = () => {
+  const getCurrentExample = useCallback(() => {
     if (!code.example) return null
 
     const currentCode = getCodeString()
@@ -69,7 +72,7 @@ function SDUCode({ caption, code }: Props) {
     } catch (e) {
       return (e as Error).message
     }
-  }
+  }, [getCodeString, code.example])
 
   return (
     <div>
@@ -78,20 +81,23 @@ function SDUCode({ caption, code }: Props) {
           align='center'
           justify='between'
           className='bg-gray-50 p-4'>
-          <span className='text-sm text-gray-600'>
-            <SDUText
-              tag='span'
-              rich_text={caption}
-            />
-          </span>
-          <button
-            onClick={handleSubmit}
-            className='rounded bg-blue-500 px-3 py-1 text-sm text-white transition-colors hover:bg-blue-600'>
-            제출
-          </button>
+          <SDUText
+            tag='span'
+            rich_text={caption}
+          />
+          <Typography
+            color='inherit'
+            variant='body-2-normal'
+            asChild>
+            <button
+              onClick={handleSubmit}
+              className='rounded bg-blue-500 px-3 py-1 text-sm text-white transition-colors hover:bg-blue-600'>
+              제출
+            </button>
+          </Typography>
         </Flex>
 
-        <div className='bg-[#282c34] p-4'>
+        <div className='bg-[#282c34] p-4 text-white/60'>
           <Flex
             direction='row'
             wrap='wrap'
@@ -101,8 +107,12 @@ function SDUCode({ caption, code }: Props) {
                 key={originalIndex}
                 align='center'
                 gap={2}>
-                <span className='text-sm text-white/60'>빈칸 {blankIndex + 1}:</span>
-                <div className='group relative'>
+                <Typography
+                  color='inherit'
+                  variant='body-2-normal'>
+                  빈칸 {blankIndex + 1}:
+                </Typography>
+                <div className='group relative pl-2'>
                   <input
                     type='text'
                     value={answers[originalIndex] || ''}
@@ -112,7 +122,7 @@ function SDUCode({ caption, code }: Props) {
                         [originalIndex]: e.target.value
                       }))
                     }}
-                    className='w-32 rounded border border-white/20 bg-white/10 px-2 py-0.5 font-mono text-sm text-white placeholder:text-[12px] focus:border-white/40 focus:outline-none'
+                    className='w-32 rounded border border-white/20 bg-white/10 px-2 py-0.5 text-sm text-white/80 placeholder:text-[12px] focus:border-white/40 focus:outline-none'
                     placeholder='답을 입력하세요'
                   />
                 </div>
@@ -143,20 +153,42 @@ function SDUCode({ caption, code }: Props) {
 
           {code.example && (
             <div className='mt-4 border-t border-white/10 pt-4 text-white/80'>
-              <div className='mb-2 text-sm'>예시:</div>
-              <div className='rounded bg-black/30 p-3 font-mono text-sm'>
-                <div>입력값: {code.example.input}</div>
-                <div>기대 결과: {code.example.output}</div>
-                <div className='mt-2 border-t border-white/10 pt-2'>
+              <Typography
+                color='inherit'
+                variant='body-2-normal'
+                className='mb-2'>
+                예시:
+              </Typography>
+              <div className='rounded bg-black/30 p-3'>
+                <Typography
+                  variant='body-2-normal'
+                  color='inherit'
+                  className='block'>
+                  입력값: {code.example.input}
+                </Typography>
+                <Typography
+                  variant='body-2-normal'
+                  color='inherit'
+                  className='block'>
+                  기대 결과: {code.example.output}
+                </Typography>
+                <Typography
+                  variant='body-2-normal'
+                  color='inherit'
+                  className='mt-2 border-t border-white/10 pt-2'>
                   현재 결과: {getCurrentExample()}
-                </div>
+                </Typography>
               </div>
             </div>
           )}
         </div>
       </div>
       {isCorrect !== null && (
-        <div className={`p-3 ${isCorrect ? 'text-primary-normal' : 'text-status-error'}`}>
+        <div
+          className={clsx('p-3', {
+            'text-primary-normal': isCorrect,
+            'text-status-error': !isCorrect
+          })}>
           {isCorrect ? '정답입니다! 🎉' : '틀렸습니다. 다시 시도해보세요.'}
         </div>
       )}
