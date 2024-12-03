@@ -72,93 +72,91 @@ function SDUCode({ caption, code }: Props) {
   }
 
   return (
-    <div className='my-4 overflow-hidden rounded-lg border border-gray-200'>
-      <Flex
-        align='center'
-        justify='between'
-        className='bg-gray-50 p-4'>
-        <span className='text-sm text-gray-600'>
-          <SDUText
-            tag='span'
-            rich_text={caption}
-          />
-        </span>
-        <button
-          onClick={handleSubmit}
-          className='rounded bg-blue-500 px-3 py-1 text-sm text-white transition-colors hover:bg-blue-600'>
-          제출
-        </button>
-      </Flex>
-
-      <div className='bg-[#282c34] p-4'>
+    <div>
+      <div className='overflow-hidden rounded-lg border border-gray-200'>
         <Flex
-          direction='row'
-          wrap='wrap'
-          gap={2}>
-          {blankFields.map(({ originalIndex }, blankIndex) => (
-            <Flex
-              key={originalIndex}
-              align='center'
-              gap={2}>
-              <span className='text-sm text-white/60'>빈칸 {blankIndex + 1}:</span>
-              <div className='group relative'>
-                <input
-                  type='text'
-                  value={answers[originalIndex] || ''}
-                  onChange={(e) => {
-                    setAnswers((prev) => ({
-                      ...prev,
-                      [originalIndex]: e.target.value
-                    }))
-                  }}
-                  className='w-32 rounded border border-white/20 bg-white/10 px-2 py-0.5 font-mono text-sm text-white placeholder:text-[12px] focus:border-white/40 focus:outline-none'
-                  placeholder='답을 입력하세요'
-                />
-              </div>
-            </Flex>
-          ))}
+          align='center'
+          justify='between'
+          className='bg-gray-50 p-4'>
+          <span className='text-sm text-gray-600'>
+            <SDUText
+              tag='span'
+              rich_text={caption}
+            />
+          </span>
+          <button
+            onClick={handleSubmit}
+            className='rounded bg-blue-500 px-3 py-1 text-sm text-white transition-colors hover:bg-blue-600'>
+            제출
+          </button>
         </Flex>
 
-        <SyntaxHighlighter
-          language={resolvedLanguage}
-          style={atomOneDark}
-          customStyle={{
-            padding: '0',
-            fontSize: '0.875rem',
-            lineHeight: '1.6',
-            margin: 0,
-            borderRadius: '0.375rem'
-          }}
-          wrapLines={true}
-          showLineNumbers={true}
-          lineNumberStyle={{
-            minWidth: '2.5em',
-            paddingRight: '1em',
-            textAlign: 'right',
-            color: '#666'
-          }}>
-          {getCodeString()}
-        </SyntaxHighlighter>
+        <div className='bg-[#282c34] p-4'>
+          <Flex
+            direction='row'
+            wrap='wrap'
+            gap={2}>
+            {blankFields.map(({ originalIndex }, blankIndex) => (
+              <Flex
+                key={originalIndex}
+                align='center'
+                gap={2}>
+                <span className='text-sm text-white/60'>빈칸 {blankIndex + 1}:</span>
+                <div className='group relative'>
+                  <input
+                    type='text'
+                    value={answers[originalIndex] || ''}
+                    onChange={(e) => {
+                      setAnswers((prev) => ({
+                        ...prev,
+                        [originalIndex]: e.target.value
+                      }))
+                    }}
+                    className='w-32 rounded border border-white/20 bg-white/10 px-2 py-0.5 font-mono text-sm text-white placeholder:text-[12px] focus:border-white/40 focus:outline-none'
+                    placeholder='답을 입력하세요'
+                  />
+                </div>
+              </Flex>
+            ))}
+          </Flex>
 
-        {code.example && (
-          <div className='mt-4 border-t border-white/10 pt-4 text-white/80'>
-            <div className='mb-2 text-sm'>예시:</div>
-            <div className='rounded bg-black/30 p-3 font-mono text-sm'>
-              <div>입력값: {code.example.input}</div>
-              <div>기대 결과: {code.example.output}</div>
-              <div className='mt-2 border-t border-white/10 pt-2'>
-                현재 결과: {getCurrentExample()}
+          <SyntaxHighlighter
+            language={resolvedLanguage}
+            style={atomOneDark}
+            customStyle={{
+              padding: '0',
+              fontSize: '0.875rem',
+              lineHeight: '1.6',
+              margin: 0,
+              borderRadius: '0.375rem'
+            }}
+            wrapLines={true}
+            showLineNumbers={true}
+            lineNumberStyle={{
+              minWidth: '2.5em',
+              paddingRight: '1em',
+              textAlign: 'right',
+              color: '#666'
+            }}>
+            {getCodeString()}
+          </SyntaxHighlighter>
+
+          {code.example && (
+            <div className='mt-4 border-t border-white/10 pt-4 text-white/80'>
+              <div className='mb-2 text-sm'>예시:</div>
+              <div className='rounded bg-black/30 p-3 font-mono text-sm'>
+                <div>입력값: {code.example.input}</div>
+                <div>기대 결과: {code.example.output}</div>
+                <div className='mt-2 border-t border-white/10 pt-2'>
+                  현재 결과: {getCurrentExample()}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-
       {isCorrect !== null && (
-        <div
-          className={`border-t border-gray-200 p-3 ${
-            isCorrect ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-          }`}>
+        <div className={`p-3 ${isCorrect ? 'text-primary-normal' : 'text-status-error'}`}>
           {isCorrect ? '정답입니다! 🎉' : '틀렸습니다. 다시 시도해보세요.'}
         </div>
       )}
