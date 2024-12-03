@@ -1,9 +1,11 @@
 import cn from '@repo/util/cn'
+import { cva } from 'class-variance-authority'
 import { ComponentProps, forwardRef, ReactNode, useState } from 'react'
 
 import Flex from '../flex'
 import Icon from '../icon'
 import Typography from '../typography'
+import { InputVariants } from './variants'
 
 type InputProps = ComponentProps<'input'> & {
   isError?: boolean
@@ -12,7 +14,23 @@ type InputProps = ComponentProps<'input'> & {
   successMessage?: string
   rightIcon?: ReactNode
   leftIcon?: ReactNode
+  variant?: keyof typeof InputVariants
 }
+
+const inputBackgroundStyleVariant = cva(
+  'flex items-center justify-between rounded-[0.5rem] border-[1.5px] border-transparent',
+  {
+    variants: {
+      variant: {
+        [InputVariants.PRIMARY]: 'bg-background-alternative px-[1.25rem] py-[0.69rem]',
+        [InputVariants.GHOST]: 'bg-background-normal border-line-normal/15 p-3'
+      }
+    },
+    defaultVariants: {
+      variant: 'PRIMARY'
+    }
+  }
+)
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -24,6 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       rightIcon,
       leftIcon,
       className,
+      variant = 'PRIMARY',
       ...props
     },
     ref
@@ -40,11 +59,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         gap={8}>
         <div
           className={cn(
-            'flex items-center justify-between rounded-[0.5rem] border-[1.5px] border-transparent px-[1.25rem] py-[0.69rem]',
+            inputBackgroundStyleVariant({ variant: InputVariants[variant] }),
             isFocused && 'border-[1.5px] border-neutral-10',
             isError && 'border-[1.5px] border-status-error'
-          )}
-          style={{ backgroundColor: 'rgba(23, 23, 23, 0.03)' }}>
+          )}>
           {leftIcon && <div>{leftIcon}</div>}
           <input
             onFocus={() => setIsFocused(true)}
