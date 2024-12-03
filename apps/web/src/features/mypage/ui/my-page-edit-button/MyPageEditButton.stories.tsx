@@ -3,7 +3,7 @@ import { Flex } from '@repo/ui/server'
 import MyPageEditButton from '.'
 
 const meta = {
-  title: 'Feature/MyPageEditButton',
+  title: 'Feature/MyPage/MyPageEditButton',
   component: MyPageEditButton,
   parameters: {
     layout: 'center',

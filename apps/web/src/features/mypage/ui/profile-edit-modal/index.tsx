@@ -1,7 +1,6 @@
 'use client'
 
 import type { MyPageProfileData } from '@/__mock__/types/mypage'
-import { putMyProfile } from '@/entities/mypage/lib/apis'
 
 import { Flex, SolidButton, Typography } from '@repo/ui/server'
 import { Modal } from '@repo/ui/client'
@@ -9,9 +8,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Icon, Input } from '@repo/ui/client'
 import Link from 'next/link'
-import { MyPageProfileEditFormData, myPageProfileEditSchema } from '../../model/profileEditSchema'
+
 import { useState } from 'react'
 import ImageUpload from '@/shared/ui/image-upload'
+import {
+  myPageProfileEditSchema,
+  type MyPageProfileEditFormData
+} from '@/entities/mypage/model/myProfileEditSchema'
+import { putMyProfile } from '../../api'
 
 type ProfileEditModalProps = {
   isOpen: boolean

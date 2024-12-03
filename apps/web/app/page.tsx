@@ -1,5 +1,5 @@
-import { getMainData } from '@/entities/main/lib/apis/get-main-data'
-import MainPage from '@/views/MainPage'
+import { getMainData } from '@/views/main/api/get-main-data'
+import MainPage from '@/views/main/ui'
 
 export const metadata = {
   title: 'ANI | 메인 페이지',
@@ -10,8 +10,10 @@ export const metadata = {
 export default async function Home() {
   const data = await getMainData()
 
-  if (!data) {
-    return <div>데이터를 불러오는 데 실패했습니다.</div>
+  // ErrorResponse 처리 예정
+  if ('status' in data) {
+    return <div>데이터를 불러오는 데 실패했습니다: {data.message}</div>
   }
+
   return <MainPage data={data} />
 }

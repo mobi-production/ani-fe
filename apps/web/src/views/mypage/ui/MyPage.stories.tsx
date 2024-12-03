@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { myPageData, myPageProfileData } from '@/__mock__/data/mypage'
 import { Inner } from '.'
-import { mainData } from '@/__mock__/data/main'
 
 const meta = {
-  title: 'Page/MainPage',
+  title: 'Page/MyPage/MainPage',
   component: Inner,
   parameters: {
     layout: 'fullscreen'
@@ -16,6 +16,8 @@ type Story = StoryObj<typeof meta>
 
 export const Preview: Story = {
   args: {
-    data: mainData
+    myPageData: myPageData,
+    myPageProfileData: myPageProfileData,
+    onOpenModal: () => {}
   }
 }

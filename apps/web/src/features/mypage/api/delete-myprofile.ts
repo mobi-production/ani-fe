@@ -1,8 +1,8 @@
-import type { PutMyPageProfileRequestType, PutMyPageProfileResponse } from '@/__mock__/types/mypage'
-import { END_POINT } from '@/shared/config/constants/end-point'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
+import { END_POINT } from '@/views/mypage/config/apis'
+import type { DeleteMyPageParams, DeleteMyPageResponse } from '../model/apis'
 
-export async function putMyProfile(userData: PutMyPageProfileRequestType) {
+export async function deleteMyProfile(userData: DeleteMyPageParams) {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.MYPAGE.MY_PROFILE, {
       method: HTTP_METHODS.PUT,
@@ -16,7 +16,7 @@ export async function putMyProfile(userData: PutMyPageProfileRequestType) {
       return null
     }
 
-    const data: PutMyPageProfileResponse = await response.json()
+    const data: DeleteMyPageResponse = await response.json()
     return data
   } catch (error) {
     console.error('마이프로필 데이터 수정 에러', error)
