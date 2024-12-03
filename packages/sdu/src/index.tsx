@@ -32,6 +32,8 @@ type SDUComponentProps = {
   numbered: number
 }
 
+const NESTED_CHILDREN_COMPONENTS = ['toggle']
+
 function SDUComponent({ children, depth, numbered }: SDUComponentProps) {
   const { type, props, children: childrenContent } = children
   const Component = SDUComponents[type]
@@ -48,39 +50,42 @@ function SDUComponent({ children, depth, numbered }: SDUComponentProps) {
       numbered
     } as const
 
-    if (!childrenContent || !children) {
-      return <Component {...componentProps} />
-    }
+    const childrenElement = childrenContent && (
+      <ChildrenDepthComponent>
+        <ServerDrivenComponent
+          depth={depth + 1}
+          numbered={type === 'numbered_list_item' ? 1 : numbered}
+          content={childrenContent}
+          isChild
+        />
+      </ChildrenDepthComponent>
+    )
 
-    // Toggle의 경우 children으로 전달을 해야하기에 별도 처리합니다.
-    if (type === ('toggle' as keyof typeof SDUComponents)) {
+    if ((type as keyof typeof SDUComponents) === 'column_list') {
       return (
-        <Component {...componentProps}>
-          {childrenContent && (
-            <ChildrenDepthComponent>
-              <ServerDrivenComponent
-                depth={depth + 1}
-                numbered={numbered}
-                content={childrenContent}
-                isChild
-              />
-            </ChildrenDepthComponent>
-          )}
+        <Component {...{ ...componentProps, columnsLength: childrenContent?.length }}>
+          {childrenContent?.map((column, index) => (
+            <ServerDrivenComponent
+              key={index}
+              content={[column]}
+              depth={depth + 1}
+              numbered={numbered}
+              isChild
+            />
+          ))}
         </Component>
       )
     }
 
-    return (
+    // 특정 컴포넌트의 경우 내부에서 렌더링 되도록 검사하는 로직
+    const shouldNestChildren = NESTED_CHILDREN_COMPONENTS.includes(type)
+
+    return shouldNestChildren ? (
+      <Component {...componentProps}>{childrenElement}</Component>
+    ) : (
       <>
         <Component {...componentProps} />
-        <ChildrenDepthComponent>
-          <ServerDrivenComponent
-            depth={depth + 1}
-            numbered={type === 'numbered_list_item' ? 1 : numbered}
-            content={childrenContent || []}
-            isChild
-          />
-        </ChildrenDepthComponent>
+        {childrenElement}
       </>
     )
   }, [type, props, children, depth, numbered])
@@ -106,6 +111,7 @@ export function ServerDrivenComponent({
   return (
     <Flex
       direction='column'
+      gap={12}
       asChild>
       <Component>
         {content.map((component, index) => {

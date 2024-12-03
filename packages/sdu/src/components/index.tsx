@@ -4,6 +4,7 @@ import SDUButton from './button'
 import SDUCallout from './callout'
 import SDUCheckbox from './checkbox'
 import SDUCode from './code'
+import SDUColumnList from './column-list'
 import SDUDivider from './divider'
 import SDUFile from './file'
 import SDUHeading1 from './heading1'
@@ -35,5 +36,6 @@ export const SDUComponents = {
   button: SDUButton,
   checkbox: SDUCheckbox,
   table_of_content: SDUTableOfContent,
-  code: SDUCode
+  code: SDUCode,
+  column_list: SDUColumnList
 } as const
