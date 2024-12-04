@@ -1,10 +1,11 @@
-type DateFormat = 'yyyy-MM-dd' | 'yyyy.MM.dd' | 'default'
+type DateFormat = 'yyyy-MM-dd' | 'yyyy.MM.dd' | 'yy.MM.dd' | 'default'
 
 /**
  *
  * @example
  * formatDate('2024-03-21', 'yyyy-MM-dd')      // '2024-03-21'
  * formatDate('2024-03-21', 'yyyy.MM.dd')      // '2024.03.21'
+ * formatDate('2024-03-21', 'yy.MM.dd')        // '24.03.21'
  * formatDate('2024-03-21', 'default')         // '2024년 3월 21일'
  * formatDate('2024-03-21')                    // '2024년 3월 21일'
  */
@@ -31,6 +32,7 @@ export const formatDate = (
     }
 
     const year = date.getFullYear()
+    const slicedYear = String(date.getFullYear()).slice(2)
     const month = String(date.getMonth() + 1).padStart(2, '0')
     const day = String(date.getDate()).padStart(2, '0')
 
@@ -39,6 +41,8 @@ export const formatDate = (
         return `${year}-${month}-${day}`
       case 'yyyy.MM.dd':
         return `${year}.${month}.${day}`
+      case 'yy.MM.dd':
+        return `${slicedYear}.${month}.${day}`
       default:
         return `${year}-${month}-${day}`
     }

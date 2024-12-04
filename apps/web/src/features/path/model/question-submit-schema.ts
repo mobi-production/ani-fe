@@ -17,3 +17,12 @@ export const questionSubmitSchema = z.object({
 })
 
 export type QuestionFormData = z.infer<typeof questionSubmitSchema>
+
+export const replySubmitSchema = z.object({
+  reply: z
+    .string()
+    .min(MIN_CONTENTS_LENGTH, `최소 ${MIN_TITLE_LENGTH}자 이상의 질문을 입력해주세요.`)
+    .max(MAX_CONTENTS_LENGTH, `질문은 최대 ${MAX_TITLE_LENGTH}자까지 입력할 수 있습니다.`)
+})
+
+export type ReplyFormData = z.infer<typeof replySubmitSchema>

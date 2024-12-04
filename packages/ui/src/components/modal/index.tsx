@@ -1,8 +1,11 @@
+import cn from '@repo/util/cn'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { ComponentProps, forwardRef, Fragment, useEffect } from 'react'
 
 import { usePortal } from '../../hooks/use-portal'
 import Flex from '../flex'
 import Icon from '../icon'
+import { ModalRounded } from './variants'
 
 type BasicModalProps = ComponentProps<'div'> & {
   onClose: () => void
@@ -28,12 +31,29 @@ const BackDrop = forwardRef<HTMLDivElement, OptionalModalProps>(
 
 BackDrop.displayName = 'BackDrop'
 
-const Overlay = forwardRef<HTMLDivElement, ComponentProps<'div'>>(
-  ({ className, children }, ref) => {
+export const overlayVariants = cva(
+  'pointer-events-auto left-1/2 -translate-x-1/2 fixed top-1/2 -translate-y-1/2 transform bg-background-normal p-4',
+  {
+    variants: {
+      rounded: {
+        [ModalRounded.SMALL]: 'rounded',
+        [ModalRounded.NORMAL]: 'rounded-2xl'
+      }
+    },
+    defaultVariants: {
+      rounded: ModalRounded.NORMAL
+    }
+  }
+)
+
+type OverlayProps = VariantProps<typeof overlayVariants> & ComponentProps<'div'>
+
+const Overlay = forwardRef<HTMLDivElement, OverlayProps>(
+  ({ rounded, className, children }, ref) => {
     return (
       <aside
         ref={ref}
-        className={`pointer-events-auto fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform rounded-2xl bg-background-normal p-4 ${className}`}>
+        className={cn(overlayVariants({ rounded }), className)}>
         {children}
       </aside>
     )
@@ -56,11 +76,12 @@ function Close({ onClose, isRendered }: OptionalModalProps) {
   )
 }
 
-type ModalProps = BasicModalProps & {
-  isOpen: boolean
-  withBackDrop?: boolean
-  withCloseButton?: boolean
-}
+type ModalProps = VariantProps<typeof overlayVariants> &
+  BasicModalProps & {
+    isOpen: boolean
+    withBackDrop?: boolean
+    withCloseButton?: boolean
+  }
 
 function Modal({
   withBackDrop = true,
@@ -68,7 +89,8 @@ function Modal({
   isOpen,
   onClose,
   className,
-  children
+  children,
+  rounded
 }: ModalProps) {
   const { renderInPortal } = usePortal()
 
@@ -96,7 +118,9 @@ function Modal({
         onClose={onClose}
         isRendered={withBackDrop}
       />
-      <Overlay className={className}>
+      <Overlay
+        className={className}
+        rounded={rounded}>
         <Close
           onClose={onClose}
           isRendered={withCloseButton}

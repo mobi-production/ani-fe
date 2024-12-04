@@ -10,15 +10,15 @@ import {
 } from '@/features/path/model/question-submit-schema'
 
 type Props = {
-  defaultPathName?: string
+  defaultTag?: string
   defaultTitle?: string
   defaultContents?: string
 }
 
-function SubmitQuestionSection({ defaultContents, defaultPathName, defaultTitle }: Props) {
-  const [currentPathName, setCurrentPathName] = useState(defaultPathName ?? '전체')
-  const handleSelectPathName = (value: string) => {
-    setCurrentPathName(value)
+function SubmitQuestionSection({ defaultContents, defaultTag, defaultTitle }: Props) {
+  const [currentTag, setCurrentTag] = useState(defaultTag ?? '전체')
+  const handleSelectTag = (value: string) => {
+    setCurrentTag(value)
   }
 
   const {
@@ -53,8 +53,8 @@ function SubmitQuestionSection({ defaultContents, defaultPathName, defaultTitle 
   return (
     <div className='w-full'>
       <UserPathDropdown
-        currentPathName={currentPathName}
-        handleSelectPathName={handleSelectPathName}
+        currentPathName={currentTag}
+        handleSelectPathName={handleSelectTag}
       />
       <SpacingBlock size={20} />
       <form onSubmit={handleSubmit(onSubmitQuestion)}>

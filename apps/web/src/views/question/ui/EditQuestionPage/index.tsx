@@ -26,9 +26,9 @@ export default function EditQuestionPage({ data }: Props) {
         </Typography>
       </Flex>
       <SubmitQuestionSection
-        defaultPathName={data.pathName}
+        defaultTag={data.tag}
         defaultTitle={data.title}
-        defaultContents={data.contents}
+        defaultContents={data.content}
       />
     </Flex>
   )

@@ -38,7 +38,8 @@ export const typographyVariants = cva('', {
       [TypographyColors.ALTERNATIVE]: 'text-label-alternative',
       [TypographyColors.ASSISTIVE]: 'text-label-assistive',
       [TypographyColors.DISABLE]: 'text-label-disable',
-      [TypographyColors.ERROR]: 'text-status-error'
+      [TypographyColors.ERROR]: 'text-status-error',
+      [TypographyColors.MINT99]: 'text-mint-99'
     }
   },
   defaultVariants: {
