@@ -45,16 +45,18 @@ function EditQuestionModal({ isEditQuestionModalOpen, onCloseEditQuestionModal }
         direction={'column'}
         gap={8}>
         <Typography
+          asChild
           variant={'caption-1'}
           className='cursor-pointer'
           onClick={onClickEditQuestion}>
-          수정하기
+          <button>수정하기</button>
         </Typography>
         <Typography
+          asChild
           variant={'caption-1'}
           className='cursor-pointer'
           onClick={onClickDeleteQuestion}>
-          삭제하기
+          <button>삭제하기</button>
         </Typography>
       </Flex>
     </div>

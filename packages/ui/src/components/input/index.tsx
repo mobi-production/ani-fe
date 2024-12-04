@@ -14,7 +14,6 @@ type InputProps = ComponentProps<'input'> & {
   successMessage?: string
   rightIcon?: ReactNode
   leftIcon?: ReactNode
-  backgroundClassName?: string
   variant?: keyof typeof InputVariants
 }
 
