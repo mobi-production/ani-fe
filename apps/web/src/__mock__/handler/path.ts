@@ -1,5 +1,12 @@
 import { http, HttpHandler, HttpResponse } from 'msw'
-import { pathIntroduceMock, pathLoadMock, pathPageMock, pathSidebarStatusMock } from '../data/path'
+import {
+  pathApplyCancelMock,
+  pathApplyMock,
+  pathIntroduceMock,
+  pathLoadMock,
+  pathPageMock,
+  pathSidebarStatusMock
+} from '../data/path'
 import { FEEDBACK_CATEGORY, MOCK_MENTO, MOCK_USER, mockFeedbackList } from '../data/feedback'
 import { withDelay } from '../utils/withDelay'
 import {
@@ -24,6 +31,14 @@ import {
 } from '@/views/path/api/get-path-status'
 import { GetPathPageParamsType, GetPathPageResponseType } from '@/views/path/api/get-path-page'
 import { GetPathLoadParamsType, GetPathLoadResponseType } from '@/views/path/api/get-path-load'
+import {
+  PostPathApplyParamsType,
+  PostPathApplyResponseType
+} from '@/features/path/api/post-path-apply'
+import {
+  DeletePathApplyParamsType,
+  DeletePathApplyCancelResponseType
+} from '@/features/path/api/delete-path-apply-cancle'
 
 const MOCK_SERVER_RESPONSE_DELAY = 3000
 
@@ -222,6 +237,28 @@ export const pathHandlers: HttpHandler[] = [
     withDelay(MOCK_SERVER_RESPONSE_DELAY, ({ params }) => {
       const { pathId } = params
       return HttpResponse.json({ status: 200, data: pathLoadMock(pathId) })
+    })
+  ),
+
+  // 패스 신청
+  http.post<never, PostPathApplyParamsType, PostPathApplyResponseType | ErrorResponseType>(
+    '/path/:pathId/apply',
+    withDelay(MOCK_SERVER_RESPONSE_DELAY, async ({ params }) => {
+      const { pathId } = params
+      return HttpResponse.json({ status: 200, data: pathApplyMock(pathId) })
+    })
+  ),
+
+  // 패스 신청 취소
+  http.delete<
+    DeletePathApplyParamsType,
+    never,
+    DeletePathApplyCancelResponseType | ErrorResponseType
+  >(
+    '/path/:pathId/apply',
+    withDelay(MOCK_SERVER_RESPONSE_DELAY, async ({ params }) => {
+      const { pathId } = params
+      return HttpResponse.json({ status: 200, data: pathApplyCancelMock(pathId) })
     })
   )
 ]
