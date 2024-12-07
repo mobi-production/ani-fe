@@ -1,3 +1,4 @@
+import { Flex } from '@repo/ui/server'
 import { SIZE_VARIANTS } from '@repo/ui/variants/size'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -29,4 +30,18 @@ export const Preview: Story = {
   args: {
     name: 'RightOutlined'
   }
+}
+
+export const IconPreview = () => {
+  return (
+    <Flex gap={4}>
+      {Object.keys(IconsMap).map((icon) => (
+        <Icon
+          size={24}
+          key={icon}
+          name={icon as keyof typeof IconsMap}
+        />
+      ))}
+    </Flex>
+  )
 }

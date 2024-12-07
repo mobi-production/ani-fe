@@ -1,8 +1,10 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import { END_POINT } from '../config/path-config'
+import { ErrorResponseType } from '@/__mock__/types/feedback'
 
 export type DeletePathApplyParamsType = {
   pathId: string
+  reason: string
 }
 
 export type DeletePathApplyCancelResponseType = {
@@ -13,14 +15,16 @@ export type DeletePathApplyCancelResponseType = {
 }
 
 export async function deletePathApplyCancel({
-  pathId
-}: DeletePathApplyParamsType): Promise<DeletePathApplyCancelResponseType> {
+  pathId,
+  reason
+}: DeletePathApplyParamsType): Promise<DeletePathApplyCancelResponseType | ErrorResponseType> {
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + END_POINT.PATH_APPLY_CANCEL(pathId),
       {
         method: HTTP_METHODS.DELETE,
-        headers: HTTP_HEADERS.JSON
+        headers: HTTP_HEADERS.JSON,
+        body: JSON.stringify({ reason })
       }
     )
 

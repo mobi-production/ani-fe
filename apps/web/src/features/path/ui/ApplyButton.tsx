@@ -2,36 +2,42 @@
 
 import { Icon } from '@repo/ui/client'
 import { SolidButton } from '@repo/ui/server'
-import { postPathApply } from '../api'
-import { useTransition } from 'react'
+import { useState } from 'react'
+import PathApplyModal from './apply-modal'
 
-type Props = {
-  pathId: string | number
-}
-
-function PathApplyButton({ pathId }: Props) {
+function PathApplyButton({ pathId }: { pathId: string }) {
   const isLoggedIn = true
-  const [isPending, startTransition] = useTransition()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleClick = async () => {
+  const handleModalOpen = () => {
     if (isLoggedIn) {
-      startTransition(async () => {
-        await postPathApply({ pathId: pathId.toString() })
-      })
+      setIsModalOpen(true)
     } else {
       alert('로그인 후 이용해주세요.')
     }
   }
 
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+  }
+
   return (
-    <SolidButton
-      onClick={handleClick}
-      variant='primary'
-      fullWidth
-      rightIcon={<Icon name='RightOutlined' />}
-      disabled={isPending}>
-      신청하기
-    </SolidButton>
+    <>
+      <SolidButton
+        onClick={handleModalOpen}
+        variant='primary'
+        fullWidth
+        rightIcon={<Icon name='RightOutlined' />}>
+        신청하기
+      </SolidButton>
+      {isModalOpen ? (
+        <PathApplyModal
+          isModalOpen={isModalOpen}
+          handleModalClose={handleModalClose}
+          pathId={pathId}
+        />
+      ) : null}
+    </>
   )
 }
 

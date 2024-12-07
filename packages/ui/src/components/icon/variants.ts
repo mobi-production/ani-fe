@@ -24,6 +24,7 @@ import {
   InfoCircleOutlined,
   LeftOutlined,
   LikeOutlined,
+  MoreOutlined,
   PlayCircleOutlined,
   QuestionCircleOutlined,
   RightOutlined,
@@ -65,7 +66,8 @@ export const IconsMap = {
   LikeOutlined: LikeOutlined,
   ExclamationOutlined: ExclamationOutlined,
   CheckOutlined: CheckOutlined,
-  FireOutlined: FireOutlined
+  FireOutlined: FireOutlined,
+  MoreOutlined: MoreOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap

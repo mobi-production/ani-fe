@@ -1,59 +1,61 @@
-'use client'
-
 import PathApplyButton from '@/features/path/ui/ApplyButton'
 import PathCancleButton from '@/features/path/ui/CancleButton'
+import PathInterruptionButton from '@/features/path/ui/InterruptionButton'
 import { Flex, ImageSection, Typography } from '@repo/ui/server'
-
-type PathStatusButtonProps = {
-  isSubscribed: boolean
-  pathId: string | number
-}
-
-function PathStatusButton({ isSubscribed, pathId }: PathStatusButtonProps) {
-  return isSubscribed ? <PathCancleButton pathId={pathId} /> : <PathApplyButton pathId={pathId} />
-}
 
 type Props = {
   thumbnail: string
   title: string
   description: string
   isSubscribed: boolean
-  pathId: string | number
+  pathId: string
 }
 
 function PathIntroduceTopBanner({ thumbnail, title, description, isSubscribed, pathId }: Props) {
   return (
-    <section id='path_title_banner'>
-      <Flex className='gap-[2.5rem]'>
+    <section
+      id='path_title_banner'
+      className='w-full'>
+      <Flex className='w-full gap-[2.5rem]'>
         <ImageSection
           size='l'
           src={thumbnail}
           alt={title}
         />
         <Flex
-          className='w-[30rem]'
+          className='flex-1'
           direction={'column'}
           justify={'between'}>
           <Flex
             direction={'column'}
-            className='gap-[0.5rem]'>
+            className='w-full gap-[0.5rem]'>
+            <Flex
+              align={'center'}
+              justify={'between'}>
+              <div className='w-[30rem]'>
+                <Typography
+                  variant='display-2'
+                  fontWeight={'bold'}>
+                  {title}
+                </Typography>
+              </div>
+              <PathInterruptionButton pathId={pathId} />
+            </Flex>
             <Typography
-              variant='display-2'
-              fontWeight={'bold'}>
-              {title}
-            </Typography>
-            <Typography
-              className='whitespace-pre-line'
+              className='w-[30rem] whitespace-pre-line'
               variant='body-1-normal'
               fontWeight={'medium'}>
               {description}
             </Typography>
           </Flex>
 
-          <PathStatusButton
-            isSubscribed={isSubscribed}
-            pathId={pathId}
-          />
+          <div className='w-[30rem]'>
+            {isSubscribed ? (
+              <PathCancleButton pathId={pathId} />
+            ) : (
+              <PathApplyButton pathId={pathId} />
+            )}
+          </div>
         </Flex>
       </Flex>
     </section>

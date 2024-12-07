@@ -2,31 +2,22 @@
 
 import { Icon } from '@repo/ui/client'
 import { SolidButton } from '@repo/ui/server'
-import { deletePathApplyCancel } from '../api'
-import { useTransition } from 'react'
 
-type Props = {
-  pathId: string | number
-}
-
-function PathCancleButton({ pathId }: Props) {
-  const [isPending, startTransition] = useTransition()
-
-  const handleClick = async () => {
-    startTransition(async () => {
-      await deletePathApplyCancel({ pathId: pathId.toString() })
-    })
+function PathCancleButton({ pathId }: { pathId: string }) {
+  const handleClick = () => {
+    console.log(pathId, '를 취소합니다.')
   }
 
   return (
-    <SolidButton
-      onClick={handleClick}
-      variant='secondary'
-      fullWidth
-      rightIcon={<Icon name='RightOutlined' />}
-      disabled={isPending}>
-      신청 취소하기
-    </SolidButton>
+    <>
+      <SolidButton
+        onClick={handleClick}
+        variant='secondary'
+        fullWidth
+        rightIcon={<Icon name='RightOutlined' />}>
+        신청 취소하기
+      </SolidButton>
+    </>
   )
 }
 

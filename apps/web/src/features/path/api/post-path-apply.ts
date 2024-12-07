@@ -1,9 +1,9 @@
-import type { AuthResponse } from '@/__mock__/types/auth'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import { END_POINT } from '../config/path-config'
 
 export type PostPathApplyParamsType = {
   pathId: string
+  review: string
 }
 
 export type PostPathApplyResponseType = {
@@ -14,12 +14,14 @@ export type PostPathApplyResponseType = {
 }
 
 export async function postPathApply({
-  pathId
+  pathId,
+  review
 }: PostPathApplyParamsType): Promise<PostPathApplyResponseType> {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.PATH_APPLY(pathId), {
       method: HTTP_METHODS.POST,
-      headers: HTTP_HEADERS.JSON
+      headers: HTTP_HEADERS.JSON,
+      body: JSON.stringify({ review })
     })
 
     if (!response.ok) {
