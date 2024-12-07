@@ -5,7 +5,7 @@ import { SolidButton } from '@repo/ui/server'
 import { useState } from 'react'
 import PathApplyModal from './apply-modal'
 
-function PathApplyButton({ pathId }: { pathId: string }) {
+function PathApplyButton({ pathId }: { pathId: string | number }) {
   const isLoggedIn = true
   const [isModalOpen, setIsModalOpen] = useState(false)
 

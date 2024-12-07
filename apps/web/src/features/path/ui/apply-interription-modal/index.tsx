@@ -4,14 +4,14 @@ import { SolidButton, TextButton, Typography } from '@repo/ui/server'
 import { Flex } from '@repo/ui/server'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { InterruptionFormData } from '../../model/interruption-submit-schema'
-import { interruptionSubmitSchema } from '../../model/interruption-submit-schema'
+import { InterruptionFormData } from '../../../../entities/path/model/interruption-submit-schema'
+import { interruptionSubmitSchema } from '../../../../entities/path/model/interruption-submit-schema'
 import { deletePathApplyCancel } from '../../api'
 import { useRouter } from 'next/navigation'
 
 type Props = {
   isModalOpen: boolean
-  pathId: string
+  pathId: string | number
   handleModalClose: () => void
 }
 
@@ -45,7 +45,7 @@ function PathInterruptionModal({ isModalOpen, handleModalClose, pathId }: Props)
     const { reason } = formData
     if (!reason || !pathId) return
 
-    await deletePathApplyCancel({ pathId, reason })
+    await deletePathApplyCancel({ pathId: pathId.toString(), reason })
     handleModalClose()
     router.refresh()
   }

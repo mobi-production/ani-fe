@@ -3,7 +3,7 @@
 import { Icon } from '@repo/ui/client'
 import { SolidButton } from '@repo/ui/server'
 
-function PathCancleButton({ pathId }: { pathId: string }) {
+function PathCancleButton({ pathId }: { pathId: string | number }) {
   const handleClick = () => {
     console.log(pathId, '를 취소합니다.')
   }

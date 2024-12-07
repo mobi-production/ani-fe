@@ -8,7 +8,7 @@ type Props = {
   title: string
   description: string
   isSubscribed: boolean
-  pathId: string
+  pathId: number | string
 }
 
 function PathIntroduceTopBanner({ thumbnail, title, description, isSubscribed, pathId }: Props) {

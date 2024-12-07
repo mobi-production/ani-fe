@@ -3,7 +3,7 @@ import CommonModal, { ICON_THEME } from '@/shared/ui/modal'
 type Props = {
   isModalOpen: boolean
   handleModalClose: () => void
-  pathId: string
+  pathId: string | number
 }
 
 function PathApplyModal({ isModalOpen, handleModalClose, pathId }: Props) {

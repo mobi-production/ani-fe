@@ -3,10 +3,10 @@ import { Icon } from '@repo/ui/client'
 import { useState } from 'react'
 import PathInterruptionModal from './apply-interription-modal'
 import DropdownMenu from '@/shared/ui/dropdown-menu'
-import { Flex, Typography } from '@repo/ui/server'
+import { Typography } from '@repo/ui/server'
 
 type Props = {
-  pathId: string
+  pathId: string | number
 }
 
 function PathInterruptionButton({ pathId }: Props) {
