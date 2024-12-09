@@ -14,4 +14,12 @@
   .reset-button {
     @apply cursor-pointer border-none bg-transparent p-0 text-inherit outline-none;
   }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none;
+  }
 }

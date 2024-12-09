@@ -36,6 +36,7 @@
 - [table](./src/components/table)
 - [code](./src/components/code)
 - [table_of_content](./src/components/table-of-content)
+- [column_list](./src/components/column-list)
 
 ### 사용 방법
 

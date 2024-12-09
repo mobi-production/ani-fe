@@ -1,11 +1,6 @@
-export type QuestionDetailType = {
-  id: string
-  pathName: string
-  title: string
-  contents: string
-}
+import { QuestionType } from '@/__mock__/types/question'
 
 export type GetQuestionDetailResponseType = {
   status: number
-  data: QuestionDetailType
+  data: QuestionType
 }

@@ -1,32 +1,49 @@
 import { QuestionType } from '../types/question'
 
+export const mockQuestion: QuestionType = {
+  id: 'erwtert',
+  title: 'How to center a div using CSS?',
+  content: 'I want to center a div both vertically and horizontally. What is the best approach?',
+  createdDate: '2024-11-01',
+  tag: 'CSS',
+  isAnswered: true,
+  answers: [
+    {
+      id: 'a1',
+      user: 'JohnDoe',
+      profileImage: '/avif/placeholder.avif',
+      answerContent:
+        'dSass is a CSS pre-processor with syntax advancements. Style sheets in the advanced syntax are processed by the program, and turned into regular CSS style sheets. However, they do not extend the CSS standard itself.CSS variables are supported and can be utilized but not as well as pre-processor variables.For the difference between SCSS and Sass, this text on the Sass documentation page should answer the question: The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.',
+      answerDate: '2024-11-02'
+    },
+    {
+      id: '1',
+      user: 'Creme',
+      profileImage: '/avif/placeholder.avif',
+      answerContent:
+        'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',
+      answerDate: '2024-11-03'
+    },
+    {
+      id: 'a1',
+      user: 'JohnDoe',
+      profileImage: '/avif/placeholder.avif',
+      answerContent: 'You can use Flexbox with `justify-content` and `align-items` set to center.',
+      answerDate: '2024-11-02'
+    },
+    {
+      id: '1',
+      user: 'Creme',
+      profileImage: '/avif/placeholder.avif',
+      answerContent:
+        'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',
+      answerDate: '2024-11-03'
+    }
+  ]
+}
+
 export const mockQuestionList: QuestionType[] = [
-  {
-    id: 'erwtert',
-    title: 'How to center a div using CSS?',
-    content: 'I want to center a div both vertically and horizontally. What is the best approach?',
-    createdDate: '2024-11-01',
-    tag: 'CSS',
-    isAnswered: true,
-    answers: [
-      {
-        id: 'a1',
-        user: 'JohnDoe',
-        profileImage: '/avif/placeholder.avif',
-        answerContent:
-          'You can use Flexbox with `justify-content` and `align-items` set to center.',
-        answerDate: '2024-11-02'
-      },
-      {
-        id: 'a2',
-        user: 'JaneSmith',
-        profileImage: '/avif/placeholder.avif',
-        answerContent:
-          'Another way is to use `position: absolute` with `transform: translate(-50%, -50%)`.',
-        answerDate: '2024-11-03'
-      }
-    ]
-  },
+  mockQuestion,
   {
     id: 'jhh77-',
     title: 'What is the difference between let and var in JavaScript?',

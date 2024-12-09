@@ -1,4 +1,5 @@
 import {
+  ArrowUpOutlined,
   AudioOutlined,
   BellOutlined,
   BulbOutlined,
@@ -7,6 +8,7 @@ import {
   CloseOutlined,
   CodeOutlined,
   DownOutlined,
+  EllipsisOutlined,
   ExclamationCircleOutlined,
   ExclamationOutlined,
   EyeInvisibleOutlined,
@@ -67,7 +69,9 @@ export const IconsMap = {
   ExclamationOutlined: ExclamationOutlined,
   CheckOutlined: CheckOutlined,
   FireOutlined: FireOutlined,
-  MoreOutlined: MoreOutlined
+  MoreOutlined: MoreOutlined,
+  EllipsisOutlined: EllipsisOutlined,
+  ArrowUpOutlined: ArrowUpOutlined
 } as const
 
 export type IconVariantType = keyof typeof IconsMap
