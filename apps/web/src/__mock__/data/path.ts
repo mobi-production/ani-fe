@@ -1,3 +1,5 @@
+import { DeletePathApplyCancelResponseType } from '@/features/path/api/delete-path-apply-cancle'
+import { PostPathApplyResponseType } from '@/features/path/api/post-path-apply'
 import { GetPathIntroduceResponseType } from '@/views/path/api/get-path-introduce'
 import { GetPathLoadResponseType } from '@/views/path/api/get-path-load'
 import { GetPathPageResponseType } from '@/views/path/api/get-path-page'
@@ -398,5 +400,17 @@ export const pathLoadMock = (pathId: string): GetPathLoadResponseType['data'] =>
     pathId,
     partId: '1',
     pageId: '1'
+  }
+}
+
+export const pathApplyMock = (pathId: string): PostPathApplyResponseType['data'] => {
+  return {
+    pathId
+  }
+}
+
+export const pathApplyCancelMock = (pathId: string): DeletePathApplyCancelResponseType['data'] => {
+  return {
+    pathId
   }
 }

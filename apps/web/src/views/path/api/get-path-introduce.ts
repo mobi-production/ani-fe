@@ -27,10 +27,7 @@ export async function getPathIntroduce({
   const response = await fetch(process.env.NEXT_PUBLIC_API_URL + `/path/${pathId}`, {
     method: HTTP_METHODS.GET,
     headers: HTTP_HEADERS.JSON,
-    cache: 'no-store',
-    next: {
-      tags: ['path', pathId]
-    }
+    cache: 'no-store'
   })
 
   if (!response.ok) {

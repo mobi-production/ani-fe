@@ -111,13 +111,16 @@ type MenuContentProps = ComponentProps<'div'> & {
   triggerHeight?: string
 }
 
-function MenuContent({ triggerHeight = '2rem', children, ...props }: MenuContentProps) {
+function MenuContent({ triggerHeight = '2rem', children, className, ...props }: MenuContentProps) {
   const { isOpen, menuRef } = useDropdownMenu()
 
   if (!isOpen) return null
   return (
     <div
-      className={`absolute flex w-auto flex-col gap-4 rounded-[4px] border border-solid border-line-normal bg-white p-[20px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.05)]`}
+      className={cn(
+        'absolute flex w-auto flex-col gap-4 rounded-[4px] border border-solid border-line-normal bg-white p-[20px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.05)]',
+        className
+      )}
       style={{ top: triggerHeight }}
       ref={menuRef}
       role='menu'

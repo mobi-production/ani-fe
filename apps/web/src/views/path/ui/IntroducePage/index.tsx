@@ -1,16 +1,15 @@
 'use client'
 
 import FullScreenLayout from '@/shared/ui/layout/full-screen-layout'
-import { Divider, Flex, ImageSection, Typography } from '@repo/ui/server'
+import { Divider, Flex, Typography } from '@repo/ui/server'
 import { ServerDrivenComponent } from '@repo/sdu/index'
-import PathCancleButton from '@/features/path/ui/path-cancle-button'
-import PathApplyButton from '@/features/path/ui/path-apply-button'
 import { GetPathIntroduceResponseType } from '../../api/get-path-introduce'
 import { Icon } from '@repo/ui/client'
 import { formatDate } from '@repo/util/formatDate'
 import IntroduceCurriculumBar from '@/widgets/path/ui/introduce/CurriculumBar'
 import IntroduceCurriculumContent from '@/widgets/path/ui/introduce/CurriculumContent'
 import NavigationLinks from '@/shared/ui/navigation-links'
+import PathIntroduceTobBanner from '@/widgets/path/ui/introduce/TopBanner'
 
 type Props = {
   data: GetPathIntroduceResponseType['data']
@@ -20,40 +19,14 @@ export function PathIntroducePage({ data }: Props) {
   return (
     <FullScreenLayout>
       {/* 패스 타이틀 바 */}
-      <section id='path_title_banner'>
-        <Flex className='gap-[2.5rem]'>
-          <ImageSection
-            size='l'
-            src={data.path.thumbnail}
-            alt={data.path.title}
-          />
-          <Flex
-            className='w-[30rem]'
-            direction={'column'}
-            justify={'between'}>
-            <Flex
-              direction={'column'}
-              className='gap-[0.5rem]'>
-              <Typography
-                variant='display-2'
-                fontWeight={'bold'}>
-                {data.path.title}
-              </Typography>
-              <Typography
-                className='whitespace-pre-line'
-                variant='body-1-normal'
-                fontWeight={'medium'}>
-                {data.path.description}
-              </Typography>
-            </Flex>
-            {data.isSubscribed ? (
-              <PathCancleButton pathId={data.pathId} />
-            ) : (
-              <PathApplyButton pathId={data.pathId} />
-            )}
-          </Flex>
-        </Flex>
-      </section>
+      <PathIntroduceTobBanner
+        thumbnail={data.path.thumbnail}
+        title={data.path.title}
+        description={data.path.description}
+        isSubscribed={data.isSubscribed}
+        pathId={data.pathId}
+      />
+
       {/* 패스 상세 정보 */}
       <Flex
         id={'path_information'}

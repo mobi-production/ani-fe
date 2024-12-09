@@ -26,6 +26,7 @@ import {
   InfoCircleOutlined,
   LeftOutlined,
   LikeOutlined,
+  MoreOutlined,
   PlayCircleOutlined,
   QuestionCircleOutlined,
   RightOutlined,
@@ -68,6 +69,7 @@ export const IconsMap = {
   ExclamationOutlined: ExclamationOutlined,
   CheckOutlined: CheckOutlined,
   FireOutlined: FireOutlined,
+  MoreOutlined: MoreOutlined,
   EllipsisOutlined: EllipsisOutlined,
   ArrowUpOutlined: ArrowUpOutlined
 } as const
