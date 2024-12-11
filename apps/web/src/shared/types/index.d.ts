@@ -5,8 +5,8 @@ declare global {
 
   namespace NodeJS {
     interface ProcessEnv {
-      ANI_WEB_AUTH_URL: string
-      ANI_WEB_API_URL: string
+      NEXT_PUBLIC_AUTH_URL: string
+      NEXT_PUBLIC_API_URL: string
     }
   }
 }

@@ -28,12 +28,12 @@
       "persistent": true
     },
     "web#dev": {
-      "env": ["ANI_*"],
-      "passThroughEnv": ["ANI_*"]
+      "env": ["AUTH_*"],
+      "passThroughEnv": ["AUTH_*"]
     },
     "web#build": {
-      "env": ["ANI_*"],
-      "passThroughEnv": ["ANI_*"]
+      "env": ["AUTH_*"],
+      "passThroughEnv": ["AUTH_*"]
     }
   }
 }
