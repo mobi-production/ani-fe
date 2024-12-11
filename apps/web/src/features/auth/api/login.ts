@@ -7,7 +7,10 @@ export async function login(loginData: LoginRequestType) {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.AUTH.LOGIN, {
       method: HTTP_METHODS.POST,
       headers: HTTP_HEADERS.JSON,
-      body: JSON.stringify(loginData)
+      body: JSON.stringify({
+        ...loginData,
+        type: 'ani'
+      })
     })
 
     console.log('response', response)

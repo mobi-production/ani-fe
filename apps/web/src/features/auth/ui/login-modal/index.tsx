@@ -12,7 +12,7 @@ import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuthModalStore } from '../../model'
 import { type LoginModalFormData, loginModalSchema } from '@/entities/auth/model'
-import { login } from '../../api'
+import { signIn } from 'next-auth/react'
 
 function LoginModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -22,7 +22,6 @@ function LoginModal() {
 
   const {
     register,
-    handleSubmit,
     formState: { errors, isSubmitting },
     control
   } = useForm<LoginModalFormData>({
@@ -53,16 +52,6 @@ function LoginModal() {
     setIsSignupModalOpen(true)
   }
 
-  const onSubmit = async (formData: LoginModalFormData) => {
-    const response = await login(formData)
-    if (response?.status === 200) {
-      console.log(response.message)
-      onCloseLoginModal()
-    } else {
-      console.error('로그인 실패:', response?.message)
-    }
-  }
-
   return (
     <Modal
       className='p-0'
@@ -71,7 +60,13 @@ function LoginModal() {
       isOpen={isLoginModalOpen}
       onClose={onCloseLoginModal}>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        action={async (formData) => {
+          await signIn('credentials', {
+            email: formData.get('email'),
+            password: formData.get('password')
+          })
+          onCloseLoginModal()
+        }}
         className='flex min-w-[37.5rem] flex-col gap-[3rem] px-[3.125rem] py-[3rem]'>
         <Flex
           justify='center'
