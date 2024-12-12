@@ -12,11 +12,9 @@ export async function GET(request: Request) {
       return NextResponse.redirect(process.env.NEXT_PUBLIC_CLIENT_URL ?? '/error/404')
     }
 
-    const response = await oauthLogin({ provider: 'discord', state, code })
-
-    const urlObject = new URL(response.url)
-    const accessToken = urlObject.searchParams.get('accessToken')
-    const refreshToken = urlObject.searchParams.get('refreshToken')
+    const {
+      data: { accessToken, refreshToken }
+    } = await oauthLogin({ provider: 'discord', state, code })
 
     if (!accessToken || !refreshToken) {
       return NextResponse.redirect(process.env.NEXT_PUBLIC_CLIENT_URL ?? '/error/404')
