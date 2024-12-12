@@ -10,15 +10,11 @@ import Link from 'next/link'
 
 function Header() {
   const isLoggedIn = useSession().data
-  const { data: session } = useSession()
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')
   }
-  console.log('isLoggedIn', isLoggedIn)
-  console.log('session', session)
   const onLoginClick = () => {
-    console.log('login', isLoggedIn)
     setIsLoginModalOpen(true)
   }
 

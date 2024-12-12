@@ -7,9 +7,6 @@ import LoginModal from '@/features/auth/ui/login-modal'
 import SignupModal from '@/features/auth/ui/signup-modal'
 import { SessionProvider } from 'next-auth/react'
 
-// TODO: 로그인 상태 추가
-const isLoggedIn = false
-
 export default function RootLayout({
   children
 }: Readonly<{
