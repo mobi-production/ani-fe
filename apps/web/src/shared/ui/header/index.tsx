@@ -8,8 +8,11 @@ import { signOut, useSession } from 'next-auth/react'
 import DropdownMenu from '../dropdown-menu'
 import Link from 'next/link'
 
-function Header() {
-  const isLoggedIn = useSession().data
+type Props = {
+  isLoggedIn: boolean
+}
+
+export function HeaderInner({ isLoggedIn }: Props) {
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')
@@ -78,6 +81,11 @@ function Header() {
       </header>
     </Flex>
   )
+}
+
+const Header = () => {
+  const { data: session } = useSession()
+  return <HeaderInner isLoggedIn={!!session} />
 }
 
 export default Header
