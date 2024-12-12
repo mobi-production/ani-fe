@@ -4,12 +4,10 @@ import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
 import { useAuthModalStore } from '@/features/auth/model'
+import { useSession } from 'next-auth/react'
 
-type HeaderProps = {
-  isLoggedIn: boolean
-}
-
-function Header({ isLoggedIn }: HeaderProps) {
+function Header() {
+  const isLoggedIn = useSession().data?.user
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')

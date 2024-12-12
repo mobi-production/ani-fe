@@ -20,6 +20,11 @@ function LoginModal() {
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
 
+  const handleDiscordLogin = async () => {
+    const DISCORD_AUTH_URL = `${process.env.NEXT_PUBLIC_AUTH_URL}/api/v1/auth/social/discord?type=ani`
+    window.location.href = DISCORD_AUTH_URL
+  }
+
   const {
     register,
     formState: { errors, isSubmitting },
@@ -179,7 +184,8 @@ function LoginModal() {
           disabled={false}
           className='bg-[#5865F2]'
           size='large'
-          fullWidth>
+          fullWidth
+          onClick={handleDiscordLogin}>
           <Flex
             direction='row'
             align='center'
