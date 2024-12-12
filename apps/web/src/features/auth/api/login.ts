@@ -4,7 +4,7 @@ import { END_POINT } from '../config/auth-config'
 
 export async function login(loginData: LoginRequestType) {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.AUTH.LOGIN, {
+    const response = await fetch(process.env.NEXT_PUBLIC_AUTH_URL + END_POINT.AUTH.LOGIN, {
       method: HTTP_METHODS.POST,
       headers: HTTP_HEADERS.JSON,
       body: JSON.stringify({
