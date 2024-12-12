@@ -4,7 +4,9 @@ import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
 import { useAuthModalStore } from '@/features/auth/model'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
+import DropdownMenu from '../dropdown-menu'
+import Link from 'next/link'
 
 function Header() {
   const isLoggedIn = useSession().data?.user
@@ -13,12 +15,12 @@ function Header() {
     console.log('alarm')
   }
 
-  const onMyPageClick = () => {
-    console.log('my-page')
-  }
-
   const onLoginClick = () => {
     setIsLoginModalOpen(true)
+  }
+
+  const onLogoutClick = () => {
+    signOut()
   }
 
   return (
@@ -44,16 +46,24 @@ function Header() {
                 name='BellOutlined'
               />
             </button>
-            <button
-              onClick={onMyPageClick}
-              className='h-9 w-9'
-              aria-label='my-page'
-              type='button'>
-              <Icon
-                size={36}
-                name='UserOutlined'
-              />
-            </button>
+            <DropdownMenu>
+              <DropdownMenu.Trigger aria-label='my-page'>
+                <Icon
+                  size={36}
+                  name='UserOutlined'
+                />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.MenuContent
+                triggerHeight='3rem'
+                className='right-0'>
+                <DropdownMenu.MenuItem value='mypage'>
+                  <Link href='/mypage'>마이페이지</Link>
+                </DropdownMenu.MenuItem>
+                <DropdownMenu.MenuItem value='logout'>
+                  <button onClick={onLogoutClick}>로그아웃</button>
+                </DropdownMenu.MenuItem>
+              </DropdownMenu.MenuContent>
+            </DropdownMenu>
           </Flex>
         ) : (
           <div className='relative h-9 w-24'>
