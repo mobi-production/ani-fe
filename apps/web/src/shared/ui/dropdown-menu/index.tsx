@@ -2,6 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import cn from '@repo/util/cn'
 import {
   ComponentProps,
+  ComponentPropsWithoutRef,
   createContext,
   ReactNode,
   useContext,
@@ -107,7 +108,7 @@ function Trigger({ asChild, children, ...props }: TriggerProps) {
   )
 }
 
-type MenuContentProps = ComponentProps<'div'> & {
+type MenuContentProps = ComponentPropsWithoutRef<'div'> & {
   triggerHeight?: string
 }
 
@@ -145,7 +146,7 @@ function MenuItem({ value, onValueSelect, children, ...props }: MenuItemProps) {
 
   return (
     <button
-      className='w-full whitespace-nowrap text-left'
+      className='w-full whitespace-nowrap text-left duration-100 hover:text-label-alternative'
       role='menuitem'
       data-value={value}
       onClick={handleClick}

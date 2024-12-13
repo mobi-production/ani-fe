@@ -12,7 +12,10 @@ export type LoginRequestType = {
 
 export type AuthResponse = {
   status: number
-  message?: string
+  data: {
+    accessToken: string
+    refreshToken: string
+  }
 }
 
 export type SignupRequestType = {

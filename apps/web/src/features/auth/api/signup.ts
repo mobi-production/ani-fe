@@ -4,10 +4,10 @@ import { END_POINT } from '../config/auth-config'
 
 export async function signup(signupData: SignupRequestType) {
   try {
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + END_POINT.AUTH.SIGNUP, {
+    const response = await fetch(process.env.NEXT_PUBLIC_AUTH_URL + END_POINT.AUTH.SIGNUP, {
       method: HTTP_METHODS.POST,
       headers: HTTP_HEADERS.JSON,
-      body: JSON.stringify(signupData)
+      body: JSON.stringify({ ...signupData, type: 'ani' })
     })
 
     console.log('response', response)

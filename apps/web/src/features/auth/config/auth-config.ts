@@ -1,7 +1,7 @@
 export const END_POINT = {
   AUTH: {
-    LOGIN: '/auth/login',
-    SIGNUP: '/auth/signup'
+    LOGIN: '/api/v1/auth/login',
+    SIGNUP: '/api/v1/auth'
   }
 }
 

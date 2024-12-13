@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -25,6 +26,14 @@
     "storybook": {
       "cache": false,
       "persistent": true
+    },
+    "web#dev": {
+      "env": ["AUTH_*"],
+      "passThroughEnv": ["AUTH_*"]
+    },
+    "web#build": {
+      "env": ["AUTH_*"],
+      "passThroughEnv": ["AUTH_*"]
     }
   }
 }

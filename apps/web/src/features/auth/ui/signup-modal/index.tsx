@@ -20,7 +20,8 @@ function SignupModal() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    control
+    control,
+    reset
   } = useForm<SignupModalFormData>({
     resolver: zodResolver(signupModalSchema),
     defaultValues: {
@@ -47,13 +48,9 @@ function SignupModal() {
   }
 
   const onSubmit = async (formData: SignupModalFormData) => {
-    const response = await signup(formData)
-    if (response?.status === 201) {
-      console.log(response.message)
-      onCloseSignupModal()
-    } else {
-      console.error('회원가입 실패:', response?.message)
-    }
+    await signup(formData)
+    onCloseSignupModal()
+    reset()
   }
 
   return (

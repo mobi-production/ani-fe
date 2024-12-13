@@ -4,23 +4,25 @@ import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
 import { useAuthModalStore } from '@/features/auth/model'
+import { signOut, useSession } from 'next-auth/react'
+import DropdownMenu from '../dropdown-menu'
+import Link from 'next/link'
 
-type HeaderProps = {
+type Props = {
   isLoggedIn: boolean
 }
 
-function Header({ isLoggedIn }: HeaderProps) {
+export function HeaderInner({ isLoggedIn }: Props) {
   const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')
   }
-
-  const onMyPageClick = () => {
-    console.log('my-page')
-  }
-
   const onLoginClick = () => {
     setIsLoginModalOpen(true)
+  }
+
+  const onLogoutClick = () => {
+    signOut()
   }
 
   return (
@@ -46,16 +48,24 @@ function Header({ isLoggedIn }: HeaderProps) {
                 name='BellOutlined'
               />
             </button>
-            <button
-              onClick={onMyPageClick}
-              className='h-9 w-9'
-              aria-label='my-page'
-              type='button'>
-              <Icon
-                size={36}
-                name='UserOutlined'
-              />
-            </button>
+            <DropdownMenu>
+              <DropdownMenu.Trigger aria-label='my-page'>
+                <Icon
+                  size={36}
+                  name='UserOutlined'
+                />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.MenuContent
+                triggerHeight='3rem'
+                className='right-0'>
+                <DropdownMenu.MenuItem value='mypage'>
+                  <Link href='/mypage'>마이페이지</Link>
+                </DropdownMenu.MenuItem>
+                <DropdownMenu.MenuItem value='logout'>
+                  <button onClick={onLogoutClick}>로그아웃</button>
+                </DropdownMenu.MenuItem>
+              </DropdownMenu.MenuContent>
+            </DropdownMenu>
           </Flex>
         ) : (
           <div className='relative h-9 w-24'>
@@ -71,6 +81,11 @@ function Header({ isLoggedIn }: HeaderProps) {
       </header>
     </Flex>
   )
+}
+
+const Header = () => {
+  const { data: session } = useSession()
+  return <HeaderInner isLoggedIn={!!session} />
 }
 
 export default Header
