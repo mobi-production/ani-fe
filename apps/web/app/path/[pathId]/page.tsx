@@ -22,7 +22,5 @@ export default async function Page({ params: { pathId } }: { params: { pathId: s
     return notFound()
   }
 
-  console.log(data)
-
   return <PathIntroducePage data={data.data} />
 }
