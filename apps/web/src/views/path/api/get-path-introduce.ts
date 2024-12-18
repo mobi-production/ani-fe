@@ -1,5 +1,4 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import type { BasePartType } from '@/shared/types/path'
 import type { PathDetailType, PathIntroduceType } from '../model/apis'
 
 type Data = {
