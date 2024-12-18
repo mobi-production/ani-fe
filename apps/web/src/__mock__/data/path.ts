@@ -5,12 +5,13 @@ import { GetPathLoadResponseType } from '@/views/path/api/get-path-load'
 import { GetPathPageResponseType } from '@/views/path/api/get-path-page'
 import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
 import { ServerDrivenComponentType } from '@repo/sdu'
+import { PathStatus } from '@/shared/types/path'
 export const pathIntroduceMock = (
   pathId: number | string
 ): GetPathIntroduceResponseType['data'] => {
   return {
     isSubscribed: false,
-    status: 'PENDING_REVIEW',
+    status: 'PENDING',
     pathId,
     startDate: '2024-11-15T00:00:00.000Z',
     endDate: '2025-03-31T00:00:00.000Z',
@@ -36,222 +37,222 @@ export const pathIntroduceMock = (
             ]
           }
         }
-      ] as unknown as ServerDrivenComponentType[]
-    },
-    parts: [
-      {
-        id: 1,
-        title: 'HTML 개요(1)',
-        order: 1,
-        page: [
-          {
-            id: 1,
-            order: 1,
-            type: 'LEARNING_CONTENTS',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            id: 2,
-            order: 2,
-            type: 'LEARNING_CONTENTS',
-            title: '기본 문법'
-          },
-          {
-            id: 3,
-            order: 3,
-            type: 'LEARNING_CONTENTS',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            id: 4,
-            order: 4,
-            type: 'LEARNING_CONTENTS',
-            title: 'Doctype(DTD)'
-          },
-          {
-            id: 5,
-            order: 5,
-            type: 'LEARNING_CONTENTS',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            id: 6,
-            order: 6,
-            type: 'LEARNING_CONTENTS',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            id: 7,
-            order: 7,
-            type: 'VIDEO',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          },
-          {
-            id: 8,
-            order: 8,
-            type: 'QUIZ',
-            title: '마무리 퀴즈'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'HTML 개요(2)',
-        order: 2,
-        page: [
-          {
-            id: 9,
-            order: '9',
-            type: 'LEARNING_CONTENTS',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            id: 10,
-            order: '10',
-            type: 'LEARNING_CONTENTS',
-            title: '기본 문법'
-          },
-          {
-            id: 11,
-            order: '11',
-            type: 'LEARNING_CONTENTS',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            id: 12,
-            order: 12,
-            type: 'LEARNING_CONTENTS',
-            title: 'Doctype(DTD)'
-          },
-          {
-            id: 13,
-            order: 13,
-            type: 'LEARNING_CONTENTS',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            id: 14,
-            order: 14,
-            type: 'LEARNING_CONTENTS',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            id: 15,
-            order: 15,
-            type: 'VIDEO',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'HTML 개요(2)',
-        order: 2,
-        page: [
-          {
-            id: 9,
-            order: '9',
-            type: 'LEARNING_CONTENTS',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            id: 10,
-            order: '10',
-            type: 'LEARNING_CONTENTS',
-            title: '기본 문법'
-          },
-          {
-            id: 11,
-            order: '11',
-            type: 'LEARNING_CONTENTS',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            id: 12,
-            order: 12,
-            type: 'LEARNING_CONTENTS',
-            title: 'Doctype(DTD)'
-          },
-          {
-            id: 13,
-            order: 13,
-            type: 'LEARNING_CONTENTS',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            id: 14,
-            order: 14,
-            type: 'LEARNING_CONTENTS',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            id: 15,
-            order: 15,
-            type: 'VIDEO',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: 'HTML 개요(2)',
-        order: 2,
-        page: [
-          {
-            id: 9,
-            order: '9',
-            type: 'LEARNING_CONTENTS',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            id: 10,
-            order: '10',
-            type: 'LEARNING_CONTENTS',
-            title: '기본 문법'
-          },
-          {
-            id: 11,
-            order: '11',
-            type: 'LEARNING_CONTENTS',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            id: 12,
-            order: 12,
-            type: 'LEARNING_CONTENTS',
-            title: 'Doctype(DTD)'
-          },
-          {
-            id: 13,
-            order: 13,
-            type: 'LEARNING_CONTENTS',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            id: 14,
-            order: 14,
-            type: 'LEARNING_CONTENTS',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            id: 15,
-            order: 15,
-            type: 'VIDEO',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      }
-    ]
+      ] as unknown as ServerDrivenComponentType[],
+      parts: [
+        {
+          id: 1,
+          title: 'HTML 개요(1)',
+          order: 1,
+          page: [
+            {
+              id: 1,
+              order: 1,
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 2,
+              order: 2,
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 3,
+              order: 3,
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 4,
+              order: 4,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 5,
+              order: 5,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 6,
+              order: 6,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 7,
+              order: 7,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            },
+            {
+              id: 8,
+              order: 8,
+              type: 'QUIZ',
+              title: '마무리 퀴즈'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        }
+      ]
+    }
   }
 }
 
 export const pathSidebarStatusMock = (
   pathId: number | string,
-  status?: 'IN_PROGRESS' | 'PENDING_REVIEW' | 'COMPLETED'
+  status?: PathStatus
 ): GetPathStatusResponseType['data'] => {
   return {
     path: {
@@ -261,7 +262,7 @@ export const pathSidebarStatusMock = (
       startDate: '2024-11-15T00:00:00.000Z',
       endDate: '2025-03-31T00:00:00.000Z',
       progress: 100,
-      status: status ? status : 'PENDING_REVIEW',
+      status: status ? status : 'PENDING',
       mentors: [
         {
           nickname: '김멘토',
