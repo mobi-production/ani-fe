@@ -37,7 +37,7 @@ export function HeaderInner({ isLoggedIn }: Props) {
         {isLoggedIn ? (
           <Flex
             align={'center'}
-            gap={8}>
+            gap={32}>
             <button
               onClick={onAlarmClick}
               className='h-9 w-9'
