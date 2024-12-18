@@ -16,15 +16,20 @@ type Props = {
 }
 
 export function PathIntroducePage({ data }: Props) {
+  const hasRecruitStartOrEndDate = data.recruitStartDate && data.recruitEndDate
+  const hasAnnouncementDate = data.announcementDate
+  const hasLevel = data.level
+
   return (
     <FullScreenLayout>
       {/* 패스 타이틀 바 */}
       <PathIntroduceTobBanner
-        thumbnail={data.path.thumbnail}
+        thumbnail={data.path.thumbnail || '/avif/placeholder.avif'}
         title={data.path.title}
         description={data.path.description}
         isSubscribed={data.isSubscribed}
         pathId={data.pathId}
+        status={data.status}
       />
 
       {/* 패스 상세 정보 */}
@@ -41,18 +46,22 @@ export function PathIntroducePage({ data }: Props) {
           <Flex
             direction={'column'}
             gap={8}>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}
-              color='alternative'>
-              신청 기한
-            </Typography>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}
-              color='alternative'>
-              발표일
-            </Typography>
+            {hasRecruitStartOrEndDate && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}
+                color='alternative'>
+                신청 기한
+              </Typography>
+            )}
+            {hasAnnouncementDate && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}
+                color='alternative'>
+                발표일
+              </Typography>
+            )}
             <Typography
               variant='body-1-normal'
               fontWeight={'medium'}
@@ -65,27 +74,33 @@ export function PathIntroducePage({ data }: Props) {
               color='alternative'>
               모집인원
             </Typography>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}
-              color='alternative'>
-              난이도
-            </Typography>
+            {hasLevel && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}
+                color='alternative'>
+                난이도
+              </Typography>
+            )}
           </Flex>
           <Flex
             direction={'column'}
             gap={8}>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}>
-              {formatDate(data.recruitStartDate, 'yyyy.MM.dd')} -{' '}
-              {formatDate(data.recruitEndDate, 'yyyy.MM.dd')}
-            </Typography>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}>
-              {formatDate(data.announcementDate, 'yyyy.MM.dd')}
-            </Typography>
+            {hasRecruitStartOrEndDate && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}>
+                {formatDate(data.recruitStartDate, 'yyyy.MM.dd')} -{' '}
+                {formatDate(data.recruitEndDate, 'yyyy.MM.dd')}
+              </Typography>
+            )}
+            {hasAnnouncementDate && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}>
+                {formatDate(data.announcementDate, 'yyyy.MM.dd')}
+              </Typography>
+            )}
             <Typography
               variant='body-1-normal'
               fontWeight={'medium'}>
@@ -94,13 +109,15 @@ export function PathIntroducePage({ data }: Props) {
             <Typography
               variant='body-1-normal'
               fontWeight={'medium'}>
-              {data.maxStudent}명
+              {data.maxStudent ?? 0}명
             </Typography>
-            <Typography
-              variant='body-1-normal'
-              fontWeight={'medium'}>
-              {data.level}
-            </Typography>
+            {hasLevel && (
+              <Typography
+                variant='body-1-normal'
+                fontWeight={'medium'}>
+                {data.level}
+              </Typography>
+            )}
           </Flex>
         </Flex>
         <Flex
@@ -148,8 +165,8 @@ export function PathIntroducePage({ data }: Props) {
           커리큘럼을 보여드려요
         </Typography>
         <Flex className='gap-[1.5rem]'>
-          <IntroduceCurriculumBar parts={data.parts} />
-          <IntroduceCurriculumContent parts={data.parts} />
+          <IntroduceCurriculumBar parts={data.path.parts} />
+          <IntroduceCurriculumContent parts={data.path.parts} />
         </Flex>
       </section>
     </FullScreenLayout>

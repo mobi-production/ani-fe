@@ -38,6 +38,7 @@ function PathLines({ content, isLastContent }: PathLinesProps) {
 }
 
 function IntroduceCurriculumBar({ parts }: Props) {
+  console.log('parts', parts)
   return (
     <Flex
       align='start'
