@@ -1,9 +1,8 @@
 'use client'
 
 import Logo from '@/shared/ui/logo'
-import { Icon, Input } from '@repo/ui/client'
+import { Icon, Input, Modal } from '@repo/ui/client'
 import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
-import { Modal } from '@repo/ui/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -12,7 +11,7 @@ import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuthModalStore } from '../../model'
 import { type LoginModalFormData, loginModalSchema } from '@/entities/auth/model'
-import { signIn } from 'next-auth/react'
+import { localLogin } from '@/features/auth/api'
 
 function LoginModal() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -21,11 +20,11 @@ function LoginModal() {
   const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
 
   const handleDiscordLogin = async () => {
-    const DISCORD_AUTH_URL = `${process.env.NEXT_PUBLIC_AUTH_URL}/api/v1/auth/social/discord?type=ani`
-    window.location.href = DISCORD_AUTH_URL
+    window.location.href = `${process.env.NEXT_PUBLIC_AUTH_URL}/api/v1/auth/social/discord?type=ani`
   }
 
   const {
+    handleSubmit,
     register,
     formState: { errors, isSubmitting },
     control
@@ -57,6 +56,14 @@ function LoginModal() {
     setIsSignupModalOpen(true)
   }
 
+  const onSubmit = async (formData: LoginModalFormData) => {
+    const email = formData.email
+    const password = formData.password
+    await localLogin({ email, password }).finally(() => {
+      onCloseLoginModal()
+    })
+  }
+
   return (
     <Modal
       className='p-0'
@@ -65,13 +72,7 @@ function LoginModal() {
       isOpen={isLoginModalOpen}
       onClose={onCloseLoginModal}>
       <form
-        action={async (formData) => {
-          await signIn('credentials', {
-            email: formData.get('email'),
-            password: formData.get('password')
-          })
-          onCloseLoginModal()
-        }}
+        onSubmit={handleSubmit(onSubmit)}
         className='flex min-w-[37.5rem] flex-col gap-[3rem] px-[3.125rem] py-[3rem]'>
         <Flex
           justify='center'

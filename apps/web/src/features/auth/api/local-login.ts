@@ -2,13 +2,14 @@ import type { LoginRequestType, AuthResponse } from '@/__mock__/types/auth'
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import { END_POINT } from '../config/auth-config'
 
-export async function login(loginData: LoginRequestType) {
+export async function localLogin({ email, password }: LoginRequestType) {
   try {
     const response = await fetch(process.env.NEXT_PUBLIC_AUTH_URL + END_POINT.AUTH.LOGIN, {
       method: HTTP_METHODS.POST,
       headers: HTTP_HEADERS.JSON,
       body: JSON.stringify({
-        ...loginData,
+        email,
+        password,
         type: 'ani'
       })
     })

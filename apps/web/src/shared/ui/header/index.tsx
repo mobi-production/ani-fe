@@ -4,9 +4,10 @@ import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
 import { useAuthModalStore } from '@/features/auth/model'
-import { signOut, useSession } from 'next-auth/react'
 import DropdownMenu from '../dropdown-menu'
 import Link from 'next/link'
+import { signOut } from '@/features/auth/api/sign-out'
+import { getLoginStatus } from '@/features/auth/api'
 
 type Props = {
   isLoggedIn: boolean
@@ -84,8 +85,8 @@ export function HeaderInner({ isLoggedIn }: Props) {
 }
 
 const Header = () => {
-  const { data: session } = useSession()
-  return <HeaderInner isLoggedIn={!!session} />
+  const isLoggedIn = getLoginStatus()
+  return <HeaderInner isLoggedIn={isLoggedIn} />
 }
 
 export default Header
