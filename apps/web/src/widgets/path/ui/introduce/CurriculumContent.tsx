@@ -63,7 +63,9 @@ function IntroduceCurriculumContent({ parts }: Props) {
       gap={24}
       direction={'column'}>
       {parts.map((part, index) => (
-        <Flex direction={'column'}>
+        <Flex
+          key={index}
+          direction={'column'}>
           <Typography
             variant='heading-2'
             color='alternative'>

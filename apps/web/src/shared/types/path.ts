@@ -1,4 +1,4 @@
-export type PathStatus = 'PENDING_REVIEW' | 'IN_PROGRESS' | 'COMPLETED'
+export type PathStatus = 'PENDING' | 'APPLICATION_PERIOD' | 'IN_PROGRESS' | 'COMPLETED'
 export type PageFeature = 'LEARNING_CONTENTS' | 'QUIZ' | 'VIDEO'
 
 export interface BasePathType {

@@ -2,6 +2,7 @@ import PathApplyButton from '@/features/path/ui/ApplyButton'
 import PathCancleButton from '@/features/path/ui/CancleButton'
 import PathInterruptionButton from '@/features/path/ui/InterruptionButton'
 import { Flex, ImageSection, Typography } from '@repo/ui/server'
+import { PathStatus } from '@/shared/types/path'
 
 type Props = {
   thumbnail: string
@@ -9,9 +10,17 @@ type Props = {
   description: string
   isSubscribed: boolean
   pathId: number | string
+  status: PathStatus
 }
 
-function PathIntroduceTopBanner({ thumbnail, title, description, isSubscribed, pathId }: Props) {
+function PathIntroduceTopBanner({
+  status,
+  thumbnail,
+  title,
+  description,
+  isSubscribed,
+  pathId
+}: Props) {
   return (
     <section
       id='path_title_banner'
@@ -39,7 +48,7 @@ function PathIntroduceTopBanner({ thumbnail, title, description, isSubscribed, p
                   {title}
                 </Typography>
               </div>
-              <PathInterruptionButton pathId={pathId} />
+              {isSubscribed && status === 'PENDING' && <PathInterruptionButton pathId={pathId} />}
             </Flex>
             <Typography
               className='w-[30rem] whitespace-pre-line'

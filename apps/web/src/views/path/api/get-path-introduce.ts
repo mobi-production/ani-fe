@@ -1,10 +1,8 @@
 import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import type { BasePartType } from '@/shared/types/path'
 import type { PathDetailType, PathIntroduceType } from '../model/apis'
 
 type Data = {
   path: PathDetailType
-  parts: BasePartType[]
 } & PathIntroduceType
 
 export type GetPathIntroduceParamsType = {
@@ -24,7 +22,7 @@ export type GetPathIntroduceResponseType = {
 export async function getPathIntroduce({
   pathId
 }: GetPathIntroduceParamsType): Promise<GetPathIntroduceResponseType> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + `/path/${pathId}`, {
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/v1/path?id=${pathId}`, {
     method: HTTP_METHODS.GET,
     headers: HTTP_HEADERS.JSON,
     cache: 'no-store'

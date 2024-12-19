@@ -1,4 +1,4 @@
-import { PathStatus } from '@/shared/types/path'
+import { BasePartType, PathStatus } from '@/shared/types/path'
 import { ServerDrivenComponentType } from '@repo/sdu'
 
 // 패스 소개 데이터 타입
@@ -8,11 +8,11 @@ export type PathIntroduceType = {
   pathId: number | string
   startDate: string | Date
   endDate: string | Date
-  level: string
-  maxStudent: number
-  recruitStartDate: string | Date
-  recruitEndDate: string | Date
-  announcementDate: string | Date
+  level: string | null
+  maxStudent: number | null
+  recruitStartDate: string | Date | null
+  recruitEndDate: string | Date | null
+  announcementDate: string | Date | null
 }
 
 // 패스 상세 데이터 타입
@@ -21,4 +21,5 @@ export type PathDetailType = {
   description: string
   thumbnail: string
   content: ServerDrivenComponentType[]
+  parts: BasePartType[]
 }
