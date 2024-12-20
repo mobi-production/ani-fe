@@ -1,6 +1,6 @@
 import { http, HttpHandler, HttpResponse, StrictRequest } from 'msw'
 import type { User } from '../types/auth'
-import { END_POINT } from '@/features/auth/config/auth-config'
+import { AUTH_END_POINT } from '@/features/auth/config/auth-config'
 
 const correctUser: Map<User['email'], User> = new Map()
 correctUser.set('creme@naver.com', {
@@ -12,7 +12,7 @@ correctUser.set('creme@naver.com', {
 
 export const authHandlers: HttpHandler[] = [
   http.post(
-    END_POINT.AUTH.LOGIN,
+    AUTH_END_POINT.LOCAL_LOGIN,
     async ({ request }: { request: StrictRequest<{ email: string; password: string }> }) => {
       const { email, password } = await request.json()
       const user = correctUser.get(email)
@@ -37,7 +37,7 @@ export const authHandlers: HttpHandler[] = [
       )
     }
   ),
-  http.post(END_POINT.AUTH.SIGNUP, async ({ request }: { request: StrictRequest<User> }) => {
+  http.post(AUTH_END_POINT.LOCAL_SIGNUP, async ({ request }: { request: StrictRequest<User> }) => {
     const { email, nickname, password, profileUrl } = await request.json()
 
     if (correctUser.has(email)) {

@@ -3,7 +3,7 @@
 import { Flex, SolidButton, Typography } from '@repo/ui/server'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input, Modal } from '@repo/ui/client'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,10 +11,13 @@ import { useAuthModalStore } from '../../model'
 import { type SignupModalFormData, signupModalSchema } from '@/entities/auth/model'
 import { signup } from '../../api'
 
-function SignupModal() {
+type Props = {
+  isSignupModalOpen: boolean
+  setSignupModalOpen: Dispatch<SetStateAction<boolean>>
+}
+
+function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const isSignupModalOpen = useAuthModalStore((state) => state.isSignupModalOpen)
-  const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
 
   const {
     register,
@@ -44,12 +47,11 @@ function SignupModal() {
   const isFormInvalid = !email || !nickname || !password || isSubmitting
 
   const onCloseSignupModal = () => {
-    setIsSignupModalOpen(false)
+    setSignupModalOpen(false)
   }
 
   const onSubmit = async (formData: SignupModalFormData) => {
-    await signup(formData)
-    onCloseSignupModal()
+    await signup(formData).finally(() => onCloseSignupModal())
     reset()
   }
 

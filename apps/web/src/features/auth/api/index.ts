@@ -1,5 +1,6 @@
 export { signup } from './signup'
 export { oauthLogin } from './oauth-login'
 export { localLogin } from './local-login'
-export { getLoginStatus } from './get-login-status'
+export { getRole } from './get-role'
 export { signOut } from './sign-out'
+export { getAccessToken } from './get-access-token'

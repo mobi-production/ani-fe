@@ -1,13 +1,19 @@
-export const END_POINT = {
-  AUTH: {
-    LOGIN: '/api/v1/auth/login',
-    SIGNUP: '/api/v1/auth'
-  }
+export const AUTH_END_POINT = {
+  SOCIAL_LOGIN: (provider: string) => '/api/v1/auth/social/' + provider,
+  SOCIAL_CALLBACK: (provider: string) => '/api/v1/auth/social/' + provider + '/callback',
+  EMAIL_EXISTS: '/api/v1/auth/email-exists',
+  LOCAL_SIGNUP: '/api/v1/auth',
+  LOCAL_LOGIN: '/api/v1/auth/login',
+  TOKEN: '/api/v1/auth/token',
+  REFRESH_TOKEN: '/api/v1/auth/refresh',
+  ROLE: '/api/v1/auth/role'
 }
 
-export const QUERY_KEYS = {
-  AUTH: {
-    LOGIN: ['authLogin'] as string[],
-    SIGNUP: ['authSignup'] as string[]
-  }
+export const AUTH_QUERY_KEYS = {
+  AUTH: 'auth',
+  REFRESH_TOKEN: 'refreshToken',
+  GET_ACCESS_TOKEN: 'getAccessToken',
+  LOGIN: 'login',
+  SIGNUP: 'signup',
+  ROLE: 'role'
 }

@@ -10,6 +10,8 @@ import { Flex, Typography } from '@repo/ui/server'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClient } from '@/shared/libs/query-client'
 
 export function Inner({ data }: { data: MainData }) {
   return (

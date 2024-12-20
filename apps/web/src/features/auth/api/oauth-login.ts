@@ -1,3 +1,6 @@
+import { axiosAuthInstance } from '@/shared/config/api/axios'
+import { AUTH_END_POINT } from '@/features/auth/config/auth-config'
+
 type OauthLoginResponse = {
   accessToken: string
   refreshToken: string
@@ -23,10 +26,15 @@ export async function oauthLogin({
   })
 
   if (!response.ok) {
-
     const error = await response.json()
     throw new Error(error.message)
   }
 
-  return await response.json() as OauthLoginResponse
+  return (await response.json()) as OauthLoginResponse
+}
+
+export const discordLogin = async () => {
+  const res = await axiosAuthInstance.post(AUTH_END_POINT.SOCIAL_LOGIN('discord'))
+
+  return (await res.data.json()) as OauthLoginResponse
 }

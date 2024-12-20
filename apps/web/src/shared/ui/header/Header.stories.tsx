@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { HeaderInner } from '.'
-
+import { Header } from '.'
 const meta = {
   title: 'Widget/Header',
-  component: HeaderInner,
+  component: Header,
   parameters: {
     layout: 'centered',
     docs: {
@@ -13,15 +12,13 @@ const meta = {
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof HeaderInner>
+} satisfies Meta<typeof Header>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {
-    isLoggedIn: false
-  },
+  args: {},
   parameters: {
     layout: 'fullscreen'
   }

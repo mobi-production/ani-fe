@@ -1,29 +1,12 @@
-import type { LoginRequestType, AuthResponse } from '@/__mock__/types/auth'
-import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
-import { END_POINT } from '../config/auth-config'
+import type { LoginRequestType } from '@/__mock__/types/auth'
+import { AUTH_END_POINT } from '@/features/auth/config/auth-config'
+import { axiosAuthInstance } from '@/shared/config/api/axios'
 
 export async function localLogin({ email, password }: LoginRequestType) {
-  try {
-    const response = await fetch(process.env.NEXT_PUBLIC_AUTH_URL + END_POINT.AUTH.LOGIN, {
-      method: HTTP_METHODS.POST,
-      headers: HTTP_HEADERS.JSON,
-      body: JSON.stringify({
-        email,
-        password,
-        type: 'ani'
-      })
-    })
+  const response = await axiosAuthInstance.post(AUTH_END_POINT.LOCAL_LOGIN, {
+    email,
+    password
+  })
 
-    console.log('response', response)
-    if (!response.ok) {
-      const error = await response.json()
-      throw new Error(error.message)
-    }
-
-    const data: AuthResponse = await response.json()
-    return data
-  } catch (error) {
-    console.error('로그인 에러', error)
-    return null
-  }
+  return await response.data.json()
 }

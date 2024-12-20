@@ -4,6 +4,8 @@ import { pretendardFont } from './_fonts'
 import { Flex } from '@repo/ui/server'
 import Header from '@/shared/ui/header'
 import { ReactNode } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { queryClient } from '@/shared/libs/query-client'
 
 export default function RootLayout({
   children

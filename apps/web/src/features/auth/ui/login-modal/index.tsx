@@ -5,19 +5,22 @@ import { Icon, Input, Modal } from '@repo/ui/client'
 import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useAuthModalStore } from '../../model'
 import { type LoginModalFormData, loginModalSchema } from '@/entities/auth/model'
-import { localLogin } from '@/features/auth/api'
+import useAuth from '@/features/auth/model/use-auth'
 
-function LoginModal() {
+type LoginModalProps = {
+  isLoginModalOpen: boolean
+  setLoginModalOpen: Dispatch<SetStateAction<boolean>>
+  setSignupModalOpen: Dispatch<SetStateAction<boolean>>
+}
+
+function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }: LoginModalProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const isLoginModalOpen = useAuthModalStore((state) => state.isLoginModalOpen)
-  const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
-  const setIsSignupModalOpen = useAuthModalStore((state) => state.setIsSignupModalOpen)
+  const { localLoginMutation } = useAuth()
 
   const handleDiscordLogin = async () => {
     window.location.href = `${process.env.NEXT_PUBLIC_AUTH_URL}/api/v1/auth/social/discord?type=ani`
@@ -48,20 +51,23 @@ function LoginModal() {
   const isFormInvalid = !email || !password || isSubmitting
 
   const onCloseLoginModal = () => {
-    setIsLoginModalOpen(false)
+    setLoginModalOpen(false)
   }
 
   const onOpenSignupModal = () => {
-    setIsLoginModalOpen(false)
-    setIsSignupModalOpen(true)
+    setLoginModalOpen(false)
+    setSignupModalOpen(true)
   }
 
   const onSubmit = async (formData: LoginModalFormData) => {
-    const email = formData.email
-    const password = formData.password
-    await localLogin({ email, password }).finally(() => {
-      onCloseLoginModal()
-    })
+    await localLoginMutation
+      .mutateAsync({
+        email: formData.email,
+        password: formData.password
+      })
+      .finally(() => {
+        onCloseLoginModal()
+      })
   }
 
   return (
