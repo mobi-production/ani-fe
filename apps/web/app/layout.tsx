@@ -2,10 +2,8 @@ import '@config/libs/globals.css'
 
 import { pretendardFont } from './_fonts'
 import { Flex } from '@repo/ui/server'
-import Header from '@/shared/ui/header'
+import { Header } from '@/shared/ui/header'
 import { ReactNode } from 'react'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '@/shared/libs/query-client'
 
 export default function RootLayout({
   children
@@ -16,16 +14,18 @@ export default function RootLayout({
     <html
       className={`${pretendardFont.variable}`}
       lang='ko'>
-      <Flex
-        asChild
-        direction={'column'}
-        className='w-full'>
-        <body className='bg-background-alternative'>
-          <div id='portal-container' />
-          <Header />
-          {children}
-        </body>
-      </Flex>
+      <body className='bg-background-alternative'>
+        <div id='portal-container' />
+        <Flex
+          asChild
+          className='w-full gap-[52px]'
+          direction={'column'}>
+          <main>
+            <Header />
+            {children}
+          </main>
+        </Flex>
+      </body>
     </html>
   )
 }

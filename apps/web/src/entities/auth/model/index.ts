@@ -1,3 +1,3 @@
-export { loginModalSchema, type LoginModalFormData } from './loginModalSchema'
-export { signupModalSchema, type SignupModalFormData } from './signupModalSchema'
+export { loginSchema, type LoginFormData } from './loginSchema'
+export { signupSchema, type SignupFormData } from './signupSchema'
 export { tokenSchema, type TokenSchema } from './tokenSchema'

@@ -1,5 +1,6 @@
-import { HTTP_HEADERS, HTTP_METHODS } from '@/shared/config/constants/http'
 import type { PathDetailType, PathIntroduceType } from '../model/apis'
+import { axiosInstance } from '@/shared/config/api'
+import { PATH_END_POINT } from '../config/path-config'
 
 type Data = {
   path: PathDetailType
@@ -22,15 +23,11 @@ export type GetPathIntroduceResponseType = {
 export async function getPathIntroduce({
   pathId
 }: GetPathIntroduceParamsType): Promise<GetPathIntroduceResponseType> {
-  const response = await fetch(process.env.NEXT_PUBLIC_API_URL + `/api/v1/path?id=${pathId}`, {
-    method: HTTP_METHODS.GET,
-    headers: HTTP_HEADERS.JSON,
-    cache: 'no-store'
-  })
+  const response = await axiosInstance.get(PATH_END_POINT.INTRODUCE(pathId))
 
-  if (!response.ok) {
+  if (response.status !== 200) {
     throw new Error('Failed to fetch path introduce')
   }
 
-  return await response.json()
+  return response.data as GetPathIntroduceResponseType
 }

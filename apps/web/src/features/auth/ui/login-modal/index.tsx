@@ -5,12 +5,10 @@ import { Icon, Input, Modal } from '@repo/ui/client'
 import { Divider, Flex, SolidButton, Typography } from '@repo/ui/server'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Dispatch, SetStateAction, useState } from 'react'
-
-import { useForm, useWatch } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { type LoginModalFormData, loginModalSchema } from '@/entities/auth/model'
-import useAuth from '@/features/auth/model/use-auth'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { localLogin, oauthLogin } from '@/features/auth/api'
+import { useFormState } from 'react-dom'
+import { authStore } from '../../model/auth-store'
 
 type LoginModalProps = {
   isLoginModalOpen: boolean
@@ -20,35 +18,19 @@ type LoginModalProps = {
 
 function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }: LoginModalProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const { localLoginMutation } = useAuth()
+
+  const syncSession = authStore.getState().syncSession
 
   const handleDiscordLogin = async () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_AUTH_URL}/api/v1/auth/social/discord?type=ani`
+    oauthLogin('discord')
   }
 
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-    control
-  } = useForm<LoginModalFormData>({
-    resolver: zodResolver(loginModalSchema),
-    defaultValues: {
-      email: '',
-      password: ''
-    }
-  })
+  const [state, loginAction] = useFormState(localLogin, undefined)
 
-  const [email, password] = useWatch({
-    control,
-    name: ['email', 'password'],
-    defaultValue: {
-      email: '',
-      password: ''
-    }
-  })
+  const isEmailError = state?.errors?.email
+  const isPasswordError = state?.errors?.password
 
-  const isFormInvalid = !email || !password || isSubmitting
+  const isFormInvalid = isEmailError || isPasswordError
 
   const onCloseLoginModal = () => {
     setLoginModalOpen(false)
@@ -59,16 +41,12 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
     setSignupModalOpen(true)
   }
 
-  const onSubmit = async (formData: LoginModalFormData) => {
-    await localLoginMutation
-      .mutateAsync({
-        email: formData.email,
-        password: formData.password
-      })
-      .finally(() => {
-        onCloseLoginModal()
-      })
-  }
+  useEffect(() => {
+    if (state?.success) {
+      onCloseLoginModal()
+      syncSession()
+    }
+  }, [state])
 
   return (
     <Modal
@@ -78,7 +56,7 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
       isOpen={isLoginModalOpen}
       onClose={onCloseLoginModal}>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        action={loginAction}
         className='flex min-w-[37.5rem] flex-col gap-[3rem] px-[3.125rem] py-[3rem]'>
         <Flex
           justify='center'
@@ -94,10 +72,10 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
             이메일
           </Typography>
           <Input
-            {...register('email')}
+            name='email'
             placeholder='이메일을 입력해주세요'
-            isError={!!errors.email}
-            errorMessage={errors.email?.message}
+            isError={!!isEmailError}
+            errorMessage={isEmailError?.[0]}
           />
         </Flex>
         <Flex
@@ -123,7 +101,7 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
             </Link>
           </Flex>
           <Input
-            {...register('password')}
+            name='password'
             type={isPasswordVisible ? 'text' : 'password'}
             placeholder='비밀번호를 입력해주세요'
             rightIcon={
@@ -135,8 +113,8 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
                 />
               </div>
             }
-            isError={!!errors.password}
-            errorMessage={errors.password?.message}
+            isError={!!isPasswordError}
+            errorMessage={isPasswordError?.[0]}
           />
         </Flex>
         <Flex
@@ -146,7 +124,7 @@ function LoginModal({ isLoginModalOpen, setLoginModalOpen, setSignupModalOpen }:
           <SolidButton
             type='submit'
             size='large'
-            disabled={isFormInvalid}
+            disabled={!!isFormInvalid}
             fullWidth>
             로그인
           </SolidButton>

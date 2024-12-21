@@ -4,12 +4,8 @@ import { Flex, SolidButton, Typography } from '@repo/ui/server'
 import Logo from '@/shared/ui/logo'
 import { Icon, Input, Modal } from '@repo/ui/client'
 import { Dispatch, SetStateAction, useState } from 'react'
-
-import { useForm, useWatch } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useAuthModalStore } from '../../model'
-import { type SignupModalFormData, signupModalSchema } from '@/entities/auth/model'
-import { signup } from '../../api'
+import { useFormState } from 'react-dom'
+import { localSignup } from '../../api/local-signup'
 
 type Props = {
   isSignupModalOpen: boolean
@@ -19,41 +15,17 @@ type Props = {
 function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    control,
-    reset
-  } = useForm<SignupModalFormData>({
-    resolver: zodResolver(signupModalSchema),
-    defaultValues: {
-      email: '',
-      nickname: '',
-      password: ''
-    }
-  })
-
-  const [email, nickname, password] = useWatch({
-    control,
-    name: ['email', 'nickname', 'password'],
-    defaultValue: {
-      email: '',
-      nickname: '',
-      password: ''
-    }
-  })
-
-  const isFormInvalid = !email || !nickname || !password || isSubmitting
-
   const onCloseSignupModal = () => {
     setSignupModalOpen(false)
   }
 
-  const onSubmit = async (formData: SignupModalFormData) => {
-    await signup(formData).finally(() => onCloseSignupModal())
-    reset()
-  }
+  const [state, signupAction] = useFormState(localSignup, undefined)
+
+  const isEmailError = !!state?.errors.email
+  const isNicknameError = !!state?.errors.nickname
+  const isPasswordError = !!state?.errors.password
+
+  const isFormInvalid = isEmailError || isNicknameError || isPasswordError
 
   return (
     <Modal
@@ -63,7 +35,7 @@ function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
       isOpen={isSignupModalOpen}
       onClose={onCloseSignupModal}>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        action={signupAction}
         className='flex min-w-[37.5rem] flex-col gap-[3rem] px-[3.125rem] py-[3rem]'>
         <Flex
           justify='center'
@@ -79,10 +51,10 @@ function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
             이메일
           </Typography>
           <Input
-            {...register('email')}
+            name='email'
             placeholder='이메일을 입력해주세요'
-            isError={!!errors.email}
-            errorMessage={errors.email?.message}
+            isError={isEmailError}
+            errorMessage={state?.errors.email?.[0]}
           />
         </Flex>
         <Flex
@@ -94,10 +66,10 @@ function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
             닉네임
           </Typography>
           <Input
-            {...register('nickname')}
+            name='nickname'
             placeholder='닉네임을 입력해주세요'
-            isError={!!errors.nickname}
-            errorMessage={errors.nickname?.message}
+            isError={isNicknameError}
+            errorMessage={state?.errors.nickname?.[0]}
           />
         </Flex>
         <Flex
@@ -109,7 +81,7 @@ function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
             비밀번호
           </Typography>
           <Input
-            {...register('password')}
+            name='password'
             type={isPasswordVisible ? 'text' : 'password'}
             placeholder='비밀번호를 입력해주세요'
             rightIcon={
@@ -121,8 +93,8 @@ function SignupModal({ isSignupModalOpen, setSignupModalOpen }: Props) {
                 />
               </div>
             }
-            isError={!!errors.password}
-            errorMessage={errors.password?.message}
+            isError={isPasswordError}
+            errorMessage={state?.errors.password?.[0]}
           />
         </Flex>
         <SolidButton

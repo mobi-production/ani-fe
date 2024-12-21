@@ -1,8 +1,8 @@
 import { AUTH_END_POINT } from '@/features/auth/config/auth-config'
-import { axiosAuthInstance } from '@/shared/config/api/axios'
 
 export const getRole = async () => {
-  const res = await axiosAuthInstance.get(AUTH_END_POINT.ROLE)
+  const baseURL = `${process.env.NEXT_PUBLIC_AUTH_URL}${AUTH_END_POINT.ROLE}`
+  const res = await fetch(baseURL)
 
-  return await res.data.json()
+  return (await res.json()) as { role: string }
 }

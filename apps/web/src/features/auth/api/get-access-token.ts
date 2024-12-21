@@ -1,5 +1,4 @@
 import { AUTH_END_POINT } from '@/features/auth/config/auth-config'
-import { axiosAuthInstance } from '@/shared/config/api/axios'
 
 type GetAccessTokenResponse = {
   accessToken: string
@@ -7,7 +6,8 @@ type GetAccessTokenResponse = {
 }
 
 export const getAccessToken = async (): Promise<GetAccessTokenResponse> => {
-  const res = await axiosAuthInstance.get(AUTH_END_POINT.TOKEN)
+  const baseURL = `${process.env.NEXT_PUBLIC_AUTH_URL}${AUTH_END_POINT.TOKEN}`
+  const res = await fetch(baseURL)
 
-  return (await res.data.json()) as GetAccessTokenResponse
+  return (await res.json()) as GetAccessTokenResponse
 }

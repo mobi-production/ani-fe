@@ -1,4 +1,6 @@
+import { queryClient } from '@/shared/libs/query-client'
 import { getMainData } from '@/views/main/api/get-main-data'
+import { QueryClientProvider } from '@tanstack/react-query'
 import MainPage from '@/views/main/ui'
 
 export const metadata = {
@@ -15,5 +17,9 @@ export default async function Home() {
     return <div>데이터를 불러오는 데 실패했습니다: {data.message}</div>
   }
 
-  return <MainPage data={data} />
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MainPage data={data} />
+    </QueryClientProvider>
+  )
 }
