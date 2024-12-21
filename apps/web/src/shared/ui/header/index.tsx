@@ -13,28 +13,11 @@ import { useShallow } from 'zustand/shallow'
 import { useSearchParams } from 'next/navigation'
 import { authStore } from '@/features/auth/model/auth-store'
 
-export function Header() {
-  const searchParams = useSearchParams()
-  const isLoginSuccess = searchParams.get('login_success') === 'true'
-  const syncSession = authStore.getState().syncSession
-
-  useEffect(
-    function AuthSyncSession() {
-      if (isLoginSuccess) {
-        syncSession()
-        window.history.replaceState({}, '', window.location.pathname)
-      }
-    },
-    [isLoginSuccess]
-  )
-
-  const { isLoggedIn, clearSession } = authStore(
-    useShallow((state) => ({
-      isLoggedIn: state.isLoggedIn,
-      clearSession: state.clearSession
-    }))
-  )
-
+type Props = {
+  isLoggedIn: boolean
+  clearSession: () => void
+}
+export function Inner({ isLoggedIn, clearSession }: Props) {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false)
   const [isSignUpModalOpen, setSignUpModalOpen] = useState(false)
 
@@ -115,5 +98,35 @@ export function Header() {
         )}
       </header>
     </Flex>
+  )
+}
+
+export function Header() {
+  const searchParams = useSearchParams()
+  const isLoginSuccess = searchParams.get('login_success') === 'true'
+  const syncSession = authStore.getState().syncSession
+
+  useEffect(
+    function AuthSyncSession() {
+      if (isLoginSuccess) {
+        syncSession()
+        window.history.replaceState({}, '', window.location.pathname)
+      }
+    },
+    [isLoginSuccess]
+  )
+
+  const { isLoggedIn, clearSession } = authStore(
+    useShallow((state) => ({
+      isLoggedIn: state.isLoggedIn,
+      clearSession: state.clearSession
+    }))
+  )
+
+  return (
+    <Inner
+      isLoggedIn={isLoggedIn}
+      clearSession={clearSession}
+    />
   )
 }

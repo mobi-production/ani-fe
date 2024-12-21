@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Header } from '.'
+import { Inner } from '.'
 const meta = {
   title: 'Widget/Header',
-  component: Header,
+  component: Inner,
   parameters: {
     layout: 'centered',
     docs: {
@@ -12,13 +12,16 @@ const meta = {
     }
   },
   tags: ['autodocs']
-} satisfies Meta<typeof Header>
+} satisfies Meta<typeof Inner>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
-  args: {},
+  args: {
+    isLoggedIn: true,
+    clearSession: () => {}
+  },
   parameters: {
     layout: 'fullscreen'
   }
