@@ -1,0 +1,4 @@
+export const NUMBERS = {
+  ACCESS_TOKEN_EXPIRATION: 1000 * 60 * 60 * 24 * 7,
+  REFRESH_TOKEN_EXPIRATION: 1000 * 60 * 60 * 24 * 30
+} as const

@@ -8,7 +8,6 @@ type Props = {
 
 function PathApplyModal({ isModalOpen, handleModalClose, pathId }: Props) {
   const handleSubmit = () => {
-    console.log(pathId)
     handleModalClose()
   }
 

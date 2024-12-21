@@ -29,7 +29,8 @@ export const Preview: Story = {
     title: pathIntroduceMock('1').path.title,
     description: pathIntroduceMock('1').path.description,
     isSubscribed: pathIntroduceMock('1').isSubscribed,
-    pathId: pathIntroduceMock('1').pathId.toString()
+    pathId: pathIntroduceMock('1').pathId.toString(),
+    status: 'PENDING'
   },
   render: (args) => {
     return (

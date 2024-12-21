@@ -4,6 +4,7 @@ import { pathPageMock as data, pathSidebarStatusMock as sidebarStatus } from '@/
 import { useState } from 'react'
 import { DetailPageLayoutInner } from 'app/path/[pathId]/detail/layout'
 import { wrapWithAppRouterContext } from '@/shared/utils'
+import { PathStatus } from '@/shared/types/path'
 
 const meta = {
   title: 'Page/Path/DetailPage',
@@ -38,9 +39,7 @@ export const Preview: Story = {
     data
   },
   render: function Story(args) {
-    const [status, setStatus] = useState<'PENDING_REVIEW' | 'COMPLETED' | 'IN_PROGRESS'>(
-      'PENDING_REVIEW'
-    )
+    const [status, setStatus] = useState<PathStatus>('PENDING')
 
     return (
       <div className='bg-background-alternative p-20'>

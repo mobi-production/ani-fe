@@ -3,26 +3,35 @@
 import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
-import { useAuthModalStore } from '@/features/auth/model'
-import { signOut, useSession } from 'next-auth/react'
 import DropdownMenu from '../dropdown-menu'
 import Link from 'next/link'
+import { signOut } from '@/features/auth/api/sign-out'
+import { useEffect, useState } from 'react'
+import LoginModal from '@/features/auth/ui/login-modal'
+import SignupModal from '@/features/auth/ui/signup-modal'
+import { useShallow } from 'zustand/shallow'
+import { useSearchParams } from 'next/navigation'
+import { authStore } from '@/features/auth/model/auth-store'
 
 type Props = {
   isLoggedIn: boolean
+  clearSession: () => void
 }
+export function Inner({ isLoggedIn, clearSession }: Props) {
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false)
+  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false)
 
-export function HeaderInner({ isLoggedIn }: Props) {
-  const setIsLoginModalOpen = useAuthModalStore((state) => state.setIsLoginModalOpen)
   const onAlarmClick = () => {
     console.log('alarm')
   }
+
   const onLoginClick = () => {
-    setIsLoginModalOpen(true)
+    setLoginModalOpen(true)
   }
 
   const onLogoutClick = () => {
     signOut()
+    clearSession()
   }
 
   return (
@@ -76,6 +85,15 @@ export function HeaderInner({ isLoggedIn }: Props) {
               rightIcon={<Icon name='RightOutlined' />}>
               로그인
             </SolidButton>
+            <LoginModal
+              isLoginModalOpen={isLoginModalOpen}
+              setLoginModalOpen={setLoginModalOpen}
+              setSignupModalOpen={setSignUpModalOpen}
+            />
+            <SignupModal
+              isSignupModalOpen={isSignUpModalOpen}
+              setSignupModalOpen={setSignUpModalOpen}
+            />
           </div>
         )}
       </header>
@@ -83,9 +101,32 @@ export function HeaderInner({ isLoggedIn }: Props) {
   )
 }
 
-const Header = () => {
-  const { data: session } = useSession()
-  return <HeaderInner isLoggedIn={!!session} />
-}
+export function Header() {
+  const searchParams = useSearchParams()
+  const isLoginSuccess = searchParams.get('login_success') === 'true'
+  const syncSession = authStore.getState().syncSession
 
-export default Header
+  useEffect(
+    function AuthSyncSession() {
+      if (isLoginSuccess) {
+        syncSession()
+        window.history.replaceState({}, '', window.location.pathname)
+      }
+    },
+    [isLoginSuccess]
+  )
+
+  const { isLoggedIn, clearSession } = authStore(
+    useShallow((state) => ({
+      isLoggedIn: state.isLoggedIn,
+      clearSession: state.clearSession
+    }))
+  )
+
+  return (
+    <Inner
+      isLoggedIn={isLoggedIn}
+      clearSession={clearSession}
+    />
+  )
+}

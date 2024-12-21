@@ -48,7 +48,7 @@ function SidebarInformationBlock({
         />
       </Flex>
 
-      {status === 'PENDING_REVIEW' && <SolidButton fullWidth>다시 제출하기</SolidButton>}
+      {status === 'PENDING' && <SolidButton fullWidth>다시 제출하기</SolidButton>}
 
       {status === 'COMPLETED' && (
         <Flex

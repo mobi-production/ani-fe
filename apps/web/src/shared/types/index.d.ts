@@ -8,6 +8,7 @@ declare global {
       NEXT_PUBLIC_AUTH_URL: string
       NEXT_PUBLIC_API_URL: string
       NEXT_PUBLIC_CLIENT_URL: string
+      AUTH_SECRET: string
     }
   }
 }
@@ -32,5 +33,11 @@ declare module 'next-auth/jwt' {
   interface JWT {
     accessToken?: string
     refreshToken?: string
+  }
+}
+
+declare module 'axios' {
+  interface AxiosRequestConfig {
+    tokenRequired?: boolean
   }
 }

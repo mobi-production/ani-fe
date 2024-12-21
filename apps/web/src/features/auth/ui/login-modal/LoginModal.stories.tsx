@@ -26,6 +26,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
+  args: {
+    isLoginModalOpen: true,
+    setLoginModalOpen: () => {},
+    setSignupModalOpen: () => {}
+  },
   render: () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
