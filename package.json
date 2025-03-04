@@ -37,5 +37,9 @@
     "apps/*",
     "packages/*",
     "config/*"
-  ]
+  ],
+  "dependencies": {
+    "react": "19",
+    "react-dom": "19"
+  }
 }

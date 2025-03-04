@@ -1,5 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority'
-import cn from 'node_modules/@repo/util/src/cn'
+import cn from '@repo/util/cn'
 
 import Icon from '../icon'
 import { CheckBoxSize, CheckBoxSizeMapping } from './variants'

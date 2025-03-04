@@ -6,7 +6,6 @@ on:
       - develop
     paths:
       - 'apps/web/**'
-      - 'packages/ui/**'
 
 jobs:
   chromatic:

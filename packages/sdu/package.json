@@ -5,17 +5,19 @@
   "version": "0.0.0",
   "exports": {
     ".": {
-      "default": "./src/index.tsx",
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "default": "./src/index.tsx"
     }
   },
   "scripts": {
     "build": "vite build",
     "format": "prettier \"src/**/*.{ts,tsx}\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
@@ -23,22 +25,34 @@
     "@repo/ui": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-syntax-highlighter": "^15.6.1",
     "tailwind-merge": "^2.3.0",
     "vite-plugin-dts": "^4.3.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.5",
     "@config/es-config": "workspace:*",
     "@config/libs": "workspace:*",
     "@config/ts-config": "workspace:*",
+    "@mdx-js/react": "^3.1.0",
+    "@storybook/addon-docs": "8.4.1",
+    "@storybook/addon-essentials": "8.4.1",
+    "@storybook/addon-interactions": "8.4.1",
+    "@storybook/addon-onboarding": "8.4.1",
+    "@storybook/blocks": "8.4.1",
+    "@storybook/react": "8.4.1",
+    "@storybook/react-vite": "8.4.1",
+    "@storybook/test": "8.4.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@vitejs/plugin-react": "^4.3.3",
+    "eslint-plugin-storybook": "^0.10.2",
     "globals": "^15.11.0",
     "postcss": "^8.4.47",
+    "prop-types": "^15.8.1",
     "storybook": "8.4.1",
     "tailwindcss": "^3.4.14",
     "vite": "^5.4.10"
