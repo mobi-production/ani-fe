@@ -1,0 +1,78 @@
+name: 'Mobi Design System SDUI Chromatic Deployment'
+
+on:
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'packages/sdu/**'
+
+jobs:
+  chromatic:
+    name: 'Mobi Design System SDUI Chromatic Deployment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_SDUI_PROJECT_TOKEN }}
+          workingDir: packages/sdu
+          exitOnceUploaded: true
+          onlyChanged: true
+          autoAcceptChanges: true
+
+      - name: PR Auto Comment
+        if: steps.chromatic.outputs.storybookUrl != ''
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            ➡️ 추가된 SDUI Storybook 미리보기: ${{ steps.chromatic.outputs.storybookUrl }}
+
+            변경사항을 확인해주세요! 🔍
+
+      - name: Discord Notification
+        if: steps.chromatic.outputs.storybookUrl != ''
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          embed-title: 'SDUI Storybook 변경 사항 발견 😃'
+          embed-description: |
+            작업: "${{ github.event.pull_request.title }}" 에서 추가된 SDUI Storybook을 확인해주세요!
+
+            📚 변경사항 확인하기
+          embed-url: ${{ steps.chromatic.outputs.storybookUrl }}

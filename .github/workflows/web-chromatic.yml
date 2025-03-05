@@ -50,7 +50,7 @@ jobs:
         uses: chromaui/action@latest
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_WEB_PROJECT_TOKEN }}
           workingDir: apps/web
           exitOnceUploaded: true
           onlyChanged: true
