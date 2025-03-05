@@ -308,9 +308,6 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.0
         version: 3.1.0(@types/react@18.3.12)(react@19.0.0)
-      '@storybook/addon-docs':
-        specifier: 8.4.1
-        version: 8.4.1(@types/react@18.3.12)(storybook@8.4.1)
       '@storybook/addon-essentials':
         specifier: 8.4.1
         version: 8.4.1(@types/react@18.3.12)(storybook@8.4.1)

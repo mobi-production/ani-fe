@@ -37,7 +37,6 @@
     "@config/libs": "workspace:*",
     "@config/ts-config": "workspace:*",
     "@mdx-js/react": "^3.1.0",
-    "@storybook/addon-docs": "8.4.1",
     "@storybook/addon-essentials": "8.4.1",
     "@storybook/addon-interactions": "8.4.1",
     "@storybook/addon-onboarding": "8.4.1",
