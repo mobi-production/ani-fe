@@ -1,5 +1,5 @@
-import { cva, VariantProps } from 'class-variance-authority'
 import cn from '@repo/util/cn'
+import { cva, VariantProps } from 'class-variance-authority'
 
 import Icon from '../icon'
 import { CheckBoxSize, CheckBoxSizeMapping } from './variants'
