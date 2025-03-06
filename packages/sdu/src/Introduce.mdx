@@ -1,0 +1,158 @@
+import { Meta, Canvas } from '@storybook/blocks'
+import * as Playground from './components/playground/Playground.stories'
+
+<Meta title='Getting Started' />
+
+# Server Driven UI 가이드
+
+## 개요
+
+Server Driven UI(SDUI)는 UI 렌더링 로직을 클라이언트에서 서버로 이동시켜, 서버에서 JSON 형태로 제공하는 UI 명세에 따라 클라이언트가 화면을 구성하는 아키텍처입니다.
+
+이를 통해 모비 내 학습 콘텐츠를 유연하고 확장 가능한 방식으로 표현할 수 있습니다.
+
+## 핵심 개념
+
+Server Driven UI는 다음 세 가지 핵심 요소로 구성됩니다.
+
+<table>
+  <thead>
+    <tr>
+      <th>요소</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>type</td>
+      <td>렌더링할 컴포넌트의 유형을 지정</td>
+    </tr>
+    <tr>
+      <td>props</td>
+      <td>컴포넌트에 전달되는 속성값 객체</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>컴포넌트의 중첩된 하위 요소 배열</td>
+    </tr>
+  </tbody>
+</table>
+
+## 데이터 구조
+
+```typescript
+interface SDUComponent {
+  /** 렌더링할 컴포넌트 유형 */
+  type: SDUComponentType
+
+  /** 컴포넌트에 전달될 속성값 */
+  props?: Record<string, any>
+
+  /** 컴포넌트 내부에 렌더링할 하위 요소 */
+  content?: SDUComponent[]
+}
+```
+
+### 예제 데이터
+
+```json
+{
+  "type": "text",
+  "props": {
+    "rich_text": [{ "text": "안녕하세요" }],
+    "color": "default"
+  },
+  "content": [
+    {
+      "type": "link",
+      "props": {
+        "href": "https://example.com",
+        "rich_text": [{ "text": "링크 텍스트" }]
+      }
+    }
+  ]
+}
+```
+
+## 구현 방법
+
+### 기본 사용법
+
+```tsx
+import { ServerDrivenComponent } from '@repo/sdu'
+
+// UI 명세 정의
+const uiSpec = [
+  {
+    type: 'heading1',
+    props: { rich_text: [{ text: '섹션 제목' }] }
+  },
+  {
+    type: 'text',
+    props: { rich_text: [{ text: '본문 내용이 여기에 들어갑니다.' }] }
+  }
+]
+
+// 컴포넌트에서 사용
+function ContentView() {
+  return <ServerDrivenComponent content={uiSpec} />
+}
+```
+
+### 고급 사용법
+
+중첩된 컴포넌트 구조를 표현할 수 있습니다.
+
+```tsx
+const nestedUISpec = [
+  {
+    type: 'columnList',
+    content: [
+      {
+        type: 'column',
+        content: [
+          {
+            type: 'text',
+            props: { rich_text: [{ text: '첫 번째 열' }] }
+          }
+        ]
+      },
+      {
+        type: 'column',
+        content: [
+          {
+            type: 'text',
+            props: { rich_text: [{ text: '두 번째 열' }] }
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+## 컴포넌트 목록
+
+- [Bookmark](?path=/docs/sdu-bookmark--docs)
+- [BulletedListItem](?path=/docs/sdu-bulletedlistitem--docs)
+- [Button](?path=/docs/sdu-button--docs)
+- [Callout](?path=/docs/sdu-callout--docs)
+- [Checkbox](?path=/docs/sdu-checkbox--docs)
+- [Code](?path=/docs/sdu-code--docs)
+- [ColumnList](?path=/docs/sdu-columnlist--docs)
+- [Divider](?path=/docs/sdu-divider--docs)
+- [File](?path=/docs/sdu-file--docs)
+- [Heading1](?path=/docs/sdu-heading1--docs)
+- [Heading2](?path=/docs/sdu-heading2--docs)
+- [Heading3](?path=/docs/sdu-heading3--docs)
+- [Image](?path=/docs/sdu-image--docs)
+- [NumberedListItem](?path=/docs/sdu-numberedlistitem--docs)
+- [Link](?path=/docs/sdu-link--docs)
+- [NumberedListItem](?path=/docs/sdu-numberedlistitem--docs)
+- [Quote](?path=/docs/sdu-quote--docs)
+- [TableOfContent](?path=/docs/sdu-tableofcontent--docs)
+- [Table](?path=/docs/sdu-table--docs)
+- [Text](?path=/docs/sdu-text--docs)
+- [Toggle](?path=/docs/sdu-toggle--docs)
+
+> [**Playground**](?path=/docs/sdu-playground--docs)를 통해 **JSON UI**를 확인할 수 있습니다.
