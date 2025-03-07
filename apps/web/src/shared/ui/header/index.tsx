@@ -3,21 +3,35 @@
 import { Flex, SolidButton } from '@repo/ui/server'
 import { Icon } from '@repo/ui/client'
 import Logo from '../logo'
-type HeaderProps = {
-  isLoggedIn: boolean
-}
+import DropdownMenu from '../dropdown-menu'
+import Link from 'next/link'
+import { signOut } from '@/features/auth/api/sign-out'
+import { useEffect, useState } from 'react'
+import LoginModal from '@/features/auth/ui/login-modal'
+import SignupModal from '@/features/auth/ui/signup-modal'
+import { useShallow } from 'zustand/shallow'
+import { useSearchParams } from 'next/navigation'
+import { authStore } from '@/features/auth/model/auth-store'
 
-function Header({ isLoggedIn }: HeaderProps) {
+type Props = {
+  isLoggedIn: boolean
+  clearSession: () => void
+}
+export function Inner({ isLoggedIn, clearSession }: Props) {
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false)
+  const [isSignUpModalOpen, setSignUpModalOpen] = useState(false)
+
   const onAlarmClick = () => {
     console.log('alarm')
   }
 
-  const onMyPageClick = () => {
-    console.log('my-page')
+  const onLoginClick = () => {
+    setLoginModalOpen(true)
   }
 
-  const onLoginClick = () => {
-    console.log('login')
+  const onLogoutClick = () => {
+    signOut()
+    clearSession()
   }
 
   return (
@@ -32,27 +46,35 @@ function Header({ isLoggedIn }: HeaderProps) {
         {isLoggedIn ? (
           <Flex
             align={'center'}
-            gap={'8'}>
+            gap={32}>
             <button
               onClick={onAlarmClick}
               className='h-9 w-9'
               aria-label='alarm'
               type='button'>
               <Icon
-                size={'36'}
+                size={36}
                 name='BellOutlined'
               />
             </button>
-            <button
-              onClick={onMyPageClick}
-              className='h-9 w-9'
-              aria-label='my-page'
-              type='button'>
-              <Icon
-                size={'36'}
-                name='UserOutlined'
-              />
-            </button>
+            <DropdownMenu>
+              <DropdownMenu.Trigger aria-label='my-page'>
+                <Icon
+                  size={36}
+                  name='UserOutlined'
+                />
+              </DropdownMenu.Trigger>
+              <DropdownMenu.MenuContent
+                triggerHeight='3rem'
+                className='right-0'>
+                <DropdownMenu.MenuItem value='mypage'>
+                  <Link href='/mypage'>마이페이지</Link>
+                </DropdownMenu.MenuItem>
+                <DropdownMenu.MenuItem value='logout'>
+                  <button onClick={onLogoutClick}>로그아웃</button>
+                </DropdownMenu.MenuItem>
+              </DropdownMenu.MenuContent>
+            </DropdownMenu>
           </Flex>
         ) : (
           <div className='relative h-9 w-24'>
@@ -63,6 +85,15 @@ function Header({ isLoggedIn }: HeaderProps) {
               rightIcon={<Icon name='RightOutlined' />}>
               로그인
             </SolidButton>
+            <LoginModal
+              isLoginModalOpen={isLoginModalOpen}
+              setLoginModalOpen={setLoginModalOpen}
+              setSignupModalOpen={setSignUpModalOpen}
+            />
+            <SignupModal
+              isSignupModalOpen={isSignUpModalOpen}
+              setSignupModalOpen={setSignUpModalOpen}
+            />
           </div>
         )}
       </header>
@@ -70,4 +101,32 @@ function Header({ isLoggedIn }: HeaderProps) {
   )
 }
 
-export default Header
+export function Header() {
+  const searchParams = useSearchParams()
+  const isLoginSuccess = searchParams.get('login_success') === 'true'
+  const syncSession = authStore.getState().syncSession
+
+  useEffect(
+    function AuthSyncSession() {
+      if (isLoginSuccess) {
+        syncSession()
+        window.history.replaceState({}, '', window.location.pathname)
+      }
+    },
+    [isLoginSuccess]
+  )
+
+  const { isLoggedIn, clearSession } = authStore(
+    useShallow((state) => ({
+      isLoggedIn: state.isLoggedIn,
+      clearSession: state.clearSession
+    }))
+  )
+
+  return (
+    <Inner
+      isLoggedIn={isLoggedIn}
+      clearSession={clearSession}
+    />
+  )
+}

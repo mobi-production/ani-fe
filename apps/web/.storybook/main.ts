@@ -10,12 +10,7 @@ function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, 'package.json')))
 }
 const config: StorybookConfig = {
-  stories: [
-    '../src/**/*.mdx',
-    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    '../../../packages/ui/src/**/*.mdx',
-    '../../../packages/ui/src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
-  ],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   staticDirs: ['../public'],
   addons: [
     getAbsolutePath('@storybook/addon-onboarding'),
@@ -34,7 +29,8 @@ const config: StorybookConfig = {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@': resolve(__dirname, '../src'),
-        '@repo/ui': resolve(__dirname, '../../../packages/ui/src')
+        '@repo/ui': resolve(__dirname, '../../../packages/ui/src'),
+        '@repo/util': resolve(__dirname, '../../../packages/util/src')
       }
     }
 

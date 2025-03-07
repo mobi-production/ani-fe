@@ -1,0 +1,78 @@
+{
+  "type": "numbered_list_item",
+  "props": {
+    "rich_text": [
+      {
+        "text": "프로젝트 예시 - 제목으로 쓰이는"
+      },
+      {
+        "text": "속성",
+        "bold": true,
+        "style": {
+          "color": "#000000",
+          "backgroundColor": "#FFFFFF"
+        }
+      },
+      {
+        "text": "\n재미있게 사용해주세요 :)"
+      }
+    ],
+    "style": {
+      "color": "#ff0000",
+      "backgroundColor": "#f0f0f0"
+    }
+  },
+  "children": [
+    {
+      "type": "numbered_list_item",
+      "props": {
+        "rich_text": [
+          {
+            "text": "프로젝트 예시 - 제목으로 쓰이는"
+          },
+          {
+            "text": "속성",
+            "bold": true,
+            "style": {
+              "color": "#000000",
+              "backgroundColor": "#FFFFFF"
+            }
+          },
+          {
+            "text": "\n재미있게 사용해주세요 :)"
+          }
+        ],
+        "style": {
+          "color": "#ff00ff",
+          "backgroundColor": "#f0f0f0"
+        }
+      },
+      "children": [
+        {
+          "type": "numbered_list_item",
+          "props": {
+            "rich_text": [
+              {
+                "text": "프로젝트 예시 - 제목으로 쓰이는"
+              },
+              {
+                "text": "속성",
+                "bold": true,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              {
+                "text": "\n재미있게 사용해주세요 :)"
+              }
+            ],
+            "style": {
+              "color": "#ffff00",
+              "backgroundColor": "#000000"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

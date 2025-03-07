@@ -1,0 +1,17 @@
+{
+  "type": "button",
+  "props": {
+    "text": "테스트",
+    "buttonType": "solid",
+    "variant": "primary",
+    "size": "medium",
+    "fullWidth": false,
+    "onClick": {
+      "type": "NAVIGATE",
+      "payload": {
+        "type": "PUSH",
+        "path": "/path"
+      }
+    }
+  }
+}

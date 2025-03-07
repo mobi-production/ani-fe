@@ -2,29 +2,30 @@ import '@config/libs/globals.css'
 
 import { pretendardFont } from './_fonts'
 import { Flex } from '@repo/ui/server'
-import Header from '@/shared/ui/header'
-
-// TODO: 로그인 상태 추가
-const isLoggedIn = false
+import { Header } from '@/shared/ui/header'
+import { ReactNode } from 'react'
 
 export default function RootLayout({
   children
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html
       className={`${pretendardFont.variable}`}
       lang='ko'>
-      <Flex
-        asChild
-        direction={'column'}
-        className='w-full'>
-        <body className='gap-[3.25rem] bg-background-alternative'>
-          <Header isLoggedIn={isLoggedIn} />
-          {children}
-        </body>
-      </Flex>
+      <body className='bg-background-alternative'>
+        <div id='portal-container' />
+        <Flex
+          asChild
+          className='w-full gap-[52px]'
+          direction={'column'}>
+          <main>
+            <Header />
+            {children}
+          </main>
+        </Flex>
+      </body>
     </html>
   )
 }

@@ -1,0 +1,11 @@
+{
+  "type": "file",
+  "props": {
+    "url": "/avif/placeholder.avif",
+    "file_size": "27.4KB",
+    "style": {
+      "color": "#fff",
+      "backgroundColor": "#000"
+    }
+  }
+}

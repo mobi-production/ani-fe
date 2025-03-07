@@ -14,13 +14,20 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@repo/sdu": "workspace:*",
     "@repo/ui": "workspace:*",
     "@repo/util": "workspace:*",
+    "@tanstack/react-query": "^5.62.8",
+    "axios": "^1.7.9",
+    "jose": "^5.9.6",
     "next": "^14.2.16",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "zod": "^3.23.8"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.2",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
@@ -29,6 +36,7 @@
     "@config/ts-config": "workspace:*",
     "@eslint/eslintrc": "^3.1.0",
     "@mswjs/http-middleware": "^0.10.2",
+    "@storybook/addon-docs": "8.4.1",
     "@storybook/addon-essentials": "8.4.1",
     "@storybook/addon-interactions": "8.4.1",
     "@storybook/addon-onboarding": "8.4.1",

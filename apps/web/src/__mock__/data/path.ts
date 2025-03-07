@@ -1,311 +1,417 @@
-import type { PathIntroduce } from '@/entities/path/model/path-introduce'
-
-export const pathIntroduce = (pathId: string): PathIntroduce => {
+import { DeletePathApplyCancelResponseType } from '@/features/path/api/delete-path-apply-cancle'
+import { PostPathApplyResponseType } from '@/features/path/api/post-path-apply'
+import { GetPathIntroduceResponseType } from '@/views/path/api/get-path-introduce'
+import { GetPathLoadResponseType } from '@/views/path/api/get-path-load'
+import { GetPathPageResponseType } from '@/views/path/api/get-path-page'
+import { GetPathStatusResponseType } from '@/views/path/api/get-path-status'
+import { ServerDrivenComponentType } from '@repo/sdu'
+import { PathStatus } from '@/shared/types/path'
+export const pathIntroduceMock = (
+  pathId: number | string
+): GetPathIntroduceResponseType['data'] => {
   return {
-    id: pathId,
-    isApplied: false,
-    title: 'HTML & CSS 패스',
-    description:
-      '웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다. 이 패스는 웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다.',
-    imageUrl: '/avif/placeholder.avif',
-    recruitmentStartDate: '2024-11-15',
-    applicationDeadline: '2024-12-15',
-    announcementDate: '2024-12-20',
-    pathStartDate: '2025-01-01',
-    pathEndDate: '2025-03-31',
-    recruitedPeople: 10,
-    difficultyLevel: '중급',
-    pathDescription: {
-      title:
-        '웹 개발의 기본 요소인 HTML과 CSS에 대한 깊이 있는 이해와 실무 능력을 기르는 것을 목표로 해요!',
-      subTitle: [
+    isSubscribed: false,
+    status: 'PENDING',
+    pathId,
+    startDate: '2024-11-15T00:00:00.000Z',
+    endDate: '2025-03-31T00:00:00.000Z',
+    level: '중급',
+    maxStudent: 10,
+    recruitStartDate: '2024-11-15T00:00:00.000Z',
+    recruitEndDate: '2024-12-15T00:00:00.000Z',
+    announcementDate: '2024-12-15',
+    path: {
+      thumbnail: '/avif/placeholder.avif',
+      title: 'HTML & CSS 패스',
+      description:
+        '웹 개발의 기초인 HTML과 CSS를 중점적으로 학습하는 과정입니다. HTML을 통해 웹페이지의 구조를 이해하고, CSS를 통해 스타일과 디자인을 다루는 방법을 배웁니다.',
+      content: [
         {
-          title: '1. HTML의 구조 이해',
-          description:
-            '웹 개발의 기본 요소인 HTML과 CSS에 대한 깊이 있는 이해와 실무 능력을 기르는 것을 목표로 해요!'
+          type: 'heading_1',
+          props: {
+            text: 'HTML & CSS 패스',
+            rich_text: [
+              {
+                text: 'HTML & CSS 패스'
+              }
+            ]
+          }
+        }
+      ] as unknown as ServerDrivenComponentType[],
+      parts: [
+        {
+          id: 1,
+          title: 'HTML 개요(1)',
+          order: 1,
+          page: [
+            {
+              id: 1,
+              order: 1,
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 2,
+              order: 2,
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 3,
+              order: 3,
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 4,
+              order: 4,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 5,
+              order: 5,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 6,
+              order: 6,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 7,
+              order: 7,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            },
+            {
+              id: 8,
+              order: 8,
+              type: 'QUIZ',
+              title: '마무리 퀴즈'
+            }
+          ]
         },
         {
-          title: '2. CSS를 활용한 디자인 적용',
-          description:
-            'CSS를 활용하여 웹페이지의 레이아웃, 색상, 폰트 등 스타일을 설정하고, 반응형 웹 디자인을 구현할 수 있는 능력을 배워요.'
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'HTML 개요(2)',
+          order: 2,
+          page: [
+            {
+              id: 9,
+              order: '9',
+              type: 'LEARNING_CONTENTS',
+              title: '첫 인사 및 강의 개요'
+            },
+            {
+              id: 10,
+              order: '10',
+              type: 'LEARNING_CONTENTS',
+              title: '기본 문법'
+            },
+            {
+              id: 11,
+              order: '11',
+              type: 'LEARNING_CONTENTS',
+              title: '부모와 자식 관계의 이해'
+            },
+            {
+              id: 12,
+              order: 12,
+              type: 'LEARNING_CONTENTS',
+              title: 'Doctype(DTD)'
+            },
+            {
+              id: 13,
+              order: 13,
+              type: 'LEARNING_CONTENTS',
+              title: 'HTML, HEAD, BODY'
+            },
+            {
+              id: 14,
+              order: 14,
+              type: 'LEARNING_CONTENTS',
+              title: '정보를 의미하는 태그 살펴보기'
+            },
+            {
+              id: 15,
+              order: 15,
+              type: 'VIDEO',
+              title: '화면에 이미지 출력하기',
+              videoLength: '15:30'
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+export const pathSidebarStatusMock = (
+  pathId: number | string,
+  status?: PathStatus
+): GetPathStatusResponseType['data'] => {
+  return {
+    path: {
+      id: pathId,
+      title: 'HTML & CSS 패스',
+      thumbnail: '/avif/placeholder.avif',
+      startDate: '2024-11-15T00:00:00.000Z',
+      endDate: '2025-03-31T00:00:00.000Z',
+      progress: 100,
+      status: status ? status : 'PENDING',
+      mentors: [
+        {
+          nickname: '김멘토',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'mentor1@example.com'
+        },
+        {
+          nickname: '이멘토',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'mentor2@example.com'
+        }
+      ],
+      crews: [
+        {
+          nickname: '김크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew1@example.com'
+        },
+        {
+          nickname: '이크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew2@example.com'
+        },
+        {
+          nickname: '박크루',
+          profileUrl: '/avif/placeholder.avif',
+          email: 'crew3@example.com'
         }
       ]
     },
-    pathFeatures: [
-      {
-        id: 1,
-        emoji: '😥',
-        description: '혼자 공부하기가 힘든 분'
-      },
-      {
-        id: 2,
-        emoji: '🫡',
-        description: '끝까지 배울 의지가 있는 분'
-      },
-      {
-        id: 3,
-        emoji: '🤓',
-        description: '끈기에 자신있는 분'
-      }
-    ],
-    pathContents: [
-      {
-        partId: 1,
-        title: 'HTML 개요(1)',
-        path: [
-          {
-            pathId: 1,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 2,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 3,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 4,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 5,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 6,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 7,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          },
-          {
-            pathId: 8,
-            type: 'quiz',
-            title: '마무리 퀴즈'
-          }
-        ]
-      },
-      {
-        partId: 2,
-        title: 'HTML 개요(2)',
-        path: [
-          {
-            pathId: 9,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 10,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 11,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 12,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 13,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 14,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 15,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        partId: 3,
-        title: 'HTML 개요(3)',
-        path: [
-          {
-            pathId: 16,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 17,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 18,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 19,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 20,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 21,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 22,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        partId: 3,
-        title: 'HTML 개요(3)',
-        path: [
-          {
-            pathId: 16,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 17,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 18,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 19,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 20,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 21,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 22,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        partId: 3,
-        title: 'HTML 개요(3)',
-        path: [
-          {
-            pathId: 16,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 17,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 18,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 19,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 20,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 21,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 22,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      },
-      {
-        partId: 3,
-        title: 'HTML 개요(3)',
-        path: [
-          {
-            pathId: 16,
-            type: 'page',
-            title: '첫 인사 및 강의 개요'
-          },
-          {
-            pathId: 17,
-            type: 'page',
-            title: '기본 문법'
-          },
-          {
-            pathId: 18,
-            type: 'page',
-            title: '부모와 자식 관계의 이해'
-          },
-          {
-            pathId: 19,
-            type: 'page',
-            title: 'Doctype(DTD)'
-          },
-          {
-            pathId: 20,
-            type: 'page',
-            title: 'HTML, HEAD, BODY'
-          },
-          {
-            pathId: 21,
-            type: 'page',
-            title: '정보를 의미하는 태그 살펴보기'
-          },
-          {
-            pathId: 22,
-            type: 'video',
-            title: '화면에 이미지 출력하기',
-            videoLength: '15:30'
-          }
-        ]
-      }
-    ]
+    curriculum: {
+      parts: [
+        {
+          id: 1,
+          order: 1,
+          title: 'HTML 개요(1)',
+          page: [
+            {
+              id: 1,
+              order: 1,
+              title: 'HTML 개요(1)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 2,
+              order: 2,
+              title: 'HTML 개요(2)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 3,
+              order: 3,
+              title: 'HTML 개요(3)',
+              type: 'LEARNING_CONTENTS',
+              checked: false
+            }
+          ]
+        },
+        {
+          id: 2,
+          order: 2,
+          title: 'HTML 개요(2)',
+          page: [
+            {
+              id: 4,
+              order: 4,
+              title: 'HTML 개요(1)',
+              type: 'LEARNING_CONTENTS',
+              checked: true
+            },
+            {
+              id: 5,
+              order: 5,
+              title: 'HTML 개요(2)',
+              type: 'VIDEO',
+              videoLength: '15:30',
+              checked: true
+            },
+            {
+              id: 6,
+              order: 6,
+              title: 'HTML 개요(3)',
+              type: 'LEARNING_CONTENTS',
+              checked: false
+            }
+          ]
+        }
+      ]
+    },
+    quiz: {
+      parts: [
+        {
+          id: 3,
+          order: 1,
+          title: 'HTML 개요(1)',
+          page: [
+            {
+              id: 4,
+              order: 4,
+              title: 'HTML 개요(1)',
+              type: 'QUIZ',
+              checked: true
+            }
+          ]
+        },
+        {
+          id: 4,
+          order: 2,
+          title: 'HTML 개요(2)',
+          page: [
+            {
+              id: 5,
+              order: 5,
+              title: 'HTML 개요(2)',
+              type: 'QUIZ',
+              checked: false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+export const pathPageMock: GetPathPageResponseType['data'] = {
+  partName: 'HTML 개요(1)',
+  pageName: '마무리 퀴즈',
+  type: 'LEARNING_CONTENTS',
+  content: []
+}
+
+export const pathLoadMock = (pathId: string): GetPathLoadResponseType['data'] => {
+  return {
+    pathId,
+    partId: '1',
+    pageId: '1'
+  }
+}
+
+export const pathApplyMock = (pathId: string): PostPathApplyResponseType['data'] => {
+  return {
+    pathId
+  }
+}
+
+export const pathApplyCancelMock = (pathId: string): DeletePathApplyCancelResponseType['data'] => {
+  return {
+    pathId
   }
 }

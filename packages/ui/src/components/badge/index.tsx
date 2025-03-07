@@ -18,7 +18,8 @@ export const badgeVariants = cva(
         [BadgeColors.ORANGE]: 'bg-orange-95 text-orange-50',
         [BadgeColors.GREEN]: 'bg-green-95 text-green-50',
         [BadgeColors.BLUE]: 'bg-blue-95 text-blue-50',
-        [BadgeColors.RED]: 'bg-red-95 text-red-50'
+        [BadgeColors.RED]: 'bg-red-95 text-red-50',
+        [BadgeColors.MINT]: 'bg-mint-95 text-primary-normal'
       }
     },
     defaultVariants: {

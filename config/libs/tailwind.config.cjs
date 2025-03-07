@@ -4,27 +4,13 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx}',
-    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}'
+    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+    '../../packages/sdu/src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
       fontFamily: {
         sans: ['var(--font-pretendard)', ...defaultTheme.fontFamily.sans]
-      },
-      spacing: {
-        '4r': '1rem',
-        '8r': '2rem',
-        '12r': '3rem',
-        '16r': '4rem',
-        '20r': '5rem',
-        '24r': '6rem',
-        '28r': '7rem',
-        '32r': '8rem',
-        '36r': '9rem',
-        '40r': '10rem',
-        '44r': '11rem',
-        '48r': '12rem',
-        '64r': '16rem'
       },
       screens: {
         mobile: {
@@ -363,6 +349,9 @@ module.exports = {
             letterSpacing: '0.031em'
           }
         ]
+      },
+      boxShadow: {
+        normal: '0px 4px 20px 0px rgba(0, 0, 0, 0.05)'
       }
     }
   },

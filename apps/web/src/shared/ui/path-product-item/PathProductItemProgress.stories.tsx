@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemProgress from './PathProductItemProgress'
 
 const meta = {
-  title: 'ProductItem/Progress',
+  title: 'Shared/PathProductItem/Progress',
   component: PathProductItemProgress,
   parameters: {
     layout: 'centered',
@@ -13,12 +13,7 @@ const meta = {
       }
     }
   },
-  tags: ['autodocs'],
-  decorators: (Story) => (
-    <div className='px-40 py-10'>
-      <Story />
-    </div>
-  )
+  tags: ['autodocs']
 } satisfies Meta<typeof PathProductItemProgress>
 
 export default meta

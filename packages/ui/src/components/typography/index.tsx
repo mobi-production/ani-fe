@@ -27,7 +27,8 @@ export const typographyVariants = cva('', {
       [TypographyFontWeights.REGULAR]: 'font-normal',
       [TypographyFontWeights.MEDIUM]: 'font-medium',
       [TypographyFontWeights.SEMIBOLD]: 'font-semibold',
-      [TypographyFontWeights.BOLD]: 'font-bold'
+      [TypographyFontWeights.BOLD]: 'font-bold',
+      [TypographyFontWeights.EXTRA_BOLD]: 'font-extrabold'
     },
     color: {
       [TypographyColors.INHERIT]: 'text-inherit',
@@ -37,7 +38,8 @@ export const typographyVariants = cva('', {
       [TypographyColors.ALTERNATIVE]: 'text-label-alternative',
       [TypographyColors.ASSISTIVE]: 'text-label-assistive',
       [TypographyColors.DISABLE]: 'text-label-disable',
-      [TypographyColors.ERROR]: 'text-status-error'
+      [TypographyColors.ERROR]: 'text-status-error',
+      [TypographyColors.MINT99]: 'text-mint-99'
     }
   },
   defaultVariants: {

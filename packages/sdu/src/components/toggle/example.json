@@ -1,0 +1,37 @@
+{
+  "type": "toggle",
+  "props": {
+    "text": "Toggle",
+    "variant": "heading_1",
+    "summary": [
+      {
+        "type": "text",
+        "text": "Toggle"
+      }
+    ]
+  },
+  "children": [
+    {
+      "type": "heading_1",
+      "props": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "props": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,14 +1,25 @@
-import { Typography } from '@repo/ui/server'
+import { queryClient } from '@/shared/libs/query-client'
+import { getMainData } from '@/views/main/api/get-main-data'
+import { QueryClientProvider } from '@tanstack/react-query'
+import MainPage from '@/views/main/ui'
 
-export default function Home() {
+export const metadata = {
+  title: 'ANI | 메인 페이지',
+  description:
+    'ANI는 시간과 비용 부담 없이 꿈을 찾고 방향을 잡을 수 있도록, 누구나 쉽게 배울 수 있는 양질의 코딩 교육을 제공합니다.'
+}
+
+export default async function Home() {
+  const data = await getMainData()
+
+  // ErrorResponse 처리 예정
+  if ('status' in data) {
+    return <div>데이터를 불러오는 데 실패했습니다: {data.message}</div>
+  }
+
   return (
-    <div className='flex flex-col'>
-      <Typography
-        variant='title-1'
-        fontWeight='medium'
-        color='disable'>
-        Hello
-      </Typography>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <MainPage data={data} />
+    </QueryClientProvider>
   )
 }

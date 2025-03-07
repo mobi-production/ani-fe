@@ -14,28 +14,45 @@ function PathProductItemBasic({ ...props }: PathProductItemBasicProps) {
   )
 }
 
-type ImageProps = ComponentProps<typeof ImageSection>
+type ImageProps = ComponentProps<typeof ImageSection> & {
+  isApplied?: boolean
+}
 
-function Image({ src, alt, className, ...props }: ImageProps) {
+function Image({ src, alt, isApplied = false, className, ...props }: ImageProps) {
   return (
-    <ImageSection
-      src={src}
-      alt={alt}
-      className={className}
-      size='m'
-      {...props}
-    />
+    <div className='relative'>
+      <ImageSection
+        src={src}
+        alt={alt}
+        className={className}
+        size='m'
+        {...props}
+      />
+      {isApplied && (
+        <Badge
+          className='absolute left-[0.875rem] top-[1rem]'
+          color='green'>
+          신청완료
+        </Badge>
+      )}
+    </div>
   )
 }
 
 type BadgeListProps = ComponentProps<'div'> & {
   level: number
   category: string
-  badgeType: PathStatusBadgeType
+  badgeType?: PathStatusBadgeType
 }
 
-function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) {
+function BadgeList({ level = 0, category = '', badgeType }: BadgeListProps) {
   const { badgeColor, badgeLabel } = useMemo(() => {
+    if (!badgeType) {
+      return {
+        badgeColor: undefined,
+        badgeLabel: undefined
+      }
+    }
     return {
       badgeColor: PATH_STATUS_BADGE[badgeType].COLOR,
       badgeLabel: PATH_STATUS_BADGE[badgeType].LABEL
@@ -45,36 +62,51 @@ function BadgeList({ level, category, badgeType = 'SCHEDULE' }: BadgeListProps) 
   return (
     <Flex
       direction='row'
-      className='gap-[0.375rem]'>
+      gap={6}>
       <Badge>Lv.{level}</Badge>
       <Badge>{category}</Badge>
-      <Badge color={badgeColor}>{badgeLabel}</Badge>
+      {badgeType && <Badge color={badgeColor}>{badgeLabel}</Badge>}
     </Flex>
   )
 }
 
 type TextContentListProps = ComponentProps<'div'> & {
   name: string
-  period: string
+  applyPeriod: string
+  progressPeriod: string
 }
 
-function TextContentList({ name, period }: TextContentListProps) {
+function TextContentList({
+  name = '',
+  applyPeriod = '',
+  progressPeriod = ''
+}: TextContentListProps) {
   return (
     <Flex
       direction='column'
-      className='gap-[0.375rem]'>
+      gap={6}>
       <Typography
         className='line-clamp-2'
         variant='label-normal'
         fontWeight='semibold'>
         {name}
       </Typography>
-      <Typography
-        color='alternative'
-        variant='caption-2'
-        fontWeight='regular'>
-        {period}
-      </Typography>
+      <Flex
+        direction='column'
+        gap={2}>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`신청 기간 | ${applyPeriod}`}
+        </Typography>
+        <Typography
+          color='alternative'
+          variant='caption-2'
+          fontWeight='regular'>
+          {`진행 기간 | ${progressPeriod}`}
+        </Typography>
+      </Flex>
     </Flex>
   )
 }

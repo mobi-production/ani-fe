@@ -1,0 +1,53 @@
+{
+  "type": "heading_3",
+  "props": {
+    "text": "프로젝트 예시 - 제목으로 쓰이는 속성",
+    "rich_text": [
+      {
+        "text": "프로젝트 예시 - 제목으로 쓰이는"
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "bold 처리",
+        "bold": true
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "italic 처리",
+        "italic": true
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "underline 처리",
+        "underline": true
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "strikethrough 처리",
+        "strikethrough": true
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "code 처리",
+        "code": true
+      },
+      {
+        "text": " "
+      },
+      {
+        "text": "link 처리",
+        "link": "https://www.google.com"
+      }
+    ]
+  }
+}

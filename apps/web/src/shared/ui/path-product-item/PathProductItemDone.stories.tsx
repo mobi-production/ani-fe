@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import PathProductItemDone from './PathProductItemDone'
 
 const meta = {
-  title: 'ProductItem/Done',
+  title: 'Shared/PathProductItem/Done',
   component: PathProductItemDone,
   parameters: {
     layout: 'centered',
@@ -13,12 +13,7 @@ const meta = {
       }
     }
   },
-  tags: ['autodocs'],
-  decorators: (Story) => (
-    <div className='px-40 py-10'>
-      <Story />
-    </div>
-  )
+  tags: ['autodocs']
 } satisfies Meta<typeof PathProductItemDone>
 
 export default meta
@@ -29,6 +24,7 @@ export const Primary: Story = {
     <div className='mx-auto w-full max-w-[22.75rem]'>
       <PathProductItemDone>
         <PathProductItemDone.ContentSection
+          src='/avif/placeholder.avif'
           level={1}
           category='카테고리'
           title='패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름 2줄까지 패스 이름'

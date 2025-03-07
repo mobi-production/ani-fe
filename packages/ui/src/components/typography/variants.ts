@@ -20,7 +20,8 @@ export const TypographyFontWeights = {
   REGULAR: 'regular',
   MEDIUM: 'medium',
   SEMIBOLD: 'semibold',
-  BOLD: 'bold'
+  BOLD: 'bold',
+  EXTRA_BOLD: 'extra_bold'
 } as const
 
 export const TypographyColors = {
@@ -31,5 +32,6 @@ export const TypographyColors = {
   ALTERNATIVE: 'alternative',
   ASSISTIVE: 'assistive',
   DISABLE: 'disable',
-  ERROR: 'error'
+  ERROR: 'error',
+  MINT99: 'mint99'
 } as const

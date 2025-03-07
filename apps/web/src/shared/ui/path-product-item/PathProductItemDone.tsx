@@ -8,37 +8,40 @@ function PathProductItemDone({ ...props }: PathProductItemDoneProps) {
   return (
     <Flex
       direction='column'
-      className='max-w-[22.75rem] gap-[0.75rem]'
+      gap={12}
+      className='max-w-[22.75rem]'
       {...props}
     />
   )
 }
 
 type ContentSectionProps = ComponentProps<'div'> & {
+  src: string
   level: number
   category: string
   title: string
   period: string
 }
 
-function ContentSection({ level, category, title, period, ...props }: ContentSectionProps) {
+function ContentSection({ src, level, category, title, period, ...props }: ContentSectionProps) {
   return (
     <Flex
       direction='row'
       align='center'
-      className='w-[100%] gap-[0.75rem]'>
+      gap={12}
+      className='w-[100%]'>
       <ImageSection
         size='xs'
-        src='/avif/placeholder.avif'
-        alt='Placeholder Image'
+        src={src}
+        alt={`${title} 이미지`}
       />
       <Flex
         direction='column'
-        className='gap-[0.75rem]'
+        gap={12}
         {...props}>
         <Flex
           direction='row'
-          className='gap-[0.75rem]'>
+          gap={12}>
           <Badge>Lv.{level}</Badge>
           <Badge>{category}</Badge>
           <Badge color={'green'}>수료</Badge>
@@ -67,7 +70,8 @@ function FooterSection({ onClick, ...props }: FooterSectionProps) {
   return (
     <Flex
       direction='column'
-      className='w-[100%] gap-[0.75rem]'
+      gap={12}
+      className='w-[100%]'
       {...props}>
       <div className='h-[1px] w-full bg-[#17171715]' />
       <TextButton
@@ -77,7 +81,7 @@ function FooterSection({ onClick, ...props }: FooterSectionProps) {
         rightIcon={
           <Icon
             name='RightOutlined'
-            size='16'
+            size={16}
           />
         }>
         수료증 받기
